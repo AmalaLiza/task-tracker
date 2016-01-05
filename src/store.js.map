@@ -1,0 +1,1 @@
+{"version":3,"file":"store.js","sourceRoot":"","sources":["store.ts"],"names":["configureStore"],"mappings":"AAAA,oDAAoD;AAEpD,sBAAsD,OAAO,CAAC,CAAA;AAE9D,MAAM,gBAAgB,GAAG,eAAO,EAAE,CAAC,mBAAW,CAAC,CAAC;AAEhD;IACIA,MAAMA,CAACA,gBAAgBA,CAACA,WAAWA,CAACA,CAACA;AACzCA,CAACA;AAFD,gCAEC,CAAA"}
