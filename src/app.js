@@ -11,6 +11,7 @@ class App extends React.Component {
         super();
     }
     render() {
+        return React.createElement("h1", null, " Task Tracker");
     }
 }
 exports.App = App;

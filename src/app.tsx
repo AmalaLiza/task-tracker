@@ -15,7 +15,7 @@ export default class App extends React.Component<any,any>{
     }
 
     render() {
-
+        return <h1> Task Tracker</h1>
     }
 }
 

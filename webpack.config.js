@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-dev-server/client?http://localhost:5010',
+        'webpack-dev-server/client?http://localhost:8000',
         'webpack/hot/only-dev-server',
         './src/index'
     ],
@@ -23,12 +23,10 @@ module.exports = {
                 loader: 'style!css!sass'
             },
             {
-                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'react-hot'
             },
             {
-                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
