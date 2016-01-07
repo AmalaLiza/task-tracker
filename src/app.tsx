@@ -6,20 +6,38 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import Header from "../src/components/header/header.tsx";
+import Board from "../src/components/board/board.tsx";
+import DayTracker from "../src/components/footer/day-tracker/day-tracker.tsx";
 import TodoActions from "./actions.ts";
 
 
-export class App extends React.Component<any, any>{
+export class App extends React.Component<any, any> {
     constructor() {
         super();
     }
 
     render() {
-        return <h1> Task Tracker</h1> ;
+        return <div className="tr-wrapper">
+            <Header/>
+            <div className="main-body">
+                <div className="width-container">
+                    <div className="task-list clearfix">
+                        <Board/>
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" className="primary-link">ADD TASK</a>
+                    </div>
+                </div>
+            </div>
+            <div className="footer">
+                <DayTracker/>
+            </div>
+        </div>
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {data: state};
 }
 

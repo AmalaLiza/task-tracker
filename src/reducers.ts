@@ -3,5 +3,5 @@ import * as Immutable from 'immutable';
 
 export function rootReducer(state , action) {
     console.log(state, action);
-    return state;
+    //return state;
 }
