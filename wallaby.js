@@ -15,18 +15,9 @@
 
             compilers: {
                 '**/*.ts': wallaby.compilers.typeScript({
-                    module: 5,  // ES6
-                    target: 2  // ES6
+                    /* 1 for CommonJs*/
+                    module: 1
                 })
-            },
-            preprocessors: {
-                '**/*.js': file => require('babel-core').transform(
-                    file.content,
-                    {
-                        sourceMap: true,
-                        presets: ['es2015']
-                    }
-                )
             }
         }
     }
