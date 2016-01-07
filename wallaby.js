@@ -1,23 +1,23 @@
-    module.exports = function (wallaby) {
+module.exports = function (wallaby) {
 
-        return {
-            files: [
-                'src/*.ts'
-            ],
+    return {
+        files: [
+            'src/*.ts'
+        ],
 
-            tests: [
-                'test/*Spec.ts'
-            ],
+        tests: [
+            'test/*Spec.ts'
+        ],
 
-            env: {
-                type: 'node'
-            },
+        env: {
+            type: 'node'
+        },
 
-            compilers: {
-                '**/*.ts': wallaby.compilers.typeScript({
-                    /* 1 for CommonJs*/
-                    module: 1
-                })
-            }
+        compilers: {
+            '**/*.ts': wallaby.compilers.typeScript({
+                /* 1 for CommonJs*/
+                module: 1
+            })
         }
     }
+};
