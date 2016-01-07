@@ -1,7 +1,4 @@
 "use strict";
-/// <reference path="../typings/react/react.d.ts" />
-/// <reference path="../typings/react/react-dom.d.ts" />
-/// <reference path="../typings/react-redux/react-redux.d.ts" />
 var React = require("react");
 var react_dom_1 = require("react-dom");
 var react_redux_1 = require("react-redux");

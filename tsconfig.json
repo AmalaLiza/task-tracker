@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES6",
+    "removeComments": true,
     "jsx": "react",
     "module": "commonjs",
     "sourceMap": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "test",
+    "typings"
+  ]
 }

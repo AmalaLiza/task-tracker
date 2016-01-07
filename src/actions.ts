@@ -1,6 +1,6 @@
 export default {
 
-    addTask(task: any): any {
+    addTask(task){
         return {type: "ADD_TASK", task};
     }
 }
