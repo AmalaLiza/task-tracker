@@ -22,7 +22,11 @@
             preprocessors: {
                 '**/*.js': file => require('babel-core').transform(
                     file.content,
-                    {sourceMap: true, presets: ['es2015']})
+                    {
+                        sourceMap: true,
+                        presets: ['es2015']
+                    }
+                )
             }
         }
     }
