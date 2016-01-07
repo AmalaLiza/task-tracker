@@ -1,1 +1,1 @@
-{"version":3,"file":"actions.js","sourceRoot":"","sources":["actions.ts"],"names":[],"mappings":""}
+{"version":3,"file":"actions.js","sourceRoot":"","sources":["actions.ts"],"names":["addTask"],"mappings":"AAAA,kBAAe;IAEX,OAAO,CAAC,IAAS;QACbA,MAAMA,CAACA,EAACA,IAAIA,EAAEA,UAAUA,EAAEA,IAAIA,EAACA,CAACA;IACpCA,CAACA;CACJ,CAAA"}

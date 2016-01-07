@@ -14,7 +14,6 @@
       "check-lowercase"
     ],
     "curly": true,
-    "eofline": true,
     "forin": true,
     "indent": [
       true,
@@ -85,13 +84,6 @@
     "radix": true,
     "semicolon": true,
     "switch-default": true,
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "always",
-        "singleline": "never"
-      }
-    ],
     "triple-equals": [
       true,
       "allow-null-check"
@@ -114,11 +106,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "use-strict": [
-      true,
-      "check-module",
-      "check-function"
-    ],
+
     "variable-name": [
       true,
       "check-format",

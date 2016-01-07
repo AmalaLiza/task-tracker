@@ -2,10 +2,10 @@
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
 /// <reference path="../typings/react-redux/react-redux.d.ts" />
-var React = require('react');
+var React = require("react");
 var react_redux_1 = require("react-redux");
 var redux_1 = require("redux");
-var actions_ts_1 = require('./actions.ts');
+var actions_ts_1 = require("./actions.ts");
 class App extends React.Component {
     constructor() {
         super();
