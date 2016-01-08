@@ -1,9 +1,10 @@
+import "./day-tracker.css"
 import * as React from "react";
 
 export default class DayTracker extends React.Component<any, any> {
 
     render(){
-        return <div className="progress-track">
+        return <div className="day-tracker">
             <a href="javascript:void(0)">SHOW TIMELINE</a>
             <h2>11:30:23</h2>
             <span className="play-ico"></span>
