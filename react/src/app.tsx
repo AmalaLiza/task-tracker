@@ -10,6 +10,7 @@ import Header from "../src/components/header/header.tsx";
 import Board from "../src/components/board/board.tsx";
 import DayTracker from "../src/components/footer/day-tracker/day-tracker.tsx";
 import TodoActions from "./actions.ts";
+import './global.scss';
 
 
 export class App extends React.Component<any, any> {

@@ -1,4 +1,5 @@
 import * as React from "react";
+import './main-body.scss';
 
 export default class Board extends React.Component<any,any> {
     render(){
