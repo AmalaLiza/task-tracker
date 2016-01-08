@@ -1,14 +1,20 @@
 exports.default = {
-    addTask(task) {
-        return {
-            type: "ADD_TASK",
-            task
-        };
-    },
     addBoard(board) {
         return {
             type: "ADD_BOARD",
             board
+        };
+    },
+    editBoardTitle(boardId) {
+        return {
+            type: "EDIT_BOARD_TITLE",
+            boardId
+        };
+    },
+    addTask(task) {
+        return {
+            type: "ADD_TASK",
+            task
         };
     },
     taskCompleted(taskId) {
@@ -32,6 +38,12 @@ exports.default = {
     expandTask(taskId) {
         return {
             type: "EXPAND_TASK",
+            taskId
+        };
+    },
+    editTaskTitle(taskId) {
+        return {
+            type: "EDIT_TASK_TITLE",
             taskId
         };
     },

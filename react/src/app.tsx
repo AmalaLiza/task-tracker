@@ -9,8 +9,7 @@ import {bindActionCreators} from "redux";
 import Header from "../src/components/header/header.tsx";
 import Board from "../src/components/board/board.tsx";
 import DayTracker from "../src/components/footer/day-tracker/day-tracker.tsx";
-import TodoActions from "./actions.ts";
-import './global.scss';
+import Actions from "./actions.ts";
 
 
 export class App extends React.Component<any, any> {
@@ -19,15 +18,30 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
+        console.log(this.props);
+        let { data, actions } = this.props
+        let { boardList } = data
+        let boardListElements = boardList
+            .map((board, index) => (
+                <Board
+                    id = { board.id }
+                    onTaskCompletion = { actions.taskCompleted }
+                    onTaskPlay = { actions.playTask }
+                    onPauseTask = { actions.pauseTask }
+                    onExpandTask = { actions.expandTask }
+                    onEditBoardTitle = { actions.editBoardTitle }
+                    onEditTaskTitle = { actions.editTaskTitle }
+                />
+            ));
         return <div className="tr-wrapper">
             <Header/>
             <div className="main-body">
                 <div className="width-container">
                     <div className="task-list clearfix">
-                        <Board/>
+                        { boardListElements }
                     </div>
                     <div>
-                        <a href="javascript:void(0)" className="primary-link">ADD TASK</a>
+                        <a href="javascript:void(0)" className="primary-link">ADD BOARD</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +57,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators(TodoActions, dispatch)};
+    return {actions: bindActionCreators(Actions, dispatch)};
 }
 
 export default connect(
