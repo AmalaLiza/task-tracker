@@ -1,0 +1,32 @@
+//header css
+
+$primary-color:#ED5353;
+$primary-text-color:#2A2A2A;
+$primary-heading-color:#0B0B0B;
+$body-background:#F1F1F1;
+$primary-border-color:#E4E4E4;
+$footer-background:#484B50;
+
+.header-wrapper {
+  height: 84px;
+  background: $primary-color;
+}
+
+.logo-text{
+  color: #fff;
+  font-weight: 600;
+  padding-top: 22px;
+  letter-spacing: -4px;
+  font-size: 32px;
+}
+
+.header-search__input {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50px;
+  margin-top: 22px;
+  width: 260px;
+  color: #fff;
+  font-size: 16px;
+}

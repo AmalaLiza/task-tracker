@@ -1,4 +1,5 @@
 import * as React from "react";
+import './footer.scss'
 
 export default class DayTracker extends React.Component<any, any> {
 
