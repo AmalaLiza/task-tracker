@@ -23,10 +23,12 @@ module.exports = {
                 loader: 'style!css!sass'
             },
             {
+                test: /\.ts(x?)/,
                 exclude: /node_modules/,
                 loader: 'react-hot'
             },
             {
+                test: /\.ts(x?)/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {

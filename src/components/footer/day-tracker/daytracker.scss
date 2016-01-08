@@ -1,0 +1,33 @@
+* {
+    font-family: 'Roboto Mono', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 300;
+    //color: rgba(0, 0, 0, 0.701961);
+}
+
+body {
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+.language-javascript {
+    white-space: pre-wrap !important;
+    background: #f7f7f7 !important;
+}
+
+.marginTop {
+    margin-top: 15px;
+}
+
+code, input {
+    font-family: 'Roboto Mono', sans-serif !important;
+}
+
+.mdi{
+    color: white !important;
+}

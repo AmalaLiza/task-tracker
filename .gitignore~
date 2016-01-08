@@ -1,7 +1,4 @@
 node_modules
-src/*.js
-src/*.js.map
-.idea/workspace.xml
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
