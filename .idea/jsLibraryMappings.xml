@@ -2,7 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{task-tracker node_modules}" />
-    <file url="file://$PROJECT_DIR$/src/index.tsx" libraries="{task-tracker node_modules}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
   </component>
 </project>

@@ -1,7 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c20b47e4-0551-41b9-83b9-a8a9ece610a6" name="Default" comment="" />
+    <list default="true" id="c20b47e4-0551-41b9-83b9-a8a9ece610a6" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/actions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/actions.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/actions.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/boardlist.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/board/board.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/board/board.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/board/board.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/description/description.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/description/description.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/description/description.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/day-tracker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/day-tracker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/day-tracker.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/day-tracker.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/daytracker.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/footer/day-tracker/footer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/header/header.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/header/header.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/header/header.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/index.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/index.tsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pages/boardlist.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reducers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reducers.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reducers.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/store.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/store.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/store.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/footer/footer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/footer/footer.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/global.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/global.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/header/header.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/header/header.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/main-body/main-body.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/main-body/main-body.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/trackerSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/trackerSpec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/trackerSpec.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/assertion-error/assertion-error.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/chai/chai.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/immutable/immutable.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/react-redux/react-redux.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/react/react-dom.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/react/react.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/redux/redux.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/tsd.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/typings/underscore/underscore.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/wallaby.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="task-tracker.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,18 +84,7 @@
     <favorites_list name="task-tracker" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/index.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42755345">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,78 +166,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="task-tracker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="typings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="board" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="board.tsx" />
-              <option name="myItemType" value="com.intellij.lang.typescript.compiler.ui.projectView.TypeScriptNestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -295,9 +276,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42105263" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42105263" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
