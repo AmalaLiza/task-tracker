@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {BoardComponent} from './task/components/board.component.ts';
 import {TaskService} from "./task/task.service";
+import * as Immtuable from "immutable";
 
 @Component({
     selector: 'main',
@@ -16,7 +17,9 @@ import {TaskService} from "./task/task.service";
                 </board>
 
                 <div class="task-list__item add-board fleft">
-                    <a href="javascript:void(0)" class="primary-link">
+                    <a href="javascript:void(0)"
+                        class="primary-link"
+                        (click)="addBoard()">
                         + Add Board
                     </a>
                 </div>
@@ -29,8 +32,15 @@ import {TaskService} from "./task/task.service";
 export default class MainComponent {
     constructor(public taskService:TaskService) {
     }
+
     addTask(task:string, boardIndex:number){
-        console.log("add task", task, boardIndex)
-        this.taskService.addTask(0 ,'mew task');
+        //console.log("add task", task, boardIndex);
+        this.taskService.boards = this.taskService.addTask(0 ,'new task');
+        console.log("new boards", this.taskService.boards.toJS());
+
+    }
+
+    addBoard(){
+        console.log(this.taskService.boards.toJS())
     }
 }
