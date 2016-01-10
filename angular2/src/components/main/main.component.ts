@@ -1,27 +1,24 @@
 import {Component} from 'angular2/core';
-import {TaskListComponent} from './task/components/task.list.component';
+import {BoardComponent} from './task/components/board.component.ts';
+import {TaskService} from "./task/task.service";
 
 @Component({
     selector: 'main',
     styleUrls: ['./src/components/main/main.css'],
-    directives: [TaskListComponent],
-    template: `<div>
+    directives: [BoardComponent],
+    template: `
+    <div>
          <div class="main-body width-container">
             <div class="task-list clearfix">
-                <div class="task-list__item fleft">
-                    <div class="task-header-wrapper">
-                        <h2 class="task-header align-center">Design<span class="task-no"> (12)</span></h2>
-                    </div>
-
-                        <task-list></task-list>
-
-                    <div class="task-footer">
-                        <a href="javascript:void(0)" class="primary-link add-task-link">+ Add Task</a>
-                    </div>
-                </div>
+                <board *ngFor="#board of taskService.boards"
+                        [tasks]="board.tasks"
+                        (addTask)="(addTask(task, $index))">
+                </board>
 
                 <div class="task-list__item add-board fleft">
-                    <a href="javascript:void(0)" class="primary-link">+ Add Board</a>
+                    <a href="javascript:void(0)" class="primary-link">
+                        + Add Board
+                    </a>
                 </div>
 
             </div>
@@ -30,4 +27,10 @@ import {TaskListComponent} from './task/components/task.list.component';
 })
 
 export default class MainComponent {
+    constructor(public taskService:TaskService) {
+    }
+    addTask(task:string, boardIndex:number){
+        console.log("add task", task, boardIndex)
+        this.taskService.addTask(0 ,'mew task');
+    }
 }

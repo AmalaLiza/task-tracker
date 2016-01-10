@@ -1,5 +1,5 @@
-export default class Task {
-    constructor(title = "default title"){
+export default class Board {
+    constructor(public title = "default title", public tasks:string[] = ["eat", "sleep", "code"]) {
     }
 
 }

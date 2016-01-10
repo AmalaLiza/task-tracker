@@ -4,10 +4,17 @@ import Task from "./task.class.ts";
 
 @Injectable()
 export class TaskService {
-    boards: Board[] = [];
+    boards:Board[] = [new Board("Design")];
 
-    constructor(){
-        let a:number = 5;
-        let b;
+    constructor() {
+    }
+
+    addTask(boardIndex:number, task:string = "task text not entered") {
+        console.log("addTask called");
+        //this.boards = [this.boards.splice(0, boardIndex),
+        //    this.boards[boardIndex].tasks.push(task),
+        //    this.boards.splice(boardIndex + 1, this.boards.length)];
+        this.boards[boardIndex].tasks.push(task);
+        console.log("boards", this.boards);
     }
 }
