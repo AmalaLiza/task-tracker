@@ -49,7 +49,7 @@ function rootReducer(state = initialState, action) {
                 taskList: Immutable.List()
             });
             state = state.updateIn(['boardList'], boardList => {
-                return boardList.update(action.boardId, (board) => board.updateIn("taskList", taskList => taskList.push(newTask)));
+                console.log("ddd", boardList);
             });
             return state;
         default:

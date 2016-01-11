@@ -38,6 +38,7 @@ export default class Board extends React.Component<any,any> {
             </div>
             <div className="task-footer">
                 <a href='javascript:void(0)' className="primary-link add-task-link" onClick={() => {this.onAddTask("Amala", this.props.data.get('id'))}}>+ Add Task</a>
+                <input style={{display:'none'}}/>
             </div>
         </div>
     }

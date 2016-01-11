@@ -57,8 +57,7 @@ export function rootReducer(state = initialState, action) {
             });
 
             state = state.updateIn(['boardList'], boardList => {
-                return boardList.update(action.boardId, (board) =>
-                    board.updateIn("taskList", taskList => taskList.push(newTask)));
+                console.log("ddd", boardList)
             });
             return state
 
