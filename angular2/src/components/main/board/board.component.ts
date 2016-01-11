@@ -10,7 +10,7 @@ import {TaskComponent} from "./task/task.component.ts";
     <div class="task-list__item fleft">
         <div class="task-header-wrapper">
             <h2 class="task-header align-center">
-                Design<span class="task-no"> ({{tasks.length}})</span>
+                {{title}}<span class="task-no"> ({{tasks.size}})</span>
             </h2>
         </div>
 
@@ -41,7 +41,7 @@ import {TaskComponent} from "./task/task.component.ts";
         <div class="task-footer">
             <a href="javascript:void(0)"
                 class="primary-link add-task-link"
-                (click)="addTask.emit('new task')">
+                (click)="addTask.emit()">
                 + Add Task
             </a>
         </div>
@@ -49,6 +49,7 @@ import {TaskComponent} from "./task/task.component.ts";
 })
 
 export class BoardComponent {
+    @Input() title;
     @Input() tasks;
     @Output() addTask = new EventEmitter();
 }
