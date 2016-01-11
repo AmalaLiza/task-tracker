@@ -49,6 +49,9 @@ function rootReducer(state = initialState, action) {
             });
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.push(newTask));
             return state;
+        case "TASK_COMPLETED":
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId], task => { console.log(task); task.get('completed'); });
+            return state;
         default:
             return state;
     }

@@ -21,9 +21,10 @@ export default {
         };
     },
 
-    taskCompleted(taskId:number){
+    taskCompleted(boardIndex:number, taskId:number){
         return {
             type: "TASK_COMPLETED",
+            boardIndex,
             taskId
         };
     },

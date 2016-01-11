@@ -17,9 +17,10 @@ exports.default = {
             boardIndex
         };
     },
-    taskCompleted(taskId) {
+    taskCompleted(boardIndex, taskId) {
         return {
             type: "TASK_COMPLETED",
+            boardIndex,
             taskId
         };
     },
