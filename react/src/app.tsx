@@ -19,19 +19,21 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
-        console.log(this.props);
         let {data, actions} = this.props;
         let boardList = data.get("boardList");
         let boardListElements = boardList
             .map((board, index) => (
                 <Board
-                    key = { board.id }
-                    onTaskCompletion = { actions.taskCompleted }
-                    onTaskPlay = { actions.playTask }
-                    onPauseTask = { actions.pauseTask }
-                    onExpandTask = { actions.expandTask }
-                    onEditBoardTitle = { actions.editBoardTitle }
-                    onEditTaskTitle = { actions.editTaskTitle }
+                    key={index}
+                    id={board.id}
+                    data={board}
+                    onTaskCompletion={actions.taskCompleted}
+                    onTaskPlay={actions.playTask}
+                    onPauseTask={actions.pauseTask}
+                    onExpandTask={actions.expandTask}
+                    onEditBoardTitle={actions.editBoardTitle}
+                    onEditTaskTitle={actions.editTaskTitle}
+                    onAddTask={actions.addTask}
                 />
             ));
         return <div className="tr-wrapper">
@@ -43,7 +45,6 @@ export class App extends React.Component<any, any> {
                     </div>
                     <div>
                         <AddBoard handleClick={actions.addBoard}/>
-
                     </div>
                 </div>
             </div>

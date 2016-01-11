@@ -5,22 +5,22 @@ const initialState = Immutable.fromJS({
             title: "Design",
             taskList: [{
                     id: 1,
-                    title: "Create designs for insight screen",
-                    estimatedTime: "2hrs"
+                    value: "Create designs for insight screen",
+                    estimatedTime: "2 hrs"
                 }, {
                     id: 2,
-                    title: "Create designs for insight screen",
-                    estimatedTime: "2hrs"
+                    value: "Create designs for KAT",
+                    estimatedTime: "3 hrs"
                 }, {
                     id: 3,
-                    title: "Create designs for insight screen",
-                    estimatedTime: "2hrs"
+                    value: "Create designs for Blazent",
+                    estimatedTime: "4 hrs"
                 }
             ]
         }]
 });
 function rootReducer(state = initialState, action) {
-    console.log(state, action);
+    console.log(state.toJS(), action);
     switch (action.type) {
         case "ADD_BOARD":
             let newBoard = Immutable.fromJS({
@@ -29,6 +29,16 @@ function rootReducer(state = initialState, action) {
                 taskList: Immutable.List()
             });
             state = state.updateIn(['boardList'], boardList => boardList.push(newBoard));
+            return state;
+        case "ADD_TASK":
+            let newTask = Immutable.fromJS({
+                id: state.get("boardList", "taskList").reduce((maxId, task) => Math.max(task.id, maxId), -1) + 1,
+                value: action.value,
+                taskList: Immutable.List()
+            });
+            state = state.updateIn(['boardList'], boardList => {
+                return boardList.update(action.boardId, (board) => board.update("taskList", taskList => taskList.push(newTask)));
+            });
             return state;
         default:
             return state;
