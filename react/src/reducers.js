@@ -1,4 +1,5 @@
-const initialState = {
+var Immutable = require('immutable');
+const initialState = Immutable.fromJS({
     boardList: [{
             id: 1,
             title: "Design",
@@ -6,9 +7,18 @@ const initialState = {
                     id: 1,
                     title: "Create designs for insight screen",
                     estimatedTime: "2hrs"
-                }]
+                }, {
+                    id: 2,
+                    title: "Create designs for insight screen",
+                    estimatedTime: "2hrs"
+                }, {
+                    id: 3,
+                    title: "Create designs for insight screen",
+                    estimatedTime: "2hrs"
+                }
+            ]
         }]
-};
+});
 function rootReducer(state = initialState, action) {
     console.log(state, action);
     switch (action.type) {

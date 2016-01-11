@@ -41,7 +41,8 @@ export class App extends React.Component<any, any> {
                         { boardListElements }
                     </div>
                     <div>
-                        <a href="javascript:void(0)" className="primary-link">ADD BOARD</a>
+                        <AddBoard handleClick={actions.addBoard()}/>
+
                     </div>
                 </div>
             </div>

@@ -1,9 +1,8 @@
 export default {
 
-    addBoard(board){
+    addBoard(){
         return {
-            type: "ADD_BOARD",
-            board
+            type: "ADD_BOARD"
         };
     },
     editBoardTitle(boardId){

@@ -1,7 +1,7 @@
 ///<reference path='../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 
-const initialState = {
+const initialState = Immutable.fromJS({
     boardList: [{
         id: 1,
         title: "Design",
@@ -9,9 +9,18 @@ const initialState = {
             id: 1,
             title: "Create designs for insight screen",
             estimatedTime: "2hrs"
-        }]
+        }, {
+            id: 2,
+            title: "Create designs for insight screen",
+            estimatedTime: "2hrs"
+        }, {
+            id: 3,
+            title: "Create designs for insight screen",
+            estimatedTime: "2hrs"
+        }
+        ]
     }]
-};
+})
 
 export function rootReducer(state = initialState, action) {
 

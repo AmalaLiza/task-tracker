@@ -16,7 +16,7 @@ class App extends React.Component {
         let { boardList } = data;
         let boardListElements = boardList
             .map((board, index) => (React.createElement(board_tsx_1.default, {"id": board.id, "onTaskCompletion": actions.taskCompleted, "onTaskPlay": actions.playTask, "onPauseTask": actions.pauseTask, "onExpandTask": actions.expandTask, "onEditBoardTitle": actions.editBoardTitle, "onEditTaskTitle": actions.editTaskTitle})));
-        return React.createElement("div", {"className": "tr-wrapper"}, React.createElement(header_tsx_1.default, null), React.createElement("div", {"className": "main-body"}, React.createElement("div", {"className": "width-container"}, React.createElement("div", {"className": "task-list clearfix"}, boardListElements), React.createElement("div", null, React.createElement("a", {"href": "javascript:void(0)", "className": "primary-link"}, "ADD BOARD")))), React.createElement("div", {"className": "footer"}, React.createElement(day_tracker_tsx_1.default, null)));
+        return React.createElement("div", {"className": "tr-wrapper"}, React.createElement(header_tsx_1.default, null), React.createElement("div", {"className": "main-body"}, React.createElement("div", {"className": "width-container"}, React.createElement("div", {"className": "task-list clearfix"}, boardListElements), React.createElement("div", null, React.createElement(AddBoard, {"handleClick": actions.addBoard()})))), React.createElement("div", {"className": "footer"}, React.createElement(day_tracker_tsx_1.default, null)));
     }
 }
 exports.App = App;
