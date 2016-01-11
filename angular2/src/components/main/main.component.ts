@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
-import {BoardComponent} from './task/components/board.component.ts';
-import {TaskService} from "./task/task.service";
+import {BoardComponent} from './board/board.component.ts';
+import {TaskService} from "./task.service.ts";
 import * as Immtuable from "immutable";
 
 @Component({
@@ -35,7 +35,7 @@ export default class MainComponent {
 
     addTask(task:string, boardIndex:number){
         //console.log("add task", task, boardIndex);
-        this.taskService.boards = this.taskService.addTask(0 ,'new task');
+        this.taskService.addTask(0 ,'new task');
         console.log("new boards", this.taskService.boards.toJS());
 
     }
