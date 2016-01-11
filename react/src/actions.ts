@@ -13,11 +13,11 @@ export default {
         };
     },
 
-    addTask(value, boardId){
+    addTask(value, boardIndex){
         return {
             type: "ADD_TASK",
             value,
-            boardId
+            boardIndex
         };
     },
 

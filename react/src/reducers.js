@@ -2,7 +2,7 @@ var Immutable = require('immutable');
 const initialState = Immutable.fromJS({
     boardList: [{
             id: 0,
-            title: "Design",
+            title: "Design1",
             taskList: [{
                     id: 0,
                     value: "Add task",
@@ -12,7 +12,7 @@ const initialState = Immutable.fromJS({
         },
         {
             id: 1,
-            title: "Design",
+            title: "Design2",
             taskList: [{
                     id: 0,
                     value: "Create designs for insight screen",
@@ -47,7 +47,7 @@ function rootReducer(state = initialState, action) {
                 value: action.value,
                 taskList: Immutable.List()
             });
-            state = state.updateIn(['boardList', action.boardId, 'taskList'], taskList => taskList.push(newTask));
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.push(newTask));
             return state;
         default:
             return state;

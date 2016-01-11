@@ -30,6 +30,7 @@ export class App extends React.Component<any, any> {
                 <Board
                     key={index}
                     id={board.id}
+                    index={index}
                     data={board}
                     onTaskCompletion={actions.taskCompleted}
                     onTaskPlay={actions.playTask}
