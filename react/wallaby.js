@@ -9,6 +9,8 @@ module.exports = function (wallaby) {
             'test/*Spec.ts'
         ],
 
+        testFramework: "mocha",
+
         env: {
             type: 'node'
         },

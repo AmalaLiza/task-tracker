@@ -5,6 +5,7 @@ export default {
             type: "ADD_BOARD"
         };
     },
+
     editBoardTitle(boardId){
         return {
             type: "EDIT_BOARD_TITLE",
