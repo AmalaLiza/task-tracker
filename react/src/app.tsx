@@ -39,7 +39,7 @@ export class App extends React.Component<any, any> {
                     onAddTask={actions.addTask}
                 />
             ));
-        return <div>
+        return <div className="tr-wrapper">
             <Header/>
             <div className="main-body">
                 <div className="width-container">
