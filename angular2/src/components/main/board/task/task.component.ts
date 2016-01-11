@@ -1,5 +1,5 @@
 import {Component, Input} from "angular2/core";
-import {TaskService} from "../task.service";
+import {TaskService} from "../../task.service.ts";
 
 @Component({
     selector: 'task',

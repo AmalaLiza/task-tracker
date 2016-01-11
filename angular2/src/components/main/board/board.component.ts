@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from "angular2/core";
-import {TaskService} from "../task.service";
-import {TaskComponent} from "./task.component";
+import {TaskService} from "../task.service.ts";
+import {TaskComponent} from "./task/task.component.ts";
 
 @Component({
     selector: 'board',
