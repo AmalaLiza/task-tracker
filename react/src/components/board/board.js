@@ -7,7 +7,6 @@ class Board extends React.Component {
         super();
     }
     onAddTask(value, boardId) {
-        console.log("calling me", value, boardId);
         this.props.onAddTask(value, boardId);
     }
     render() {

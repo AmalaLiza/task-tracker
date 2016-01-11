@@ -3,8 +3,6 @@ import * as React from "react";
 export default class Task extends React.Component<any, any> {
 
     render(){
-        console.log("task", this.props.data.get('value'));
-
         return <li className="task-body-list__item clearfix">
             <label className="task-body-list__item__label fleft">
                 <input type="checkbox"/>

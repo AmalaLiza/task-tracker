@@ -3,30 +3,30 @@ import * as Immutable from 'immutable';
 
 const initialState = Immutable.fromJS({
     boardList: [{
-        id: 1,
+        id: 0,
         title: "Design",
         taskList: [{
-            id: 1,
+            id: 0,
             value: "Add task",
             estimatedTime: "2 hrs",
             completed: true
         }]
     },
     {
-        id: 2,
+        id: 1,
         title: "Design",
         taskList: [{
-            id: 1,
+            id: 0,
             value: "Create designs for insight screen",
             estimatedTime: "2 hrs",
             completed: true
         }, {
-            id: 2,
+            id: 1,
             value: "Create designs for KAT",
             estimatedTime: "3 hrs",
             completed: false
         }, {
-            id: 3,
+            id: 2,
             value: "Create designs for Blazent",
             estimatedTime: "4 hrs",
             completed: true
@@ -36,7 +36,6 @@ const initialState = Immutable.fromJS({
 
 export function rootReducer(state = initialState, action) {
 
-    console.log(state.toJS(), action);
     switch (action.type) {
 
         case "ADD_BOARD":
@@ -56,9 +55,7 @@ export function rootReducer(state = initialState, action) {
                 taskList: Immutable.List()
             });
 
-            state = state.updateIn(['boardList'], boardList => {
-                console.log("ddd", boardList)
-            });
+            state = state.updateIn(['boardList', action.boardId, 'taskList'], taskList => taskList.push(newTask));
             return state
 
         default:

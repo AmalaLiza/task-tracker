@@ -10,7 +10,6 @@ export default class Board extends React.Component<any,any> {
     }
 
     onAddTask(value, boardId){
-        console.log("calling me", value, boardId)
         this.props.onAddTask(value, boardId);
     }
 
