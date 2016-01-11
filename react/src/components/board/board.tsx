@@ -4,6 +4,7 @@ import Task from '../task/task.tsx';
 import {BoardType} from "../../models/BoardType";
 import * as Immutable from "immutable";
 import {TaskType} from "../../models/TaskType";
+import {EventEmitter} from "events";
 
 interface BoardProps{
     key : number;
@@ -25,8 +26,9 @@ export default class Board extends React.Component<BoardProps, any> {
         super();
     }
 
-    onAddTask(title:string, boardIndex:number) {
-        this.props.onAddTask(title, boardIndex);
+    onAddTask(event, boardIndex:number) {
+        console.log(event.target.value)
+        this.props.onAddTask(event.target.val, boardIndex);
     }
 
     render() {
@@ -53,12 +55,10 @@ export default class Board extends React.Component<BoardProps, any> {
                 </ul>
             </div>
             <div className="task-footer">
-                <a href='javascript:void(0)' className="primary-link add-task-link" style={{display:'none'}}
-                   onClick={() => {this.onAddTask("Amala", this.props.index)}}>+ Add Task
-                </a>
                 <div className="task-footer__add-task clearfix">
                     <input style={{display:'block'}} className="fleft task-footer__add-task__input"/>
-                    <button className="fleft primary-button task-footer__add-task__button">+ Add</button>
+                    <button className="fleft primary-button task-footer__add-task__button"
+                            onClick={(e) => {this.onAddTask(e, this.props.index)}}>+ Add</button>
                 </div>
             </div>
         </div>
