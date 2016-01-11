@@ -20,12 +20,12 @@ export class App extends React.Component<any, any> {
 
     render() {
         console.log(this.props);
-        let { data, actions } = this.props
-        let { boardList } = data
+        let {data, actions} = this.props;
+        let boardList = data.get("boardList");
         let boardListElements = boardList
             .map((board, index) => (
                 <Board
-                    id = { board.id }
+                    key = { board.id }
                     onTaskCompletion = { actions.taskCompleted }
                     onTaskPlay = { actions.playTask }
                     onPauseTask = { actions.pauseTask }

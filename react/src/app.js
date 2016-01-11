@@ -14,9 +14,9 @@ class App extends React.Component {
     render() {
         console.log(this.props);
         let { data, actions } = this.props;
-        let { boardList } = data;
+        let boardList = data.get("boardList");
         let boardListElements = boardList
-            .map((board, index) => (React.createElement(board_tsx_1.default, {"id": board.id, "onTaskCompletion": actions.taskCompleted, "onTaskPlay": actions.playTask, "onPauseTask": actions.pauseTask, "onExpandTask": actions.expandTask, "onEditBoardTitle": actions.editBoardTitle, "onEditTaskTitle": actions.editTaskTitle})));
+            .map((board, index) => (React.createElement(board_tsx_1.default, {"key": board.id, "onTaskCompletion": actions.taskCompleted, "onTaskPlay": actions.playTask, "onPauseTask": actions.pauseTask, "onExpandTask": actions.expandTask, "onEditBoardTitle": actions.editBoardTitle, "onEditTaskTitle": actions.editTaskTitle})));
         return React.createElement("div", {"className": "tr-wrapper"}, React.createElement(header_tsx_1.default, null), React.createElement("div", {"className": "main-body"}, React.createElement("div", {"className": "width-container"}, React.createElement("div", {"className": "task-list clearfix"}, boardListElements), React.createElement("div", null, React.createElement(add_board_tsx_1.default, {"handleClick": actions.addBoard})))), React.createElement("div", {"className": "footer"}, React.createElement(day_tracker_tsx_1.default, null)));
     }
 }

@@ -26,17 +26,16 @@ export function rootReducer(state = initialState, action) {
 
     console.log(state, action);
     switch (action.type) {
+
         case "ADD_BOARD":
-            return {
-                boardList: [
-                    ...state.boardList,
-                    {
-                        id: state.boardList.reduce((maxId, taskGroup) => Math.max(taskGroup.id, maxId), -1) + 1,
-                        title: "New Board",
-                        taskList: []
-                    }
-                ]
-            };
+            let newBoard = Immutable.fromJS({
+                id: state.get("boardList").reduce((maxId, board) => Math.max(board.id, maxId), -1) + 1,
+                title: "New Board",
+                taskList: Immutable.List()
+            });
+            state = state.updateIn(['boardList'], boardList => boardList.push(newBoard));
+
+            return state;
 
         default:
             return state;
