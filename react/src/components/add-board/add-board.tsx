@@ -6,6 +6,9 @@ export default class AddBoard extends React.Component<any, any> {
     }
 
     render() {
-        return <a href="javascript:void(0)" className="primary-link" onClick={this.props.handleClick.bind(this)}>ADD BOARD</a>
+        return
+        <div className="task-list__item add-board fleft">
+            <a href="javascript:void(0)" className="primary-link" onClick={this.props.handleClick.bind(this)}>+ Add Board</a>
+        </div>
     }
 }
