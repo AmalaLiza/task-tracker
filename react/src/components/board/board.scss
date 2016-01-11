@@ -6,9 +6,16 @@ $footer-background:#484B50;
 $primary-border-color:#E4E4E4;
 $footer-secondary-background:#313539;
 
+.task-list {
+  padding: 30px 0;
+  height:100%;
+  display:flex;
+  align-items: flex-start;
+}
+
 .task-list__item {
   background: #fff;
-  width: calc(34% - 30px);
+  width: 303px;
   margin: 10px 20px 10px 0px;
   padding-top:15px;
   border:1px solid $primary-border-color;
@@ -16,6 +23,7 @@ $footer-secondary-background:#313539;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
   position: relative;
   max-height: 100%;
+  flex: 0 0 303px;
 }
 
 .task-header {
