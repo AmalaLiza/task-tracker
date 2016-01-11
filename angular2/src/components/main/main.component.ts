@@ -8,8 +8,7 @@ import * as Immtuable from "immutable";
     styleUrls: ['./src/components/main/main.css'],
     directives: [BoardComponent],
     template: `
-    <div>
-         <div class="main-body width-container">
+         <div>
             <div class="task-list clearfix">
                 <board *ngFor="#board of taskService.boards, #i=index"
                         [title]="board.get('title')"
@@ -26,7 +25,6 @@ import * as Immtuable from "immutable";
                 </div>
 
             </div>
-        </div>
     </div>`
 })
 

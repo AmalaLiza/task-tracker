@@ -8,7 +8,7 @@ import FooterComponent from './components/footer/footer.component';
     directives: [HeaderComponent, MainComponent, FooterComponent],
     template: `<div class="tr-wrapper">
         <header></header>
-        <main></main>
+        <main class="main-body width-container"></main>
         <footer></footer>
     </div>`
 })
