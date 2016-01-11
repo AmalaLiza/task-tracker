@@ -1,30 +1,30 @@
 var Immutable = require('immutable');
 const initialState = Immutable.fromJS({
     boardList: [{
-            id: 1,
-            title: "Design",
+            id: 0,
+            title: "Design1",
             taskList: [{
-                    id: 1,
+                    id: 0,
                     value: "Add task",
                     estimatedTime: "2 hrs",
                     completed: true
                 }]
         },
         {
-            id: 2,
-            title: "Design",
+            id: 1,
+            title: "Design2",
             taskList: [{
-                    id: 1,
+                    id: 0,
                     value: "Create designs for insight screen",
                     estimatedTime: "2 hrs",
                     completed: true
                 }, {
-                    id: 2,
+                    id: 1,
                     value: "Create designs for KAT",
                     estimatedTime: "3 hrs",
                     completed: false
                 }, {
-                    id: 3,
+                    id: 2,
                     value: "Create designs for Blazent",
                     estimatedTime: "4 hrs",
                     completed: true
@@ -32,7 +32,6 @@ const initialState = Immutable.fromJS({
         }]
 });
 function rootReducer(state = initialState, action) {
-    console.log(state.toJS(), action);
     switch (action.type) {
         case "ADD_BOARD":
             let newBoard = Immutable.fromJS({
@@ -48,9 +47,7 @@ function rootReducer(state = initialState, action) {
                 value: action.value,
                 taskList: Immutable.List()
             });
-            state = state.updateIn(['boardList'], boardList => {
-                return boardList.update(action.boardId, (board) => board.updateIn("taskList", taskList => taskList.push(newTask)));
-            });
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.push(newTask));
             return state;
         default:
             return state;

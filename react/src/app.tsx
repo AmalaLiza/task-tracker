@@ -11,6 +11,7 @@ import Board from "../src/components/board/board.tsx";
 import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
+import DayTracker from "./components/day-tracker/day-tracker.tsx";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
@@ -29,6 +30,7 @@ export class App extends React.Component<any, any> {
                 <Board
                     key={index}
                     id={board.id}
+                    index={index}
                     data={board}
                     onTaskCompletion={actions.taskCompleted}
                     onTaskPlay={actions.playTask}
@@ -39,18 +41,19 @@ export class App extends React.Component<any, any> {
                     onAddTask={actions.addTask}
                 />
             ));
-        return <div>
+        return <div className="tr-wrapper">
             <Header/>
             <div className="main-body">
                 <div className="width-container">
                     <div className="task-list clearfix">
-                        { boardListElements }
+                        {boardListElements}
                         <AddBoard handleClick={actions.addBoard}/>
                     </div>
                 </div>
             </div>
             <div className="footer">
                 <TaskTracker/>
+                <DayTracker/>
             </div>
         </div>
     }
