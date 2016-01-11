@@ -10,14 +10,14 @@ import {TaskService} from "../../task.service.ts";
             <input type="checkbox"/>
 
              <span class="task-body-list__item__label__text">
-                {{task}}
+                {{task.get("text")}}
              </span>
         </label>
 
         <a href="javascript:void(0)" class="play-ico fright display-none"></a>
 
         <span class="task-time-left fright">
-            1:15:00
+            {{task.get("time")}}
         </span>
     </div>`
 })
