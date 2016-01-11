@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: Tahoma, Sans-serif;
+  font-family: 'Lato', Sans-serif;
   font-weight: 400;
 }
 
@@ -45,6 +45,14 @@ select,
 option:hover,
 button {
   cursor: pointer;
+}
+
+.tr-wrapper {
+  height: 100%;
+}
+
+.main-body {
+  height: calc(100% - 175px);
 }
 
 /* :::::::::: COMMONLY USED CLASSES :::::::::: */

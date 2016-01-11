@@ -1,23 +1,30 @@
 .header-wrapper {
-  height: 84px;
+  height: 64px;
   background: #ED5353;
 }
 
 .logo-text {
   color: #fff;
   font-weight: 600;
-  padding-top: 22px;
-  letter-spacing: -4px;
+  padding-top: 10px;
+  letter-spacing: -3px;
   font-size: 32px;
 }
 
 .header-search__input {
-  background: rgba(0, 0, 0, 0.2);
-  border: none;
-  padding: 10px 18px;
+  background: transparent;
+  padding: 8px 18px;
   border-radius: 50px;
-  margin-top: 22px;
+  margin-top: 14px;
   width: 260px;
   color: #fff;
   font-size: 16px;
+  border: 1px solid white;
+}
+
+.user-details-wrapper {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 20px;
 }

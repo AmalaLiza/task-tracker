@@ -1,0 +1,45 @@
+$primary-color:#ED5353;
+$primary-text-color:#2A2A2A;
+$primary-heading-color:#0B0B0B;
+$body-background:#F1F1F1;
+$primary-border-color:#E4E4E4;
+$footer-background:#484B50;
+$footer-secondary-background:#313539;
+
+.daytime-track{
+  background:$footer-secondary-background;
+}
+.daytime-track {
+  height: 35px;
+}
+daytime-label{
+  color:#fff;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-right: 18px;
+}
+
+.daytime-track{
+
+  .progress-bar{
+    width: calc(100% - 60px);
+    margin-top: 15px;
+  }
+
+  .progress-bar-wrapper {
+    width: calc(100% - 65px);
+  }
+
+  .progress-bar__progress{
+    background: #fff;
+
+    &:after{
+      background:#fff;
+    }
+  }
+
+  .time-indicator{
+    margin-top: 7px;
+  }
+
+}

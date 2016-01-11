@@ -6,62 +6,9 @@ $primary-heading-color:#0B0B0B;
 $body-background:#F1F1F1;
 $footer-background:#484B50;
 $primary-border-color:#E4E4E4;
+$footer-secondary-background:#313539;
 
 .task-list {
   padding: 30px 0;
-}
-
-.task-list__item {
-  background: #fff;
-  width: calc(34% - 30px);
-  margin: 10px 20px 10px 0px;
-  padding-top:15px;
-  border:1px solid $primary-border-color;
-  border-radius:8px;
-}
-
-.task-body{
-  padding: 0 10px;
-  margin-top: 26px;
-}
-
-.task-body-list__item {
-  padding: 10px 10px;
-  border: 1px solid #E4E4E4;
-  border-radius: 5px;
-  margin-bottom: 7px;
-  height: 48px;
-}
-
-
-.task-body-list__item__label{
-  margin-top: 3px;
-  text-indent: -17px;
-  padding-left: 22px;
-}
-
-.task-body-list__item__label__text{
-  font-size:13px;
-  position: relative;
-  top: 1px;
-}
-
-.task-time-left {
-  color: #b8B8B8;
-  margin-top: 4px;
-}
-
-.task-body-list__item__label input[type="checkbox"]{
-  vertical-align: middle;
-}
-
-.add-task-link {
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 22px;
-}
-
-.task-footer{
-  height:70px;
-  text-align:center;
+  height:100%;
 }
