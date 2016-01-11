@@ -6,6 +6,6 @@ export default class AddBoard extends React.Component<any, any> {
     }
 
     render() {
-        return <a href="javascript:void(0)" className="primary-link">ADD BOARD</a>
+        return <a href="javascript:void(0)" className="primary-link" onClick={this.props.handleClick.bind(this)}>ADD BOARD</a>
     }
 }
