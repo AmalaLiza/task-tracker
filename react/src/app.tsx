@@ -9,7 +9,7 @@ import {bindActionCreators} from "redux";
 import Header from "../src/components/header/header.tsx";
 import Board from "../src/components/board/board.tsx";
 import AddBoard from "../src/components/add-board/add-board.tsx"
-import DayTracker from "../src/components/footer/day-tracker/day-tracker.tsx";
+import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
 
 
@@ -48,7 +48,7 @@ export class App extends React.Component<any, any> {
                 </div>
             </div>
             <div className="footer">
-                <DayTracker/>
+                <TaskTracker/>
             </div>
         </div>
     }

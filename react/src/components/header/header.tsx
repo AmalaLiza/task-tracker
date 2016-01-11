@@ -12,7 +12,7 @@ export default class Header extends React.Component<any, any> {
                                 <span className="user-detail__text">Welcome, <span className="bold-text">Sandeep</span></span>
                             </div>
                             <div className="header-search-wrapper fright">
-                                <input type="text" className="header-search__input" placeholder="Search">
+                                <input type="text" className="header-search__input" placeholder="Search"/>
                             </div>
                         </div>
                     </div>

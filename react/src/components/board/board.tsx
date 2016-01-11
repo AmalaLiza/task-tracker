@@ -12,7 +12,7 @@ export default class Board extends React.Component<any,any> {
                         <ul className="task-body-list">
                             <li className="task-body-list__item clearfix">
                                 <label className="task-body-list__item__label fleft">
-                                    <input type="checkbox">
+                                    <input type="checkbox"/>
                                         <span className="task-body-list__item__label__text">Create designs for insight screen</span>
                                 </label>
                                 <a href="javascript:void(0)" className="play-ico fright"></a>
@@ -20,7 +20,7 @@ export default class Board extends React.Component<any,any> {
                             </li>
                             <li className="task-body-list__item clearfix">
                                 <label className="task-body-list__item__label fleft">
-                                    <input type="checkbox">
+                                    <input type="checkbox"/>
                                         <span className="task-body-list__item__label__text">Create designs for insight screen</span>
                                 </label>
                                 <a href="javascript:void(0)" className="play-ico fright display-none"></a>
@@ -28,7 +28,7 @@ export default class Board extends React.Component<any,any> {
                             </li>
                             <li className="task-body-list__item clearfix">
                                 <label className="task-body-list__item__label fleft">
-                                    <input type="checkbox">
+                                    <input type="checkbox"/>
                                         <span className="task-body-list__item__label__text">Create designs for insight screen</span>
                                 </label>
                                 <a href="javascript:void(0)" className="play-ico fright display-none"></a>
@@ -36,7 +36,7 @@ export default class Board extends React.Component<any,any> {
                             </li>
                             <li className="task-body-list__item clearfix">
                                 <label className="task-body-list__item__label fleft">
-                                    <input type="checkbox">
+                                    <input type="checkbox"/>
                                         <span className="task-body-list__item__label__text">Create designs for insight screen</span>
                                 </label>
                                 <a href="javascript:void(0)" className="play-ico fright display-none"></a>

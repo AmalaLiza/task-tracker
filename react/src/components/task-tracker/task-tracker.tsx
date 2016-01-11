@@ -1,7 +1,7 @@
 import * as React from "react";
 import './task-tracker.scss'
 
-export default class DayTracker extends React.Component<any, any> {
+export default class TaskTracker extends React.Component<any, any> {
 
     render(){
         return <div className="progress-track">
