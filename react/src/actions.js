@@ -10,10 +10,10 @@ exports.default = {
             boardId
         };
     },
-    addTask(value, boardIndex) {
+    addTask(title, boardIndex) {
         return {
             type: "ADD_TASK",
-            value,
+            title,
             boardIndex
         };
     },

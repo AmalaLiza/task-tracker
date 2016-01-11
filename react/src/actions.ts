@@ -6,57 +6,57 @@ export default {
         };
     },
 
-    editBoardTitle(boardId){
+    editBoardTitle(boardId:number){
         return {
             type: "EDIT_BOARD_TITLE",
             boardId
         };
     },
 
-    addTask(value, boardIndex){
+    addTask(title:string, boardIndex:number){
         return {
             type: "ADD_TASK",
-            value,
+            title,
             boardIndex
         };
     },
 
-    taskCompleted(taskId){
+    taskCompleted(taskId:number){
         return {
             type: "TASK_COMPLETED",
             taskId
         };
     },
 
-    playTask(taskId){
+    playTask(taskId:number){
         return {
             type: "PLAY_TASK",
             taskId
         };
     },
 
-    pauseTask(taskId){
+    pauseTask(taskId:number){
         return {
             type: "PAUSE_TASK",
             taskId
         };
     },
 
-    expandTask(taskId){
+    expandTask(taskId:number){
         return {
             type: "EXPAND_TASK",
             taskId
         };
     },
 
-    editTaskTitle(taskId){
+    editTaskTitle(taskId:number){
         return {
             type: "EDIT_TASK_TITLE",
             taskId
         };
     },
 
-    deleteTask(taskId){
+    deleteTask(taskId:number){
         return {
             type: "DELETE_TASK",
             taskId

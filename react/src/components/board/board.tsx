@@ -2,26 +2,43 @@ import './board.scss';
 import './main-body.scss';
 import * as React from "react";
 import Task from '../task/task.tsx';
+import {BoardType} from "../../models/BoardType";
+import * as Immutable from "immutable";
+import {TaskType} from "../../models/TaskType";
 
-export default class Board extends React.Component<any,any> {
+interface BoardProps{
+    key : number;
+    id : number;
+    index: number;
+    data : BoardType;
+    onTaskCompletion : Function;
+    onTaskPlay : Function;
+    onPauseTask : Function;
+    onExpandTask : Function;
+    onEditBoardTitle : Function;
+    onEditTaskTitle : Function;
+    onAddTask : Function;
+}
 
-    constructor(){
+export default class Board extends React.Component<BoardProps, any> {
+
+    constructor() {
         super();
     }
 
-    onAddTask(value, boardIndex){
-        this.props.onAddTask(value, boardIndex);
+    onAddTask(title:string, boardIndex:number) {
+        this.props.onAddTask(title, boardIndex);
     }
 
     render() {
-        let taskList = this.props.data.get("taskList");
+        let taskList:TaskType[] = this.props.data.get("taskList");
         let taskListElements = taskList
-            .map((task, index) => (
+            .map((task:TaskType, index:number) => (
                 <Task
                     key={index}
                     index={index}
                     id={task.id}
-                    data={task}
+                    task={task}
                 />
             ));
 
@@ -37,7 +54,9 @@ export default class Board extends React.Component<any,any> {
                 </ul>
             </div>
             <div className="task-footer">
-                <a href='javascript:void(0)' className="primary-link add-task-link" onClick={() => {this.onAddTask("Amala", this.props.index)}}>+ Add Task</a>
+                <a href='javascript:void(0)' className="primary-link add-task-link"
+                   onClick={() => {this.onAddTask("Amala", this.props.index)}}>+ Add Task
+                </a>
                 <input style={{display:'none'}}/>
             </div>
         </div>

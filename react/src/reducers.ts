@@ -1,13 +1,14 @@
 ///<reference path='../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
+import {BoardListType} from "./models/BoardListType";
 
-const initialState = Immutable.fromJS({
+const initialState:BoardListType = Immutable.fromJS({
     boardList: [{
         id: 0,
         title: "Design1",
         taskList: [{
             id: 0,
-            value: "Add task",
+            title: "Add task",
             estimatedTime: "2 hrs",
             completed: true
         }]
@@ -17,24 +18,24 @@ const initialState = Immutable.fromJS({
         title: "Design2",
         taskList: [{
             id: 0,
-            value: "Create designs for insight screen",
+            title: "Create designs for insight screen",
             estimatedTime: "2 hrs",
             completed: true
         }, {
             id: 1,
-            value: "Create designs for KAT",
+            title: "Create designs for KAT",
             estimatedTime: "3 hrs",
             completed: false
         }, {
             id: 2,
-            value: "Create designs for Blazent",
+            title: "Create designs for Blazent",
             estimatedTime: "4 hrs",
             completed: true
         }]
     }]
 });
 
-export function rootReducer(state = initialState, action) {
+export function rootReducer(state:BoardListType = initialState, action) {
 
     switch (action.type) {
 
@@ -45,13 +46,12 @@ export function rootReducer(state = initialState, action) {
                 taskList: Immutable.List()
             });
             state = state.updateIn(['boardList'], boardList => boardList.push(newBoard));
-
             return state;
 
         case "ADD_TASK":
             let newTask = Immutable.fromJS({
                 id: state.get("boardList", "taskList").reduce((maxId, task) => Math.max(task.id, maxId), -1) + 1,
-                value: action.value,
+                title: action.title,
                 taskList: Immutable.List()
             });
 

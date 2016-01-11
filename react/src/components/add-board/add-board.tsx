@@ -1,7 +1,11 @@
 import * as React from 'react';
 import './add-board.scss';
 
-export default class AddBoard extends React.Component<any, any> {
+interface AddBoardProps {
+    handleClick: Function;
+}
+
+export default class AddBoard extends React.Component<AddBoardProps, any> {
     constructor(props) {
         super(props);
     }

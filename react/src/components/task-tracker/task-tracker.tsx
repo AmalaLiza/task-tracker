@@ -1,7 +1,11 @@
 import * as React from "react";
-import './task-tracker.scss'
+import './task-tracker.scss';
 
-export default class TaskTracker extends React.Component<any, any> {
+interface TaskTrackerProps{
+
+}
+
+export default class TaskTracker extends React.Component<TaskTrackerProps, any> {
 
     render(){
         return <div className="progress-track">
