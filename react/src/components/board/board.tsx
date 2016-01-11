@@ -53,10 +53,13 @@ export default class Board extends React.Component<BoardProps, any> {
                 </ul>
             </div>
             <div className="task-footer">
-                <a href='javascript:void(0)' className="primary-link add-task-link"
+                <a href='javascript:void(0)' className="primary-link add-task-link" style={{display:'none'}}
                    onClick={() => {this.onAddTask("Amala", this.props.index)}}>+ Add Task
                 </a>
-                <input style={{display:'none'}}/>
+                <div className="task-footer__add-task clearfix">
+                    <input style={{display:'block'}} className="fleft task-footer__add-task__input"/>
+                    <button className="fleft primary-button task-footer__add-task__button">+ Add</button>
+                </div>
             </div>
         </div>
     }
