@@ -28,7 +28,7 @@ export default class Board extends React.Component<any,any> {
         return <div className="task-list__item fleft">
             <div className="task-header-wrapper">
                 <h2 className="task-header align-center">Design
-                    <span className="task-no">(12)</span>
+                    <span className="task-no">{"("+taskListElements.size+")"}</span>
                 </h2>
             </div>
             <div className="task-body">

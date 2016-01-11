@@ -45,8 +45,6 @@ export class App extends React.Component<any, any> {
                 <div className="width-container">
                     <div className="task-list clearfix">
                         { boardListElements }
-                    </div>
-                    <div>
                         <AddBoard handleClick={actions.addBoard}/>
                     </div>
                 </div>

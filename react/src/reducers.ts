@@ -10,31 +10,29 @@ const initialState = Immutable.fromJS({
             value: "Add task",
             estimatedTime: "2 hrs",
             completed: true
-        }
-        ]
-    },
-        {
-            id: 2,
-            title: "Design",
-            taskList: [{
-                id: 1,
-                value: "Create designs for insight screen",
-                estimatedTime: "2 hrs",
-                completed: true
-            }, {
-                id: 2,
-                value: "Create designs for KAT",
-                estimatedTime: "3 hrs",
-                completed: false
-            }, {
-                id: 3,
-                value: "Create designs for Blazent",
-                estimatedTime: "4 hrs",
-                completed: true
-            }
-            ]
         }]
-})
+    },
+    {
+        id: 2,
+        title: "Design",
+        taskList: [{
+            id: 1,
+            value: "Create designs for insight screen",
+            estimatedTime: "2 hrs",
+            completed: true
+        }, {
+            id: 2,
+            value: "Create designs for KAT",
+            estimatedTime: "3 hrs",
+            completed: false
+        }, {
+            id: 3,
+            value: "Create designs for Blazent",
+            estimatedTime: "4 hrs",
+            completed: true
+        }]
+    }]
+});
 
 export function rootReducer(state = initialState, action) {
 
