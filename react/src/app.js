@@ -7,6 +7,9 @@ var board_tsx_1 = require("../src/components/board/board.tsx");
 var add_board_tsx_1 = require("../src/components/add-board/add-board.tsx");
 var task_tracker_tsx_1 = require("../src/components/task-tracker/task-tracker.tsx");
 var actions_ts_1 = require("./actions.ts");
+require('./stylesheets/base.scss');
+require('./stylesheets/common.scss');
+require('./stylesheets/layout.scss');
 class App extends React.Component {
     constructor() {
         super();
