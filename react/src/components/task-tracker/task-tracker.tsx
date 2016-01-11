@@ -15,7 +15,7 @@ export default class TaskTracker extends React.Component<any, any> {
                             <span>Create and Upload Razorthink website repositories</span>
                         </div>
                         <div className="progress-bar">
-                            <div className="progress-bar__progress" style="width:30%"></div>
+                            <div className="progress-bar__progress" style={{width:'30%'}}></div>
                         </div>
                     </div>
                     <div className="time-indicator fright">11:30:23</div>
