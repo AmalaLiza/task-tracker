@@ -1,5 +1,4 @@
 import './board.scss';
-import './main-body.scss';
 import * as React from "react";
 import Task from '../task/task.tsx';
 import {BoardType} from "../../models/BoardType";

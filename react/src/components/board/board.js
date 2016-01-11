@@ -1,5 +1,4 @@
 require('./board.scss');
-require('./main-body.scss');
 var React = require("react");
 var task_tsx_1 = require('../task/task.tsx');
 class Board extends React.Component {
