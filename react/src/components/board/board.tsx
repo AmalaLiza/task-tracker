@@ -60,6 +60,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     <button className="fleft primary-button task-footer__add-task__button"
                             onClick={(e) => {this.onAddTask(e, this.props.index)}}>+ Add</button>
                 </div>
+                <a href="javascript:void(0)" className="primary-link add-task-link" style={{display:"none"}}>+ Add Task</a>
             </div>
         </div>
     }

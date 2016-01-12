@@ -1,0 +1,129 @@
+.footer {
+  background: #484B50;
+  color: #fff;
+}
+
+.daytime-track {
+  background: #313539;
+}
+
+.progress-track {
+  height: 76px;
+}
+
+.daytime-track {
+  height: 35px;
+}
+
+.progress-time {
+  color: #fff;
+  font-size: 24px;
+  margin-top: 28px;
+  margin-right: 15px;
+}
+
+.progress-wrapper {
+  width: calc(100% - 80px);
+  margin-left: 15px;
+}
+
+.progress-bar {
+  background: #5B5D62;
+  height: 5px;
+  width: 100%;
+  border-radius: 20px;
+  width: 100%;
+  margin: 9px 0px;
+}
+
+.progress-bar-title {
+  font-size: 18px;
+}
+
+.progress-bar__progress {
+  background: #ED5353;
+  height: 100%;
+  border-radius: 20px;
+  transition: 0.23s width ease-in;
+  position: relative;
+}
+
+.progress-bar__progress:after {
+  height: 13px;
+  width: 13px;
+  content: '';
+  background: #Ed5353;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -4px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.52);
+}
+
+.footer-section-toggle {
+  position: absolute;
+}
+
+.progress-track .progress-wrapper {
+  margin-top: 18px;
+}
+
+.progress-track .play-ico {
+  height: 48px;
+  width: 48px;
+  margin-top: 15px;
+  border-color: rgba(228, 228, 228, 0.62);
+}
+
+.progress-track .play-ico:after {
+  border: 12px solid transparent;
+  border-left: 17px solid white;
+  left: 17px;
+  top: 10px;
+}
+
+.progress-track .progress-bar-wrapper {
+  width: calc(100% - 130px);
+}
+
+.progress-track .time-indicator {
+  font-size: 12px;
+  margin-top: 24px;
+}
+
+.progress-track .time-indicator.fleft {
+  margin-right: 15px;
+}
+
+.progress-track .time-indicator.fright {
+  margin-left: 15px;
+}
+
+.daytime-label {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-right: 18px;
+}
+
+.daytime-track .progress-bar {
+  width: calc(100% - 60px);
+  margin-top: 15px;
+}
+
+.daytime-track .progress-bar-wrapper {
+  width: calc(100% - 65px);
+}
+
+.daytime-track .progress-bar__progress {
+  background: #fff;
+}
+
+.daytime-track .progress-bar__progress:after {
+  background: #fff;
+}
+
+.daytime-track .time-indicator {
+  margin-top: 7px;
+}

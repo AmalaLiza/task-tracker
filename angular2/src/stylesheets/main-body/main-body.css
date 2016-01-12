@@ -1,0 +1,153 @@
+.task-list {
+  padding: 30px 0;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.task-list__item {
+  background: #fff;
+  width: 330px;
+  margin: 10px 20px 10px 0px;
+  padding-top: 15px;
+  border: 1px solid #E4E4E4;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+  position: relative;
+  max-height: 100%;
+  -webkit-flex: 0 0 330px;
+      -ms-flex: 0 0 330px;
+          flex: 0 0 330px;
+}
+
+.task-header {
+  width: calc(100% - 66px);
+  margin: 0 auto;
+}
+
+.task-no {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.task-body {
+  padding: 0 10px;
+  margin-top: 26px;
+}
+
+.task-body-list__item {
+  padding: 10px 10px;
+  border: 1px solid #E4E4E4;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  height: 48px;
+}
+
+.task-body-list__item__label {
+  margin-top: 3px;
+  text-indent: -17px;
+  padding-left: 22px;
+}
+
+.task-body-list__item__label__text {
+  font-size: 13px;
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+
+.task-time-left {
+  color: #b8B8B8;
+  margin-top: 4px;
+}
+
+.task-body-list__item__label input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+.add-task-link {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 22px;
+}
+
+.task-footer {
+  height: 70px;
+  text-align: center;
+}
+
+.task-footer__add-task {
+  padding: 13px 10px 10px;
+  overflow: hidden;
+  border-top: 1px solid #E4E4E4;
+  margin-top: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.task-footer__add-task__input {
+  display: block;
+  padding: 10px 15px;
+  width: calc(100% - 60px);
+  box-shadow: inset 1px 0px 10px rgba(0, 0, 0, 0.22);
+  border: none;
+  border-radius: 4px 0 0 4px;
+  color: #514B37;
+}
+
+.task-footer__add-task__button {
+  width: 60px;
+  height: 36px;
+  border: none;
+  font-size: 15px;
+  border-radius: 0 3px 3px 0;
+}
+
+.task-list__item.add-board {
+  font-size: 22px;
+  text-align: center;
+  padding: 40px 0;
+  cursor: pointer;
+  border: 2px dashed rgba(72, 75, 80, 0.59);
+}
+
+.daytime-track {
+  background: #313539;
+}
+
+.daytime-track {
+  height: 35px;
+}
+
+.daytime-label {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-right: 18px;
+}
+
+.daytime-track .progress-bar {
+  width: calc(100% - 60px);
+  margin-top: 15px;
+}
+
+.daytime-track .progress-bar-wrapper {
+  width: calc(100% - 65px);
+}
+
+.daytime-track .progress-bar__progress {
+  background: #fff;
+}
+
+.daytime-track .progress-bar__progress:after {
+  background: #fff;
+}
+
+.daytime-track .time-indicator {
+  margin-top: 7px;
+}
