@@ -1,0 +1,40 @@
+//header css
+
+$primary-color:#ED5353;
+$primary-text-color:#2A2A2A;
+$primary-heading-color:#0B0B0B;
+$body-background:#F1F1F1;
+$primary-border-color:#E4E4E4;
+$footer-background:#484B50;
+$footer-secondary-background:#313539;
+
+.header-wrapper {
+  height: 64px;
+  background: $primary-color;
+}
+
+.logo-text{
+  color: #fff;
+  font-weight: 600;
+  padding-top: 10px;
+  letter-spacing: -3px;
+  font-size: 32px;
+}
+
+.header-search__input {
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 50px;
+  margin-top: 14px;
+  width: 260px;
+  color: #fff;
+  font-size: 16px;
+  border: 1px solid white;
+}
+
+.user-details-wrapper{
+  color:#fff;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
