@@ -5,7 +5,7 @@ import {BoardType} from "../../models/BoardType";
 import * as Immutable from "immutable";
 import {TaskType} from "../../models/TaskType";
 
-interface BoardProps{
+interface BoardProps {
     key : number;
     id : number;
     index: number;
@@ -26,8 +26,10 @@ export default class Board extends React.Component<BoardProps, any> {
     }
 
     onAddTask(event, boardIndex:number) {
-        console.log(event.target.value)
-        this.props.onAddTask(event.target.val, boardIndex);
+        if (event.keyCode === 13) {
+            this.props.onAddTask(event.target.value, boardIndex);
+            event.target.value = '';
+        }
     }
 
     render() {
@@ -56,11 +58,12 @@ export default class Board extends React.Component<BoardProps, any> {
             </div>
             <div className="task-footer">
                 <div className="task-footer__add-task clearfix">
-                    <input style={{display:'block'}} className="fleft task-footer__add-task__input"/>
-                    <button className="fleft primary-button task-footer__add-task__button"
-                            onClick={(e) => {this.onAddTask(e, this.props.index)}}>+ Add</button>
+                    <input placeholder="Add Task" className="task-footer__add-task__input"
+                           onKeyDown={(event) => {this.onAddTask(event, this.props.index)}}/>
                 </div>
-                <a href="javascript:void(0)" className="primary-link add-task-link" style={{display:"none"}}>+ Add Task</a>
+                <a href="javascript:void(0)" className="primary-link add-task-link" style={{display:"none"}}>
+                    + Add Task
+                </a>
             </div>
         </div>
     }
