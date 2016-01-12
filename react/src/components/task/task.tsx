@@ -13,10 +13,10 @@ export default class Task extends React.Component<TaskProps, any> {
 
     render() {
         return <li className="task-body-list__item clearfix">
-            <label className="task-body-list__item__label fleft"
-                   onClick={(e) => this.props.onTaskComplete(this.props.boardId, this.props.index)}>
+            <label className="task-body-list__item__label fleft">
                 <input type="checkbox"
-                       checked={this.props.task.get('completed')}/>
+                       checked={this.props.task.get('completed')}
+                       onChange={(e) => this.props.onTaskComplete(this.props.boardId, this.props.index)}/>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)" className="play-ico fright display-none"></a>
