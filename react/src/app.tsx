@@ -31,7 +31,7 @@ export class App extends React.Component<any, any> {
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
-                    id={board.id}
+                    id={board.get('id')}
                     index={index}
                     data={board}
                     onTaskCompletion={actions.taskCompleted}
@@ -43,6 +43,7 @@ export class App extends React.Component<any, any> {
                     onAddTask={actions.addTask}
                 />
             ));
+
         return <div className="tr-wrapper">
             <Header/>
             <div className="main-body">

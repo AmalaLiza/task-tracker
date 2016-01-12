@@ -59,8 +59,7 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case "TASK_COMPLETED":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId],
-                task => {console.log(task); task.get('completed')});
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'], completed => !completed);
             return state;
 
         default:
