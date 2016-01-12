@@ -4,7 +4,6 @@ import Task from '../task/task.tsx';
 import {BoardType} from "../../models/BoardType";
 import * as Immutable from "immutable";
 import {TaskType} from "../../models/TaskType";
-import {EventEmitter} from "events";
 
 interface BoardProps{
     key : number;
