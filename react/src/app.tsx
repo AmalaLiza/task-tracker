@@ -26,8 +26,9 @@ export class App extends React.Component<any, any> {
     }
 
     render() {
-        let {data, actions} = this.props;
-        let boardList:BoardType[] = data.get("boardList");
+        let {data, actions} = this.props
+        let boardList:BoardType[] = data.get("boardList")
+        let searchText:string = data.get('searchText')
         let boardListElements = boardList
             .map((board:BoardType, index:number) => (
                 <Board
@@ -46,12 +47,17 @@ export class App extends React.Component<any, any> {
             ));
 
         return <div className="tr-wrapper">
-            <Header/>
+            <Header
+                onSearch={actions.searchTask}
+                searchText={searchText}
+            />
             <div className="main-body">
                 <div className="width-container">
                     <div className="task-list clearfix">
                         {boardListElements}
-                        <AddBoard handleClick={actions.addBoard}/>
+                        <AddBoard
+                            handleClick={actions.addBoard}
+                        />
                     </div>
                 </div>
             </div>

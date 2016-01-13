@@ -62,5 +62,12 @@ export default {
             type: "DELETE_TASK",
             taskId
         };
+    },
+
+    searchTask(searchText:string) {
+        return {
+            type: "SEARCH_TASK",
+            searchText
+        };
     }
 }

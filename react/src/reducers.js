@@ -29,7 +29,8 @@ const initialState = Immutable.fromJS({
                     estimatedTime: "4 hrs",
                     completed: true
                 }]
-        }]
+        }],
+    searchText: ""
 });
 function rootReducer(state = initialState, action) {
     switch (action.type) {

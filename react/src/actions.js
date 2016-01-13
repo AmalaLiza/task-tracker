@@ -53,6 +53,12 @@ exports.default = {
             type: "DELETE_TASK",
             taskId
         };
+    },
+    searchTask(searchText) {
+        return {
+            type: "SEARCH_TASK",
+            searchText
+        };
     }
 };
 //# sourceMappingURL=actions.js.map

@@ -32,7 +32,8 @@ const initialState:BoardListType = Immutable.fromJS({
             estimatedTime: "4 hrs",
             completed: true
         }]
-    }]
+    }],
+    searchText: ""
 });
 
 export function rootReducer(state:BoardListType = initialState, action) {
