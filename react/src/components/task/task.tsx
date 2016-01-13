@@ -1,4 +1,5 @@
 import * as React from "react";
+import './task.scss';
 import {TaskType} from "../../models/TaskType";
 
 import Description from "../description/description.tsx";
@@ -38,7 +39,7 @@ export default class Task extends React.Component<TaskProps, any> {
                    onClick={this.showDesc}>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
-            <a href="javascript:void(0)" className="play-ico fright display-none"></a>
+            <a href="javascript:void(0)" className="play-ico fright"></a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>
         </li>
     }

@@ -20,6 +20,7 @@ import {BoardType} from "./models/BoardType";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
+import './fonts/flaticon.scss';
 
 
 export class App extends React.Component<any, any> {
