@@ -12,6 +12,7 @@ var description_tsx_1 = require("./components/description/description.tsx");
 require('./stylesheets/base.scss');
 require('./stylesheets/common.scss');
 require('./stylesheets/layout.scss');
+require('./fonts/flaticon.scss');
 class App extends React.Component {
     constructor() {
         super();

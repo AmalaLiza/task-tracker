@@ -5,6 +5,10 @@ export default class Description extends React.Component<any, any> {
 
     render(){
          return <div className="right-fixed-panel">
+             <div className="right-panel__actions fright">
+                 <a href="javascript:void(0)" className="flaticon-star178"></a>
+                 <a href="javascript:void(0)" className="flaticon-delete96"></a>
+             </div>
 
              <h1 className="right-panel__heading">Create designs for insight screen</h1>
              <div className="right-panel__content">

@@ -24,10 +24,10 @@
 }
 
 .right-panel__heading{
-  margin-top: 20px;
   border-bottom: 1px solid $primary-border-color;
-  padding-bottom: 6px;
-  margin-right:25px;
+  margin-top: 41px;
+  padding-bottom: 8px;
+  margin-right: 25px;
 }
 
 .right-panel__content{
@@ -123,4 +123,11 @@
 
 .right-panel__desc-table tr td {
   padding: 7px 0;
+}
+.right-panel__actions{
+  margin-top: 18px;
+  margin-right: 18px;
+  a{
+    color:inherit;
+  }
 }
