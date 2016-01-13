@@ -34,7 +34,7 @@ interface AppState {
 export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {};
+        this.state = Immutable.Map();
         this.state.currentTask = Immutable.Map();
         this.setTaskDesc = this.setTaskDesc.bind(this);
     }
@@ -42,14 +42,23 @@ export class App extends React.Component<AppProps, AppState> {
     setTaskDesc(boardId, taskId) {
         let {data} = this.props;
         let task = data.getIn(["boardList", boardId, "taskList", taskId]);
-        this.setState({currentTask: task});
+        this.setState({
+            currentTask: task
+        });
     }
 
     render() {
         let {data, actions} = this.props
         let boardList:BoardType[] = data.get("boardList")
         let searchText:string = data.get('searchText')
-        let boardListElements = boardList
+        let filteredList = Immutable.List();
+        if (searchText) {
+            filteredList = Immutable.List(boardList
+                .filter(board => board.get('taskList').filter(task => task.get('title').toLowerCase().indexOf(searchText) > -1).size > 0));
+        } else {
+            filteredList = Immutable.List(boardList);
+        }
+        let boardListElements = filteredList
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
