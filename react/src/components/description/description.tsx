@@ -1,8 +1,10 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
+import {TaskType} from "../../models/TaskType";
 import './description.scss';
 
 interface DescProps{
+    task: TaskType;
     setCurrentTask:Function;
 }
 
@@ -11,6 +13,13 @@ export default class Description extends React.Component<DescProps, any> {
 
     constructor(props, context) {
         super(props, context);
+        this.hideDesc = this.hideDesc.bind(this);
+    }
+
+    hideDesc(e){
+        console.log(e, "calling me");
+        document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'none';
+        document.getElementsByClassName("task-body-list__item clearfix active")[0].className = "task-body-list__item clearfix";
     }
 
     render() {
