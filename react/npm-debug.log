@@ -1,0 +1,231 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/nvm/v5.0.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData redux-thunk
+20 silly mapToRegistry name redux-thunk
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/redux-thunk
+24 verbose request uri https://registry.npmjs.org/redux-thunk
+25 verbose request no auth needed
+26 info attempt registry request try #1 at 6:13:55 PM
+27 verbose request id 00d5f9aa1ee2ead5
+28 http request GET https://registry.npmjs.org/redux-thunk
+29 http 200 https://registry.npmjs.org/redux-thunk
+30 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+30 verbose headers   etag: '"999DVOVO31OPLZOYQ4I3PYAI9"',
+30 verbose headers   'content-type': 'application/json',
+30 verbose headers   'cache-control': 'max-age=300',
+30 verbose headers   'content-length': '14872',
+30 verbose headers   'accept-ranges': 'bytes',
+30 verbose headers   date: 'Tue, 12 Jan 2016 12:43:56 GMT',
+30 verbose headers   via: '1.1 varnish',
+30 verbose headers   age: '0',
+30 verbose headers   connection: 'keep-alive',
+30 verbose headers   'x-served-by': 'cache-sin6922-SIN',
+30 verbose headers   'x-cache': 'HIT',
+30 verbose headers   'x-cache-hits': '1',
+30 verbose headers   'x-timer': 'S1452602635.525150,VS0,VE1086',
+30 verbose headers   vary: 'Accept' }
+31 silly get cb [ 200,
+31 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+31 silly get     etag: '"999DVOVO31OPLZOYQ4I3PYAI9"',
+31 silly get     'content-type': 'application/json',
+31 silly get     'cache-control': 'max-age=300',
+31 silly get     'content-length': '14872',
+31 silly get     'accept-ranges': 'bytes',
+31 silly get     date: 'Tue, 12 Jan 2016 12:43:56 GMT',
+31 silly get     via: '1.1 varnish',
+31 silly get     age: '0',
+31 silly get     connection: 'keep-alive',
+31 silly get     'x-served-by': 'cache-sin6922-SIN',
+31 silly get     'x-cache': 'HIT',
+31 silly get     'x-cache-hits': '1',
+31 silly get     'x-timer': 'S1452602635.525150,VS0,VE1086',
+31 silly get     vary: 'Accept' } ]
+32 verbose get saving redux-thunk to /home/dixy/.npm/registry.npmjs.org/redux-thunk/.cache.json
+33 silly resolveWithNewModule redux-thunk@1.0.3 checking installable status
+34 silly cache add args [ 'redux-thunk@^1.0.3', null ]
+35 verbose cache add spec redux-thunk@^1.0.3
+36 silly cache add parsed spec Result {
+36 silly cache add   raw: 'redux-thunk@^1.0.3',
+36 silly cache add   scope: null,
+36 silly cache add   name: 'redux-thunk',
+36 silly cache add   rawSpec: '^1.0.3',
+36 silly cache add   spec: '>=1.0.3 <2.0.0',
+36 silly cache add   type: 'range' }
+37 silly addNamed redux-thunk@>=1.0.3 <2.0.0
+38 verbose addNamed ">=1.0.3 <2.0.0" is a valid semver range for redux-thunk
+39 silly addNameRange { name: 'redux-thunk', range: '>=1.0.3 <2.0.0', hasData: false }
+40 silly mapToRegistry name redux-thunk
+41 silly mapToRegistry using default registry
+42 silly mapToRegistry registry https://registry.npmjs.org/
+43 silly mapToRegistry uri https://registry.npmjs.org/redux-thunk
+44 verbose addNameRange registry:https://registry.npmjs.org/redux-thunk not in flight; fetching
+45 verbose get https://registry.npmjs.org/redux-thunk not expired, no request
+46 silly addNameRange number 2 { name: 'redux-thunk', range: '>=1.0.3 <2.0.0', hasData: true }
+47 silly addNameRange versions [ 'redux-thunk',
+47 silly addNameRange   [ '0.1.0', '1.0.0', '1.0.1', '1.0.2', '1.0.3' ] ]
+48 silly addNamed redux-thunk@1.0.3
+49 verbose addNamed "1.0.3" is a plain semver version for redux-thunk
+50 silly mapToRegistry name redux-thunk
+51 silly mapToRegistry using default registry
+52 silly mapToRegistry registry https://registry.npmjs.org/
+53 silly mapToRegistry uri https://registry.npmjs.org/redux-thunk
+54 verbose addRemoteTarball https://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz not in flight; adding
+55 verbose addRemoteTarball [ 'https://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz',
+55 verbose addRemoteTarball   '778aa0099eea0595031ab6b39165f6670d8d26bd' ]
+56 info retry fetch attempt 1 at 6:13:56 PM
+57 info attempt registry request try #1 at 6:13:56 PM
+58 http fetch GET https://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz
+59 http fetch 200 https://registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz
+60 silly fetchAndShaCheck shasum 778aa0099eea0595031ab6b39165f6670d8d26bd
+61 verbose addTmpTarball /tmp/npm-13685-52ffbbaa/registry.npmjs.org/redux-thunk/-/redux-thunk-1.0.3.tgz not in flight; adding
+62 verbose addTmpTarball already have metadata; skipping unpack for redux-thunk@1.0.3
+63 silly cache afterAdd redux-thunk@1.0.3
+64 verbose afterAdd /home/dixy/.npm/redux-thunk/1.0.3/package/package.json not in flight; writing
+65 verbose afterAdd /home/dixy/.npm/redux-thunk/1.0.3/package/package.json written
+66 silly fetchNamedPackageData redux-multi
+67 silly mapToRegistry name redux-multi
+68 silly mapToRegistry using default registry
+69 silly mapToRegistry registry https://registry.npmjs.org/
+70 silly mapToRegistry uri https://registry.npmjs.org/redux-multi
+71 silly fetchNamedPackageData redux-batched-subscribe
+72 silly mapToRegistry name redux-batched-subscribe
+73 silly mapToRegistry using default registry
+74 silly mapToRegistry registry https://registry.npmjs.org/
+75 silly mapToRegistry uri https://registry.npmjs.org/redux-batched-subscribe
+76 verbose request uri https://registry.npmjs.org/redux-multi
+77 verbose request no auth needed
+78 info attempt registry request try #1 at 6:13:57 PM
+79 verbose etag "DM2OO3F9HO3KNEHGBHMX55O3S"
+80 http request GET https://registry.npmjs.org/redux-multi
+81 verbose request uri https://registry.npmjs.org/redux-batched-subscribe
+82 verbose request no auth needed
+83 info attempt registry request try #1 at 6:13:57 PM
+84 verbose etag "B4C3I7VQN97Y1342EE0ENU1Z0"
+85 http request GET https://registry.npmjs.org/redux-batched-subscribe
+86 http 304 https://registry.npmjs.org/redux-batched-subscribe
+87 verbose headers { date: 'Tue, 12 Jan 2016 12:43:57 GMT',
+87 verbose headers   via: '1.1 varnish',
+87 verbose headers   'cache-control': 'max-age=300',
+87 verbose headers   etag: '"B4C3I7VQN97Y1342EE0ENU1Z0"',
+87 verbose headers   age: '0',
+87 verbose headers   connection: 'keep-alive',
+87 verbose headers   'x-served-by': 'cache-sin6924-SIN',
+87 verbose headers   'x-cache': 'MISS',
+87 verbose headers   'x-cache-hits': '0',
+87 verbose headers   'x-timer': 'S1452602637.263424,VS0,VE274',
+87 verbose headers   vary: 'Accept' }
+88 silly get cb [ 304,
+88 silly get   { date: 'Tue, 12 Jan 2016 12:43:57 GMT',
+88 silly get     via: '1.1 varnish',
+88 silly get     'cache-control': 'max-age=300',
+88 silly get     etag: '"B4C3I7VQN97Y1342EE0ENU1Z0"',
+88 silly get     age: '0',
+88 silly get     connection: 'keep-alive',
+88 silly get     'x-served-by': 'cache-sin6924-SIN',
+88 silly get     'x-cache': 'MISS',
+88 silly get     'x-cache-hits': '0',
+88 silly get     'x-timer': 'S1452602637.263424,VS0,VE274',
+88 silly get     vary: 'Accept' } ]
+89 verbose etag https://registry.npmjs.org/redux-batched-subscribe from cache
+90 verbose get saving redux-batched-subscribe to /home/dixy/.npm/registry.npmjs.org/redux-batched-subscribe/.cache.json
+91 silly fetchPackageMetaData Error: No compatible version found: redux-batched-subscribe@@0.1.4
+91 silly fetchPackageMetaData Valid install targets:
+91 silly fetchPackageMetaData ["0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+91 silly fetchPackageMetaData
+91 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/fetch-package-metadata.js:146:16)
+91 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+91 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
+91 silly fetchPackageMetaData     at saved (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
+91 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+91 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:82:15)
+91 silly fetchPackageMetaData  error for redux-batched-subscribe@@0.1.4 [Error: No compatible version found: redux-batched-subscribe@@0.1.4
+91 silly fetchPackageMetaData Valid install targets:
+91 silly fetchPackageMetaData ["0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+91 silly fetchPackageMetaData ]
+92 http 304 https://registry.npmjs.org/redux-multi
+93 verbose headers { date: 'Tue, 12 Jan 2016 12:43:57 GMT',
+93 verbose headers   via: '1.1 varnish',
+93 verbose headers   'cache-control': 'max-age=300',
+93 verbose headers   etag: '"DM2OO3F9HO3KNEHGBHMX55O3S"',
+93 verbose headers   age: '0',
+93 verbose headers   connection: 'keep-alive',
+93 verbose headers   'x-served-by': 'cache-sin6920-SIN',
+93 verbose headers   'x-cache': 'MISS',
+93 verbose headers   'x-cache-hits': '0',
+93 verbose headers   'x-timer': 'S1452602637.266528,VS0,VE1185',
+93 verbose headers   vary: 'Accept' }
+94 silly get cb [ 304,
+94 silly get   { date: 'Tue, 12 Jan 2016 12:43:57 GMT',
+94 silly get     via: '1.1 varnish',
+94 silly get     'cache-control': 'max-age=300',
+94 silly get     etag: '"DM2OO3F9HO3KNEHGBHMX55O3S"',
+94 silly get     age: '0',
+94 silly get     connection: 'keep-alive',
+94 silly get     'x-served-by': 'cache-sin6920-SIN',
+94 silly get     'x-cache': 'MISS',
+94 silly get     'x-cache-hits': '0',
+94 silly get     'x-timer': 'S1452602637.266528,VS0,VE1185',
+94 silly get     vary: 'Accept' } ]
+95 verbose etag https://registry.npmjs.org/redux-multi from cache
+96 verbose get saving redux-multi to /home/dixy/.npm/registry.npmjs.org/redux-multi/.cache.json
+97 silly fetchPackageMetaData Error: No compatible version found: redux-multi@@0.1.12
+97 silly fetchPackageMetaData Valid install targets:
+97 silly fetchPackageMetaData ["0.1.91","0.1.12","0.1.11","0.1.10","0.1.9","0.1.8","0.1.7","0.1.6","0.1.5","0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+97 silly fetchPackageMetaData
+97 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/fetch-package-metadata.js:146:16)
+97 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+97 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
+97 silly fetchPackageMetaData     at saved (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
+97 silly fetchPackageMetaData     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+97 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:82:15)
+97 silly fetchPackageMetaData  error for redux-multi@@0.1.12 [Error: No compatible version found: redux-multi@@0.1.12
+97 silly fetchPackageMetaData Valid install targets:
+97 silly fetchPackageMetaData ["0.1.91","0.1.12","0.1.11","0.1.10","0.1.9","0.1.8","0.1.7","0.1.6","0.1.5","0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+97 silly fetchPackageMetaData ]
+98 silly rollbackFailedOptional Starting
+99 silly rollbackFailedOptional Finishing
+100 silly runTopLevelLifecycles Starting
+101 silly runTopLevelLifecycles Finishing
+102 silly install printInstalled
+103 verbose stack Error: No compatible version found: redux-batched-subscribe@@0.1.4
+103 verbose stack Valid install targets:
+103 verbose stack ["0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+103 verbose stack
+103 verbose stack     at pickVersionFromRegistryDocument (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/fetch-package-metadata.js:146:16)
+103 verbose stack     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+103 verbose stack     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
+103 verbose stack     at saved (/usr/local/nvm/v5.0.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
+103 verbose stack     at /usr/local/nvm/v5.0.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+103 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
+104 verbose cwd /home/dixy/GitHub/task-tracker/react
+105 error Linux 3.19.0-43-generic
+106 error argv "/usr/local/nvm/v5.0.0/bin/node" "/usr/local/bin/npm" "install"
+107 error node v5.0.0
+108 error npm  v3.3.6
+109 error No compatible version found: redux-batched-subscribe@@0.1.4
+109 error Valid install targets:
+109 error ["0.1.4","0.1.3","0.1.2","0.1.1","0.1.0"]
+110 error If you need help, you may report this error at:
+110 error     <https://github.com/npm/npm/issues>
+111 verbose exit [ 1, true ]
