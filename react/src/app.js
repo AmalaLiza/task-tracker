@@ -1,5 +1,6 @@
 "use strict";
 var React = require("react");
+var Immutable = require("immutable");
 var react_redux_1 = require("react-redux");
 var redux_1 = require("redux");
 var header_tsx_1 = require("../src/components/header/header.tsx");
@@ -13,16 +14,29 @@ require('./stylesheets/base.scss');
 require('./stylesheets/common.scss');
 require('./stylesheets/layout.scss');
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+        this.state.currentTask = Immutable.Map();
+        this.setTaskDesc = this.setTaskDesc.bind(this);
+    }
+    setTaskDesc(boardId, taskId) {
+        let { data } = this.props;
+        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+        this.setState({ currentTask: task });
     }
     render() {
         let { data, actions } = this.props;
         let boardList = data.get("boardList");
         let searchText = data.get('searchText');
         let boardListElements = boardList
+<<<<<<< HEAD
             .map((board, index) => (React.createElement(board_tsx_1.default, {"key": index, "id": board.get('id'), "index": index, "data": board, "onTaskCompletion": actions.taskCompleted, "onTaskPlay": actions.playTask, "onPauseTask": actions.pauseTask, "onExpandTask": actions.expandTask, "onEditBoardTitle": actions.editBoardTitle, "onEditTaskTitle": actions.editTaskTitle, "onAddTask": actions.addTask})));
         return React.createElement("div", {"className": "tr-wrapper"}, React.createElement(header_tsx_1.default, {"onSearch": actions.searchTask, "searchText": searchText}), React.createElement("div", {"className": "main-body"}, React.createElement("div", {"className": "width-container"}, React.createElement("div", {"className": "task-list clearfix"}, boardListElements, React.createElement(add_board_tsx_1.default, {"handleClick": actions.addBoard})))), React.createElement("div", {"className": "footer"}, React.createElement(task_tracker_tsx_1.default, null), React.createElement(day_tracker_tsx_1.default, null)), React.createElement(description_tsx_1.default, null));
+=======
+            .map((board, index) => (React.createElement(board_tsx_1.default, {"key": index, "id": board.get('id'), "index": index, "data": board, "onTaskCompletion": actions.taskCompleted, "onTaskPlay": actions.playTask, "onPauseTask": actions.pauseTask, "onExpandTask": actions.expandTask, "onEditBoardTitle": actions.editBoardTitle, "onEditTaskTitle": actions.editTaskTitle, "onAddTask": actions.addTask, "setCurrentTask": this.setTaskDesc})));
+        return React.createElement("div", {"className": "tr-wrapper"}, React.createElement(header_tsx_1.default, null), React.createElement("div", {"className": "main-body"}, React.createElement("div", {"className": "width-container"}, React.createElement("div", {"className": "task-list clearfix"}, boardListElements, React.createElement(add_board_tsx_1.default, {"handleClick": actions.addBoard})))), React.createElement("div", {"className": "footer"}, React.createElement(task_tracker_tsx_1.default, null), React.createElement(day_tracker_tsx_1.default, null)), React.createElement(description_tsx_1.default, {"task": this.state.currentTask}));
+>>>>>>> afe239e9a2602081a0c8d20af84b4641aff4ace0
     }
 }
 exports.App = App;

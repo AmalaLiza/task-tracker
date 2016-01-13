@@ -2,8 +2,10 @@
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
 /// <reference path="../typings/react-redux/react-redux.d.ts" />
+/// <reference path="../typings/immutable/immutable.d.ts" />
 
 import * as React from "react";
+import * as Immutable from "immutable";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import Header from "../src/components/header/header.tsx";
@@ -18,11 +20,21 @@ import {BoardType} from "./models/BoardType";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
+import './fonts/flaticon.scss';
 
 
 export class App extends React.Component<any, any> {
-    constructor() {
-        super();
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+        this.state.currentTask = Immutable.Map();
+        this.setTaskDesc = this.setTaskDesc.bind(this);
+    }
+
+    setTaskDesc(boardId, taskId) {
+        let {data} = this.props;
+        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+        this.setState({currentTask: task});
     }
 
     render() {
@@ -43,6 +55,7 @@ export class App extends React.Component<any, any> {
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
+                    setCurrentTask={this.setTaskDesc}
                 />
             ));
 
@@ -65,7 +78,9 @@ export class App extends React.Component<any, any> {
                 <TaskTracker/>
                 <DayTracker/>
             </div>
-            <Description/>
+            <Description
+                task={this.state.currentTask}
+            />
         </div>
     }
 }
