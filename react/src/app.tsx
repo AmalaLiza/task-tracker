@@ -1,3 +1,4 @@
+import {TaskType} from "./models/TaskType";
 "use strict";
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
@@ -21,8 +22,16 @@ import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
 import './fonts/flaticon.scss';
 
+interface AppProps {
+    actions:any;
+    data:BoardListType;
+}
 
-export class App extends React.Component<any, any> {
+interface AppState {
+    currentTask:TaskType;
+}
+
+export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = {};
@@ -74,7 +83,9 @@ export class App extends React.Component<any, any> {
                 </div>
             </div>
             <div className="footer">
-                <TaskTracker/>
+                <TaskTracker
+                    task={this.state.currentTask}
+                />
             </div>
             <Description
                 task={this.state.currentTask}

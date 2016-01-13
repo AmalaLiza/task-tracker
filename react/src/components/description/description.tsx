@@ -7,8 +7,10 @@ export default class Description extends React.Component<any, any> {
     render(){
         return <div className="right-fixed-panel" style={{display:"none"}}>
              <div className="right-panel__actions fright">
-                 <a href="javascript:void(0)" className="flaticon-star178"></a>
-                 <a href="javascript:void(0)" className="flaticon-delete96"></a>
+                 <a href="javascript:void(0)" className="flaticon-star178">
+                 </a>
+                 <a href="javascript:void(0)" className="flaticon-delete96">
+                 </a>
              </div>
 
              <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>
@@ -19,7 +21,9 @@ export default class Description extends React.Component<any, any> {
                          <span className="arrow-ico"></span>
                      </div>
                      <div className="accordion-cont">
-                         <ProgressBar/>
+                         <ProgressBar
+                             progress={this.props.task.get('progress')}
+                         />
                      </div>
                  </div>
                  <div className="right-panel-sub-section">

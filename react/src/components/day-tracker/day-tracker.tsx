@@ -8,7 +8,6 @@ interface DayTrackerProps{
 export default class DayTracker extends React.Component<DayTrackerProps, any> {
 
     render(){
-        let totalEstimatedTime = 8;
         return <div className="daytime-track">
                     <div className="width-container clearfix">
                         <h2 className="fleft daytime-label fleft">Today</h2>
