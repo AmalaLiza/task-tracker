@@ -9,6 +9,8 @@
 .main-body {
   height: calc(100% - 175px);
   overflow:auto;
+  flex: 1;
+  align-self: stretch;
 }
 
 .width-container {

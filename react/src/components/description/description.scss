@@ -1,15 +1,9 @@
 //DESCRIPTION SCSS STARTS
 
 @import "../../stylesheets/partials/colors";
-.right-fixed-panel-wrapper {
-  position: fixed;
-  top: 64px;
-  bottom: 76px;
-  left: 0;
-  right: 0;
-}
+
 .right-fixed-panel {
-  position: fixed;
+  position: absolute;
   width: 650px;
   background: white;
   right: 0px;
