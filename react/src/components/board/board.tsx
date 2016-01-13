@@ -53,6 +53,11 @@ export default class Board extends React.Component<BoardProps, any> {
                     <span className="task-no">{"("+taskListElements.size+")"}</span>
                 </h2>
                 <a href="javascript:void(0)" className="flaticon-show8 more-ico"></a>
+                <ul className="more-options">
+                    <li>Search & Filter</li>
+                    <li>Rename</li>
+                    <li>Delete Board</li>
+                </ul>
             </div>
             <div className="task-body">
                 <ul className="task-body-list">
