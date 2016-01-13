@@ -33,30 +33,16 @@ export default class Description extends React.Component<DescProps, any> {
                     <div className="right-panel-sub-section">
                         <div className="accordion-head">
                             <h3 className="right-panel-sub-section__heading">Progress</h3>
-                            <span className="arrow-ico"></span>
                         </div>
                         <div className="accordion-cont">
                             <ProgressBar
                                 progress={this.props.task.get('progress')}
                             />
                         </div>
-                    </div>
-                    <div className="right-panel-sub-section">
-                        <div className="accordion-head">
-                            <h3 className="right-panel-sub-section__heading">Progress</h3>
-                            <span className="arrow-ico"></span>
-                        </div>
+
                         <div className="accordion-cont">
                             <table className="right-panel__desc-table width-100per">
                                 <tr>
-                                    <td>
-                                        <div>
-                                            <span className="right-panel__desc-table__key bold-text">Priority:</span>
-                                            <span className="right-panel__desc-table__value">
-                                                {this.props.task.get('priority')}
-                                            </span>
-                                        </div>
-                                    </td>
                                     <td>
                                         <div>
                                             <span className="right-panel__desc-table__key bold-text">Due date:</span>
@@ -73,18 +59,6 @@ export default class Description extends React.Component<DescProps, any> {
                                             </span>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <span className="right-panel__desc-table__key bold-text">Created:</span>
-                                            <span className="right-panel__desc-table__value">
-                                                {this.props.task.get('createdAt')}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                             </table>
                         </div>
