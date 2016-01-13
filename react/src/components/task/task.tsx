@@ -27,7 +27,7 @@ export default class Task extends React.Component<TaskProps, any> {
 
     showDesc(){
         this.props.setCurrentTask(this.props.boardId, this.props.index);
-        document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
+        document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'block';
         document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix active";
     }
 
@@ -35,7 +35,9 @@ export default class Task extends React.Component<TaskProps, any> {
         return <li className="task-body-list__item clearfix" id={this.props.boardId+'_'+this.props.index}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
-                   onChange={this.handleClick}/>
+                   onChange={this.handleClick}
+                    className="fleft task-body-list__item__checkbox"
+            />
             <label className="task-body-list__item__label fleft"
                    onClick={this.showDesc}>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>

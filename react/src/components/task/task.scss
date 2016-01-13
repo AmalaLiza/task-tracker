@@ -8,6 +8,10 @@
   height: 48px;
 }
 
+.task-body-list__item__checkbox{
+  margin-top:7px;
+}
+
 .task-body-list__item.active{
   border: 1px solid $primary-color;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.38);
