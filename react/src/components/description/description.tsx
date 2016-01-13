@@ -69,8 +69,6 @@ export default class Description extends React.Component<DescProps, any> {
                                 <a className="right-panel__tabs-header__item active" href="javascript:void(0)">
                                     Description
                                 </a>
-                                <a className="right-panel__tabs-header__item" href="javascript:void(0)">Dependencies</a>
-                                <a className="right-panel__tabs-header__item" href="javascript:void(0)">Notes</a>
                                 <a className="right-panel__tabs-header__item" href="javascript:void(0)">Activity</a>
                             </div>
                             <div className="right-panel__tabs-content">
