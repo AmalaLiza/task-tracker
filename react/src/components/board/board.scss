@@ -85,3 +85,31 @@
   border-radius: 0 3px 3px 0;
 }
 
+ul.more-options {
+  position: absolute;
+  background: white;
+  border: 1px solid $primary-border-color;
+  right: 0;
+  top: 43px;
+  border-radius: 3px;
+  padding: 3px 0;
+  margin-right: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.19);
+  z-index: 999;
+}
+
+ul.more-options li{
+  cursor:pointer;
+  width: 155px;
+  padding: 4px 10px;
+  border-bottom: 1px solid $primary-border-color;
+  margin: 0 5px;
+
+  &:hover{
+    background:$primary-border-color;
+  }
+}
+
+ul.more-options li:last-child{
+  border-bottom: none;
+}
