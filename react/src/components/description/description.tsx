@@ -3,7 +3,8 @@ import './description.scss';
 
 export default class Description extends React.Component<any, any> {
 
-    render(){return <div className="right-fixed-panel" style={{display:"none"}}>
+    render(){
+        return <div className="right-fixed-panel" style={{display:"none"}}>
              <div className="right-panel__actions fright">
                  <a href="javascript:void(0)" className="flaticon-star178"></a>
                  <a href="javascript:void(0)" className="flaticon-delete96"></a>
@@ -23,7 +24,9 @@ export default class Description extends React.Component<any, any> {
                          </div>
                          <div className="progress-bar-wrapper">
                              <div className="progress-bar">
-                                 <div className="progress-bar__progress" data-width={"30%"} style={{width:"30%"}}></div>
+                                 <div className="progress-bar__progress"
+                                      data-width={this.props.task.get('progress')}
+                                      style={{width:this.props.task.get('progress')}}></div>
                              </div>
                          </div>
                      </div>
@@ -39,19 +42,25 @@ export default class Description extends React.Component<any, any> {
                                  <td>
                                      <div>
                                          <span className="right-panel__desc-table__key bold-text">Priority:</span>
-                                         <span className="right-panel__desc-table__value">7</span>
+                                         <span className="right-panel__desc-table__value">
+                                             {this.props.task.get('priority')}
+                                         </span>
                                      </div>
                                  </td>
                                  <td>
                                      <div>
                                          <span className="right-panel__desc-table__key bold-text">Due date:</span>
-                                         <span className="right-panel__desc-table__value">12-June-16</span>
+                                         <span className="right-panel__desc-table__value">
+                                             {this.props.task.get('due_date')}
+                                         </span>
                                      </div>
                                  </td>
                                  <td>
                                      <div>
                                          <span className="right-panel__desc-table__key bold-text">Estimate:</span>
-                                         <span className="right-panel__desc-table__value">{this.props.task.get('estimatedTime')}</span>
+                                         <span className="right-panel__desc-table__value">
+                                             {this.props.task.get('estimatedTime')}
+                                         </span>
                                      </div>
                                  </td>
                              </tr>
@@ -59,7 +68,9 @@ export default class Description extends React.Component<any, any> {
                                  <td>
                                      <div>
                                          <span className="right-panel__desc-table__key bold-text">Created:</span>
-                                         <span className="right-panel__desc-table__value">5 hours Ago</span>
+                                         <span className="right-panel__desc-table__value">
+                                             {this.props.task.get('createdAt')}
+                                         </span>
                                      </div>
                                  </td>
                                  <td></td>
@@ -78,7 +89,9 @@ export default class Description extends React.Component<any, any> {
                          </div>
                          <div className="right-panel__tabs-content">
                              <div className="right-panel__tabs-content__item">
-                                 <div className="right-panel__tabs-content__desc">Lorem ipsum dolor sit amet, vel feugiat, non vel cras. Lectus magna mattis lectus aliquam est, dictum sed sapien, morbi fusce volutpat. Arcu venenatis conubia congue cras in vitae, et viverra dapibus. Arcu ultrices aspernatur urna sit risus varius, vulputate mi ultrices fermentum, aliquam a fermentum vivamus aenean, eos arcu imperdiet mauris torquent vitae. Aenean lectus sodales per elit aliquam, phasellus ac at, tristique vitae ligula viverra elit quisque volutpat. Tristique faucibus ridiculus sed, morbi mauris vestibulum a dolor augue tortor, sapien maecenas malesuada sed aliquet velit nunc. Mi fugiat euismod magna, lacinia commodo eleifend, parturient metus, iaculis elit vivamus non eu orci a. Suspendisse ut, tincidunt venenatis semper. Donec justo maecenas magna donec, turpis amet curabitur bibendum. Maecenas eget mauris phasellus nibh, integer orci, varius ipsum velit praesent.</div>
+                                 <div className="right-panel__tabs-content__desc">
+                                     {this.props.task.get('description')}
+                                 </div>
                              </div>
                          </div>
                      </div>
