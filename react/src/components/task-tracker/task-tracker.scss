@@ -36,12 +36,13 @@
   height: 5px;
   width: 100%;
   border-radius: 20px;
-  width: 100%;
+  width: calc(100% - 130px);
   margin: 9px 0px;
 }
 
 .progress-bar-title {
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .progress-bar__progress{
@@ -88,14 +89,9 @@
       top: 10px;
     }
   }
-
-  .progress-bar-wrapper {
-    width: calc(100% - 130px);
-  }
-
+  
   .time-indicator {
     font-size: 12px;
-    margin-top: 24px;
 
     &.fleft{
       margin-right:15px;

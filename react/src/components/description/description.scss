@@ -42,6 +42,8 @@
 
   .progress-bar{
     height:3px;
+    background: #DCDCDC;
+    width: 100%;
   }
 
   .progress-bar__progress:after {
@@ -62,10 +64,6 @@
       font-size: 12px;
       font-weight: 600;
     }
-  }
-
-  .progress-bar {
-    background: #DCDCDC;
   }
 
   .progress-bar__progress:before {
