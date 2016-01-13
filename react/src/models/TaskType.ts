@@ -1,6 +1,6 @@
 export type TaskType = {
     id: number,
     title: string,
-    completed : string,
+    completed : Boolean,
     estimatedTime: number
 };

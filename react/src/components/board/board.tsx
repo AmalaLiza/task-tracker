@@ -17,6 +17,7 @@ interface BoardProps {
     onEditBoardTitle : Function;
     onEditTaskTitle : Function;
     onAddTask : Function;
+    setCurrentTask :Function;
 }
 
 export default class Board extends React.Component<BoardProps, any> {
@@ -42,6 +43,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     boardId={this.props.index}
                     task={task}
                     onTaskComplete={this.props.onTaskCompletion}
+                    setCurrentTask={this.props.setCurrentTask}
                 />
             ));
 

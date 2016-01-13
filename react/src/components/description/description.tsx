@@ -3,14 +3,13 @@ import './description.scss';
 
 export default class Description extends React.Component<any, any> {
 
-    render(){
-         return <div className="right-fixed-panel">
+    render(){return <div className="right-fixed-panel" style={{display:"none"}}>
              <div className="right-panel__actions fright">
                  <a href="javascript:void(0)" className="flaticon-star178"></a>
                  <a href="javascript:void(0)" className="flaticon-delete96"></a>
              </div>
 
-             <h1 className="right-panel__heading">Create designs for insight screen</h1>
+             <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>
              <div className="right-panel__content">
                  <div className="right-panel-sub-section">
                      <div className="accordion-head">
@@ -52,7 +51,7 @@ export default class Description extends React.Component<any, any> {
                                  <td>
                                      <div>
                                          <span className="right-panel__desc-table__key bold-text">Estimate:</span>
-                                         <span className="right-panel__desc-table__value">45:00</span>
+                                         <span className="right-panel__desc-table__value">{this.props.task.get('estimatedTime')}</span>
                                      </div>
                                  </td>
                              </tr>
