@@ -34,7 +34,7 @@ interface AppState {
 export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {};
+        this.state = Immutable.Map();
         this.state.currentTask = Immutable.Map();
         this.setTaskDesc = this.setTaskDesc.bind(this);
     }

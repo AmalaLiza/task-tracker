@@ -4,16 +4,16 @@ import './task-tracker.scss';
 import {TaskType} from "../../models/TaskType";
 
 interface TaskTrackerProps {
-    task : TaskType;
+    task:TaskType;
 }
 
 export default class TaskTracker extends React.Component<TaskTrackerProps, any> {
 
-    render(){
+    render() {
         console.log(this.props)
         return <div className="progress-track" style={{display:"none"}} id="task_tracker">
             <div className="width-container clearfix">
-                <a href="javascript:void(0)" className="play-ico flaticon-play128 fleft">
+                <a href="javascript:void(0)" className="play-ico flaticon-pause52 fleft">
                 </a>
                 <div className="progress-wrapper fleft clearfix">
 

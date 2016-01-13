@@ -1,8 +1,10 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
+import {TaskType} from "../../models/TaskType";
 import './description.scss';
 
 interface DescProps{
+    task: TaskType;
     setCurrentTask:Function;
 }
 
@@ -14,18 +16,20 @@ export default class Description extends React.Component<DescProps, any> {
         this.hideDesc = this.hideDesc.bind(this);
     }
 
-    hideDesc(){
-        //this.props.setCurrentTask(this.props.boardId, this.props.index);
+    hideDesc(e){
+        console.log(e, "calling me");
         document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'none';
-        //document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix";
+        document.getElementsByClassName("task-body-list__item clearfix active")[0].className = "task-body-list__item clearfix";
     }
 
     render() {
         return <div className="right-fixed-panel-wrapper" onClick={this.hideDesc} style={{display:"none"}}>
             <div className="right-fixed-panel">
                 <div className="right-panel__actions fright">
-                    <a href="javascript:void(0)" className="flaticon-star178"></a>
-                    <a href="javascript:void(0)" className="flaticon-delete96"></a>
+                    <a href="javascript:void(0)" className="flaticon-star178">
+                    </a>
+                    <a href="javascript:void(0)" className="flaticon-delete96">
+                    </a>
                 </div>
 
                 <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>

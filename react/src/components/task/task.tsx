@@ -16,6 +16,8 @@ export default class Task extends React.Component<TaskProps, any> {
 
     constructor(props, context){
         super(props, context);
+        this.state = {};
+        this.state.playing = false;
         this.handleClick = this.handleClick.bind(this);
         this.showDesc = this.showDesc.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
@@ -27,11 +29,13 @@ export default class Task extends React.Component<TaskProps, any> {
 
     playAndPauseTask(){
         this.props.setCurrentTask(this.props.boardId, this.props.index);
+        //this.setState({playing: this.})
         document.getElementById("task_tracker").style.display = 'block';
     }
 
     showDesc(){
         this.props.setCurrentTask(this.props.boardId, this.props.index);
+        console.log("calling me too");
         document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'block';
         document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix active";
     }
@@ -47,8 +51,10 @@ export default class Task extends React.Component<TaskProps, any> {
                    onClick={this.showDesc}>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
-            <a href="javascript:void(0)" className="play-ico flaticon-play128 fright"
-                                         onClick={this.playAndPauseTask}>
+            <a href="javascript:void(0)"
+               id={this.props.boardId+'__'+this.props.index}
+               className={this.state.playing? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
+               onClick={() => {this.playAndPauseTask()}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>
