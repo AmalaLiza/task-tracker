@@ -99,13 +99,19 @@
     color:#fff;
 
     &:before{
-        content: "\E002";
         font-size: 22px;
         top: 11px;
         position: relative;
         margin-left: 9px;
     }
   }
+
+  .flaticon-pause52:before{
+    margin-left:2px;
+  }
+
+
+
 
   .time-indicator {
     font-size: 12px;
