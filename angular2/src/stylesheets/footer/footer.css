@@ -1,6 +1,8 @@
 .footer {
   background: #484B50;
   color: #fff;
+  -webkit-animation: progressTrackEntry 0.35s ease-out;
+          animation: progressTrackEntry 0.35s ease-out;
 }
 
 .daytime-track {
@@ -9,6 +11,30 @@
 
 .progress-track {
   height: 76px;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+@-webkit-keyframes progressTrackEntry {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes progressTrackEntry {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
 }
 
 .daytime-track {
@@ -32,12 +58,13 @@
   height: 5px;
   width: 100%;
   border-radius: 20px;
-  width: 100%;
+  width: calc(100% - 130px);
   margin: 9px 0px;
 }
 
 .progress-bar-title {
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .progress-bar__progress {
@@ -74,22 +101,22 @@
   width: 48px;
   margin-top: 15px;
   border-color: rgba(228, 228, 228, 0.62);
+  color: #fff;
 }
 
-.progress-track .play-ico:after {
-  border: 12px solid transparent;
-  border-left: 17px solid white;
-  left: 17px;
-  top: 10px;
+.progress-track .play-ico:before {
+  font-size: 22px;
+  top: 11px;
+  position: relative;
+  margin-left: 6px;
 }
 
-.progress-track .progress-bar-wrapper {
-  width: calc(100% - 130px);
+.progress-track .flaticon-pause52:before {
+  margin-left: 1px;
 }
 
 .progress-track .time-indicator {
   font-size: 12px;
-  margin-top: 24px;
 }
 
 .progress-track .time-indicator.fleft {

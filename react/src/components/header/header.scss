@@ -11,7 +11,6 @@
   color: #fff;
   font-weight: 600;
   padding-top: 10px;
-  letter-spacing: -3px;
   font-size: 32px;
 }
 
@@ -24,6 +23,7 @@
   color: #fff;
   font-size: 16px;
   border: 1px solid white;
+  padding-right: 40px;
 }
 
 .user-details-wrapper{
@@ -31,4 +31,15 @@
   font-size: 18px;
   margin-top: 20px;
   margin-left: 20px;
+}
+
+.header-search-wrapper {
+  position: relative;
+
+  .search-ico {
+    color: #fff;
+    position: absolute;
+    right: 12px;
+    top: 22px;
+  }
 }

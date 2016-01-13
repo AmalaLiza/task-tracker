@@ -32,6 +32,7 @@ export default class Header extends React.Component<any, any> {
                                     value={this.props.searchText}
                                     onChange={this.handleSearch}
                                 />
+                                <span className="search-ico flaticon-tool1068"></span>
                             </div>
                         </div>
                     </div>

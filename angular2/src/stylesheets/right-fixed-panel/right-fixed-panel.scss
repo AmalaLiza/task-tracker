@@ -1,0 +1,130 @@
+@import "../partials/colors";
+
+.right-fixed-panel {
+  position: absolute;
+  width: 650px;
+  background: white;
+  right: 0px;
+  top: 64px;
+  z-index: 9999;
+  bottom:76px;
+  padding: 0 0 0 25px;
+  box-shadow: -3px 1px 10px rgba(0, 0, 0, 0.28);
+  color:$secondary-text-color;
+  animation:rightPanelEntry 0.35s ease-in-out;
+}
+
+@keyframes rightPanelEntry{
+  from{
+    transform: translateX(100%);
+  } to{
+      transform: translateX(0);
+    }
+}
+
+.right-panel__heading{
+  border-bottom: 1px solid $primary-border-color;
+  margin-top: 41px;
+  padding-bottom: 8px;
+  margin-right: 25px;
+}
+
+.right-panel__content{
+  height: calc(100% - 84px);
+  overflow: auto;
+  padding-right: 25px;
+}
+.right-panel-sub-section {
+  border-bottom: 1px solid $primary-border-color;
+  padding: 12px 0;
+  position: relative;
+
+  .progress-bar{
+    height:3px;
+    background: #DCDCDC;
+    width: 100%;
+  }
+
+  .progress-bar__progress:after {
+    height: 10px;
+    width: 10px;
+    top: -4px;
+    box-shadow: none;
+  }
+
+  .progress-bar-wrapper{
+    padding-bottom: 15px;
+  }
+
+  .progress-time-indicator{
+    color:$secondary-text-color;
+
+    > span{
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .progress-bar__progress:before {
+    content: attr(data-width);
+    right: -10px;
+    position: absolute;
+    font-size: 12px;
+    top: 13px;
+    font-weight: 600;
+    color: #909090;
+  }
+}
+
+.right-panel-sub-section__heading{
+  margin-bottom:15px;
+  font-weight: 600;
+}
+
+.right-panel__tabs-header{
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.right-panel__tabs-header__item{
+  flex:1;
+  color:$primary-text-color;
+  position: relative;
+  padding: 4px 0 7px;
+  color: #716D6D;
+  font-size: 16px;
+}
+
+.right-panel__tabs-header__item.active{
+  font-weight:600;
+
+  &:after{
+    content:'';
+    height:2px;
+    width:40%;
+    bottom:0;
+    position:absolute;
+    background-color:$primary-color;
+    left:0;
+    transition: 0.3s width ease-in-out;
+  }
+}
+
+.right-panel__tabs-content__desc{
+  line-height: 24px;
+}
+
+.right-panel__desc-table__value {
+  padding-left: 12px;
+}
+
+.right-panel__desc-table tr td {
+  padding: 7px 0;
+}
+.right-panel__actions{
+  margin-top: 18px;
+  margin-right: 18px;
+  a{
+    color:inherit;
+  }
+}
