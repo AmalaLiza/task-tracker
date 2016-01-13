@@ -6,6 +6,7 @@ interface DescProps{
     setCurrentTask:Function;
 }
 
+
 export default class Description extends React.Component<DescProps, any> {
 
     constructor(props, context) {
@@ -35,7 +36,9 @@ export default class Description extends React.Component<DescProps, any> {
                             <span className="arrow-ico"></span>
                         </div>
                         <div className="accordion-cont">
-                            <ProgressBar/>
+                            <ProgressBar
+                                progress={this.props.task.get('progress')}
+                            />
                         </div>
                     </div>
                     <div className="right-panel-sub-section">

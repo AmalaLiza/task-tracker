@@ -1,7 +1,6 @@
 import * as React from "react";
 import './task.scss';
 import {TaskType} from "../../models/TaskType";
-
 import Description from "../description/description.tsx";
 
 interface TaskProps {
@@ -19,10 +18,16 @@ export default class Task extends React.Component<TaskProps, any> {
         super(props, context);
         this.handleClick = this.handleClick.bind(this);
         this.showDesc = this.showDesc.bind(this);
+        this.playAndPauseTask = this.playAndPauseTask.bind(this);
     }
 
     handleClick(){
         this.props.onTaskComplete(this.props.boardId, this.props.index);
+    }
+
+    playAndPauseTask(){
+        this.props.setCurrentTask(this.props.boardId, this.props.index);
+        document.getElementById("task_tracker").style.display = 'block';
     }
 
     showDesc(){
@@ -42,7 +47,10 @@ export default class Task extends React.Component<TaskProps, any> {
                    onClick={this.showDesc}>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
-            <a href="javascript:void(0)" className="play-ico fright"></a>
+            <a href="javascript:void(0)" className="play-ico fright"
+                                         onClick={this.playAndPauseTask}>
+
+            </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>
         </li>
     }
