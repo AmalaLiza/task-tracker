@@ -58,3 +58,6 @@ fabric.properties
 
 *.js.map
 *.js
+logs
+*.log
+npm-debug.log*
