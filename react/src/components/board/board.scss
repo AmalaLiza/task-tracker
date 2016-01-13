@@ -22,6 +22,14 @@
   flex: 0 0 330px;
 }
 
+.task-header-wrapper{
+  .more-ico{
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    color: inherit;
+  }
+}
 .task-header {
   width: calc(100% - 66px);
   margin: 0 auto;

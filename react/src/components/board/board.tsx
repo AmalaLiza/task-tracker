@@ -52,6 +52,7 @@ export default class Board extends React.Component<BoardProps, any> {
                 <h2 className="task-header align-center">{this.props.data.get('title')}
                     <span className="task-no">{"("+taskListElements.size+")"}</span>
                 </h2>
+                <a href="javascript:void(0)" className="flaticon-show8 more-ico"></a>
             </div>
             <div className="task-body">
                 <ul className="task-body-list">
