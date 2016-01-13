@@ -52,6 +52,16 @@
 
   .play-ico{
     display: block;
+
+    &:before{
+      font-size: 10px;
+      position: relative;
+      margin-left: 5px;
+      top: 1px;
+    }
+    .flaticon-pause52:before{
+      margin-left:2px;
+    }
   }
 }
 

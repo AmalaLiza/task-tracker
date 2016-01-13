@@ -9,6 +9,7 @@
   bottom: 0;
   left:0;
   right:0;
+  animation: progressTrackEntry 0.35s ease-out;
 }
 
 .daytime-track{
@@ -17,6 +18,16 @@
 
 .progress-track {
   height: 76px;
+  //animation: progressTrackEntry 0.35s ease-out;
+  animation-delay: 0.4s;
+}
+
+@keyframes progressTrackEntry{
+  from{
+    transform: translateY(100%);
+  } to{
+    transform: translateY(0);
+  }
 }
 
 .daytime-track {
@@ -85,12 +96,14 @@
     width: 48px;
     margin-top: 15px;
     border-color:rgba(228, 228, 228, 0.62);
+    color:#fff;
 
-    &:after{
-      border: 12px solid transparent;
-      border-left: 17px solid white;
-      left: 17px;
-      top: 10px;
+    &:before{
+        content: "\E002";
+        font-size: 22px;
+        top: 11px;
+        position: relative;
+        margin-left: 9px;
     }
   }
 

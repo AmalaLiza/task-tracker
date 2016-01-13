@@ -47,7 +47,7 @@ export default class Task extends React.Component<TaskProps, any> {
                    onClick={this.showDesc}>
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
-            <a href="javascript:void(0)" className="play-ico fright"
+            <a href="javascript:void(0)" className="play-ico flaticon-play128 fright"
                                          onClick={this.playAndPauseTask}>
 
             </a>
