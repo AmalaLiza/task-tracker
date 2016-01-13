@@ -13,7 +13,6 @@ import Board from "../src/components/board/board.tsx";
 import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
-import DayTracker from "./components/day-tracker/day-tracker.tsx";
 import Description from "./components/description/description.tsx"
 import {BoardListType} from "./models/BoardListType";
 import {BoardType} from "./models/BoardType";
@@ -76,7 +75,6 @@ export class App extends React.Component<any, any> {
             </div>
             <div className="footer">
                 <TaskTracker/>
-                <DayTracker/>
             </div>
             <Description
                 task={this.state.currentTask}

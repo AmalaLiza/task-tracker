@@ -1,4 +1,5 @@
 import * as React from "react";
+import ProgressBar from "../progress-bar/progress-bar.tsx";
 import './description.scss';
 
 export default class Description extends React.Component<any, any> {
@@ -18,17 +19,7 @@ export default class Description extends React.Component<any, any> {
                          <span className="arrow-ico"></span>
                      </div>
                      <div className="accordion-cont">
-                         <div className="clearfix progress-time-indicator">
-                             <span className="fleft">TODAY: 9:15 AM</span>
-                             <span className="fright">TODAY: 10:15 PM</span>
-                         </div>
-                         <div className="progress-bar-wrapper">
-                             <div className="progress-bar">
-                                 <div className="progress-bar__progress"
-                                      data-width={this.props.task.get('progress')}
-                                      style={{width:this.props.task.get('progress')}}></div>
-                             </div>
-                         </div>
+                         <ProgressBar/>
                      </div>
                  </div>
                  <div className="right-panel-sub-section">
