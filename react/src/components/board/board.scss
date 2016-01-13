@@ -42,8 +42,35 @@
 }
 
 .task-body{
-  padding: 0 10px;
   margin-top: 26px;
+}
+
+.task-body-list{
+  padding: 0 10px;
+
+  &.strike-list li{
+    background: #f5f5f5;
+
+    &:hover{
+      .task-time-left{
+        display:block;
+      }
+    }
+  }
+}
+
+.task-body__sub-head {
+  background: #dfdfdf;
+  color: white;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  clear: both;
+
+  a.primary-link{
+    font-size: 13px;
+    margin-top: 1px;
+  }
 }
 
 .add-task-link {

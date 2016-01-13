@@ -11,20 +11,11 @@ export default class Description extends React.Component<DescProps, any> {
 
     constructor(props, context) {
         super(props, context);
-        this.hideDesc = this.hideDesc.bind(this);
-    }
-
-    hideDesc(){
-        //this.props.setCurrentTask(this.props.boardId, this.props.index);
-        document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'none';
-        //document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix";
     }
 
     render() {
-        return <div className="right-fixed-panel-wrapper" onClick={this.hideDesc} style={{display:"none"}}>
-            <div className="right-fixed-panel">
+        return <div className="right-fixed-panel" style={{display:"none"}}>
                 <div className="right-panel__actions fright">
-                    <a href="javascript:void(0)" className="flaticon-star178"></a>
                     <a href="javascript:void(0)" className="flaticon-delete96"></a>
                 </div>
 
@@ -84,6 +75,5 @@ export default class Description extends React.Component<DescProps, any> {
                     </div>
                 </div>
             </div>
-        </div>
     }
 };

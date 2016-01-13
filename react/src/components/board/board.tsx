@@ -63,6 +63,21 @@ export default class Board extends React.Component<BoardProps, any> {
                 <ul className="task-body-list">
                     {taskListElements}
                 </ul>
+                <div className="task-body__sub-head clearfix">
+                    <span className="fleft">COMPLETED TASKS(1)</span>
+                    <a href="javascript:void(0)" className="fright primary-link bold-text">Hide</a>
+                </div>
+                <ul className="task-body-list strike-list">
+                    <li className="task-body-list__item clearfix">
+                        <input type="checkbox"
+                               className="fleft task-body-list__item__checkbox"
+                        />
+                        <label className="task-body-list__item__label fleft strike-text">
+                            <span className="task-body-list__item__label__text">Design that has all the features of design grid</span>
+                        </label>
+                         <span className="task-time-left fright">50:00</span>
+                    </li>
+                </ul>
             </div>
             <div className="task-footer">
                 <div className="task-footer__add-task clearfix">

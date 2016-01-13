@@ -5,7 +5,7 @@
   border: 1px solid $primary-border-color;
   border-radius: 5px;
   margin-bottom: 7px;
-  height: 48px;
+  min-height: 48px;
 }
 
 .task-body-list__item__checkbox{
@@ -20,8 +20,9 @@
 
 .task-body-list__item__label{
   margin-top: 3px;
-  text-indent: -17px;
-  padding-left: 22px;
+  text-indent: -5px;
+  width: calc(100% - 63px);
+  padding-left: 10px;
 }
 
 .task-body-list__item__label__text{
@@ -56,7 +57,7 @@
     &:before{
       font-size: 10px;
       position: relative;
-      margin-left: 5px;
+      margin-left: 4px;
       top: 1px;
     }
   }

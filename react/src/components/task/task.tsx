@@ -32,7 +32,7 @@ export default class Task extends React.Component<TaskProps, any> {
 
     showDesc(){
         this.props.setCurrentTask(this.props.boardId, this.props.index);
-        document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'block';
+        document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
         document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix active";
     }
 
