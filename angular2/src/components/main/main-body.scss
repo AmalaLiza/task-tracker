@@ -1,0 +1,391 @@
+//main body css
+
+@import "../../styles/partials/colors";
+
+// CSS for board
+
+.task-list {
+  padding: 30px 0;
+  height:100%;
+  display:flex;
+  align-items: flex-start;
+}
+
+.task-list__item {
+  background: #fff;
+  width: 330px;
+  margin: 10px 20px 10px 0px;
+  padding-top:15px;
+  border:1px solid $primary-border-color;
+  border-radius:8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+  position: relative;
+  max-height: 100%;
+  flex: 0 0 330px;
+}
+
+.task-header-wrapper{
+  .more-ico{
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    color: inherit;
+  }
+}
+.task-header {
+  width: calc(100% - 66px);
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.task-no{
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.task-body{
+  margin-top: 26px;
+}
+
+.task-body-list{
+  padding: 0 10px;
+
+  &.strike-list li{
+    background: #f5f5f5;
+
+    &:hover{
+      .task-time-left{
+        display:block;
+      }
+    }
+  }
+}
+
+.task-body__sub-head {
+  background: #dfdfdf;
+  color: white;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  clear: both;
+
+  a.primary-link{
+    font-size: 13px;
+    margin-top: 1px;
+  }
+}
+
+.add-task-link {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 22px;
+}
+
+.task-footer{
+  height:70px;
+  text-align:center;
+}
+
+.task-footer__add-task {
+  padding: 13px 10px 10px;
+  overflow: hidden;
+  border-top: 1px solid #E4E4E4;
+  margin-top: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.task-footer__add-task__input{
+  display: block;
+  padding: 10px 15px;
+  width: 100%;
+  box-shadow: inset 1px 0px 10px rgba(0, 0, 0, 0.22);;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  color: #514B37;
+}
+
+.task-footer__add-task__button{
+  width: 60px;
+  height: 36px;
+  border: none;
+  font-size: 15px;
+  border-radius: 0 3px 3px 0;
+}
+
+ul.more-options {
+  position: absolute;
+  background: white;
+  border: 1px solid $primary-border-color;
+  right: 0;
+  top: 43px;
+  border-radius: 3px;
+  padding: 3px 0;
+  margin-right: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.19);
+  z-index: 999;
+}
+
+ul.more-options li{
+  cursor:pointer;
+  width: 155px;
+  padding: 4px 10px;
+  border-bottom: 1px solid $primary-border-color;
+  margin: 0 5px;
+
+  &:hover{
+    background:$primary-border-color;
+  }
+}
+
+ul.more-options li:last-child{
+  border-bottom: none;
+}
+
+//css for add board
+
+.task-list__item.add-board {
+  font-size: 22px;
+  text-align: center;
+  padding: 40px 0;
+  cursor: pointer;
+  border: 2px dashed rgba(72, 75, 80, 0.59);
+}
+
+// css for day tracker
+
+.daytime-track{
+  background:$footer-secondary-background;
+}
+.daytime-track {
+  height: 35px;
+}
+
+.daytime-label{
+  color:#fff;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-right: 18px;
+}
+
+.daytime-track{
+
+  .progress-bar{
+    width: calc(100% - 60px);
+    margin-top: 15px;
+  }
+
+  .progress-bar-wrapper {
+    width: calc(100% - 65px);
+  }
+
+  .progress-bar__progress{
+    background: #fff;
+
+    &:after{
+      background:#fff;
+    }
+  }
+
+  .time-indicator{
+    margin-top: 7px;
+  }
+
+}
+
+//CSS for description
+
+.right-fixed-panel {
+  position: absolute;
+  width: 650px;
+  background: white;
+  right: 0px;
+  top: 64px;
+  z-index: 9999;
+  bottom:76px;
+  padding: 0 0 0 25px;
+  box-shadow: -3px 1px 10px rgba(0, 0, 0, 0.28);
+  color:$secondary-text-color;
+  animation:rightPanelEntry 0.35s ease-in-out;
+}
+
+@keyframes rightPanelEntry{
+  from{
+    transform: translateX(100%);
+  } to{
+      transform: translateX(0);
+    }
+}
+
+.right-panel__heading{
+  border-bottom: 1px solid $primary-border-color;
+  margin-top: 41px;
+  padding-bottom: 8px;
+  margin-right: 25px;
+}
+
+.right-panel__content{
+  height: calc(100% - 84px);
+  overflow: auto;
+  padding-right: 25px;
+}
+.right-panel-sub-section {
+  border-bottom: 1px solid $primary-border-color;
+  padding: 12px 0;
+  position: relative;
+
+  .progress-bar{
+    height:3px;
+    background: #DCDCDC;
+    width: 100%;
+  }
+
+  .progress-bar__progress:after {
+    height: 10px;
+    width: 10px;
+    top: -4px;
+    box-shadow: none;
+  }
+
+  .progress-bar-wrapper{
+    padding-bottom: 15px;
+  }
+
+  .progress-time-indicator{
+    color:$secondary-text-color;
+
+    > span{
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .progress-bar__progress:before {
+    content: attr(data-width);
+    right: -10px;
+    position: absolute;
+    font-size: 12px;
+    top: 13px;
+    font-weight: 600;
+    color: #909090;
+  }
+}
+
+.right-panel-sub-section__heading{
+  margin-bottom:15px;
+  font-weight: 600;
+}
+
+.right-panel__tabs-header{
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.right-panel__tabs-header__item{
+  flex:1;
+  color:$primary-text-color;
+  position: relative;
+  padding: 4px 0 7px;
+  color: #716D6D;
+  font-size: 16px;
+}
+
+.right-panel__tabs-header__item.active{
+  font-weight:600;
+
+  &:after{
+    content:'';
+    height:2px;
+    width:40%;
+    bottom:0;
+    position:absolute;
+    background-color:$primary-color;
+    left:0;
+    transition: 0.3s width ease-in-out;
+  }
+}
+
+.right-panel__tabs-content__desc{
+  line-height: 24px;
+}
+
+.right-panel__desc-table__value {
+  padding-left: 12px;
+}
+
+.right-panel__desc-table tr td {
+  padding: 7px 0;
+}
+.right-panel__actions{
+  margin-top: 18px;
+  margin-right: 18px;
+  a{
+    color:inherit;
+  }
+}
+
+//css for tasks
+
+.task-body-list__item {
+  padding: 10px 10px;
+  border: 1px solid $primary-border-color;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  min-height: 48px;
+}
+
+.task-body-list__item__checkbox{
+  margin-top:7px;
+}
+
+.task-body-list__item.active{
+  border: 1px solid $primary-color;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.38);
+  transition:0.23s all ease-out;
+}
+
+.task-body-list__item__label{
+  margin-top: 3px;
+  text-indent: -5px;
+  width: calc(100% - 63px);
+  padding-left: 10px;
+}
+
+.task-body-list__item__label__text{
+  font-size:13px;
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+
+.task-time-left {
+  color: #b8B8B8;
+  margin-top: 4px;
+}
+
+.task-body-list__item__label input[type="checkbox"]{
+  vertical-align: middle;
+}
+
+.task-body-list__item .play-ico{
+  display: none;
+}
+
+.task-body-list__item:hover{
+
+  .task-time-left{
+    display:none;
+  }
+
+  .play-ico{
+    display: block;
+
+    &:before{
+      font-size: 10px;
+      position: relative;
+      margin-left: 3px;
+      top: 2px;
+    }
+  }
+}

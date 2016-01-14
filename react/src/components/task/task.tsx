@@ -30,16 +30,10 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onTaskComplete(this.props.boardId, this.props.index);
     }
 
-    playAndPauseTask(isPlaying) {
-        if (isPlaying) {
-            this.setState({isPlaying: false});
-            this.props.onPlayTask(this.props.boardId, this.props.index);
-        }
-        else {
-            this.setState({isPlaying: true});
-            this.props.onPauseTask(this.props.boardId, this.props.index);
-        }
-        this.props.setCurrentTask(this.props.boardId, this.props.index, isPlaying);
+    playAndPauseTask() {
+        this.setState({isPlaying: !this.state.isPlaying});
+        this.state.isPlaying? this.props.onPlayTask(this.props.boardId, this.props.index): this.props.onPauseTask(this.props.boardId, this.props.index);
+        this.props.setCurrentTask(this.props.boardId, this.props.index, this.state.isPlaying);
         document.getElementById("task_tracker").style.display = 'block';
     }
 
@@ -63,7 +57,7 @@ export default class Task extends React.Component<TaskProps, any> {
             <a href="javascript:void(0)"
                id={this.props.boardId+'__'+this.props.index}
                className={this.state.isPlaying? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
-               onClick={() => {this.playAndPauseTask(this.state.isPlaying)}}>
+               onClick={() => {this.playAndPauseTask()}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>

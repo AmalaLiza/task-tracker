@@ -5,7 +5,7 @@ import * as Immtuable from "immutable";
 
 @Component({
     selector: 'main',
-    styleUrls: ['./src/components/main/main.css'],
+    styleUrls: ['./src/components/main/main-body.css'],
     directives: [BoardComponent],
     template: `
          <div>

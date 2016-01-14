@@ -1,12 +1,5 @@
 //header css
-
-$primary-color:#ED5353;
-$primary-text-color:#2A2A2A;
-$primary-heading-color:#0B0B0B;
-$body-background:#F1F1F1;
-$primary-border-color:#E4E4E4;
-$footer-background:#484B50;
-$footer-secondary-background:#313539;
+@import "../../styles/partials/colors";
 
 .header-wrapper {
   height: 64px;
@@ -17,7 +10,6 @@ $footer-secondary-background:#313539;
   color: #fff;
   font-weight: 600;
   padding-top: 10px;
-  letter-spacing: -3px;
   font-size: 32px;
 }
 
@@ -30,11 +22,24 @@ $footer-secondary-background:#313539;
   color: #fff;
   font-size: 16px;
   border: 1px solid white;
+  padding-right: 40px;
 }
 
 .user-details-wrapper{
-  color: #ffffff;
+  color:#fff;
   font-size: 18px;
   margin-top: 20px;
   margin-left: 20px;
 }
+
+.header-search-wrapper {
+  position: relative;
+
+  .search-ico {
+    color: #fff;
+    position: absolute;
+    right: 12px;
+    top: 22px;
+  }
+}
+

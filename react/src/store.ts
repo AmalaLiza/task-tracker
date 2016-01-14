@@ -11,24 +11,7 @@ const logger = createLogger({
     collapsed: true
 });
 
-const timeoutScheduler = store => next => action => {
-    if (!action.meta || !action.meta.delay) {
-        console.log("Haiii", action);
-        return next(action)
-    }
-    console.log("Haiii out",  action);
-
-    let timeoutId = setTimeout(
-        () => next(action),
-        action.meta.delay
-    )
-
-    return function cancel() {
-        clearTimeout(timeoutId)
-    }
-}
-
-const createStoreWithMiddleware = applyMiddleware(logger, thunk, timeoutScheduler)(createStore);
+const createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
 
 export default function configureStore() {
     return createStoreWithMiddleware(rootReducer);

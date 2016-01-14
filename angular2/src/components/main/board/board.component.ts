@@ -5,7 +5,7 @@ import {TaskComponent} from "./task/task.component.ts";
 @Component({
     selector: 'board',
     directives: [TaskComponent],
-    styleUrls: ['./src/components/main/main.css'],
+    styleUrls: ['./src/components/main/main-body.css'],
     template: `
     <div class="task-list__item fleft">
         <div class="task-header-wrapper">
@@ -18,15 +18,15 @@ import {TaskComponent} from "./task/task.component.ts";
 
             <ul class="task-body-list">
                 <li class="task-body-list__item clearfix">
+                    <input type="checkbox" class="fleft task-body-list__item__checkbox"/>
                     <label class="task-body-list__item__label fleft">
-                        <input type="checkbox"/>
                         <span class="task-body-list__item__label__text">
                             Create designs for insight screen
                         </span>
                     </label>
 
-                    <a href="javascript:void(0)" class="play-ico fright"></a>
-                    <span class="task-time-left fright display-none">
+                    <a href="javascript:void(0)" class="play-ico flaticon-play128 fright"></a>
+                    <span class="task-time-left fright">
                         1:15:00
                     </span>
                  </li>
