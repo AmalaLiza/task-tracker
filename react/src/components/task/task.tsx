@@ -10,8 +10,8 @@ interface TaskProps {
     task: TaskType;
     onTaskComplete:Function;
     setCurrentTask:Function;
-    onPlayTask:Function;
-    onPauseTask:Function;
+    onPlayTask?:Function;
+    onPauseTask?:Function;
 }
 
 export default class Task extends React.Component<TaskProps, any> {

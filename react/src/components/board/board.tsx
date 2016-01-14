@@ -35,6 +35,7 @@ export default class Board extends React.Component<BoardProps, any> {
 
     render() {
         let taskList:TaskType[] = this.props.data.get("taskList");
+        let completedTaskList:TaskType[] = this.props.data.get("completedTaskList");
         let taskListElements = taskList
             .map((task:TaskType, index:number) => (
                 <Task
@@ -46,6 +47,17 @@ export default class Board extends React.Component<BoardProps, any> {
                     setCurrentTask={this.props.setCurrentTask}
                     onPlayTask={this.props.onPlayTask}
                     onPauseTask={this.props.onPauseTask}
+                />
+            ));
+        let completedTaskListElements = completedTaskList
+            .map((task:TaskType, index:number) => (
+                <Task
+                    key={index}
+                    index={index}
+                    boardId={this.props.index}
+                    task={task}
+                    onTaskComplete={this.props.onTaskCompletion}
+                    setCurrentTask={this.props.setCurrentTask}
                 />
             ));
 
@@ -70,15 +82,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     <a href="javascript:void(0)" className="fright primary-link bold-text">Hide</a>
                 </div>
                 <ul className="task-body-list strike-list">
-                    <li className="task-body-list__item clearfix">
-                        <input type="checkbox"
-                               className="fleft task-body-list__item__checkbox"
-                        />
-                        <label className="task-body-list__item__label fleft strike-text">
-                            <span className="task-body-list__item__label__text">Design that has all the features of design grid</span>
-                        </label>
-                         <span className="task-time-left fright">50:00</span>
-                    </li>
+                    {completedTaskListElements}
                 </ul>
             </div>
             <div className="task-footer">
