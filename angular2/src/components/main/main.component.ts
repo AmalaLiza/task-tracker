@@ -1,11 +1,11 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {BoardComponent} from './board/board.component.ts';
 import {TaskService} from "./task.service.ts";
 import * as Immtuable from "immutable";
 
 @Component({
     selector: 'main',
-    styleUrls: ['./src/components/main/main-body.css'],
+    styleUrls: ['./src/components/main/main.css'],
     directives: [BoardComponent],
     template: `
          <div>
@@ -13,7 +13,8 @@ import * as Immtuable from "immutable";
                 <board *ngFor="#board of taskService.boards, #i=index"
                         [title]="board.get('title')"
                         [tasks]="board.get('tasks')"
-                        (addTask)="(addTask(i))">
+                        [index]="i"
+                        (toggleTask)="(toggleTask())">
                 </board>
 
                 <div class="task-list__item add-board fleft">
@@ -33,12 +34,13 @@ export default class MainComponent {
         console.log("MainComponent constructor");
     }
 
-    addTask(boardIndex:number){
-        this.taskService.addTask(boardIndex ,'new task');
-    }
 
     addBoard(){
         this.taskService.addBoard();
+    }
+
+    toggleTask(){
+        console.log("toggle");
     }
 
 }

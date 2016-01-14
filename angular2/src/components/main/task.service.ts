@@ -19,7 +19,11 @@ export class TaskService {
 
     addBoard() {
         this.boards = this.boards.push(new Board());
+        //console.log("updated boards", this.boards.toJS());
+    }
 
-        console.log("updated boards", this.boards.toJS());
+    toggleTask(boardIndex:number, taskIndex:number) {
+        //console.log("toggle",boardIndex, taskIndex,  this.boards.getIn([boardIndex, 'tasks', taskIndex]));
+        this.boards = this.boards.updateIn([boardIndex, 'tasks', taskIndex], (task) => (new Task(task.text, task.estimatedTime, !task.completed)));
     }
 }

@@ -11,9 +11,12 @@ import {RightPanelComponent} from "./components/right-panel/right-panel.componen
         <header></header>
         <main class="main-body width-container"></main>
         <footer></footer>
-        <right-panel></right-panel>
+        <!--<right-panel></right-panel>-->
     </div>`
 })
 
 export class AppComponent {
+    constructor(){
+        console.log("AppComponent constructor");
+    }
 }
