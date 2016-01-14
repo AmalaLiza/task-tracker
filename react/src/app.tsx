@@ -55,7 +55,7 @@ export class App extends React.Component<AppProps, AppState> {
         let filteredList = Immutable.List();
         if (searchText) {
             filteredList = Immutable.List(boardList
-                .filter(board => board.get('taskList').filter(task => task.get('title').toLowerCase().indexOf(searchText) > -1).size > 0));
+                .filter(board => board.get('taskList').filter(task => task.get('title').toLowerCase().indexOf(searchText.toLowerCase()) > -1).size > 0));
         } else {
             filteredList = Immutable.List(boardList);
         }
