@@ -1,7 +1,17 @@
+import Task from "./task.class.ts";
 import * as Immutable from "immutable";
 
-export default class Board{
-    constructor(public title = "default title", public tasks:string[] = ["eat", "sleep", "code"]) {
+const BoardRecord = Immutable.Record({
+    title: "",
+    tasks: []
+});
+
+export default class Board extends BoardRecord {
+    title:string;
+    tasks: Immutable.List<Task>;
+
+    constructor(title:string = "", tasks:Immutable.List<Task> = Immutable.List<Task>([])) {
+        super({title: title, tasks: tasks});
     }
 
 }

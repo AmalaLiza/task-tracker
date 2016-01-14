@@ -17,7 +17,7 @@ import {TaskService} from "../../task.service.ts";
         <a href="javascript:void(0)" class="play-ico fright display-none"></a>
 
         <span class="task-time-left fright">
-            {{task.get("time")}}
+            {{task.get("estimatedTime")}}
         </span>
     </div>`
 })
