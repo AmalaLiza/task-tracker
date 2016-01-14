@@ -1,7 +1,18 @@
 import {Injectable} from "angular2/core";
+import * as Immutable from "immutable";
 
-@Injectable()
-export default class Task {
-    constructor(public text:string = "", public time:string = "00:00") {
+const TaskRecord = Immutable.Record({
+    text: "",
+    estimatedTime: "",
+    completed: false
+});
+
+export default class Task extends TaskRecord {
+    text: string;
+    completed:boolean;
+    estimatedTime: string;
+
+    constructor(text:string, estimatedTime:string = "00:00", completed:boolean = false) {
+        super({text: text, estimatedTime: estimatedTime, completed: completed});
     }
 }
