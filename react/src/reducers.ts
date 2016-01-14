@@ -162,10 +162,11 @@ export function rootReducer(state:BoardListType = initialState, action) {
 
         case "PLAY_TASK":
             console.log("PLAY_TASK");
+            return state;
 
         case "PAUSE_TASK":
             console.log("PAUSE_TASK");
-
+            return state;
 
         case 'SEARCH_TASK':
             state = state.set('boardList', state.get('boardList'));
