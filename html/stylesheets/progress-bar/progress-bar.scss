@@ -1,0 +1,74 @@
+//PROGRESS BAR SCSS
+
+@import "../partials/colors";
+
+.progress-bar {
+  background:#5B5D62;
+  height: 5px;
+  width: 100%;
+  border-radius: 20px;
+  width: 100%;
+  margin: 9px 0px;
+}
+
+.progress-bar-title {
+  font-size: 18px;
+}
+
+.progress-bar__progress{
+  background:$primary-color;
+  height:100%;
+  border-radius: 20px;
+  transition:0.23s width ease-in;
+  position: relative;
+}
+
+.progress-bar__progress:after {
+  height: 13px;
+  width: 13px;
+  content: '';
+  background: #Ed5353;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -4px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.52);
+}
+.progress-track{
+
+  .progress-wrapper{
+    margin-top: 18px;
+  }
+
+  .play-ico{
+    height: 48px;
+    width: 48px;
+    margin-top: 15px;
+    border-color:rgba(228, 228, 228, 0.62);
+
+    &:after{
+      border: 12px solid transparent;
+      border-left: 17px solid white;
+      left: 17px;
+      top: 10px;
+    }
+  }
+
+  .progress-bar-wrapper {
+    width: calc(100% - 130px);
+  }
+
+  .time-indicator {
+    font-size: 12px;
+
+    &.fleft{
+      margin-right:15px;
+    }
+
+    &.fright{
+      margin-left:15px;
+    }
+  }
+
+}

@@ -1,0 +1,69 @@
+@import "../partials/colors";
+
+.task-body-list__item {
+  padding: 10px 10px;
+  border: 1px solid $primary-border-color;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  min-height: 48px;
+}
+
+.task-body-list__item__checkbox{
+  margin-top:7px;
+}
+
+.task-body-list__item.active{
+  border: 1px solid $primary-color;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.38);
+  transition:0.23s all ease-out;
+}
+
+.task-body-list__item__label{
+  margin-top: 3px;
+  text-indent: -5px;
+  width: calc(100% - 63px);
+  padding-left: 10px;
+}
+
+.task-body-list__item__label__text{
+  font-size:13px;
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+
+.task-time-left {
+  color: #b8B8B8;
+  margin-top: 4px;
+}
+
+.task-body-list__item__label input[type="checkbox"]{
+  vertical-align: middle;
+}
+
+.task-body-list__item .play-ico{
+  display: none;
+}
+
+.task-body-list__item:hover{
+
+  .task-time-left{
+    display:none;
+  }
+
+  .play-ico{
+    display: block;
+
+    &:before{
+      font-size: 10px;
+      position: relative;
+      margin-left: 3px;
+      top: 2px;
+    }
+  }
+
+  .flaticon-pause52:before{
+    margin-left:1px;
+  }
+}
+
