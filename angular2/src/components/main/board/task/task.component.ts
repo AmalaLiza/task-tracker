@@ -3,7 +3,7 @@ import {TaskService} from "../../task.service.ts";
 
 @Component({
     selector: 'task',
-    styleUrls: ['./src/components/main/main.css'],
+    styleUrls: ['./src/components/main/main-body.css'],
     template: `
     <div>
         <label class="task-body-list__item__label fleft">
