@@ -29,16 +29,18 @@ export default {
         };
     },
 
-    playTask(taskId:number) {
+    playTask(boardIndex:number, taskId:number) {
         return {
             type: "PLAY_TASK",
+            boardIndex,
             taskId
         };
     },
 
-    pauseTask(taskId:number) {
+    pauseTask(boardIndex:number, taskId:number) {
         return {
             type: "PAUSE_TASK",
+            boardIndex,
             taskId
         };
     },

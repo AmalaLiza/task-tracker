@@ -18,6 +18,20 @@ const initialState:BoardListType = Immutable.fromJS({
             notes: "",
             activity: "",
             createdAt: "",
+            completed: false
+        }],
+        completedTaskList:[{
+            id: 0,
+            title: "Add task",
+            description: "Add task",
+            estimatedTime: "2 hrs",
+            priority: 1,
+            progress: '10%',
+            due_date: "12-June-16",
+            dependencies: "",
+            notes: "",
+            activity: "",
+            createdAt: "",
             completed: true
         }]
     },
@@ -36,7 +50,7 @@ const initialState:BoardListType = Immutable.fromJS({
             notes:"",
             activity:"",
             createdAt:"",
-            completed: true
+            completed: false
         }, {
             id: 1,
             title: "Create designs for KAT",
@@ -62,6 +76,33 @@ const initialState:BoardListType = Immutable.fromJS({
             notes:"",
             activity:"",
             createdAt:"",
+            completed: false
+        }],
+        completedTaskList:[{
+            id: 2,
+            title: "Create designs for Blazent",
+            description:"Lorem ipsum dolor sitfusce volutpat. Arcu venenatis conubia congue cras in vitae, et viv",
+            estimatedTime: "4 hrs",
+            priority:10,
+            progress:'100%',
+            due_date: "29-June-16",
+            dependencies:"",
+            notes:"",
+            activity:"",
+            createdAt:"",
+            completed: true
+        },{
+            id: 2,
+            title: "Create designs for Blazent",
+            description:"Lorem ipsum dolor sitfusce volutpat. Arcu venenatis conubia congue cras in vitae, et viv",
+            estimatedTime: "4 hrs",
+            priority:10,
+            progress:'100%',
+            due_date: "29-June-16",
+            dependencies:"",
+            notes:"",
+            activity:"",
+            createdAt:"",
             completed: true
         }]
     }],
@@ -70,9 +111,6 @@ const initialState:BoardListType = Immutable.fromJS({
 
 export function rootReducer(state:BoardListType = initialState, action) {
 
-    console.log("state", state);
-    console.log("boardList", state.get("boardList"));
-    console.log("searchText", state.get("searchText"));
     switch (action.type) {
 
         case "ADD_BOARD":
@@ -99,6 +137,13 @@ export function rootReducer(state:BoardListType = initialState, action) {
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'], completed => !completed);
             state = state.set('searchText', state.get('searchText'));
             return state;
+
+        case "PLAY_TASK":
+           console.log("PLAY_TASK");
+
+        case "PAUSE_TASK":
+            console.log("PAUSE_TASK");
+
 
         case 'SEARCH_TASK':
             state = state.set('boardList', state.get('boardList'));

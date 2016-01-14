@@ -10,41 +10,50 @@ interface TaskProps {
     task: TaskType;
     onTaskComplete:Function;
     setCurrentTask:Function;
+    onPlayTask:Function;
+    onPauseTask:Function;
 }
 
 export default class Task extends React.Component<TaskProps, any> {
 
-    constructor(props, context){
+    constructor(props, context) {
         super(props, context);
         this.state = {};
-        this.state.playing = false;
-        this.handleClick = this.handleClick.bind(this);
+        this.state.isPlaying = true;
+        this.onTaskComplete = this.onTaskComplete.bind(this);
         this.showDesc = this.showDesc.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
     }
 
-    handleClick(){
+    onTaskComplete() {
         this.props.onTaskComplete(this.props.boardId, this.props.index);
     }
 
-    playAndPauseTask(){
-        this.props.setCurrentTask(this.props.boardId, this.props.index);
-        //this.setState({playing: this.})
+    playAndPauseTask(isPlaying) {
+        if (isPlaying) {
+            this.setState({isPlaying: false});
+            this.props.onPlayTask(this.props.boardId, this.props.index);
+        }
+        else {
+            this.setState({isPlaying: true});
+            this.props.onPauseTask(this.props.boardId, this.props.index);
+        }
+        this.props.setCurrentTask(this.props.boardId, this.props.index, isPlaying);
         document.getElementById("task_tracker").style.display = 'block';
     }
 
-    showDesc(){
+    showDesc() {
         this.props.setCurrentTask(this.props.boardId, this.props.index);
         document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
-        document.getElementById(this.props.boardId+'_'+this.props.index).className = "task-body-list__item clearfix active";
+        document.getElementById(this.props.boardId + '_' + this.props.index).className = "task-body-list__item clearfix active";
     }
 
     render() {
         return <li className="task-body-list__item clearfix" id={this.props.boardId+'_'+this.props.index}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
-                   onChange={this.handleClick}
-                    className="fleft task-body-list__item__checkbox"
+                   onChange={this.onTaskComplete}
+                   className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
                    onClick={this.showDesc}>
@@ -52,8 +61,8 @@ export default class Task extends React.Component<TaskProps, any> {
             </label>
             <a href="javascript:void(0)"
                id={this.props.boardId+'__'+this.props.index}
-               className={this.state.playing? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
-               onClick={() => {this.playAndPauseTask()}}>
+               className={this.state.isPlaying? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
+               onClick={() => {this.playAndPauseTask(this.state.isPlaying)}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>

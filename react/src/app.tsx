@@ -39,9 +39,10 @@ export class App extends React.Component<AppProps, AppState> {
         this.setTaskDesc = this.setTaskDesc.bind(this);
     }
 
-    setTaskDesc(boardId, taskId) {
+    setTaskDesc(boardId, taskId, isPlaying) {
         let {data} = this.props;
         let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+        task = task.set('isPlaying', isPlaying);
         this.setState({
             currentTask: task
         });
@@ -66,7 +67,7 @@ export class App extends React.Component<AppProps, AppState> {
                     index={index}
                     data={board}
                     onTaskCompletion={actions.taskCompleted}
-                    onTaskPlay={actions.playTask}
+                    onPlayTask={actions.playTask}
                     onPauseTask={actions.pauseTask}
                     onExpandTask={actions.expandTask}
                     onEditBoardTitle={actions.editBoardTitle}
