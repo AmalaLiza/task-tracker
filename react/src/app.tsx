@@ -37,7 +37,7 @@ export class App extends React.Component<AppProps, AppState> {
         super(props, context);
         this.state = Immutable.Map();
         this.state.currentTask = Immutable.Map();
-        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
+        this.state.descriptiveTask = Immutable.Map();
     }
 
     setDescriptiveTask(boardId, taskId) {
@@ -82,8 +82,8 @@ export class App extends React.Component<AppProps, AppState> {
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setDescriptiveTask={this.setDescriptiveTask()}
-                    setCurrentTask={this.setCurrentTask()}
+                    setDescriptiveTask={this.setDescriptiveTask}
+                    setCurrentTask={this.setCurrentTask}
                 />
             ));
 
