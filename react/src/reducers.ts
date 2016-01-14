@@ -135,7 +135,7 @@ export function rootReducer(state:BoardListType = initialState, action) {
 
         case "TASK_COMPLETED":
             let completedTask = state.getIn(['boardList', action.boardIndex, 'taskList', action.taskId]);
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.splice(action.taskId));
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.splice(action.taskId, 1));
             state = state.updateIn(['boardList', action.boardIndex, 'completedTaskList'], completedTaskList => completedTaskList.push(completedTask));
             state = state.set('searchText', state.get('searchText'));
             return state;
