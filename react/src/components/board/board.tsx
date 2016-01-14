@@ -67,11 +67,6 @@ export default class Board extends React.Component<BoardProps, any> {
                 />
             ));
 
-        var style;
-        if (!this.state.toggleTaskList) {
-            style = {display: "none"};
-        }
-
         return <div className="task-list__item fleft">
             <div className="task-header-wrapper">
                 <h2 className="task-header align-center">{this.props.data.get('title')}
@@ -88,15 +83,16 @@ export default class Board extends React.Component<BoardProps, any> {
                 <ul className="task-body-list">
                     {taskListElements}
                 </ul>
-                <div className="task-body__sub-head clearfix">
+                <div className="task-body__sub-head clearfix"
+                     style={completedTaskListElements.size?{display: "block"}:{display: "none"}}>
                     <span className="fleft">COMPLETED TASKS({completedTaskListElements.size})</span>
                     <a href="javascript:void(0)"
                        className="fright primary-link bold-text"
-                       onClick={() => {this.hideCompletedTaskList(this.state.toggleTaskList)}}>{this.state.toggleTaskList?"Hide":"Show"}
+                       onClick={()=>{this.hideCompletedTaskList(this.state.toggleTaskList)}}>{this.state.toggleTaskList?"Hide":"Show"}
                     </a>
                 </div>
                 <ul className="task-body-list strike-list"
-                    style={style}>
+                    style={this.state.toggleTaskList?{display: "block"}:{display: "none"}}>
                     {completedTaskListElements}
                 </ul>
             </div>
