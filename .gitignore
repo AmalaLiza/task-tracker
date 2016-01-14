@@ -63,3 +63,4 @@ logs
 npm-debug.log*
 
 *.scss~
+*.html~
