@@ -1,12 +1,8 @@
 .task-list {
   padding: 30px 0;
   height: 100%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 
 .task-list__item {
@@ -19,9 +15,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
   position: relative;
   max-height: 100%;
-  -webkit-flex: 0 0 330px;
-      -ms-flex: 0 0 330px;
-          flex: 0 0 330px;
+  flex: 0 0 330px;
 }
 
 .task-header-wrapper .more-ico {
@@ -195,29 +189,15 @@ ul.more-options li:last-child {
   padding: 0 0 0 25px;
   box-shadow: -3px 1px 10px rgba(0, 0, 0, 0.28);
   color: #909090;
-  -webkit-animation: rightPanelEntry 0.35s ease-in-out;
-          animation: rightPanelEntry 0.35s ease-in-out;
-}
-
-@-webkit-keyframes rightPanelEntry {
-  from {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-  to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
+  animation: rightPanelEntry 0.35s ease-in-out;
 }
 
 @keyframes rightPanelEntry {
   from {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
   }
   to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
@@ -282,16 +262,12 @@ ul.more-options li:last-child {
 }
 
 .right-panel__tabs-header {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   padding-bottom: 15px;
 }
 
 .right-panel__tabs-header__item {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   color: #2A2A2A;
   position: relative;
   padding: 4px 0 7px;

@@ -1,8 +1,7 @@
 .footer {
   background: #484B50;
   color: #fff;
-  -webkit-animation: progressTrackEntry 0.35s ease-out;
-          animation: progressTrackEntry 0.35s ease-out;
+  animation: progressTrackEntry 0.35s ease-out;
 }
 
 .daytime-track {
@@ -11,29 +10,15 @@
 
 .progress-track {
   height: 76px;
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
-}
-
-@-webkit-keyframes progressTrackEntry {
-  from {
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%);
-  }
-  to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
+  animation-delay: 0.4s;
 }
 
 @keyframes progressTrackEntry {
   from {
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 

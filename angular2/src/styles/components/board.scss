@@ -1,0 +1,151 @@
+//BOARD SCSS
+
+@import "../../stylesheets/partials/colors";
+
+.task-list {
+  padding: 30px 0;
+  height:100%;
+  display:flex;
+  align-items: flex-start;
+}
+
+.task-list__item {
+  background: #fff;
+  width: 330px;
+  margin: 10px 20px 10px 0px;
+  padding-top:15px;
+  border:1px solid $primary-border-color;
+  border-radius:8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+  position: relative;
+  max-height: 100%;
+  flex: 0 0 330px;
+}
+
+.task-header-wrapper{
+  .more-ico{
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    color: inherit;
+  }
+}
+.task-header {
+  width: calc(100% - 66px);
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.task-no{
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.task-body{
+  margin-top: 26px;
+}
+
+.task-body-list{
+  padding: 0 10px;
+
+  &.strike-list {
+    li{
+      background: #f5f5f5;
+      &:hover{
+        .task-time-left{
+          display:block;
+        }
+
+        .play-ico{
+          display:none;
+        }
+      }
+    }
+    .task-body-list__item__label{
+      text-decoration: line-through;
+    }
+
+  }
+}
+
+.task-body__sub-head {
+  background: #dfdfdf;
+  color: white;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  clear: both;
+
+  a.primary-link{
+    font-size: 13px;
+    margin-top: 1px;
+  }
+}
+
+.add-task-link {
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 22px;
+}
+
+.task-footer{
+  height:70px;
+  text-align:center;
+}
+
+.task-footer__add-task {
+  padding: 13px 10px 10px;
+  overflow: hidden;
+  border-top: 1px solid #E4E4E4;
+  margin-top: 0px;
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.task-footer__add-task__input{
+  display: block;
+  padding: 10px 15px;
+  width: 100%;
+  box-shadow: inset 1px 0px 10px rgba(0, 0, 0, 0.22);;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  color: #514B37;
+}
+
+.task-footer__add-task__button{
+  width: 60px;
+  height: 36px;
+  border: none;
+  font-size: 15px;
+  border-radius: 0 3px 3px 0;
+}
+
+ul.more-options {
+  position: absolute;
+  background: white;
+  border: 1px solid $primary-border-color;
+  right: 0;
+  top: 43px;
+  border-radius: 3px;
+  padding: 3px 0;
+  margin-right: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.19);
+  z-index: 999;
+}
+
+ul.more-options li{
+  cursor:pointer;
+  width: 155px;
+  padding: 4px 10px;
+  border-bottom: 1px solid $primary-border-color;
+  margin: 0 5px;
+
+  &:hover{
+    background:$primary-border-color;
+  }
+}
+
+ul.more-options li:last-child{
+  border-bottom: none;
+}

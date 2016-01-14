@@ -1,0 +1,42 @@
+//DAY TRACKER SCSS
+
+@import "../../stylesheets/partials/colors";
+
+.daytime-track{
+  background:$footer-secondary-background;
+}
+.daytime-track {
+  height: 35px;
+}
+
+.daytime-label{
+  color:#fff;
+  font-size: 16px;
+  margin-top: 9px;
+  margin-right: 18px;
+}
+
+.daytime-track{
+
+  .progress-bar{
+    width: calc(100% - 60px);
+    margin-top: 15px;
+  }
+
+  .progress-bar-wrapper {
+    width: calc(100% - 65px);
+  }
+
+  .progress-bar__progress{
+    background: #fff;
+
+    &:after{
+      background:#fff;
+    }
+  }
+
+  .time-indicator{
+    margin-top: 7px;
+  }
+
+}
