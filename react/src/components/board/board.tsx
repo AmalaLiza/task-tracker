@@ -6,18 +6,19 @@ import * as Immutable from "immutable";
 import {TaskType} from "../../models/TaskType";
 
 interface BoardProps {
-    key : number;
-    id : number;
-    index: number;
-    data : BoardType;
-    onTaskCompletion : Function;
-    onPlayTask : Function;
-    onPauseTask : Function;
-    onExpandTask : Function;
-    onEditBoardTitle : Function;
-    onEditTaskTitle : Function;
-    onAddTask : Function;
-    setCurrentTask :Function;
+    key:number;
+    id:number;
+    index:number;
+    data:BoardType;
+    onTaskCompletion:Function;
+    onPlayTask:Function;
+    onPauseTask:Function;
+    onExpandTask:Function;
+    onEditBoardTitle:Function;
+    onEditTaskTitle:Function;
+    onAddTask:Function;
+    setDescriptiveTask:Function;
+    setCurrentTask:Function;
 }
 
 export default class Board extends React.Component<BoardProps, any> {
@@ -45,6 +46,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     task={task}
                     onTaskComplete={this.props.onTaskCompletion}
                     setCurrentTask={this.props.setCurrentTask}
+                    setDescriptiveTask={this.props.setDescriptiveTask}
                     onPlayTask={this.props.onPlayTask}
                     onPauseTask={this.props.onPauseTask}
                 />

@@ -29,6 +29,7 @@ interface AppProps {
 
 interface AppState {
     currentTask:TaskType;
+    descriptiveTask:TaskType;
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -36,10 +37,18 @@ export class App extends React.Component<AppProps, AppState> {
         super(props, context);
         this.state = Immutable.Map();
         this.state.currentTask = Immutable.Map();
-        this.setTaskDesc = this.setTaskDesc.bind(this);
+        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
     }
 
-    setTaskDesc(boardId, taskId, isPlaying) {
+    setDescriptiveTask(boardId, taskId) {
+        let {data} = this.props;
+        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+        this.setState({
+            descriptiveTask: task
+        });
+    }
+
+    setCurrentTask(boardId, taskId, isPlaying) {
         let {data} = this.props;
         let task = data.getIn(["boardList", boardId, "taskList", taskId]);
         task = task.set('isPlaying', isPlaying);
@@ -73,7 +82,8 @@ export class App extends React.Component<AppProps, AppState> {
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setCurrentTask={this.setTaskDesc}
+                    setDescriptiveTask={this.setDescriptiveTask()}
+                    setCurrentTask={this.setCurrentTask()}
                 />
             ));
 
@@ -98,7 +108,7 @@ export class App extends React.Component<AppProps, AppState> {
                 />
             </div>
             <Description
-                task={this.state.currentTask}
+                task={this.state.descriptiveTask}
             />
         </div>
     }

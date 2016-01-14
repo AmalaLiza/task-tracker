@@ -4,5 +4,4 @@ export type BoardType = {
         id: number,
         title: string,
         taskList: TaskType[]
-
 };

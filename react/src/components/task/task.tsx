@@ -10,6 +10,7 @@ interface TaskProps {
     task: TaskType;
     onTaskComplete:Function;
     setCurrentTask:Function;
+    setDescriptiveTask:Function;
     onPlayTask?:Function;
     onPauseTask?:Function;
 }
