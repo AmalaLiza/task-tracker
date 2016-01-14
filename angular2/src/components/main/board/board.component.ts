@@ -5,7 +5,7 @@ import {TaskComponent} from "./task/task.component.ts";
 @Component({
     selector: 'board',
     directives: [TaskComponent],
-    styleUrls: ['./src/components/main/main.css'],
+    styleUrls: ['./src/components/main/main-body.css'],
     template: `
     <div class="task-list__item fleft">
         <div class="task-header-wrapper">
