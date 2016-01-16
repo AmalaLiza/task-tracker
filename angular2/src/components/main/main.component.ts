@@ -35,11 +35,11 @@ export default class MainComponent {
     }
 
 
-    addBoard(){
+    addBoard() {
         this.taskService.addBoard();
     }
 
-    toggleTask(){
+    toggleTask() {
         console.log("toggle");
     }
 

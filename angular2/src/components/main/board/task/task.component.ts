@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from "angular2/core";
+import {Component, Input} from "angular2/core";
 import {TaskService} from "../../task.service.ts";
 import {ViewEncapsulation} from 'angular2/core';
 
@@ -12,7 +12,8 @@ import {ViewEncapsulation} from 'angular2/core';
             [ngModel]="task.completed"
             (click)="toggleTask()"/>
 
-        <label class="task-body-list__item__label fleft "
+        <label (click) = "onTaskClick()"
+            class="task-body-list__item__label fleft "
             [ngClass]="{'strike-text': task.completed}">
 
             <span class="task-body-list__item__label__text">
@@ -40,9 +41,12 @@ export class TaskComponent {
         console.log("TaskComponent constructor");
     }
 
-    toggleTask(){
-        console.log("boardIndex", this.boardIndex, this.index);
+    toggleTask() {
         this.taskService.toggleTask(this.boardIndex, this.index);
+    }
+
+    onTaskClick(){
+        this.taskService.toggleRightPanel();
     }
 
 }

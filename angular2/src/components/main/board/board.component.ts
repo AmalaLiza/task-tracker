@@ -32,10 +32,14 @@ import TaskCompletedPipe from '../../../pipes/task-completed.pipe';
 
             <div class="task-body__sub-head clearfix">
                 <span class="fleft">COMPLETED TASKS(1)</span>
-                <a href="javascript:void(0)" class="fright primary-link bold-text">Hide</a>
+                <a href="javascript:void(0)"
+                    class="fright primary-link bold-text"
+                    (click)="toggleCompletedTasks()">
+                    {{(showCompletedTasks)? 'Hide' : 'Show'}}
+                </a>
             </div>
 
-           <ul class="task-body-list">
+           <ul *ngIf = "showCompletedTasks" class="task-body-list">
                 <li class="task-body-list__item clearfix"
                     *ngFor="#task of tasks| taskCompletedPipe : true, #i = index">
                     <task [task]="task"
@@ -61,13 +65,19 @@ export class BoardComponent {
     @Input() title;
     @Input() tasks;
     @Input() index;
+    showCompletedTasks:boolean;
 
     constructor(public taskService:TaskService) {
         console.log("BoardComponent constructor");
+        this.showCompletedTasks = true;
     }
 
     addTask() {
         this.taskService.addTask(this.index, 'new task');
+    }
+
+    toggleCompletedTasks() {
+        this.showCompletedTasks = !this.showCompletedTasks;
     }
 
 }

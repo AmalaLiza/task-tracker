@@ -3,6 +3,7 @@ import HeaderComponent from './components/header/header.component';
 import MainComponent from './components/main/main.component';
 import FooterComponent from './components/footer/footer.component';
 import {RightPanelComponent} from "./components/right-panel/right-panel.component";
+import {TaskService} from "./components/main/task.service";
 
 @Component({
     selector: 'app',
@@ -11,12 +12,12 @@ import {RightPanelComponent} from "./components/right-panel/right-panel.componen
         <header></header>
         <main class="main-body width-container"></main>
         <footer></footer>
-        <!--<right-panel></right-panel>-->
+        <right-panel *ngIf="taskService.showRightPanel"></right-panel>
     </div>`
 })
 
 export class AppComponent {
-    constructor(){
-        console.log("AppComponent constructor");
+
+    constructor(public taskService: TaskService){
     }
 }

@@ -6,8 +6,11 @@ import * as Immutable from "immutable";
 @Injectable()
 export class TaskService {
     boards:Immutable.List<Board>;
+    showRightPanel:boolean;
 
     constructor() {
+        this.showRightPanel = false;
+
         this.boards = Immutable.List<Board>([
             new Board("Design")
         ]);
@@ -25,5 +28,9 @@ export class TaskService {
     toggleTask(boardIndex:number, taskIndex:number) {
         //console.log("toggle",boardIndex, taskIndex,  this.boards.getIn([boardIndex, 'tasks', taskIndex]));
         this.boards = this.boards.updateIn([boardIndex, 'tasks', taskIndex], (task) => (new Task(task.text, task.estimatedTime, !task.completed)));
+    }
+
+    toggleRightPanel(){
+        this.showRightPanel = !this.showRightPanel;
     }
 }
