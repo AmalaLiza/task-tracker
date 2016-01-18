@@ -35,6 +35,7 @@ export default class Board extends React.Component<BoardProps, any> {
             event.target.value = '';
         }
     }
+
     hideCompletedTaskList() {
         this.setState({toggleTaskList: !this.state.toggleTaskList});
     }
@@ -42,14 +43,15 @@ export default class Board extends React.Component<BoardProps, any> {
     render() {
 
         let taskList:TaskType[] = this.props.data.get("taskList");
-        let completedTaskList:TaskType[] = this.props.data.get("completedTaskList");
         let taskListElements = taskList
-            .map((task, index) => (
+            .filter((task, index) => (task.get('completed') == false));
+        taskListElements = taskListElements.map((task, index) => (
                 <Task
                     key={index}
-                    index={index}
+                    index={task.get('id')}
                     boardId={this.props.index}
                     task={task}
+                    progress={this.props.progress}
                     onTaskComplete={this.props.onTaskCompletion}
                     setCurrentTask={this.props.setCurrentTask}
                     setDescriptiveTask={this.props.setDescriptiveTask}
@@ -57,17 +59,22 @@ export default class Board extends React.Component<BoardProps, any> {
                     onPauseTask={this.props.onPauseTask}
                 />
             ));
-        let completedTaskListElements = completedTaskList
-            .map((task, index) => (
-                <Task
-                    key={index}
-                    index={index}
-                    boardId={this.props.index}
-                    task={task}
-                    onTaskComplete={this.props.onTaskCompletion}
-                    setCurrentTask={this.props.setCurrentTask}
-                />
-            ));
+        let completedTaskListElements = taskList
+            .filter((task, index) => (task.get('completed') == true));
+        completedTaskListElements = completedTaskListElements.map((task, index) => (
+            <Task
+                key={index}
+                index={task.get('id')}
+                boardId={this.props.index}
+                task={task}
+                progress={this.props.progress}
+                onTaskComplete={this.props.onTaskCompletion}
+                setCurrentTask={this.props.setCurrentTask}
+                setDescriptiveTask={this.props.setDescriptiveTask}
+                onPlayTask={this.props.onPlayTask}
+                onPauseTask={this.props.onPauseTask}
+            />
+        ));
 
         return <div className="task-list__item fleft">
             <div className="task-header-wrapper">

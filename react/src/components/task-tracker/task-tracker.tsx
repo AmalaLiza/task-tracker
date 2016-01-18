@@ -1,17 +1,38 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
-import './task-tracker.scss';
 import {TaskType} from "../../models/TaskType";
+import './task-tracker.scss';
 
 interface TaskTrackerProps {
     task:TaskType;
+    setProgress:Function;
 }
 
 export default class TaskTracker extends React.Component<TaskTrackerProps, any> {
 
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.state.progress = props.task.get('progress');
+    }
+
+    componentDidMount() {
+        this.setState({progress : this.props.task.get('progress')});
+        let myTimer = () => {
+            console.log("timer started", this.state.progress);
+            this.setState({progress: this.state.progress+.05});
+        }
+        let timer = setInterval(myTimer, 1000);
+    }
+
+    componentWillReceiveProps(props){
+        if(this.props.task.get('progress')!== this.state.progress) this.props.setProgress(this.state.progress);
+        this.setState({progress : props.task.get('progress')});
+    }
+
     render() {
-        console.log(this.props)
-        return <div className="progress-track" style={{display:"none"}} id="task_tracker">
+        return <div className="progress-track"
+                    style={this.props.task.get('isPlaying')? {display:"block"} : {display:"none"}}>
             <div className="width-container clearfix">
                 <a href="javascript:void(0)"
                    className={this.props.task.get('isPlaying')? "play-ico flaticon-pause52 fleft" : 'play-ico flaticon-play128 fleft'}>
@@ -22,7 +43,8 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
                         <span>{this.props.task.get('title')}</span>
                     </div>
                     <ProgressBar
-                        progress={this.props.task.get('progress')}
+                        progress={this.state.progress}
+                        ref={this.props.childref}
                     />
                 </div>
             </div>

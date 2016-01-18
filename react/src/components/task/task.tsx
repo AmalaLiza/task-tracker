@@ -1,13 +1,14 @@
 import * as React from "react";
-import './task.scss';
 import {TaskType} from "../../models/TaskType";
 import Description from "../description/description.tsx";
+import './task.scss';
 
 interface TaskProps {
     key:number;
     index: number;
     boardId:number;
     task: TaskType;
+    progress:number;
     onTaskComplete:Function;
     setCurrentTask:Function;
     setDescriptiveTask:Function;
@@ -30,15 +31,14 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onTaskComplete(this.props.boardId, this.props.index);
     }
 
-    playAndPauseTask() {
+    playAndPauseTask(){
         this.setState({isPlaying: !this.state.isPlaying});
-        this.state.isPlaying? this.props.onPlayTask(this.props.boardId, this.props.index): this.props.onPauseTask(this.props.boardId, this.props.index);
-        this.props.setCurrentTask(this.props.boardId, this.props.index, this.state.isPlaying);
-        document.getElementById("task_tracker").style.display = 'block';
+        this.state.isPlaying? this.props.onPlayTask(this.props.boardId, this.props.index): this.props.onPauseTask(this.props.boardId, this.props.index, this.props.progress);
+        this.props.setCurrentTask(this.state.isPlaying, this.props.task);
     }
 
     showDesc() {
-        this.props.setDescriptiveTask(this.props.boardId, this.props.index);
+        this.props.setDescriptiveTask(this.props.task);
         document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
         document.getElementById(this.props.boardId + '_' + this.props.index).className = "task-body-list__item clearfix active";
     }

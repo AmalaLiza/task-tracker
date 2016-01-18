@@ -30,6 +30,7 @@ interface AppProps {
 interface AppState {
     currentTask:TaskType;
     descriptiveTask:TaskType;
+    progress:number;
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -38,27 +39,34 @@ export class App extends React.Component<AppProps, AppState> {
         this.state = Immutable.Map();
         this.state.currentTask = Immutable.Map();
         this.state.descriptiveTask = Immutable.Map();
+        this.state.progress = 0;
+        this.setProgress = this.setProgress.bind(this);
+        this.setCurrentTask = this.setCurrentTask.bind(this);
+        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
     }
 
-    setDescriptiveTask(boardId, taskId) {
-        let {data} = this.props;
-        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+    setDescriptiveTask(task) {
         this.setState({
             descriptiveTask: task
         });
     }
 
-    setCurrentTask(boardId, taskId, isPlaying) {
-        let {data} = this.props;
-        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+    setCurrentTask(isPlaying, task) {
         task = task.set('isPlaying', isPlaying);
         this.setState({
             currentTask: task
         });
     }
 
+    setProgress(progress) {
+        console.log("progress", progress);
+        this.setState({
+            progress: progress
+        });
+    }
+
     render() {
-        let {data, actions} = this.props
+        let {data, actions} = this.props;
         let boardList:BoardType[] = data.get("boardList")
         let searchText:string = data.get('searchText')
         let filteredList = Immutable.List();
@@ -72,9 +80,10 @@ export class App extends React.Component<AppProps, AppState> {
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
-                    id={board.get('id')}
+                    id={index}
                     index={index}
                     data={board}
+                    progress={this.state.progress}
                     onTaskCompletion={actions.taskCompleted}
                     onPlayTask={actions.playTask}
                     onPauseTask={actions.pauseTask}
@@ -103,9 +112,10 @@ export class App extends React.Component<AppProps, AppState> {
                 </div>
             </div>
             <div className="footer">
-                <TaskTracker
+                {this.state.currentTask.get('isPlaying')? <TaskTracker
                     task={this.state.currentTask}
-                />
+                    setProgress={this.setProgress}
+                />: null }
             </div>
             <Description
                 task={this.state.descriptiveTask}

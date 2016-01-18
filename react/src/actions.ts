@@ -37,11 +37,13 @@ export default {
         };
     },
 
-    pauseTask(boardIndex:number, taskId:number) {
+    pauseTask(boardIndex:number, taskId:number, progress:number) {
+        console.log("PAUSE_TASK", progress);
         return {
             type: "PAUSE_TASK",
             boardIndex,
-            taskId
+            taskId,
+            progress
         };
     },
 
