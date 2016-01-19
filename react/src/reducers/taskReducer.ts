@@ -52,9 +52,12 @@ export default function taskReducer(state, action) {
             return state;
 
         case "EXPAND_TASK":
+            state = state.updateIn(['boardList', state.getIn(['expandedTask', 'boardId']), 'taskList', state.getIn(['expandedTask', 'id']), 'isExpanded'],
+                isExpanded => false);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isExpanded'],
                 isExpanded => !action.isExpanded);
             state = state.set('expandedTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
+            state = state.setIn(['expandedTask', 'boardId'], action.boardId);
             return state;
 
         default:

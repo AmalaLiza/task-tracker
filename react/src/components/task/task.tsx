@@ -41,7 +41,7 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     render() {
-        return <li className={this.state.isExpanded ? "task-body-list__item clearfix active" : "task-body-list__item clearfix"}>
+        return <li className={this.props.task.get('isExpanded') ? "task-body-list__item clearfix active" : "task-body-list__item clearfix"}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
                    onChange={this.onTaskComplete}
