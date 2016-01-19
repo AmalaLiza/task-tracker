@@ -17,9 +17,10 @@ export default class Task extends React.Component<TaskProps, any> {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {};
-        this.state.isPlaying = true;
-        this.state.isExpanded = false;
+        this.state = {
+            isPlaying: this.props.task.get('isPlaying'),
+            isExpanded: false
+        };
         this.onTaskComplete = this.onTaskComplete.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
         this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
@@ -52,7 +53,7 @@ export default class Task extends React.Component<TaskProps, any> {
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
-               className={!this.props.task.get('isPlaying')? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
+               className={this.props.task.get('isPlaying')? 'play-ico flaticon-pause52 fright' :  'play-ico flaticon-play128 fright'}
                onClick={() => {this.playAndPauseTask()}}>
 
             </a>

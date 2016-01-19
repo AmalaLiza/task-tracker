@@ -47,27 +47,26 @@ export class App extends React.Component<AppProps, AppState> {
         actions.expandTask(boardId, taskId)
     }
 
-     startTaskTracker(boardId, task, isPlaying) {
-         let {data, actions} = this.props;
-         this.setState({progress: task.get('progress')});
+    startTaskTracker(boardId, task, isPlaying) {
+        let {data, actions} = this.props;
+        this.setState({progress: task.get('progress')});
 
         let myTimer = () => {
-            this.setState({progress: this.state.progress + 5});
-        };
-
+            this.setState({progress: this.state.progress + 1});
+        }
         if (isPlaying) {
-            actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
-            if(data.getIn(["activeTask", "isPlaying"]))
-                actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
-            this.timer = setInterval(myTimer, 1000);
-        } else {
             actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
             clearInterval(this.timer);
+        } else {
+            actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
+            if (data.getIn(["activeTask", "isPlaying"]))
+                actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
+            this.timer = setInterval(myTimer, 1000);
         }
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.data.getIn(["activeTask", "progress"]))
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.data.getIn(["activeTask", "progress"]))
             this.setState({progress: nextProps.data.getIn(["activeTask", "progress"])});
     }
 
@@ -121,7 +120,7 @@ export class App extends React.Component<AppProps, AppState> {
                 {activeTask.get('isPlaying')? <TaskTracker
                     task={activeTask}
                     progress={this.state.progress}
-                /> : null }
+                /> : null}
             </div>
             <Description
                 task={expandedTask}
