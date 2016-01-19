@@ -1,3 +1,4 @@
+"use strict";
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 import {BoardListType} from "../models/BoardListType";
@@ -111,10 +112,6 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case 'EXPAND_TASK':
-            state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isExpanded'],
-                isExpanded => !action.isExpanded);
-            state = state.set('expandedTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
-            return state;
 
         default:
             return state

@@ -1,3 +1,4 @@
+"use strict";
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 import {BoardListType} from "../models/BoardListType";
