@@ -80,7 +80,8 @@ const initialState:BoardListType = Immutable.fromJS({
             }]
     }],
     searchText: "",
-    activeTask: {}
+    activeTask: {},
+    expandedTask: {}
 });
 
 export function rootReducer(state:BoardListType = initialState, action) {

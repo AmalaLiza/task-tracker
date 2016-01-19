@@ -59,6 +59,7 @@ export class App extends React.Component<AppProps, AppState> {
         let {data, actions} = this.props;
         let boardList:BoardType[] = data.get("boardList");
         let activeTask:TaskType = data.get("activeTask");
+        let expandedTask:TaskType = data.get("expandedTask");
         let searchText:string = data.get('searchText');
         let filteredList = Immutable.List();
         if (searchText) {
@@ -108,7 +109,7 @@ export class App extends React.Component<AppProps, AppState> {
                 /> : null }
             </div>
             <Description
-                task={activeTask}
+                task={expandedTask}
             />
         </div>
     }
