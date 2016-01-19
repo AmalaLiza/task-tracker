@@ -63,7 +63,7 @@ export default class Board extends React.Component<BoardProps, any> {
             <Task
                 key={index}
                 index={task.get('id')}
-                boardId={this.props.index}
+                boardId={this.props.id}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
                 setDescriptiveTask={this.props.setDescriptiveTask}
