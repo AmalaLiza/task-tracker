@@ -16,7 +16,6 @@ export default class Description extends React.Component<DescProps, any> {
     }
 
     hideDesc(e){
-        console.log(e, "calling me");
         document.getElementsByClassName("right-fixed-panel-wrapper")[0].style.display = 'none';
         document.getElementsByClassName("task-body-list__item clearfix active")[0].className = "task-body-list__item clearfix";
     }
@@ -24,7 +23,8 @@ export default class Description extends React.Component<DescProps, any> {
     render() {
         return <div className="right-fixed-panel" style={{display:"none"}}>
                 <div className="right-panel__actions fright">
-                    <a href="javascript:void(0)" className="flaticon-delete96"></a>
+                    <a href="javascript:void(0)" className="flaticon-delete96">
+                    </a>
                 </div>
 
                 <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>

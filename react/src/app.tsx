@@ -43,17 +43,17 @@ export class App extends React.Component<AppProps, AppState> {
          this.setState({progress: task.get('progress')});
 
         let myTimer = () => {
-            this.setState({progress: this.state.progress + 5});
+            this.setState({progress: this.state.progress + 1});
         }
-
+        console.log("isPlaying", isPlaying);
         if (isPlaying) {
+            actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
+            clearInterval(this.timer);
+        } else {
             actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
             if(data.getIn(["activeTask", "isPlaying"]))
                 actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
             this.timer = setInterval(myTimer, 1000);
-        } else {
-            actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
-            clearInterval(this.timer);
         }
     }
 
@@ -112,7 +112,7 @@ export class App extends React.Component<AppProps, AppState> {
                 {activeTask.get('isPlaying')? <TaskTracker
                     task={activeTask}
                     progress={this.state.progress}
-                /> : null }
+                /> : null}
             </div>
             <Description
                 task={expandedTask}
