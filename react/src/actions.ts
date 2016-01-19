@@ -29,9 +29,10 @@ export default {
         };
     },
 
-    playTask(task) {
+    playTask(task, previousTaskId) {
         return {
             type: "PLAY_TASK",
+            previousTaskId,
             task
         };
     },

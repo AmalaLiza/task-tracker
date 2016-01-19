@@ -125,6 +125,7 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case "PLAY_TASK":
+            console.log("play", action)
             action.task = action.task.update('isPlaying', isPlaying => true);
             state = state.update('activeTask', activeTask => action.task);
             return state;

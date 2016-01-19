@@ -48,7 +48,7 @@ export class App extends React.Component<AppProps, AppState> {
         }
         console.log(task.get('id'), data.get("activeTask").toJS());
         if (isPlaying) {
-            actions.playTask(task);
+            actions.playTask(task, data.getIn(["activeTask", "id"]));
             this.timer = setInterval(myTimer, 1000);
         } else {
             actions.pauseTask(boardId, task.get('id'), this.state.progress)
