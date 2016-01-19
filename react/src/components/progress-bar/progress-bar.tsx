@@ -2,7 +2,7 @@ import * as React from "react";
 import './progress-bar.scss';
 
 interface ProgressBarProps{
-    progress:string;
+    progress:number;
 }
 
 export default class ProgressBar extends React.Component<ProgressBarProps, any> {

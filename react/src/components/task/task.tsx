@@ -10,10 +10,8 @@ interface TaskProps {
     task: TaskType;
     progress:number;
     onTaskComplete:Function;
-    setCurrentTask:Function;
     setDescriptiveTask:Function;
-    onPlayTask?:Function;
-    onPauseTask?:Function;
+    onPlayOrPauseTask?:Function;
 }
 
 export default class Task extends React.Component<TaskProps, any> {
@@ -33,7 +31,7 @@ export default class Task extends React.Component<TaskProps, any> {
 
     playAndPauseTask(){
         this.setState({isPlaying: !this.state.isPlaying});
-        this.state.isPlaying? this.props.onPlayTask(this.props.task): this.props.onPauseTask(this.props.task);
+        this.props.onPlayOrPauseTask(this.props.boardId, this.props.task, this.state.isPlaying);
     }
 
     showDesc() {

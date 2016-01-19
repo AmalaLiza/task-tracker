@@ -19,6 +19,7 @@ interface BoardProps {
     onEditTaskTitle:Function;
     onAddTask:Function;
     setDescriptiveTask:Function;
+    onPlayOrPauseTask:Function;
 }
 
 export default class Board extends React.Component<BoardProps, any> {
@@ -53,8 +54,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     task={task}
                     onTaskComplete={this.props.onTaskCompletion}
                     setDescriptiveTask={this.props.setDescriptiveTask}
-                    onPlayTask={this.props.onPlayTask}
-                    onPauseTask={this.props.onPauseTask}
+                    onPlayOrPauseTask={this.props.onPlayOrPauseTask}
                 />
             ));
         let completedTaskListElements = taskList
@@ -67,8 +67,6 @@ export default class Board extends React.Component<BoardProps, any> {
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
                 setDescriptiveTask={this.props.setDescriptiveTask}
-                onPlayTask={this.props.onPlayTask}
-                onPauseTask={this.props.onPauseTask}
             />
         ));
 
