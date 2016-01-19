@@ -1,11 +1,12 @@
 "use strict";
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
+import BoardType from "../models/BoardType";
+import StateType from "../models/StateType";
 import * as Immutable from 'immutable';
-import {BoardListType} from "../models/BoardListType";
 import taskReducer from "./taskReducer.ts";
 import boardReducer from "./boardReducer.ts";
 
-const initialState:BoardListType = Immutable.fromJS({
+const initialState:Immutable.Map<StateType, any> = Immutable.fromJS({
     boardList: [{
         id: 0,
         title: "Design2",
@@ -92,7 +93,7 @@ const initialState:BoardListType = Immutable.fromJS({
     expandedTask: {}
 });
 
-export function rootReducer(state:BoardListType = initialState, action) {
+export function rootReducer(state:Immutable.Map<StateType, any> = initialState, action) {
 
     switch (action.type) {
 

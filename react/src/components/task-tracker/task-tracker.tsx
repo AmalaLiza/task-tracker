@@ -1,11 +1,11 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
-import {TaskType} from "../../models/TaskType";
+import TaskType from "../../models/TaskType";
 import './task-tracker.scss';
 
 interface TaskTrackerProps {
     task:TaskType;
-    progress:number;
+    progress: number;
 }
 
 export default class TaskTracker extends React.Component<TaskTrackerProps, any> {

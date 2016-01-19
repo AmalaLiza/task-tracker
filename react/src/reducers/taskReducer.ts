@@ -1,7 +1,6 @@
 "use strict";
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
-import {BoardListType} from "../models/BoardListType";
 
 export default function taskReducer(state, action) {
     switch (action.type) {

@@ -1,9 +1,9 @@
 import './board.scss';
 import * as React from "react";
 import Task from '../task/task.tsx';
-import {BoardType} from "../../models/BoardType";
+import BoardType from "../../models/BoardType";
 import * as Immutable from "immutable";
-import {TaskType} from "../../models/TaskType";
+import TaskType from "../../models/TaskType";
 
 interface BoardProps {
     key:number;
@@ -12,9 +12,6 @@ interface BoardProps {
     data:BoardType;
     filterBy:string;
     onTaskCompletion:Function;
-    onPlayTask:Function;
-    onPauseTask:Function;
-    onExpandTask:Function;
     onEditBoardTitle:Function;
     onEditTaskTitle:Function;
     onAddTask:Function;
@@ -43,7 +40,7 @@ export default class Board extends React.Component<BoardProps, any> {
 
     render() {
 
-        let taskList:TaskType[] = this.props.data.get("taskList");
+        let taskList:Immutable.List<TaskType> = this.props.data.get("taskList");
         let taskListElements = taskList
             .filter((task, index) => (task.get('completed') == false && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         taskListElements = taskListElements.map((task, index) => (
@@ -75,7 +72,8 @@ export default class Board extends React.Component<BoardProps, any> {
                 <h2 className="task-header align-center">{this.props.data.get('title')}
                     <span className="task-no">({taskListElements.size})</span>
                 </h2>
-                <a href="javascript:void(0)" className="flaticon-show8 more-ico"></a>
+                <a href="javascript:void(0)" className="flaticon-show8 more-ico">
+                </a>
                 <ul className="more-options" style={{display:"none"}}>
                     <li>Search & Filter</li>
                     <li>Rename</li>
@@ -91,7 +89,7 @@ export default class Board extends React.Component<BoardProps, any> {
                     <span className="fleft">COMPLETED TASKS({completedTaskListElements.size})</span>
                     <a href="javascript:void(0)"
                        className="fright primary-link bold-text"
-                       onClick={()=>{this.hideCompletedTaskList(this.state.toggleTaskList)}}>{this.state.toggleTaskList?"Hide":"Show"}
+                       onClick={()=>{this.hideCompletedTaskList()}}>{this.state.toggleTaskList?"Hide":"Show"}
                     </a>
                 </div>
                 <ul className="task-body-list strike-list"

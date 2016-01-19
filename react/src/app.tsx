@@ -1,4 +1,3 @@
-import {TaskType} from "./models/TaskType";
 "use strict";
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
@@ -15,8 +14,9 @@ import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
 import Description from "./components/description/description.tsx"
-import {BoardListType} from "./models/BoardListType";
-import {BoardType} from "./models/BoardType";
+import StateType from "./models/StateType";
+import TaskType from "./models/TaskType";
+import BoardType from "./models/BoardType";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
@@ -24,26 +24,25 @@ import './fonts/flaticon.scss';
 
 interface AppProps {
     actions:any;
-    data:BoardListType;
+    data:StateType;
 }
 
 interface AppState {
     progress:number;
-    displayTaskDescription:boolean;
+    displayTaskDescription:Boolean;
 }
 
 export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {};
-        this.state.displayTaskDescription = false;
+        this.state = {displayTaskDescription : false};
         this.startTaskTracker = this.startTaskTracker.bind(this);
         this.expandTask = this.expandTask.bind(this);
     }
 
     expandTask(boardId, taskId) {
         let {actions} = this.props;
-        this.state.displayTaskDescription = true;
+        this.setState({displayTaskDescription : true});
         actions.expandTask(boardId, taskId)
     }
 
@@ -72,7 +71,7 @@ export class App extends React.Component<AppProps, AppState> {
 
     render() {
         let {data, actions} = this.props;
-        let boardList:BoardType[] = data.get("boardList");
+        let boardList:Immutable.List<BoardType> = data.get("boardList");
         let activeTask:TaskType = data.get("activeTask");
         let expandedTask:TaskType = data.get("expandedTask");
         let searchText:string = data.get('searchText');
