@@ -28,7 +28,6 @@ interface AppProps {
 }
 
 interface AppState {
-    descriptiveTask:TaskType;
     progress:number;
 }
 
@@ -36,24 +35,31 @@ export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = Immutable.Map();
-        this.state.progress = 0;
         this.startTaskTracker = this.startTaskTracker.bind(this);
     }
 
      startTaskTracker(boardId, task, isPlaying) {
-        this.setState({progress: task.get('progress')});
-        let {data, actions} = this.props;
+         let {data, actions} = this.props;
+         this.setState({progress: task.get('progress')});
+
         let myTimer = () => {
-            this.setState({progress: this.state.progress + .05});
+            this.setState({progress: this.state.progress + 5});
         }
-        console.log(task.get('id'), data.get("activeTask").toJS());
+
         if (isPlaying) {
-            actions.playTask(task, data.getIn(["activeTask", "id"]));
+            actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
+            if(data.getIn(["activeTask", "isPlaying"]))
+                actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
             this.timer = setInterval(myTimer, 1000);
         } else {
-            actions.pauseTask(boardId, task.get('id'), this.state.progress)
+            actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
             clearInterval(this.timer);
         }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.data.getIn(["activeTask", "progress"]))
+            this.setState({progress: nextProps.data.getIn(["activeTask", "progress"])});
     }
 
     render() {

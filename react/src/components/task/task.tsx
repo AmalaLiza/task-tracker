@@ -33,7 +33,8 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     render() {
-        return <li className="task-body-list__item clearfix" id={this.props.boardId+'_'+this.props.index}>
+        console.log(this.props.task.get('isPlaying'));
+        return <li className="task-body-list__item clearfix">
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
                    onChange={this.onTaskComplete}
@@ -45,8 +46,7 @@ export default class Task extends React.Component<TaskProps, any> {
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
-               id={this.props.boardId+'__'+this.props.index}
-               className={this.state.isPlaying? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
+               className={!this.props.task.get('isPlaying')? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
                onClick={() => {this.playAndPauseTask()}}>
 
             </a>

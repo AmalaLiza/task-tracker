@@ -5,7 +5,6 @@ import './description.scss';
 
 interface DescProps{
     task: TaskType;
-    setCurrentTask:Function;
 }
 
 

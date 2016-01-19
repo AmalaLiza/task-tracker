@@ -29,20 +29,21 @@ export default {
         };
     },
 
-    playTask(task, previousTaskId) {
+    playTask(boardIndex, activeTask, previousTaskId) {
         return {
             type: "PLAY_TASK",
+            boardIndex,
             previousTaskId,
-            task
+            activeTask
         };
     },
 
-    pauseTask(boardIndex, taskId, progress) {
-        console.log("PAUSE_TASK");
+    pauseTask(boardIndex, activeTask, progress, previousTask) {
         return {
             type: "PAUSE_TASK",
             boardIndex,
-            taskId,
+            activeTask,
+            previousTask,
             progress
         };
     },
