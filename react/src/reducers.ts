@@ -80,7 +80,8 @@ const initialState:BoardListType = Immutable.fromJS({
             }]
     }],
     searchText: "",
-    activeTask: {}
+    activeTask: {},
+    expandedTask: {}
 });
 
 export function rootReducer(state:BoardListType = initialState, action) {
@@ -137,6 +138,9 @@ export function rootReducer(state:BoardListType = initialState, action) {
         case 'SEARCH_TASK':
             state = state.set('boardList', state.get('boardList'));
             state = state.set('searchText', action.searchText);
+            return state;
+
+        case 'EXPAND_TASK':
             return state;
 
         default:

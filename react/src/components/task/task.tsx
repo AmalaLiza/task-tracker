@@ -20,7 +20,6 @@ export default class Task extends React.Component<TaskProps, any> {
         this.state = {};
         this.state.isPlaying = true;
         this.onTaskComplete = this.onTaskComplete.bind(this);
-        this.showDesc = this.showDesc.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
     }
 
@@ -33,12 +32,6 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onPlayOrPauseTask(this.props.boardId, this.props.task, this.state.isPlaying);
     }
 
-    showDesc() {
-        this.props.setDescriptiveTask(this.props.task);
-        document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
-        document.getElementById(this.props.boardId + '_' + this.props.index).className = "task-body-list__item clearfix active";
-    }
-
     render() {
         return <li className="task-body-list__item clearfix" id={this.props.boardId+'_'+this.props.index}>
             <input type="checkbox"
@@ -47,7 +40,7 @@ export default class Task extends React.Component<TaskProps, any> {
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-                   onClick={this.showDesc}>
+                   >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
