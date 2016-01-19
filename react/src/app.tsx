@@ -29,6 +29,7 @@ interface AppProps {
 
 interface AppState {
     descriptiveTask:TaskType;
+    progress:number;
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -36,7 +37,10 @@ export class App extends React.Component<AppProps, AppState> {
         super(props, context);
         this.state = Immutable.Map();
         this.state.descriptiveTask = Immutable.Map();
+        this.state.progress = 0;
         this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
+        this.pauseTask = this.pauseTask.bind(this);
+        this.startTaskTracker = this.startTaskTracker.bind(this);
     }
 
     setDescriptiveTask(task) {
@@ -45,9 +49,33 @@ export class App extends React.Component<AppProps, AppState> {
         });
     }
 
+    startTaskTracker(boardId, task, isPlaying) {
+        this.setState({progress: task.get('progress')});
+        let {actions} = this.props;
+        let myTimer = () => {
+            console.log("timer started", this.state.progress);
+            this.setState({progress: this.state.progress + .05});
+        }
+        if (isPlaying) {
+            console.log("playing");
+            actions.playTask(task);
+            this.timer = setInterval(myTimer, 1000);
+        } else {
+            console.log("paused");
+            actions.pauseTask(boardId, task.get('id'), this.state.progress)
+            clearInterval(this.timer);
+        }
+
+    }
+
+    pauseTask(boardId) {
+        console.log("pauseTask");
+        let {actions} = this.props;
+        actions.pauseTask(boardId, this.props.data.get('activeTask'));
+    }
+
     render() {
         let {data, actions} = this.props;
-        console.log(this.props.data.toJS());
         let boardList:BoardType[] = data.get("boardList");
         let activeTask:TaskType = data.get("activeTask");
         let searchText:string = data.get('searchText');
@@ -66,8 +94,7 @@ export class App extends React.Component<AppProps, AppState> {
                     index={index}
                     data={board}
                     onTaskCompletion={actions.taskCompleted}
-                    onPlayTask={actions.playTask}
-                    onPauseTask={actions.pauseTask}
+                    onPlayOrPauseTask={this.startTaskTracker}
                     onExpandTask={actions.expandTask}
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
@@ -92,7 +119,10 @@ export class App extends React.Component<AppProps, AppState> {
                 </div>
             </div>
             <div className="footer">
-                {activeTask.get('isPlaying')? <TaskTracker task={activeTask}/> : null }
+                {activeTask.get('isPlaying')? <TaskTracker
+                    task={activeTask}
+                    progress={this.state.progress}
+                /> : null }
             </div>
             <Description
                 task={this.state.descriptiveTask}
