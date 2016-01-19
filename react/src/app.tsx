@@ -79,11 +79,10 @@ export class App extends React.Component<AppProps, AppState> {
                     filterBy={searchText}
                     onTaskCompletion={actions.taskCompleted}
                     onPlayOrPauseTask={this.startTaskTracker}
-                    onExpandTask={actions.expandTask}
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setDescriptiveTask={actions.expandTask()}
+                    setDescriptiveTask={actions.expandTask}
                 />
             ));
 
