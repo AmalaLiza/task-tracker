@@ -95,7 +95,6 @@ export function rootReducer(state:BoardListType = initialState, action) {
                 taskList: Immutable.List()
             });
             state = state.updateIn(['boardList'], boardList => boardList.push(newBoard));
-            state = state.set('searchText', state.get('searchText'));
             return state;
 
         case "ADD_TASK":
@@ -115,13 +114,11 @@ export function rootReducer(state:BoardListType = initialState, action) {
                 completed: false
             });
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.push(newTask));
-            state = state.set('searchText', state.get('searchText'));
             return state;
 
         case "TASK_COMPLETED":
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
                 completed => !completed);
-            state = state.set('searchText', state.get('searchText'));
             return state;
 
         case "PLAY_TASK":
@@ -137,11 +134,13 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case 'SEARCH_TASK':
-            state = state.set('boardList', state.get('boardList'));
             state = state.set('searchText', action.searchText);
             return state;
 
         case 'EXPAND_TASK':
+            state = state.set('expandedTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]))
+            document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
+            document.getElementsByClassName("task-body-list__item clearfix")[0].className = "task-body-list__item clearfix active";
             return state;
 
         default:

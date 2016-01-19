@@ -74,7 +74,7 @@ export class App extends React.Component<AppProps, AppState> {
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
-                    id={index}
+                    id={board.get('id')}
                     index={index}
                     data={board}
                     filterBy={searchText}

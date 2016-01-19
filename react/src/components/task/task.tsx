@@ -40,7 +40,7 @@ export default class Task extends React.Component<TaskProps, any> {
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-
+                    onClick={() => this.props.setDescriptiveTask(this.props.boardId, this.props.index)}
                    >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
