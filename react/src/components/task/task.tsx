@@ -33,7 +33,6 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     render() {
-        console.log(this.props.task.get('isPlaying'));
         return <li className="task-body-list__item clearfix">
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
