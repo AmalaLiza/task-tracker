@@ -42,10 +42,11 @@ export class App extends React.Component<AppProps, AppState> {
 
      startTaskTracker(boardId, task, isPlaying) {
         this.setState({progress: task.get('progress')});
-        let {actions} = this.props;
+        let {data, actions} = this.props;
         let myTimer = () => {
             this.setState({progress: this.state.progress + .05});
         }
+        console.log(task.get('id'), data.get("activeTask").toJS());
         if (isPlaying) {
             actions.playTask(task);
             this.timer = setInterval(myTimer, 1000);

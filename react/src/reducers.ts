@@ -132,6 +132,7 @@ export function rootReducer(state:BoardListType = initialState, action) {
         case "PAUSE_TASK":
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress'],
                 progress => action.progress);
+            console.log(state.getIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress']));
             return state;
 
         case 'SEARCH_TASK':
