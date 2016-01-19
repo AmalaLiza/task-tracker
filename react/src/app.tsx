@@ -29,13 +29,22 @@ interface AppProps {
 
 interface AppState {
     progress:number;
+    displayTaskDescription:boolean;
 }
 
 export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = Immutable.Map();
+        this.state = {};
+        this.state.displayTaskDescription = false;
         this.startTaskTracker = this.startTaskTracker.bind(this);
+        this.expandTask = this.expandTask.bind(this);
+    }
+
+    expandTask(boardId, taskId) {
+        let {actions} = this.props;
+        this.state.displayTaskDescription = true;
+        actions.expandTask(boardId, taskId)
     }
 
      startTaskTracker(boardId, task, isPlaying) {
@@ -44,7 +53,7 @@ export class App extends React.Component<AppProps, AppState> {
 
         let myTimer = () => {
             this.setState({progress: this.state.progress + 5});
-        }
+        };
 
         if (isPlaying) {
             actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
@@ -89,7 +98,7 @@ export class App extends React.Component<AppProps, AppState> {
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setDescriptiveTask={actions.expandTask}
+                    setDescriptiveTask={this.expandTask}
                 />
             ));
 
@@ -116,6 +125,7 @@ export class App extends React.Component<AppProps, AppState> {
             </div>
             <Description
                 task={expandedTask}
+                display={this.state.displayTaskDescription}
             />
         </div>
     }

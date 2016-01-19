@@ -19,8 +19,10 @@ export default class Task extends React.Component<TaskProps, any> {
         super(props, context);
         this.state = {};
         this.state.isPlaying = true;
+        this.state.isExpanded = false;
         this.onTaskComplete = this.onTaskComplete.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
+        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
     }
 
     onTaskComplete() {
@@ -32,15 +34,20 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onPlayOrPauseTask(this.props.boardId, this.props.task, this.state.isPlaying);
     }
 
+    setDescriptiveTask(boardId, taskId){
+        this.setState({isExpanded: !this.state.isExpanded});
+        this.props.setDescriptiveTask(boardId, taskId, this.state.isExpanded);
+    }
+
     render() {
-        return <li className="task-body-list__item clearfix">
+        return <li className={this.state.isExpanded ? "task-body-list__item clearfix active" : "task-body-list__item clearfix"}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
                    onChange={this.onTaskComplete}
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-                    onClick={() => this.props.setDescriptiveTask(this.props.boardId, this.props.index)}
+                    onClick={() => this.setDescriptiveTask(this.props.boardId, this.props.index)}
                    >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>

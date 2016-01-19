@@ -5,6 +5,7 @@ import './description.scss';
 
 interface DescProps{
     task: TaskType;
+    display: boolean;
 }
 
 
@@ -22,7 +23,8 @@ export default class Description extends React.Component<DescProps, any> {
     }
 
     render() {
-        return <div className="right-fixed-panel" style={{display:"none"}}>
+        let {display} = this.props;
+        return <div className="right-fixed-panel" style={display ? {display:"block"} : {display:"none"}}>
                 <div className="right-panel__actions fright">
                     <a href="javascript:void(0)" className="flaticon-delete96"></a>
                 </div>
