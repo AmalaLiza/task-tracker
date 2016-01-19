@@ -33,8 +33,7 @@ export default class Task extends React.Component<TaskProps, any> {
 
     playAndPauseTask(){
         this.setState({isPlaying: !this.state.isPlaying});
-        this.state.isPlaying? this.props.onPlayTask(this.props.boardId, this.props.index): this.props.onPauseTask(this.props.boardId, this.props.index, this.props.progress);
-        this.props.setCurrentTask(this.state.isPlaying, this.props.task);
+        this.state.isPlaying? this.props.onPlayTask(this.props.task): this.props.onPauseTask(this.props.task);
     }
 
     showDesc() {

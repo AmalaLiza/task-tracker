@@ -29,21 +29,18 @@ export default {
         };
     },
 
-    playTask(boardIndex:number, taskId:number) {
+    playTask(task) {
         return {
             type: "PLAY_TASK",
-            boardIndex,
-            taskId
+            task
         };
     },
 
-    pauseTask(boardIndex:number, taskId:number, progress:number) {
-        console.log("PAUSE_TASK", progress);
+    pauseTask(task) {
+        console.log("PAUSE_TASK");
         return {
             type: "PAUSE_TASK",
-            boardIndex,
-            taskId,
-            progress
+            task
         };
     },
 

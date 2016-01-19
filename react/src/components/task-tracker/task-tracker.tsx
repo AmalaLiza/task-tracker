@@ -26,7 +26,7 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
     }
 
     componentWillReceiveProps(props){
-        if(this.props.task.get('progress')!== this.state.progress) this.props.setProgress(this.state.progress);
+        this.props.task.update('progress', progress => this.state.progress);
         this.setState({progress : props.task.get('progress')});
     }
 
@@ -44,7 +44,6 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
                     </div>
                     <ProgressBar
                         progress={this.state.progress}
-                        ref={this.props.childref}
                     />
                 </div>
             </div>

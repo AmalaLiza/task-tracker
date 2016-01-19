@@ -5,41 +5,9 @@ import {BoardListType} from "./models/BoardListType";
 const initialState:BoardListType = Immutable.fromJS({
     boardList: [{
         id: 0,
-        title: "Design1",
+        title: "Design2",
         taskList: [
             {
-                id: 0,
-                title: "Add task",
-                description: "Add task",
-                estimatedTime: "2 hrs",
-                priority: 1,
-                progress: 10,
-                due_date: "12-June-16",
-                dependencies: "",
-                notes: "",
-                activity: "",
-                createdAt: "",
-                completed: false
-            },
-            {
-                id: 1,
-                title: "Add task task",
-                description: "Add task",
-                estimatedTime: "2 hrs",
-                priority: 1,
-                progress: 10,
-                due_date: "12-June-16",
-                dependencies: "",
-                notes: "",
-                activity: "",
-                createdAt: "",
-                completed: true
-            }]
-    },
-        {
-            id: 0,
-            title: "Design2",
-            taskList: [{
                 id: 0,
                 title: "Create designs",
                 description: "Lorem ipsum dolor sit amet, vel feugiat, non vel cras. Lectus magna mattis lectus aliquam est, dictum sed sapien, morbi fusce volutpat. Arcu venenatis conubia congue cras in vitae, et viverra dapibus. Arcu ultrices aspernatur urna sit risus varius, vulputate mi ultrices fermentum, aliquam a fermentum vivamus aenean, eos arcu imperdiet mauris torquent vitae. Aenean lectus sodales per elit aliquam, phasellus ac at, tristique vitae ligula viverra elit quisque volutpat. Tristique faucibus ridiculus sed, morbi mauris vestibulum a dolor augue tortor, sapien maecenas malesuada sed aliquet velit nunc. Mi fugiat euismod magna, lacinia commodo eleifend, parturient metus, iaculis elit vivamus non eu orci a. Suspendisse ut, tincidunt venenatis semper. Donec justo maecenas magna donec, turpis amet curabitur bibendum. Maecenas eget mauris phasellus nibh, integer orci, varius ipsum velit praesent.",
@@ -51,6 +19,7 @@ const initialState:BoardListType = Immutable.fromJS({
                 notes: "",
                 activity: "",
                 createdAt: "",
+                isPlaying: false,
                 completed: false
             }, {
                 id: 1,
@@ -64,6 +33,7 @@ const initialState:BoardListType = Immutable.fromJS({
                 notes: "",
                 activity: "",
                 createdAt: "",
+                isPlaying: false,
                 completed: false
             }, {
                 id: 2,
@@ -77,6 +47,7 @@ const initialState:BoardListType = Immutable.fromJS({
                 notes: "",
                 activity: "",
                 createdAt: "",
+                isPlaying: false,
                 completed: false
             }, {
                 id: 3,
@@ -90,6 +61,7 @@ const initialState:BoardListType = Immutable.fromJS({
                 notes: "",
                 activity: "",
                 createdAt: "",
+                isPlaying: false,
                 completed: true
             }, {
                 id: 4,
@@ -103,10 +75,12 @@ const initialState:BoardListType = Immutable.fromJS({
                 notes: "",
                 activity: "",
                 createdAt: "",
+                isPlaying: false,
                 completed: true
-            }],
-            searchText: ""
-        }]
+            }]
+    }],
+    searchText: "",
+    activeTask: {}
 });
 
 export function rootReducer(state:BoardListType = initialState, action) {
@@ -151,15 +125,15 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case "PLAY_TASK":
-            console.log("PLAY_TASK")
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress'],
-                completed => completed);
+            console.log("PLAY_TASK");
+            action.task = action.task.update('isPlaying', isPlaying => true);
+            state = state.update('activeTask', activeTask => action.task);
             return state;
 
         case "PAUSE_TASK":
-            console.log("PAUSE_TASK", action, state.getIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress']))
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress'],
-            completed => action.progress);
+            console.log("PAUSE_TASK", action.task.toJS())
+            //state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress'],
+               // completed => action.progress);
 
             return state;
 
