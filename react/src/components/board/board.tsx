@@ -47,16 +47,16 @@ export default class Board extends React.Component<BoardProps, any> {
         let taskListElements = taskList
             .filter((task, index) => (task.get('completed') == false && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         taskListElements = taskListElements.map((task, index) => (
-                <Task
-                    key={index}
-                    index={task.get('id')}
-                    boardId={this.props.index}
-                    task={task}
-                    onTaskComplete={this.props.onTaskCompletion}
-                    setDescriptiveTask={this.props.setDescriptiveTask}
-                    onPlayOrPauseTask={this.props.onPlayOrPauseTask}
-                />
-            ));
+            <Task
+                key={index}
+                index={task.get('id')}
+                boardId={this.props.index}
+                task={task}
+                onTaskComplete={this.props.onTaskCompletion}
+                setDescriptiveTask={this.props.setDescriptiveTask}
+                onPlayOrPauseTask={this.props.onPlayOrPauseTask}
+            />
+        ));
         let completedTaskListElements = taskList
             .filter((task, index) => (task.get('completed') == true && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         completedTaskListElements = completedTaskListElements.map((task, index) => (

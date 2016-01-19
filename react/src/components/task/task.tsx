@@ -8,7 +8,6 @@ interface TaskProps {
     index: number;
     boardId:number;
     task: TaskType;
-    progress:number;
     onTaskComplete:Function;
     setDescriptiveTask:Function;
     onPlayOrPauseTask?:Function;
