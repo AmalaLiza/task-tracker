@@ -46,9 +46,10 @@ export default {
         };
     },
 
-    expandTask(taskId:number) {
+    expandTask(boardId:number, taskId:number) {
         return {
             type: "EXPAND_TASK",
+            boardId,
             taskId
         };
     },

@@ -138,6 +138,9 @@ export function rootReducer(state:BoardListType = initialState, action) {
             state = state.set('searchText', action.searchText);
             return state;
 
+        case 'EXPAND_TASK':
+            return state;
+
         default:
             return state
     }

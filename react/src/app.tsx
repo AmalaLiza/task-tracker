@@ -36,19 +36,11 @@ export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = Immutable.Map();
-        this.state.descriptiveTask = Immutable.Map();
         this.state.progress = 0;
-        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
         this.startTaskTracker = this.startTaskTracker.bind(this);
     }
 
-    setDescriptiveTask(task) {
-        this.setState({
-            descriptiveTask: task
-        });
-    }
-
-    startTaskTracker(boardId, task, isPlaying) {
+     startTaskTracker(boardId, task, isPlaying) {
         this.setState({progress: task.get('progress')});
         let {actions} = this.props;
         let myTimer = () => {
@@ -90,7 +82,7 @@ export class App extends React.Component<AppProps, AppState> {
                     onEditBoardTitle={actions.editBoardTitle}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setDescriptiveTask={this.setDescriptiveTask}
+                    setDescriptiveTask={actions.expandTask()}
                 />
             ));
 
@@ -116,7 +108,7 @@ export class App extends React.Component<AppProps, AppState> {
                 /> : null }
             </div>
             <Description
-                task={this.state.descriptiveTask}
+                task={activeTask}
             />
         </div>
     }
