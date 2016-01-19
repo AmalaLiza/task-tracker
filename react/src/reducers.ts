@@ -118,23 +118,19 @@ export function rootReducer(state:BoardListType = initialState, action) {
             return state;
 
         case "TASK_COMPLETED":
-            console.log("TASK_COMPLETED", action)
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
                 completed => !completed);
             state = state.set('searchText', state.get('searchText'));
             return state;
 
         case "PLAY_TASK":
-            console.log("PLAY_TASK");
             action.task = action.task.update('isPlaying', isPlaying => true);
             state = state.update('activeTask', activeTask => action.task);
             return state;
 
         case "PAUSE_TASK":
-            console.log("PAUSE_TASK", action);
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress'],
                 progress => action.progress);
-            console.log(state.getIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'progress']));
             return state;
 
         case 'SEARCH_TASK':

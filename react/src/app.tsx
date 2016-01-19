@@ -39,7 +39,6 @@ export class App extends React.Component<AppProps, AppState> {
         this.state.descriptiveTask = Immutable.Map();
         this.state.progress = 0;
         this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
-        this.pauseTask = this.pauseTask.bind(this);
         this.startTaskTracker = this.startTaskTracker.bind(this);
     }
 
@@ -53,25 +52,15 @@ export class App extends React.Component<AppProps, AppState> {
         this.setState({progress: task.get('progress')});
         let {actions} = this.props;
         let myTimer = () => {
-            console.log("timer started", this.state.progress);
             this.setState({progress: this.state.progress + .05});
         }
         if (isPlaying) {
-            console.log("playing");
             actions.playTask(task);
             this.timer = setInterval(myTimer, 1000);
         } else {
-            console.log("paused");
             actions.pauseTask(boardId, task.get('id'), this.state.progress)
             clearInterval(this.timer);
         }
-
-    }
-
-    pauseTask(boardId) {
-        console.log("pauseTask");
-        let {actions} = this.props;
-        actions.pauseTask(boardId, this.props.data.get('activeTask'));
     }
 
     render() {
