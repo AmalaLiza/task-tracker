@@ -2,8 +2,8 @@
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 import {BoardListType} from "../models/BoardListType";
-import taskReducer from "./taskReducer";
-import boardReducer from "./boardReducer";
+import taskReducer from "./taskReducer.ts";
+import boardReducer from "./boardReducer.ts";
 
 const initialState:BoardListType = Immutable.fromJS({
     boardList: [{
@@ -99,21 +99,21 @@ export function rootReducer(state:BoardListType = initialState, action) {
         case "ADD_BOARD":
         case "RENAME_BOARD":
         case "DELETE_BOARD":
-            boardReducer(state, action);
+            return boardReducer(state, action);
 
         case "ADD_TASK":
         case "TASK_COMPLETED":
         case "PLAY_TASK":
         case "PAUSE_TASK":
-            taskReducer(state, action);
+        case 'EXPAND_TASK':
+            return taskReducer(state, action);
 
         case 'SEARCH_TASK':
             state = state.set('searchText', action.searchText);
             return state;
 
-        case 'EXPAND_TASK':
 
         default:
-            return state
+            return state;
     }
 }
