@@ -10,6 +10,7 @@ interface BoardProps {
     id:number;
     index:number;
     data:BoardType;
+    filterBy:string;
     onTaskCompletion:Function;
     onPlayTask:Function;
     onPauseTask:Function;
@@ -43,7 +44,7 @@ export default class Board extends React.Component<BoardProps, any> {
 
         let taskList:TaskType[] = this.props.data.get("taskList");
         let taskListElements = taskList
-            .filter((task, index) => (task.get('completed') == false));
+            .filter((task, index) => (task.get('completed') == false && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         taskListElements = taskListElements.map((task, index) => (
                 <Task
                     key={index}
@@ -57,7 +58,7 @@ export default class Board extends React.Component<BoardProps, any> {
                 />
             ));
         let completedTaskListElements = taskList
-            .filter((task, index) => (task.get('completed') == true));
+            .filter((task, index) => (task.get('completed') == true && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         completedTaskListElements = completedTaskListElements.map((task, index) => (
             <Task
                 key={index}
