@@ -28,7 +28,7 @@ export default class Description extends React.Component<DescProps, any> {
                 </div>
 
                 <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>
-                <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header" style={display:"none"}/>
+                <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header" style={{display:"none"}}/>
                 <div className="right-panel__content">
                     <div className="right-panel-sub-section">
                         <div className="accordion-head">
