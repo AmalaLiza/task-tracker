@@ -35,29 +35,37 @@ interface AppState {
 export class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {displayTaskDescription : false};
+        this.state = {
+            displayTaskDescription : false
+        };
         this.startTaskTracker = this.startTaskTracker.bind(this);
         this.expandTask = this.expandTask.bind(this);
     }
 
     expandTask(boardId, taskId) {
         let {actions} = this.props;
-        this.setState({displayTaskDescription : true});
+        this.setState({
+            displayTaskDescription : true
+        });
         actions.expandTask(boardId, taskId)
     }
 
-    startTaskTracker(boardId, task, isPlaying) {
+    startTaskTracker(boardId, taskId, isPlaying) {
         let {data, actions} = this.props;
-        this.setState({progress: task.get('progress')});
+        this.setState({
+            progress: data.getIn(['boardList', boardId, 'taskList', 'taskId', 'progress'])
+        });
 
         let myTimer = () => {
-            this.setState({progress: this.state.progress + 1});
+            this.setState({
+                progress: this.state.progress + 0.5
+            });
         }
         if (isPlaying) {
             actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
             clearInterval(this.timer);
         } else {
-            actions.playTask(boardId, task, data.getIn(["activeTask", "id"]));
+            actions.playTask(boardId, taskId);
             if (data.getIn(["activeTask", "isPlaying"]))
                 actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
             this.timer = setInterval(myTimer, 1000);
@@ -66,7 +74,9 @@ export class App extends React.Component<AppProps, AppState> {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.data.getIn(["activeTask", "progress"]))
-            this.setState({progress: nextProps.data.getIn(["activeTask", "progress"])});
+            this.setState({
+                progress: nextProps.data.getIn(["activeTask", "progress"])
+            });
     }
 
     render() {
@@ -117,7 +127,7 @@ export class App extends React.Component<AppProps, AppState> {
             </div>
             <div className="footer">
                 {activeTask.get('isPlaying')? <TaskTracker
-                    task={activeTask}
+                    activeTask={activeTask}
                     progress={this.state.progress}
                 /> : null}
             </div>

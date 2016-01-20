@@ -30,13 +30,17 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onTaskComplete(this.props.boardId, this.props.index);
     }
 
-    playAndPauseTask(){
-        this.setState({isPlaying: !this.state.isPlaying});
-        this.props.onPlayOrPauseTask(this.props.boardId, this.props.task, this.state.isPlaying);
+    playAndPauseTask(boardId, taskId){
+        this.setState({
+            isPlaying: !this.props.task.get('isPlaying')
+        });
+        this.props.onPlayOrPauseTask(boardId, taskId, this.props.task.get('isPlaying'));
     }
 
     setDescriptiveTask(boardId, taskId){
-        this.setState({isExpanded: !this.state.isExpanded});
+        this.setState({
+            isExpanded: !this.state.isExpanded
+        });
         this.props.setDescriptiveTask(boardId, taskId, this.state.isExpanded);
     }
 
@@ -54,7 +58,7 @@ export default class Task extends React.Component<TaskProps, any> {
             </label>
             <a href="javascript:void(0)"
                className={this.props.task.get('isPlaying')? 'play-ico flaticon-pause52 fright' :  'play-ico flaticon-play128 fright'}
-               onClick={() => {this.playAndPauseTask()}}>
+               onClick={() => {this.playAndPauseTask(this.props.boardId, this.props.index)}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>

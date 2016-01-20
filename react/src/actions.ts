@@ -29,12 +29,11 @@ export default {
         };
     },
 
-    playTask(boardIndex, activeTask, previousTaskId) {
+    playTask(boardId, taskId) {
         return {
             type: "PLAY_TASK",
-            boardIndex,
-            previousTaskId,
-            activeTask
+            boardId,
+            taskId
         };
     },
 

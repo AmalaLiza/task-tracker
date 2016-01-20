@@ -32,17 +32,17 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PLAY_TASK":
-            console.log("play");
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'isPlaying'],
-                isPlaying => !isPlaying);
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.previousTaskId, 'isPlaying'],
-                isPlaying => !isPlaying);
-            action.activeTask = action.activeTask.update('isPlaying', isPlaying => true);
-            state = state.update('activeTask', activeTask => action.activeTask);
+            state = state.updateIn(['boardList', state.getIn(['activeTask', 'boardId']), 'taskList', state.getIn(['activeTask', 'id']), 'isPlaying'],
+                isPlaying => false);
+            state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
+                isPlaying => true);
+            state = state.set('activeTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
+            state = state.setIn(['activeTask', 'boardId'], action.boardId);
+            //action.activeTask = action.activeTask.update('isPlaying', isPlaying => true);
+            //state = state.update('activeTask', activeTask => action.activeTask);
             return state;
 
         case "PAUSE_TASK":
-            console.log("pause");
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'progress'],
                 progress => action.progress);
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'isPlaying'],
