@@ -37,20 +37,20 @@ export default {
         };
     },
 
-    playTask(boardId, taskId) {
+    playTask(boardId:number, taskId:number, progress:number) {
         return {
             type: "PLAY_TASK",
             boardId,
-            taskId
+            taskId,
+            progress
         };
     },
 
-    pauseTask(boardIndex, activeTask, progress, previousTask) {
+    pauseTask(boardId:number, taskId:number, progress:number) {
         return {
             type: "PAUSE_TASK",
-            boardIndex,
-            activeTask,
-            previousTask,
+            boardId,
+            taskId,
             progress
         };
     },

@@ -33,8 +33,6 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PLAY_TASK":
-            state = state.updateIn(['boardList', state.getIn(['activeTask', 'boardId']), 'taskList', state.getIn(['activeTask', 'id']), 'isPlaying'],
-                isPlaying => false);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
                 isPlaying => true);
             state = state.set('activeTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
@@ -42,12 +40,11 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PAUSE_TASK":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'progress'],
+            state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'progress'],
                 progress => action.progress);
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'isPlaying'],
+            state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
                 isPlaying => false);
-            if(!action.previousTask)
-                state = state.updateIn(['activeTask','progress'], progress => action.progress);
+            state = state.updateIn(['activeTask','progress'], progress => action.progress);
             return state;
 
         case "EXPAND_TASK":

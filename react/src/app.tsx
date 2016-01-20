@@ -31,7 +31,8 @@ export class App extends React.Component<any, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            displayTaskDescription : false
+            progress: 0,
+            displayTaskDescription: false
         };
         this.startTaskTracker = this.startTaskTracker.bind(this);
         this.expandTask = this.expandTask.bind(this);
@@ -48,21 +49,22 @@ export class App extends React.Component<any, AppState> {
     startTaskTracker(boardId, taskId, isPlaying) {
         let {data, actions} = this.props;
         this.setState({
-            progress: data.getIn(['boardList', boardId, 'taskList', 'taskId', 'progress'])
+            progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress'])
         });
-
         let myTimer = () => {
             this.setState({
                 progress: this.state.progress + 0.5
             });
+            console.log('progress', this.state.progress);
         }
         if (isPlaying) {
-            actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
+            actions.pauseTask(boardId, taskId, this.state.progress)
             clearInterval(this.timer);
         } else {
-            actions.playTask(boardId, taskId);
             if (data.getIn(["activeTask", "isPlaying"]))
-                actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
+                actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "id"]), this.state.progress);
+            clearInterval(this.timer);
+            actions.playTask(boardId, taskId, this.state.progress);
             this.timer = setInterval(myTimer, 1000);
         }
     }
