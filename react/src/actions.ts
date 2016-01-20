@@ -6,10 +6,18 @@ export default {
         };
     },
 
-    editBoardTitle(boardId:number) {
+    renameBoard(newTitle, boardIndex:number) {
         return {
-            type: "EDIT_BOARD_TITLE",
-            boardId
+            type: "RENAME_BOARD",
+            boardIndex,
+            newTitle
+        };
+    },
+
+    deleteBoard(boardIndex:number) {
+        return {
+            type: "DELETE_BOARD",
+            boardIndex
         };
     },
 
@@ -63,10 +71,11 @@ export default {
         };
     },
 
-    deleteTask(taskId:number) {
+    deleteTask(taskId:number, boardIndex:number) {
         return {
             type: "DELETE_TASK",
-            taskId
+            taskId,
+            boardIndex
         };
     },
 

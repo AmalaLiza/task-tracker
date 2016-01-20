@@ -22,17 +22,12 @@ import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
 import './fonts/flaticon.scss';
 
-interface AppProps {
-    actions:any;
-    data:StateType;
-}
-
 interface AppState {
     progress:number;
     displayTaskDescription:Boolean;
 }
 
-export class App extends React.Component<AppProps, AppState> {
+export class App extends React.Component<any, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -103,9 +98,10 @@ export class App extends React.Component<AppProps, AppState> {
                     filterBy={searchText}
                     onTaskCompletion={actions.taskCompleted}
                     onPlayOrPauseTask={this.startTaskTracker}
-                    onEditBoardTitle={actions.editBoardTitle}
+                    renameBoard={actions.renameBoard}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
+                    onDeleteBoard={actions.deleteBoard}
                     setDescriptiveTask={this.expandTask}
                 />
             ));
@@ -134,6 +130,7 @@ export class App extends React.Component<AppProps, AppState> {
             <Description
                 task={expandedTask}
                 display={this.state.displayTaskDescription}
+                onDeleteTask={actions.deleteTask}
             />
         </div>
     }

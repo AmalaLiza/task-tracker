@@ -6,6 +6,7 @@ import './description.scss';
 interface DescProps{
     task: TaskType;
     display: Immutable.Map<string, string>;
+    onDeleteTask:Function;
 }
 
 
@@ -16,10 +17,13 @@ export default class Description extends React.Component<DescProps, any> {
     }
 
     render() {
-        let {display} = this.props;
-        return <div className="right-fixed-panel" style={display ? {display:"block"} : {display:"none"}}>
+        return <div className="right-fixed-panel" style={this.props.display ? {display:"block"} : {display:"none"}}>
                 <div className="right-panel__actions fright">
-                    <a href="javascript:void(0)" className="flaticon-delete96">
+                    <a href="javascript:void(0)"
+                       className="flaticon-delete96"
+                       onClick={() => {
+                       this.props.onDeleteTask(this.props.task.get('id'), this.props.task.get('boardId'));}}
+                        >
                     </a>
                 </div>
 

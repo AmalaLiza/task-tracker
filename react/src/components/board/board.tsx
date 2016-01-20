@@ -12,19 +12,23 @@ interface BoardProps {
     data:BoardType;
     filterBy:string;
     onTaskCompletion:Function;
-    onEditBoardTitle:Function;
+    renameBoard:Function;
     onEditTaskTitle:Function;
     onAddTask:Function;
     setDescriptiveTask:Function;
     onPlayOrPauseTask:Function;
+    onDeleteBoard:Function;
 }
 
 export default class Board extends React.Component<BoardProps, any> {
 
     constructor() {
         super();
-        this.state = {};
-        this.state.toggleTaskList = true;
+        this.state = {
+            showCompletedList: false,
+            showMoreOptions: false,
+            showRenameInput: false
+        };
     }
 
     onAddTask(event, boardIndex:number) {
@@ -34,15 +38,21 @@ export default class Board extends React.Component<BoardProps, any> {
         }
     }
 
-    hideCompletedTaskList() {
-        this.setState({toggleTaskList: !this.state.toggleTaskList});
+    renameBoard(event, boardIndex:number) {
+        console.log("input onchange");
+        if (event.keyCode === 13) {
+            this.props.renameBoard(event.target.value, boardIndex);
+            event.target.value = '';
+            this.setState({showRenameInput: false});
+        }
     }
 
     render() {
 
-        let taskList:Immutable.List<TaskType> = this.props.data.get("taskList");
+        let taskList:Immutable.List<any> = this.props.data.get("taskList");
         let taskListElements = taskList
-            .filter((task, index) => (task.get('completed') == false && task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
+            .filter((task, index) => (task.get('completed') == false &&
+            task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
         taskListElements = taskListElements.map((task, index) => (
             <Task
                 key={index}
@@ -69,15 +79,29 @@ export default class Board extends React.Component<BoardProps, any> {
 
         return <div className="task-list__item fleft">
             <div className="task-header-wrapper">
-                <h2 className="task-header align-center">{this.props.data.get('title')}
+                <h2 className="task-header align-center"
+                    style={this.state.showRenameInput?{display: "none"}:{display: "block"}}
+                >{this.props.data.get('title')}
                     <span className="task-no">({taskListElements.size})</span>
                 </h2>
-                <a href="javascript:void(0)" className="flaticon-show8 more-ico">
+                <input style={this.state.showRenameInput?{display: "block"}:{display: "none"}}
+                       onKeyDown={(event) => {this.renameBoard(event, this.props.data.get('id'))}}
+                       defaultValue={this.props.data.get('title')}/>
+                <a href="javascript:void(0)"
+                   className="flaticon-show8 more-ico"
+                   onClick={ () => {this.setState({showMoreOptions: !this.state.showMoreOptions})}}>
                 </a>
-                <ul className="more-options" style={{display:"none"}}>
-                    <li>Search & Filter</li>
-                    <li>Rename</li>
-                    <li>Delete Board</li>
+                <ul className="more-options"
+                    style={this.state.showMoreOptions?{display: "block"}:{display: "none"}}>
+                    <li>Search</li>
+                    <li onClick={() => {
+                        this.setState({showMoreOptions: !this.state.showMoreOptions});
+                        this.setState({showRenameInput: true});
+                    }}>Rename</li>
+                    <li onClick={() => {
+                        this.props.onDeleteBoard(this.props.data.get('id'));
+                        this.setState({showMoreOptions: !this.state.showMoreOptions});
+                    }}>Delete Board</li>
                 </ul>
             </div>
             <div className="task-body">
@@ -85,15 +109,16 @@ export default class Board extends React.Component<BoardProps, any> {
                     {taskListElements}
                 </ul>
                 <div className="task-body__sub-head clearfix"
-                     style={completedTaskListElements.size?{display: "block"}:{display: "none"}}>
+                     style={ completedTaskListElements.size?{display: "block"}:{display: "none"} }>
                     <span className="fleft">COMPLETED TASKS({completedTaskListElements.size})</span>
                     <a href="javascript:void(0)"
                        className="fright primary-link bold-text"
-                       onClick={()=>{this.hideCompletedTaskList()}}>{this.state.toggleTaskList?"Hide":"Show"}
+                       onClick={ () => {this.setState({showCompletedList: !this.state.showCompletedList})}}>
+                        {this.state.showCompletedList?"Hide":"Show"}
                     </a>
                 </div>
                 <ul className="task-body-list strike-list"
-                    style={this.state.toggleTaskList?{display: "block"}:{display: "none"}}>
+                    style={this.state.showCompletedList?{display: "block"}:{display: "none"}}>
                     {completedTaskListElements}
                 </ul>
             </div>

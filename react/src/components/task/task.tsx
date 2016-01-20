@@ -1,5 +1,5 @@
 import * as React from "react";
-import {TaskType} from "../../models/TaskType";
+import TaskType from "../../models/TaskType";
 import Description from "../description/description.tsx";
 import './task.scss';
 
