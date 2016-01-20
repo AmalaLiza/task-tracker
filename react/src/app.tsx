@@ -25,15 +25,13 @@ import './fonts/flaticon.scss';
 interface AppState {
     progress:number;
     displayTaskDescription:Boolean;
-    descriptionBoardId:number;
 }
 
 export class App extends React.Component<any, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            displayTaskDescription : false,
-            descriptionBoardId:-1
+            displayTaskDescription : false
         };
         this.startTaskTracker = this.startTaskTracker.bind(this);
         this.expandTask = this.expandTask.bind(this);
@@ -42,7 +40,6 @@ export class App extends React.Component<any, AppState> {
     expandTask(boardId, taskId) {
         let {actions} = this.props;
         this.setState({displayTaskDescription : true});
-        this.setState({descriptionBoardId : boardId});
         actions.expandTask(boardId, taskId)
     }
 
@@ -126,7 +123,6 @@ export class App extends React.Component<any, AppState> {
                 task={expandedTask}
                 display={this.state.displayTaskDescription}
                 onDeleteTask={actions.deleteTask}
-                descriptionBoardId={this.state.descriptionBoardId}
             />
         </div>
     }
