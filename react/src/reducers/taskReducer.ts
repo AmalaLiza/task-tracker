@@ -23,7 +23,8 @@ export default function taskReducer(state, action) {
                 isExpanded:false,
                 completed: false
             });
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList'], taskList => taskList.push(newTask));
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
+                taskList => taskList.push(newTask));
             return state;
 
         case "TASK_COMPLETED":
@@ -32,7 +33,6 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PLAY_TASK":
-            console.log("play");
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'isPlaying'],
                 isPlaying => !isPlaying);
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.previousTaskId, 'isPlaying'],
@@ -42,7 +42,6 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PAUSE_TASK":
-            console.log("pause");
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'progress'],
                 progress => action.progress);
             state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.activeTask.get('id'), 'isPlaying'],
@@ -58,6 +57,12 @@ export default function taskReducer(state, action) {
                 isExpanded => !action.isExpanded);
             state = state.set('expandedTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
             state = state.setIn(['expandedTask', 'boardId'], action.boardId);
+            return state;
+
+        case "DELETE_TASK":
+            console.log("DELETE_TASK");
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
+                taskList => taskList.splice(action.taskId, 1));
             return state;
 
         default:

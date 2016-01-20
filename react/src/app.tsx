@@ -22,20 +22,19 @@ import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
 import './fonts/flaticon.scss';
 
-interface AppProps {
-    actions:any;
-    data:StateType;
-}
-
 interface AppState {
     progress:number;
     displayTaskDescription:Boolean;
+    descriptionBoardId:number;
 }
 
-export class App extends React.Component<AppProps, AppState> {
+export class App extends React.Component<any, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {displayTaskDescription : false};
+        this.state = {
+            displayTaskDescription : false,
+            descriptionBoardId:-1
+        };
         this.startTaskTracker = this.startTaskTracker.bind(this);
         this.expandTask = this.expandTask.bind(this);
     }
@@ -43,6 +42,7 @@ export class App extends React.Component<AppProps, AppState> {
     expandTask(boardId, taskId) {
         let {actions} = this.props;
         this.setState({displayTaskDescription : true});
+        this.setState({descriptionBoardId : boardId});
         actions.expandTask(boardId, taskId)
     }
 
@@ -93,9 +93,10 @@ export class App extends React.Component<AppProps, AppState> {
                     filterBy={searchText}
                     onTaskCompletion={actions.taskCompleted}
                     onPlayOrPauseTask={this.startTaskTracker}
-                    onEditBoardTitle={actions.editBoardTitle}
+                    renameBoard={actions.renameBoard}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
+                    onDeleteBoard={actions.deleteBoard}
                     setDescriptiveTask={this.expandTask}
                 />
             ));
@@ -124,6 +125,8 @@ export class App extends React.Component<AppProps, AppState> {
             <Description
                 task={expandedTask}
                 display={this.state.displayTaskDescription}
+                onDeleteTask={actions.deleteTask}
+                descriptionBoardId={this.state.descriptionBoardId}
             />
         </div>
     }
