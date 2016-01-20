@@ -1,3 +1,6 @@
+"use strict";
+import * as Immutable from 'immutable';
+
 const TaskRecord = Immutable.Record({
     id: -1,
     title: "",

@@ -1,3 +1,6 @@
+"use strict";
+
+import * as Immutable from 'immutable';
 import TaskType from "./TaskType";
 
 const BoardRecord = Immutable.Record({

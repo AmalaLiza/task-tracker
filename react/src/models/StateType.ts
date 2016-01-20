@@ -1,3 +1,6 @@
+"use strict";
+
+import * as Immutable from 'immutable';
 import BoardType from "./BoardType";
 import TaskType from "./TaskType";
 
