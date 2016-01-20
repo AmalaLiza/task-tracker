@@ -44,7 +44,8 @@
         <div class="task-list clearfix">
             <div class="task-list__item fleft">
                 <div class="task-header-wrapper">
-                    <h2 class="task-header align-center">Design<span class="task-no"> (12)</span></h2>
+                    <h2 class="task-header align-center" style="display:none">Design<span class="task-no"> (12)</span></h2>
+                    <input type="text" class="task-header-input" placeholder="Enter Board Name">
                     <a href="javascript:void(0)" class="flaticon-show8 more-ico"></a>
                     <ul class="more-options">
                         <li>Search & Filter</li>
@@ -185,15 +186,15 @@
                             <td>
                                 <div>
                                     <span class="right-panel__desc-table__key bold-text">Due date:</span>
-                                            <span class="right-panel__desc-table__value">
-                                                6 April 16
-                                            </span>
+                                    <span class="right-panel__desc-table__value" style="display:none">6 April 16</span>
+                                    <input type="text" class="right-panel__desc-table__input" placeholder="Enter due date">
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     <span class="right-panel__desc-table__key bold-text">Estimate:</span>
-                                            <span class="right-panel__desc-table__value">3 hrs</span>
+                                    <span class="right-panel__desc-table__value" style="display:none">3 hrs</span>
+                                    <input type="text" class="right-panel__desc-table__input" placeholder="Enter Estimate">
                                 </div>
                             </td>
                         </tr>
@@ -210,9 +211,10 @@
                     </div>
                     <div class="right-panel__tabs-content">
                         <div class="right-panel__tabs-content__item">
-                            <div class="right-panel__tabs-content__desc">
+                            <div class="right-panel__tabs-content__desc" style="display:none">
                                 Lorem ipsum dolor sitfusce volutpat. Arcu venenatis conubia congue cras in vitae, et viverra dapibus. Arcu ultrices aspernatur urna sit risus varius, vulputate mi ultrices fermentum, aliquam a fermentum vivamus aenean, eos arcu imperdiet mauris torquent vitae. Aenean lectus sodales per elit aliquam, phasellus ac at, tristique vitae ligula viverra elit quisque volutpat. Tristique faucibus ridiculus sed, morbi mauris vestibulum a dolor augue tortor, sapien maecenas malesuada sed aliquet velit nunc. Mi fugiat euismod magna, lacinia commodo eleifend, parturient metus, iaculis elit vivamus non eu orci a. Suspendisse ut, tincidunt venenatis semper. Donec justent.
                             </div>
+                            <textarea class="right-panel__tabs-content__input"></textarea>
                         </div>
                     </div>
                 </div>

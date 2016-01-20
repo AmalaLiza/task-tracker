@@ -120,6 +120,23 @@
   padding-left: 12px;
 }
 
+.right-panel__tabs-content__input{
+  min-height:170px;
+  width:100%;
+  padding: 6px 7px;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.17);
+  border: 1px solid $primary-border-color;
+  resize:none;
+}
+
+.right-panel__desc-table__input {
+  margin: 0 8px;
+  padding: 6px 7px;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.17);
+  border: 1px solid $primary-border-color;
+  width: calc(100% - 95px);
+}
+
 .right-panel__desc-table tr td {
   padding: 7px 0;
 }
