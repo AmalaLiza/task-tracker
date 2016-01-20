@@ -1,4 +1,3 @@
-import {TaskType} from "./models/TaskType";
 "use strict";
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
@@ -15,56 +14,77 @@ import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
 import Description from "./components/description/description.tsx"
-import {BoardListType} from "./models/BoardListType";
-import {BoardType} from "./models/BoardType";
+import StateType from "./models/StateType";
+import TaskType from "./models/TaskType";
+import BoardType from "./models/BoardType";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
 import './fonts/flaticon.scss';
 
-interface AppProps {
-    actions:any;
-    data:BoardListType;
-}
-
 interface AppState {
-    currentTask:TaskType;
-    descriptiveTask:TaskType;
+    progress:number;
+    displayTaskDescription:Boolean;
 }
 
-export class App extends React.Component<AppProps, AppState> {
+export class App extends React.Component<any, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = Immutable.Map();
-        this.state.currentTask = Immutable.Map();
-        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
+        this.state = {
+            displayTaskDescription : false
+        };
+        this.startTaskTracker = this.startTaskTracker.bind(this);
+        this.expandTask = this.expandTask.bind(this);
     }
 
-    setDescriptiveTask(boardId, taskId) {
-        let {data} = this.props;
-        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
+    expandTask(boardId, taskId) {
+        let {actions} = this.props;
         this.setState({
-            descriptiveTask: task
+            displayTaskDescription : true
         });
+        actions.expandTask(boardId, taskId)
     }
 
-    setCurrentTask(boardId, taskId, isPlaying) {
-        let {data} = this.props;
-        let task = data.getIn(["boardList", boardId, "taskList", taskId]);
-        task = task.set('isPlaying', isPlaying);
+    startTaskTracker(boardId, taskId, isPlaying) {
+        let {data, actions} = this.props;
         this.setState({
-            currentTask: task
+            progress: data.getIn(['boardList', boardId, 'taskList', 'taskId', 'progress'])
         });
+
+        let myTimer = () => {
+            this.setState({
+                progress: this.state.progress + 0.5
+            });
+        }
+        if (isPlaying) {
+            actions.pauseTask(boardId, data.get("activeTask"), this.state.progress)
+            clearInterval(this.timer);
+        } else {
+            actions.playTask(boardId, taskId);
+            if (data.getIn(["activeTask", "isPlaying"]))
+                actions.pauseTask(boardId, data.get("activeTask"), this.state.progress, true);
+            this.timer = setInterval(myTimer, 1000);
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.data.getIn(["activeTask", "progress"]))
+            this.setState({
+                progress: nextProps.data.getIn(["activeTask", "progress"])
+            });
     }
 
     render() {
-        let {data, actions} = this.props
-        let boardList:BoardType[] = data.get("boardList")
-        let searchText:string = data.get('searchText')
+        let {data, actions} = this.props;
+        let boardList:Immutable.List<BoardType> = data.get("boardList");
+        let activeTask:TaskType = data.get("activeTask");
+        let expandedTask:TaskType = data.get("expandedTask");
+        let searchText:string = data.get('searchText');
         let filteredList = Immutable.List();
         if (searchText) {
             filteredList = Immutable.List(boardList
-                .filter(board => board.get('taskList').filter(task => task.get('title').toLowerCase().indexOf(searchText.toLowerCase()) > -1).size > 0));
+                .filter(board => board.get('taskList')
+                    .filter(task => task.get('title').toLowerCase().indexOf(searchText.toLowerCase()) > -1).size > 0));
         } else {
             filteredList = Immutable.List(boardList);
         }
@@ -75,15 +95,14 @@ export class App extends React.Component<AppProps, AppState> {
                     id={board.get('id')}
                     index={index}
                     data={board}
+                    filterBy={searchText}
                     onTaskCompletion={actions.taskCompleted}
-                    onPlayTask={actions.playTask}
-                    onPauseTask={actions.pauseTask}
-                    onExpandTask={actions.expandTask}
-                    onEditBoardTitle={actions.editBoardTitle}
+                    onPlayOrPauseTask={this.startTaskTracker}
+                    renameBoard={actions.renameBoard}
                     onEditTaskTitle={actions.editTaskTitle}
                     onAddTask={actions.addTask}
-                    setDescriptiveTask={this.setDescriptiveTask()}
-                    setCurrentTask={this.setCurrentTask()}
+                    onDeleteBoard={actions.deleteBoard}
+                    setDescriptiveTask={this.expandTask}
                 />
             ));
 
@@ -103,12 +122,15 @@ export class App extends React.Component<AppProps, AppState> {
                 </div>
             </div>
             <div className="footer">
-                <TaskTracker
-                    task={this.state.currentTask}
-                />
+                {activeTask.get('isPlaying')? <TaskTracker
+                    activeTask={activeTask}
+                    progress={this.state.progress}
+                /> : null}
             </div>
             <Description
-                task={this.state.descriptiveTask}
+                task={expandedTask}
+                display={this.state.displayTaskDescription}
+                onDeleteTask={actions.deleteTask}
             />
         </div>
     }

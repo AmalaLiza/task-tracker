@@ -1,28 +1,34 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
+import TaskType from "../../models/TaskType";
 import './task-tracker.scss';
-import {TaskType} from "../../models/TaskType";
 
 interface TaskTrackerProps {
-    task:TaskType;
+    activeTask:TaskType;
+    progress:number;
 }
 
 export default class TaskTracker extends React.Component<TaskTrackerProps, any> {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
-        console.log(this.props)
-        return <div className="progress-track" style={{display:"none"}} id="task_tracker">
+        let isPlaying = this.props.activeTask.get('isPlaying');
+        return <div className="progress-track"
+                    style={isPlaying ? {display:"block"} : {display:"none"}}>
             <div className="width-container clearfix">
                 <a href="javascript:void(0)"
-                   className={this.props.task.get('isPlaying')? "play-ico flaticon-pause52 fleft" : 'play-ico flaticon-play128 fleft'}>
+                   className={isPlaying ? "play-ico flaticon-pause52 fleft" : 'play-ico flaticon-play128 fleft'}>
                 </a>
                 <div className="progress-wrapper fleft clearfix">
 
                     <div className="progress-bar-title">
-                        <span>{this.props.task.get('title')}</span>
+                        <span>{this.props.activeTask.get('title')}</span>
                     </div>
                     <ProgressBar
-                        progress={this.props.task.get('progress')}
+                        progress={this.props.progress}
                     />
                 </div>
             </div>

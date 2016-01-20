@@ -6,10 +6,18 @@ export default {
         };
     },
 
-    editBoardTitle(boardId:number) {
+    renameBoard(newTitle, boardIndex:number) {
         return {
-            type: "EDIT_BOARD_TITLE",
-            boardId
+            type: "RENAME_BOARD",
+            boardIndex,
+            newTitle
+        };
+    },
+
+    deleteBoard(boardIndex:number) {
+        return {
+            type: "DELETE_BOARD",
+            boardIndex
         };
     },
 
@@ -29,26 +37,30 @@ export default {
         };
     },
 
-    playTask(boardIndex:number, taskId:number) {
+    playTask(boardId, taskId) {
         return {
             type: "PLAY_TASK",
-            boardIndex,
+            boardId,
             taskId
         };
     },
 
-    pauseTask(boardIndex:number, taskId:number) {
+    pauseTask(boardIndex, activeTask, progress, previousTask) {
         return {
             type: "PAUSE_TASK",
             boardIndex,
-            taskId
+            activeTask,
+            previousTask,
+            progress
         };
     },
 
-    expandTask(taskId:number) {
+    expandTask(boardId:number, taskId:number, isExpanded) {
         return {
             type: "EXPAND_TASK",
-            taskId
+            boardId,
+            taskId,
+            isExpanded
         };
     },
 
@@ -59,10 +71,11 @@ export default {
         };
     },
 
-    deleteTask(taskId:number) {
+    deleteTask(taskId:number, boardIndex:number) {
         return {
             type: "DELETE_TASK",
-            taskId
+            taskId,
+            boardIndex
         };
     },
 

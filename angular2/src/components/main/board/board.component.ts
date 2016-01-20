@@ -1,11 +1,15 @@
 import {Component, Input, Output, EventEmitter} from "angular2/core";
-import {TaskService} from "../task.service.ts";
-import {TaskComponent} from "./task/task.component.ts";
+import {TaskService} from "../task.service";
+import {TaskComponent} from "./task/task.component";
+import {ViewEncapsulation} from 'angular2/core';
+import TaskCompletedPipe from '../../../pipes/task-completed.pipe';
 
 @Component({
     selector: 'board',
     directives: [TaskComponent],
-    styleUrls: ['./src/components/main/main-body.css'],
+    pipes: [TaskCompletedPipe],
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./src/components/main/board/board.css'],
     template: `
     <div class="task-list__item fleft">
         <div class="task-header-wrapper">
@@ -17,31 +21,40 @@ import {TaskComponent} from "./task/task.component.ts";
         <div class="task-body">
 
             <ul class="task-body-list">
-                <li class="task-body-list__item clearfix">
-                    <input type="checkbox" class="fleft task-body-list__item__checkbox"/>
-                    <label class="task-body-list__item__label fleft">
-                        <span class="task-body-list__item__label__text">
-                            Create designs for insight screen
-                        </span>
-                    </label>
-
-                    <a href="javascript:void(0)" class="play-ico flaticon-play128 fright"></a>
-                    <span class="task-time-left fright">
-                        1:15:00
-                    </span>
-                 </li>
-
                 <li class="task-body-list__item clearfix"
-                    *ngFor="#task of tasks">
-                    <task [task]="task"></task>
+                    *ngFor="#task of tasks| taskCompletedPipe : false, #i = index">
+                    <task [task]="task"
+                          [boardIndex]="index"
+                          [index]="i">
+                    </task>
                 </li>
             </ul>
+
+            <div class="task-body__sub-head clearfix">
+                <span class="fleft">COMPLETED TASKS(1)</span>
+                <a href="javascript:void(0)"
+                    class="fright primary-link bold-text"
+                    (click)="toggleCompletedTasks()">
+                    {{(showCompletedTasks)? 'Hide' : 'Show'}}
+                </a>
+            </div>
+
+           <ul *ngIf = "showCompletedTasks" class="task-body-list">
+                <li class="task-body-list__item clearfix"
+                    *ngFor="#task of tasks| taskCompletedPipe : true, #i = index">
+                    <task [task]="task"
+                          [boardIndex]="index"
+                          [index]="i">
+                     </task>
+                </li>
+            </ul>
+
         </div>
 
         <div class="task-footer">
             <a href="javascript:void(0)"
                 class="primary-link add-task-link"
-                (click)="addTask.emit()">
+                (click)="addTask()">
                 + Add Task
             </a>
         </div>
@@ -51,5 +64,20 @@ import {TaskComponent} from "./task/task.component.ts";
 export class BoardComponent {
     @Input() title;
     @Input() tasks;
-    @Output() addTask = new EventEmitter();
+    @Input() index;
+    showCompletedTasks:boolean;
+
+    constructor(public taskService:TaskService) {
+        console.log("BoardComponent constructor");
+        this.showCompletedTasks = true;
+    }
+
+    addTask() {
+        this.taskService.addTask(this.index, 'new task');
+    }
+
+    toggleCompletedTasks() {
+        this.showCompletedTasks = !this.showCompletedTasks;
+    }
+
 }

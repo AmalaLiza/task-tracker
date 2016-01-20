@@ -1,11 +1,7 @@
 import * as React from "react";
 import './day-tracker.scss';
 
-interface DayTrackerProps{
-
-}
-
-export default class DayTracker extends React.Component<DayTrackerProps, any> {
+export default class DayTracker extends React.Component<any, any> {
 
     render(){
         return <div className="daytime-track">

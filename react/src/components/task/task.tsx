@@ -1,7 +1,7 @@
 import * as React from "react";
-import './task.scss';
-import {TaskType} from "../../models/TaskType";
+import TaskType from "../../models/TaskType";
 import Description from "../description/description.tsx";
+import './task.scss';
 
 interface TaskProps {
     key:number;
@@ -9,55 +9,56 @@ interface TaskProps {
     boardId:number;
     task: TaskType;
     onTaskComplete:Function;
-    setCurrentTask:Function;
     setDescriptiveTask:Function;
-    onPlayTask?:Function;
-    onPauseTask?:Function;
+    onPlayOrPauseTask?:Function;
 }
 
 export default class Task extends React.Component<TaskProps, any> {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {};
-        this.state.isPlaying = true;
+        this.state = {
+            isPlaying: this.props.task.get('isPlaying'),
+            isExpanded: false
+        };
         this.onTaskComplete = this.onTaskComplete.bind(this);
-        this.showDesc = this.showDesc.bind(this);
         this.playAndPauseTask = this.playAndPauseTask.bind(this);
+        this.setDescriptiveTask = this.setDescriptiveTask.bind(this);
     }
 
     onTaskComplete() {
         this.props.onTaskComplete(this.props.boardId, this.props.index);
     }
 
-    playAndPauseTask() {
-        this.setState({isPlaying: !this.state.isPlaying});
-        this.state.isPlaying? this.props.onPlayTask(this.props.boardId, this.props.index): this.props.onPauseTask(this.props.boardId, this.props.index);
-        this.props.setCurrentTask(this.props.boardId, this.props.index, this.state.isPlaying);
-        document.getElementById("task_tracker").style.display = 'block';
+    playAndPauseTask(boardId, taskId){
+        this.setState({
+            isPlaying: !this.props.task.get('isPlaying')
+        });
+        this.props.onPlayOrPauseTask(boardId, taskId, this.props.task.get('isPlaying'));
     }
 
-    showDesc() {
-        this.props.setCurrentTask(this.props.boardId, this.props.index);
-        document.getElementsByClassName("right-fixed-panel")[0].style.display = 'block';
-        document.getElementById(this.props.boardId + '_' + this.props.index).className = "task-body-list__item clearfix active";
+    setDescriptiveTask(boardId, taskId){
+        this.setState({
+            isExpanded: !this.state.isExpanded
+        });
+        this.props.setDescriptiveTask(boardId, taskId, this.state.isExpanded);
     }
 
     render() {
-        return <li className="task-body-list__item clearfix" id={this.props.boardId+'_'+this.props.index}>
+        return <li className={this.props.task.get('isExpanded') ? "task-body-list__item clearfix active" : "task-body-list__item clearfix"}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
                    onChange={this.onTaskComplete}
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-                   onClick={this.showDesc}>
+                    onClick={() => this.setDescriptiveTask(this.props.boardId, this.props.index)}
+                   >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
-               id={this.props.boardId+'__'+this.props.index}
-               className={this.state.isPlaying? "play-ico flaticon-play128 fright" : 'play-ico flaticon-pause52 fright'}
-               onClick={() => {this.playAndPauseTask()}}>
+               className={this.props.task.get('isPlaying')? 'play-ico flaticon-pause52 fright' :  'play-ico flaticon-play128 fright'}
+               onClick={() => {this.playAndPauseTask(this.props.boardId, this.props.index)}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>
