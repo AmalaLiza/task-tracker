@@ -48,6 +48,7 @@ export default class Description extends React.Component<DescProps, any> {
                                             <span className="right-panel__desc-table__value">
                                                 {this.props.task.get('due_date')}
                                             </span>
+                                            <input type="text" class="right-panel__desc-table__input" placeholder="Enter due date" style="display:none"/>
                                         </div>
                                     </td>
                                     <td>
@@ -56,6 +57,7 @@ export default class Description extends React.Component<DescProps, any> {
                                             <span className="right-panel__desc-table__value">
                                                 {this.props.task.get('estimatedTime')}
                                             </span>
+                                            <input type="text" class="right-panel__desc-table__input" placeholder="Enter Estimate" style="display:none"/>
                                         </div>
                                     </td>
                                 </tr>
@@ -75,6 +77,7 @@ export default class Description extends React.Component<DescProps, any> {
                                     <div className="right-panel__tabs-content__desc">
                                         {this.props.task.get('description')}
                                     </div>
+                                    <textarea class="right-panel__tabs-content__input" style="display:none"></textarea>
                                 </div>
                             </div>
                         </div>

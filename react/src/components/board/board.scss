@@ -23,6 +23,7 @@
 }
 
 .task-header-wrapper{
+  height:25px;
   .more-ico{
     position: absolute;
     right: 10px;
@@ -34,6 +35,16 @@
   width: calc(100% - 66px);
   margin: 0 auto;
   font-weight: 600;
+}
+
+input.task-header-input {
+  width: calc(100% - 66px);
+  margin: 0 auto;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #E4E4E4;
+  padding: 4px 7px;
+  font-size: 18px;
 }
 
 .task-no{

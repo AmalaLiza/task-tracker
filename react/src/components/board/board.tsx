@@ -84,7 +84,10 @@ export default class Board extends React.Component<BoardProps, any> {
                 >{this.props.data.get('title')}
                     <span className="task-no">({taskListElements.size})</span>
                 </h2>
-                <input style={this.state.showRenameInput?{display: "block"}:{display: "none"}}
+                <input type="text"
+                       className="task-header-input"
+                       placeholder="Enter Board Name"
+                       style={this.state.showRenameInput?{display: "block"}:{display: "none"}}
                        onKeyDown={(event) => {this.renameBoard(event, this.props.data.get('id'))}}
                        defaultValue={this.props.data.get('title')}/>
                 <a href="javascript:void(0)"
