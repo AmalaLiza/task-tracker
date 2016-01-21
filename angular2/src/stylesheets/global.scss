@@ -301,6 +301,11 @@ button {
   position: relative;
 }
 
+.progress-bar__progress.fright:after{
+  left:-5px;
+  right:auto;
+}
+
 .progress-bar__progress:after {
   height: 13px;
   width: 13px;
