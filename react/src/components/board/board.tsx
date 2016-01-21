@@ -1,9 +1,9 @@
-import './board.scss';
 import * as React from "react";
+import * as Immutable from "immutable";
 import Task from '../task/task.tsx';
 import BoardType from "../../models/BoardType";
-import * as Immutable from "immutable";
 import TaskType from "../../models/TaskType";
+import './board.scss';
 
 interface BoardProps {
     key:number;

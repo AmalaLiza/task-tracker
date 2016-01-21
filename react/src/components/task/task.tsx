@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React  from "react";
 import TaskType from "../../models/TaskType";
 import Description from "../description/description.tsx";
 import './task.scss';
@@ -45,7 +45,7 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     render() {
-        return <li className={this.props.task.get('isExpanded') ? "task-body-list__item clearfix active" : "task-body-list__item clearfix"}>
+        return <li className={`task-body-list__item clearfix ${this.props.task.get('isExpanded')?"active":""}`}>
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
                    onChange={this.onTaskComplete}
@@ -57,7 +57,7 @@ export default class Task extends React.Component<TaskProps, any> {
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
-               className={this.props.task.get('isPlaying')? 'play-ico flaticon-pause52 fright' :  'play-ico flaticon-play128 fright'}
+               className={`play-ico fright ${this.props.task.get('isPlaying')?'flaticon-pause52':'flaticon-play128'}`}
                onClick={() => {this.playAndPauseTask(this.props.boardId, this.props.index)}}>
 
             </a>
