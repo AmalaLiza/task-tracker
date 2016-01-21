@@ -54,6 +54,7 @@ export default function taskReducer(state, action) {
                 isExpanded => !action.isExpanded);
             state = state.set('expandedTask', state.getIn(['boardList', action.boardIndex, 'taskList', action.taskIndex]));
             state = state.setIn(['expandedTask', 'boardIndex'], action.boardIndex);
+            state = state.setIn(['expandedTask', 'index'], action.taskIndex);
             return state;
 
         case "DELETE_TASK":
