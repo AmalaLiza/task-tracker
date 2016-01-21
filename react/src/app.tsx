@@ -43,7 +43,7 @@ export class App extends React.Component<any, AppState> {
         this.setState({
             displayTaskDescription : true
         });
-        data = data.get('expandedTask').set('taskIndex', taskIndex);
+        data = data.setIn(['expandedTask', 'taskIndex'], taskIndex);
         actions.expandTask(boardId, taskIndex)
     }
 
