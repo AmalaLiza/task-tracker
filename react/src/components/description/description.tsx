@@ -18,7 +18,7 @@ let  Description = (props: DescProps) =>
                     </a>
                     <a href="javascript:void(0)"
                        className="flaticon-delete96"
-                       onClick={() => {props.onDeleteTask(props.task.get('taskIndex'), props.task.get('boardIndex'));}}
+                       onClick={() => {props.onDeleteTask(props.task.get('index'), props.task.get('boardIndex'));}}
                         >
                     </a>
                 </div>
@@ -87,4 +87,4 @@ let  Description = (props: DescProps) =>
                 </div>
             </div>)
 
-export  default Description;
+export default Description;

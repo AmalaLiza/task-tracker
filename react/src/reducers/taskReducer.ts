@@ -57,6 +57,12 @@ export default function taskReducer(state, action) {
             state = state.setIn(['expandedTask', 'index'], action.taskIndex);
             return state;
 
+        case "HIDE_TASK":
+            state = state.updateIn(['boardList', state.getIn(['expandedTask', 'boardIndex']), 'taskList', state.getIn(['expandedTask', 'index']), 'isExpanded'],
+                isExpanded => false);
+            state = state.setIn(['expandedTask', 'isExpanded'], false);
+            return state;
+
         case "DELETE_TASK":
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
                 taskList => taskList.splice(action.taskIndex, 1));

@@ -28,6 +28,7 @@ export function rootReducer(state:StateType = initialState, action) {
         case "PLAY_TASK":
         case "PAUSE_TASK":
         case 'EXPAND_TASK':
+        case "HIDE_TASK":
         case "DELETE_TASK":
             return taskReducer(state, action);
 
