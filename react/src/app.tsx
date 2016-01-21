@@ -43,8 +43,16 @@ export class App extends React.Component<any, AppState> {
         this.setState({
             displayTaskDescription : true
         });
-        data = data.get('expandedTask').set('taskIndex', taskIndex);
+        data = data.setIn(['expandedTask', 'taskIndex'], taskIndex);
         actions.expandTask(boardId, taskIndex)
+    }
+
+    hideTask(boardId, taskId) {
+        let {actions} = this.props;
+        this.setState({
+            displayTaskDescription : false
+        });
+        actions.hideTask(boardId, taskId)
     }
 
     startTaskTracker(boardId, taskId, isPlaying) {
