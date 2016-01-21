@@ -9,15 +9,8 @@ interface DescProps{
     onDeleteTask:Function;
 }
 
-
-export default class Description extends React.Component<DescProps, any> {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
-    render() {
-        return <div className="right-fixed-panel" style={this.props.display ? {display:"block"} : {display:"none"}}>
+let  Description = (props: DescProps) =>
+    (<div className="right-fixed-panel" style={props.display ? {display:"block"} : {display:"none"}}>
                 <div className="right-panel__actions fright">
                     <a href="javascript:void(0)" className="flaticon-edit45">
                     </a>
@@ -26,13 +19,13 @@ export default class Description extends React.Component<DescProps, any> {
                     <a href="javascript:void(0)"
                        className="flaticon-delete96"
                        onClick={() => {
-                       this.props.onDeleteTask(this.props.task.get('taskIndex'), this.props.task.get('boardId'));}}
+                       props.onDeleteTask(props.task.get('taskIndex'), props.task.get('boardId'));}}
                         >
                     </a>
                 </div>
             <div className="right-panel__actions fright">
             </div>
-                <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>
+                <h1 className="right-panel__heading">{props.task.get('title')}</h1>
                 <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header" style={{display:"none"}}/>
                 <div className="right-panel__content">
                     <div className="right-panel-sub-section">
@@ -41,7 +34,7 @@ export default class Description extends React.Component<DescProps, any> {
                         </div>
                         <div className="accordion-cont">
                             <ProgressBar
-                                progress={this.props.task.get('progress')}
+                                progress={props.task.get('progress')}
                             />
                         </div>
 
@@ -52,7 +45,7 @@ export default class Description extends React.Component<DescProps, any> {
                                         <div>
                                             <span className="right-panel__desc-table__key bold-text">Due date:</span>
                                             <span className="right-panel__desc-table__value">
-                                                {this.props.task.get('due_date')}
+                                                {props.task.get('due_date')}
                                             </span>
                                             <input type="text"
                                                    className="right-panel__desc-table__input"
@@ -64,7 +57,7 @@ export default class Description extends React.Component<DescProps, any> {
                                         <div>
                                             <span className="right-panel__desc-table__key bold-text">Estimate:</span>
                                             <span className="right-panel__desc-table__value">
-                                                {this.props.task.get('estimatedTime')}
+                                                {props.task.get('estimatedTime')}
                                             </span>
                                             <input type="text" className="right-panel__desc-table__input"
                                                    placeholder="Enter Estimate" style={{display:"none"}}/>
@@ -85,7 +78,7 @@ export default class Description extends React.Component<DescProps, any> {
                             <div className="right-panel__tabs-content">
                                 <div className="right-panel__tabs-content__item">
                                     <div className="right-panel__tabs-content__desc">
-                                        {this.props.task.get('description')}
+                                        {props.task.get('description')}
                                     </div>
                                     <textarea className="right-panel__tabs-content__input" style={{display:"none"}}></textarea>
                                 </div>
@@ -93,6 +86,6 @@ export default class Description extends React.Component<DescProps, any> {
                         </div>
                     </div>
                 </div>
-            </div>
-    }
-};
+            </div>)
+
+export  default Description;

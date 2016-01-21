@@ -1,10 +1,7 @@
 import * as React from "react";
 import './day-tracker.scss';
 
-export default class DayTracker extends React.Component<any, any> {
-
-    render(){
-        return <div className="daytime-track">
+ let DayTracker = () => <div className="daytime-track">
                     <div className="width-container clearfix">
                         <h2 className="fleft daytime-label fleft">Today</h2>
                         <div className="progress-bar-wrapper fleft clearfix">
@@ -15,5 +12,5 @@ export default class DayTracker extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-    }
-};
+
+export default DayTracker;
