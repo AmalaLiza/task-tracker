@@ -18,8 +18,7 @@ let  Description = (props: DescProps) =>
                     </a>
                     <a href="javascript:void(0)"
                        className="flaticon-delete96"
-                       onClick={() => {
-                       props.onDeleteTask(props.task.get('taskIndex'), props.task.get('boardId'));}}
+                       onClick={() => {props.onDeleteTask(props.task.get('taskIndex'), props.task.get('boardIndex'));}}
                         >
                     </a>
                 </div>

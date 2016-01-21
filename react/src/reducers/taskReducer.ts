@@ -57,9 +57,8 @@ export default function taskReducer(state, action) {
             return state;
 
         case "DELETE_TASK":
-            console.log("DELETE_TASK");
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
-                taskList => taskList.splice(action.taskId, 1));
+                taskList => taskList.splice(action.taskIndex, 1));
             return state;
 
         default:

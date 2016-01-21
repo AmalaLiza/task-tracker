@@ -80,10 +80,10 @@ export default {
         };
     },
 
-    deleteTask(taskId:number, boardIndex:number) {
+    deleteTask(taskIndex:number, boardIndex:number) {
         return {
             type: "DELETE_TASK",
-            taskId,
+            taskIndex,
             boardIndex
         };
     },
