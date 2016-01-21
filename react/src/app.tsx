@@ -68,6 +68,7 @@ export class App extends React.Component<any, AppState> {
         this.setState({
             progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress'])
         })
+
         let myTimer = () => {
             this.setState({
                 progress: this.state.progress + 0.5
