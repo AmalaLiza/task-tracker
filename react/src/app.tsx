@@ -38,12 +38,13 @@ export class App extends React.Component<any, AppState> {
         this.expandTask = this.expandTask.bind(this);
     }
 
-    expandTask(boardId, taskId) {
-        let {actions} = this.props;
+    expandTask(boardId, taskIndex) {
+        let {actions, data} = this.props;
         this.setState({
             displayTaskDescription : true
         });
-        actions.expandTask(boardId, taskId)
+        data = data.get('expandedTask').set('taskIndex', taskIndex);
+        actions.expandTask(boardId, taskIndex)
     }
 
     hideTask(boardId, taskId) {
@@ -102,7 +103,7 @@ export class App extends React.Component<any, AppState> {
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
-                    id={board.get('id')}
+                    id={index}
                     index={index}
                     data={board}
                     filterBy={searchText}

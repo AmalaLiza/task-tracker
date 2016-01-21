@@ -2,8 +2,8 @@ import * as React from "react";
 import * as Immutable from "immutable";
 import Task from '../task/task.tsx';
 import BoardType from "../../models/BoardType";
-import TaskType from "../../models/TaskType";
 import './board.scss';
+import TaskType from "../../models/TaskType";
 
 interface BoardProps {
     key:number;
@@ -56,7 +56,7 @@ export default class Board extends React.Component<BoardProps, any> {
         taskListElements = taskListElements.map((task, index) => (
             <Task
                 key={index}
-                index={task.get('id')}
+                index={index}
                 boardId={this.props.index}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
@@ -69,7 +69,7 @@ export default class Board extends React.Component<BoardProps, any> {
         completedTaskListElements = completedTaskListElements.map((task, index) => (
             <Task
                 key={index}
-                index={task.get('id')}
+                index={index}
                 boardId={this.props.id}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
@@ -88,7 +88,7 @@ export default class Board extends React.Component<BoardProps, any> {
                        className="task-header-input"
                        placeholder="Enter Board Name"
                        style={this.state.showRenameInput?{display: "block"}:{display: "none"}}
-                       onKeyDown={(event) => {this.renameBoard(event, this.props.data.get('id'))}}
+                       onKeyDown={(event) => {this.renameBoard(event, this.props.index)}}
                        defaultValue={this.props.data.get('title')}/>
                 <a href="javascript:void(0)"
                    className="flaticon-show8 more-ico"

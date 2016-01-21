@@ -7,7 +7,7 @@ export default function boardReducer(state, action) {
 
         case "ADD_BOARD":
             let newBoard = Immutable.fromJS({
-                id: state.get("boardList").size,
+                id: (String(+(new Date()) + Math.random())),
                 title: "New Board",
                 taskList: Immutable.List()
             });
