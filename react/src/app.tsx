@@ -14,9 +14,9 @@ import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
 import Actions from "./actions.ts";
 import Description from "./components/description/description.tsx"
-import StateType from "./models/StateType";
-import TaskType from "./models/TaskType";
-import BoardType from "./models/BoardType";
+import StateType from "./models/StateType.ts";
+import TaskType from "./models/TaskType.ts";
+import BoardType from "./models/BoardType.ts";
 import './stylesheets/base.scss';
 import './stylesheets/common.scss';
 import './stylesheets/layout.scss';
@@ -25,6 +25,7 @@ import './fonts/flaticon.scss';
 interface AppState {
     progress:number;
     displayTaskDescription:Boolean;
+    estimatedTime:number;
 }
 
 export class App extends React.Component<any, AppState> {
@@ -32,7 +33,8 @@ export class App extends React.Component<any, AppState> {
         super(props, context);
         this.state = {
             progress: 0,
-            displayTaskDescription: false
+            displayTaskDescription: false,
+            estimatedTime: 0
         };
         this.startTaskTracker = this.startTaskTracker.bind(this)
         this.hideTask = this.hideTask.bind(this)
@@ -66,12 +68,16 @@ export class App extends React.Component<any, AppState> {
     startTaskTracker(boardId, taskId, isPlaying) {
         let {data, actions} = this.props
         this.setState({
-            progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress'])
+            progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress']),
+            estimatedTime: data.getIn(['boardList', boardId, 'taskList', taskId, 'estimatedTime'])
         })
 
         let myTimer = () => {
+            let progress = document.documentElement.getElementsByClassName('progress-bar fleft')[0].offsetWidth / (this.state.estimatedTime * 60 * 60)
+            console.log("offset", document.documentElement.getElementsByClassName('progress-bar fleft')[0].offsetWidth)
+            console.log("hcdbsa", this.state.estimatedTime)
             this.setState({
-                progress: this.state.progress + 0.5
+                progress: this.state.progress + progress
             })
             console.log('progress', this.state.progress)
         }
