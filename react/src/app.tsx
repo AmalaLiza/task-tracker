@@ -46,6 +46,14 @@ export class App extends React.Component<any, AppState> {
         actions.expandTask(boardId, taskId)
     }
 
+    hideTask(boardId, taskId) {
+        let {actions} = this.props;
+        this.setState({
+            displayTaskDescription : false
+        });
+        actions.hideTask(boardId, taskId)
+    }
+
     startTaskTracker(boardId, taskId, isPlaying) {
         let {data, actions} = this.props;
         this.setState({

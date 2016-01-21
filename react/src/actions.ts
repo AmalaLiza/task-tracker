@@ -64,6 +64,15 @@ export default {
         };
     },
 
+    hideTask(boardId:number, taskId:number, isExpanded) {
+        return {
+            type: "HIDE_TASK",
+            boardId,
+            taskId,
+            isExpanded
+        };
+    },
+
     editTaskTitle(taskId:number) {
         return {
             type: "EDIT_TASK_TITLE",
