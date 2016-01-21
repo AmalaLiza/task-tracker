@@ -7,7 +7,7 @@ export default function taskReducer(state, action) {
 
         case "ADD_TASK":
             let newTask = Immutable.fromJS({
-                id: state.getIn(["boardList", action.boardIndex, "taskList"]).size,
+                id: (String(+(new Date()) + Math.random())),
                 title: action.title,
                 description: "",
                 estimatedTime: "",

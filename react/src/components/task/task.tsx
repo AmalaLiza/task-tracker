@@ -33,11 +33,11 @@ export default class Task extends React.Component<TaskProps, any> {
         this.props.onPlayOrPauseTask(boardId, taskId, this.props.task.get('isPlaying'));
     }
 
-    setDescriptiveTask(boardId, taskId){
+    setDescriptiveTask(boardId, taskIndex){
         this.setState({
             isExpanded: !this.state.isExpanded
         });
-        this.props.setDescriptiveTask(boardId, taskId, this.state.isExpanded);
+        this.props.setDescriptiveTask(boardId, taskIndex, this.state.isExpanded);
     }
 
     render() {

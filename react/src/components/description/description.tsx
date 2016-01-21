@@ -26,7 +26,7 @@ export default class Description extends React.Component<DescProps, any> {
                     <a href="javascript:void(0)"
                        className="flaticon-delete96"
                        onClick={() => {
-                       this.props.onDeleteTask(this.props.task.get('id'), this.props.task.get('boardId'));}}
+                       this.props.onDeleteTask(this.props.task.get('taskIndex'), this.props.task.get('boardId'));}}
                         >
                     </a>
                 </div>
