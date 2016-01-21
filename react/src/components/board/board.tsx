@@ -101,7 +101,7 @@ export default class Board extends React.Component<BoardProps, any> {
                         this.setState({showRenameInput: true});
                     }}>Rename</li>
                     <li onClick={() => {
-                        this.props.onDeleteBoard(this.props.data.get('index'));
+                        this.props.onDeleteBoard(this.props.index);
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                     }}>Delete Board</li>
                 </ul>
