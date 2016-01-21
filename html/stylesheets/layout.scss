@@ -17,3 +17,10 @@
   width: 1100px;
   margin: 0 auto;
 }
+
+@media all and (max-width:1200px){
+  .width-container {
+    width: calc(100% - 80px);
+    margin: 0 40px;
+  }
+}
