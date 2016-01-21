@@ -5,7 +5,7 @@ interface ProgressBarProps {
     progress:number;
 }
 
-export default function ProgressBar(props: ProgressBarProps) {
+let ProgressBar = (props: ProgressBarProps)  => {
     let progress = props.progress + '%';
     return <div className="progress-bar-wrapper clearfix width-100per">
         <div className="time-indicator fleft">11:30:23</div>
@@ -16,3 +16,4 @@ export default function ProgressBar(props: ProgressBarProps) {
     </div>
 }
 
+export default ProgressBar;
