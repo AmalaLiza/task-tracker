@@ -19,15 +19,25 @@ export default class Description extends React.Component<DescProps, any> {
     render() {
         return <div className="right-fixed-panel" style={this.props.display ? {display:"block"} : {display:"none"}}>
                 <div className="right-panel__actions fright">
+                    <a href="javascript:void(0)" className="flaticon-edit45"></a>
+                    <a href="javascript:void(0)" className="flaticon-check19"></a>
                     <a href="javascript:void(0)"
                        className="flaticon-delete96"
                        onClick={() => {
                        this.props.onDeleteTask(this.props.task.get('id'), this.props.task.get('boardId'));}}
                         >
                     </a>
+                    <a href="javascript:void(0)" className="flaticon-delete85"></a>
+                    <a href="javascript:void(0)" className="flaticon-delete96"></a>
                 </div>
+            <div class="right-panel__actions fright">
+
+
+
+            </div>
 
                 <h1 className="right-panel__heading">{this.props.task.get('title')}</h1>
+                <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header" style={{display:"none"}}/>
                 <div className="right-panel__content">
                     <div className="right-panel-sub-section">
                         <div className="accordion-head">

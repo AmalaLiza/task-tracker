@@ -18,7 +18,6 @@ export default class Task extends React.Component<TaskProps, any> {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            isPlaying: this.props.task.get('isPlaying'),
             isExpanded: false
         };
         this.onTaskComplete = this.onTaskComplete.bind(this);
@@ -31,9 +30,6 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     playAndPauseTask(boardId, taskId){
-        this.setState({
-            isPlaying: !this.props.task.get('isPlaying')
-        });
         this.props.onPlayOrPauseTask(boardId, taskId, this.props.task.get('isPlaying'));
     }
 
@@ -52,8 +48,8 @@ export default class Task extends React.Component<TaskProps, any> {
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-                    onClick={() => this.setDescriptiveTask(this.props.boardId, this.props.index)}
-                   >
+                   onClick={() => this.setDescriptiveTask(this.props.boardId, this.props.index)}
+            >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
@@ -66,7 +62,6 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
 }
-
 
 
 
