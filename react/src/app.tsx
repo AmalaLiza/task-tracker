@@ -60,10 +60,6 @@ export class App extends React.Component<any, AppState> {
     deleteTask(taskIndex, boardIndex) {
         let {actions} = this.props
         this.hideTask(boardIndex, taskIndex)
-        //this.setState({
-        //    displayTaskDescription : false
-        //})
-        //actions.hideTask(boardIndex, taskIndex)
         actions.deleteTask(taskIndex, boardIndex)
     }
 
@@ -72,6 +68,7 @@ export class App extends React.Component<any, AppState> {
         this.setState({
             progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress'])
         })
+
         let myTimer = () => {
             this.setState({
                 progress: this.state.progress + 0.5

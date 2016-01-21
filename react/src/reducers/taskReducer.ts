@@ -12,7 +12,7 @@ export default function taskReducer(state, action) {
                 description: "",
                 estimatedTime: "",
                 priority: 0,
-                progress: '0',
+                progress: 0,
                 due_date: "",
                 dependencies: "",
                 notes: "",
