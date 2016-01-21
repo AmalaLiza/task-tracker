@@ -55,11 +55,11 @@ export default {
         };
     },
 
-    expandTask(boardId:number, taskId:number, isExpanded) {
+    expandTask(boardIndex:number, taskIndex:number, isExpanded) {
         return {
             type: "EXPAND_TASK",
-            boardId,
-            taskId,
+            boardIndex,
+            taskIndex,
             isExpanded
         };
     },

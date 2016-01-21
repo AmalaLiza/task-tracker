@@ -38,21 +38,21 @@ export class App extends React.Component<any, AppState> {
         this.expandTask = this.expandTask.bind(this);
     }
 
-    expandTask(boardId, taskIndex) {
+    expandTask(boardIndex, taskIndex) {
         let {actions, data} = this.props;
         this.setState({
             displayTaskDescription : true
         });
         data = data.setIn(['expandedTask', 'taskIndex'], taskIndex);
-        actions.expandTask(boardId, taskIndex)
+        actions.expandTask(boardIndex, taskIndex)
     }
 
-    hideTask(boardId, taskId) {
+    hideTask(boardIndex, taskIndex) {
         let {actions} = this.props;
         this.setState({
             displayTaskDescription : false
         });
-        actions.hideTask(boardId, taskId)
+        actions.hideTask(boardIndex, taskIndex)
     }
 
     startTaskTracker(boardId, taskId, isPlaying) {
@@ -71,7 +71,7 @@ export class App extends React.Component<any, AppState> {
             clearInterval(this.timer);
         } else {
             if (data.getIn(["activeTask", "isPlaying"]))
-                actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "id"]), this.state.progress);
+                actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "index"]), this.state.progress);
             clearInterval(this.timer);
             actions.playTask(boardId, taskId, this.state.progress);
             this.timer = setInterval(myTimer, 1000);
@@ -103,7 +103,6 @@ export class App extends React.Component<any, AppState> {
             .map((board:BoardType, index:number) => (
                 <Board
                     key={index}
-                    id={index}
                     index={index}
                     data={board}
                     filterBy={searchText}

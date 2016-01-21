@@ -6,7 +6,7 @@ import './task.scss';
 interface TaskProps {
     key:number;
     index: number;
-    boardId:number;
+    boardIndex:number;
     task: TaskType;
     onTaskComplete:Function;
     setDescriptiveTask:Function;
@@ -26,18 +26,18 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     onTaskComplete() {
-        this.props.onTaskComplete(this.props.boardId, this.props.index);
+        this.props.onTaskComplete(this.props.boardIndex, this.props.index);
     }
 
     playAndPauseTask(boardId, taskId){
         this.props.onPlayOrPauseTask(boardId, taskId, this.props.task.get('isPlaying'));
     }
 
-    setDescriptiveTask(boardId, taskIndex){
+    setDescriptiveTask(boardIndex, taskIndex){
         this.setState({
             isExpanded: !this.state.isExpanded
         });
-        this.props.setDescriptiveTask(boardId, taskIndex, this.state.isExpanded);
+        this.props.setDescriptiveTask(boardIndex, taskIndex, this.state.isExpanded);
     }
 
     render() {
@@ -48,13 +48,13 @@ export default class Task extends React.Component<TaskProps, any> {
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft"
-                   onClick={() => this.setDescriptiveTask(this.props.boardId, this.props.index)}
+                   onClick={() => this.setDescriptiveTask(this.props.boardIndex, this.props.index)}
             >
                 <span className="task-body-list__item__label__text">{this.props.task.get('title')}</span>
             </label>
             <a href="javascript:void(0)"
                className={`play-ico fright ${this.props.task.get('isPlaying')?'flaticon-pause52':'flaticon-play128'}`}
-               onClick={() => {this.playAndPauseTask(this.props.boardId, this.props.index)}}>
+               onClick={() => {this.playAndPauseTask(this.props.boardIndex, this.props.index)}}>
 
             </a>
             <span className="task-time-left fright">{this.props.task.get('estimatedTime')}</span>

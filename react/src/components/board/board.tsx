@@ -7,7 +7,6 @@ import TaskType from "../../models/TaskType";
 
 interface BoardProps {
     key:number;
-    id:number;
     index:number;
     data:BoardType;
     filterBy:string;
@@ -57,7 +56,7 @@ export default class Board extends React.Component<BoardProps, any> {
             <Task
                 key={index}
                 index={index}
-                boardId={this.props.index}
+                boardIndex={this.props.index}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
                 setDescriptiveTask={this.props.setDescriptiveTask}
@@ -70,7 +69,7 @@ export default class Board extends React.Component<BoardProps, any> {
             <Task
                 key={index}
                 index={index}
-                boardId={this.props.id}
+                boardIndex={this.props.index}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
                 setDescriptiveTask={this.props.setDescriptiveTask}
@@ -102,7 +101,7 @@ export default class Board extends React.Component<BoardProps, any> {
                         this.setState({showRenameInput: true});
                     }}>Rename</li>
                     <li onClick={() => {
-                        this.props.onDeleteBoard(this.props.data.get('id'));
+                        this.props.onDeleteBoard(this.props.data.get('index'));
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                     }}>Delete Board</li>
                 </ul>
