@@ -33,6 +33,7 @@ export class App extends React.Component<any, AppState> {
         super(props, context);
         this.state = {
             progress: 0,
+            progressDisplayed: 0,
             displayTaskDescription: false,
             estimatedTime: 0
         };
@@ -73,11 +74,15 @@ export class App extends React.Component<any, AppState> {
         })
 
         let myTimer = () => {
-            let progress = document.documentElement.getElementsByClassName('progress-bar fleft')[0].offsetWidth / (this.state.estimatedTime * 60 * 60)
-            console.log("offset", document.documentElement.getElementsByClassName('progress-bar fleft')[0].offsetWidth)
-            console.log("hcdbsa", this.state.estimatedTime)
+            let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
+            let progressDisplayed = progress
+            if(progress > 100) {
+                let mod = progress / 100 | 0
+                progressDisplayed = (progress % 100) / Math.pow(2, mod)
+            }
             this.setState({
-                progress: this.state.progress + progress
+                progress: progress,
+                progressDisplayed: progressDisplayed
             })
             console.log('progress', this.state.progress)
         }
@@ -149,13 +154,14 @@ export class App extends React.Component<any, AppState> {
             <div className="footer">
                 {activeTask.get('isPlaying')? <TaskTracker
                     activeTask={activeTask}
-                    progress={this.state.progress}
+                    progress={this.state.progressDisplayed}
                 /> : null}
             </div>
             <Description
                 task={expandedTask}
                 display={this.state.displayTaskDescription}
                 onDeleteTask={this.deleteTask}
+                progress={this.state.progressDisplayed}
             />
         </div>
     }

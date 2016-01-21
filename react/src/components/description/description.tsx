@@ -7,6 +7,7 @@ interface DescProps{
     task: TaskType;
     display: Immutable.Map<string, string>;
     onDeleteTask:Function;
+    progress:number;
 }
 
 let  Description = (props: DescProps) =>
@@ -33,7 +34,7 @@ let  Description = (props: DescProps) =>
                         </div>
                         <div className="accordion-cont">
                             <ProgressBar
-                                progress={props.task.get('progress')}
+                                progress={props.progress}
                             />
                         </div>
 
