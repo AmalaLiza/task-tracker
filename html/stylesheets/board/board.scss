@@ -54,6 +54,8 @@ input.task-header-input {
 
 .task-body{
   margin-top: 26px;
+  max-height: calc(100vh - 374px);
+  overflow: auto;
 }
 
 .task-body-list{
