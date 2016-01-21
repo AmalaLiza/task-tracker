@@ -1,6 +1,6 @@
 import * as React from "react";
 import ProgressBar from "../progress-bar/progress-bar.tsx";
-import TaskType from "../../models/TaskType";
+import TaskType from "../../models/TaskType.ts";
 import './description.scss';
 
 interface DescProps{

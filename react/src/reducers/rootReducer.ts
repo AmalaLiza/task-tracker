@@ -1,8 +1,8 @@
 "use strict";
 
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
-import BoardType from "../models/BoardType";
-import StateType from "../models/StateType";
+import BoardType from "../models/BoardType.ts";
+import StateType from "../models/StateType.ts";
 import * as Immutable from 'immutable';
 import taskReducer from "./taskReducer.ts";
 import boardReducer from "./boardReducer.ts";

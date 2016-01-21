@@ -10,7 +10,7 @@ export default function taskReducer(state, action) {
                 id: (String(+(new Date()) + Math.random())),
                 title: action.title,
                 description: "",
-                estimatedTime: "",
+                estimatedTime: 1,
                 priority: 0,
                 progress: 0,
                 due_date: "",
