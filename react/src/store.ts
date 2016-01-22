@@ -17,3 +17,10 @@ export default function configureStore() {
     const store = createStoreWithMiddleware(rootReducer);
     return store;
 }
+
+const store = configureStore();
+
+let storeState=store.getState();
+
+export default store;
+export {storeState};
