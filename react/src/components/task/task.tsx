@@ -7,6 +7,7 @@ interface TaskProps {
     key:number;
     index: number;
     boardIndex:number;
+    taskId:number;
     task: TaskType;
     onTaskComplete:Function;
     setDescriptiveTask:Function;
@@ -26,7 +27,7 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     onTaskComplete() {
-        this.props.onTaskComplete(this.props.boardIndex, this.props.index);
+        this.props.onTaskComplete(this.props.boardIndex, this.props.taskId);
     }
 
     playAndPauseTask(boardId, taskId){

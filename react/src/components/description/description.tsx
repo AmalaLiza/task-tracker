@@ -1,5 +1,8 @@
 import * as React from "react";
+import listensToClickOutside from 'react-onclickoutside/decorator';
 import ProgressBar from "../progress-bar/progress-bar.tsx";
+import Actions from  "../../actions.ts";
+import store from "../../store.ts";
 import TaskType from "../../models/TaskType.ts";
 import './description.scss';
 
@@ -8,9 +11,10 @@ interface DescProps{
     display: Immutable.Map<string, string>;
     onDeleteTask:Function;
     progress:number;
+    hideDesc:Function;
 }
 
-export default class Description extends React.Component<DescProps, any> {
+class Description extends React.Component<DescProps, any> {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -18,8 +22,14 @@ export default class Description extends React.Component<DescProps, any> {
         }
     }
 
+    handleClickOutside(){
+        console.log("clicked outside desc");
+        this.props.hideDesc();
+    }
+
     render() {
-        return <div className="right-fixed-panel" style={this.props.display ? {} : {display:"none"}}>
+        console.log(this.props)
+        return <div className="right-fixed-panel" style={this.props.task.size ? {} : {display:"none"}}>
             <div className="right-panel__actions fright">
                 <a href="javascript:void(0)"
                    className="flaticon-edit45"
@@ -123,3 +133,4 @@ export default class Description extends React.Component<DescProps, any> {
         </div>
     }
 }
+ export default listensToClickOutside(Description);
