@@ -13,7 +13,7 @@ const logger = createLogger({
 
 const createStoreWithMiddleware = applyMiddleware(logger, thunkMiddleware)(createStore);
 
-export default function configureStore() {
+export function configureStore() {
     const store = createStoreWithMiddleware(rootReducer);
     return store;
 }

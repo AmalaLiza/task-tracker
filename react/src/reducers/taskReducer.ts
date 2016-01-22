@@ -28,8 +28,13 @@ export default function taskReducer(state, action) {
             return state;
 
         case "TASK_COMPLETED":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
-                completed => !completed);
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
+                taskList => taskList.map((task) => {
+                    if(task.get('id') === action.taskId){
+                        return task.update('completed', completed => !completed);
+                    }
+                    return task;
+                }));
             return state;
 
         case "PLAY_TASK":
@@ -60,7 +65,7 @@ export default function taskReducer(state, action) {
         case "HIDE_TASK":
             state = state.updateIn(['boardList', state.getIn(['expandedTask', 'boardIndex']), 'taskList', state.getIn(['expandedTask', 'index']), 'isExpanded'],
                 isExpanded => false);
-            state = state.setIn(['expandedTask', 'isExpanded'], false);
+            state = state.updateIn(['expandedTask'], expandedTask =>  Immutable.Map({}));
             return state;
 
         case "DELETE_TASK":

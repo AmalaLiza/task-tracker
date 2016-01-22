@@ -52,17 +52,17 @@ export class App extends React.Component<any, AppState> {
         actions.expandTask(boardIndex, taskIndex)
     }
 
-    hideTask(boardIndex, taskIndex) {
+    hideTask() {
         let {actions} = this.props
         this.setState({
             displayTaskDescription : false
         })
-        actions.hideTask(boardIndex, taskIndex)
+        actions.hideTask()
     }
 
     deleteTask(taskIndex, boardIndex) {
         let {actions} = this.props
-        this.hideTask(boardIndex, taskIndex)
+        this.hideTask();
         actions.deleteTask(taskIndex, boardIndex)
     }
 
@@ -163,6 +163,7 @@ export class App extends React.Component<any, AppState> {
                 onDeleteTask={this.deleteTask}
                 onSaveTask={actions.saveTask}
                 progress={this.state.progressDisplayed}
+                hideDesc={this.hideTask}
             />
         </div>
     }
