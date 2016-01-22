@@ -162,3 +162,32 @@ ul.more-options li{
 ul.more-options li:last-child{
   border-bottom: none;
 }
+
+.task-list__item:not(.add-board){
+  animation:entryBoard 0.2s linear;
+}
+
+@keyframes entryBoard {
+  0%{
+    transform:scale(0.4);
+  } 60%{
+    transform:scale(1.15);
+  } 100%{
+    transform:scale(1);
+  }
+
+}
+
+
+ul.more-options {
+  animation:moreOptionsEntry 0.16s ease-out;
+  transform-origin:right top;
+}
+
+@keyframes moreOptionsEntry{
+  from{
+    transform:scale(0);
+  }to{
+     transform:scale(1);
+   }
+}
