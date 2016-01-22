@@ -4,13 +4,15 @@ import TaskType from "../../models/TaskType.ts";
 import './description.scss';
 
 interface DescProps{
-    task: TaskType;
-    display: Immutable.Map<string, string>;
+    task:TaskType;
+    display:Immutable.Map<string, string>;
     onDeleteTask:Function;
+    onSaveTask:Function;
     progress:number;
 }
 
 export default class Description extends React.Component<DescProps, any> {
+
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -30,6 +32,11 @@ export default class Description extends React.Component<DescProps, any> {
                 <a href="javascript:void(0)"
                    className="flaticon-check19"
                    style={this.state.editMode ? {} : {display:"none"}}
+                   onClick={() => {
+                        this.props.onSaveTask({title: this.refs.title.value, due_date: this.refs.due_date.value, estimatedTime: this.refs.estimatedTime.value, description: this.refs.description.value});
+                        this.setState({editMode: false})
+                        }
+                   }
                 >
                 </a>
                 <a href="javascript:void(0)"
@@ -40,7 +47,7 @@ export default class Description extends React.Component<DescProps, any> {
                 </a>
                 <a href="javascript:void(0)"
                    className="flaticon-delete96"
-                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'));}}
+                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'))}}
                 >
                 </a>
             </div>
@@ -50,8 +57,12 @@ export default class Description extends React.Component<DescProps, any> {
             >
                 {this.props.task.get('title')}
             </h1>
-            <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header"
-                   style={this.state.editMode ? {} : {display:"none"}}/>
+            <input type="text"
+                   className="right-panel__heading-input"
+                   placeholder="Enter Task Header"
+                   style={this.state.editMode ? {} : {display:"none"}}
+                   ref="title"
+            />
             <div className="right-panel__content">
                 <div className="right-panel-sub-section">
                     <div className="accordion-head">
@@ -77,7 +88,9 @@ export default class Description extends React.Component<DescProps, any> {
                                         <input type="text"
                                                className="right-panel__desc-table__input"
                                                placeholder="Enter due date"
-                                               style={this.state.editMode ? {} : {display:"none"}}/>
+                                               style={this.state.editMode ? {} : {display:"none"}}
+                                               ref="due_date"
+                                        />
                                     </div>
                                 </td>
                                 <td>
@@ -90,7 +103,9 @@ export default class Description extends React.Component<DescProps, any> {
                                         </span>
                                         <input type="text" className="right-panel__desc-table__input"
                                                placeholder="Enter Estimate"
-                                               style={this.state.editMode ? {} : {display:"none"}}/>
+                                               style={this.state.editMode ? {} : {display:"none"}}
+                                               ref="estimatedTime"
+                                        />
                                     </div>
                                 </td>
                             </tr>
@@ -113,7 +128,9 @@ export default class Description extends React.Component<DescProps, any> {
                                     {this.props.task.get('description')}
                                 </div>
                                 <textarea className="right-panel__tabs-content__input"
-                                          style={this.state.editMode ? {} : {display:"none"}}>
+                                          style={this.state.editMode ? {} : {display:"none"}}
+                                          ref="description"
+                                >
                                 </textarea>
                             </div>
                         </div>

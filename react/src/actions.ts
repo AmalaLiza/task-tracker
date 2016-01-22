@@ -64,12 +64,9 @@ export default {
         };
     },
 
-    hideTask(boardId:number, taskId:number, isExpanded) {
+    hideTask() {
         return {
-            type: "HIDE_TASK",
-            boardId,
-            taskId,
-            isExpanded
+            type: "HIDE_TASK"
         };
     },
 
@@ -85,6 +82,13 @@ export default {
             type: "DELETE_TASK",
             taskIndex,
             boardIndex
+        };
+    },
+
+    saveTask(updatedInfo) {
+        return {
+            type: "SAVE_TASK",
+            updatedInfo
         };
     },
 
