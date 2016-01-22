@@ -64,9 +64,12 @@ export default {
         };
     },
 
-    hideTask() {
+    hideTask(boardId:number, taskId:number, isExpanded) {
         return {
-            type: "HIDE_TASK"
+            type: "HIDE_TASK",
+            boardId,
+            taskId,
+            isExpanded
         };
     },
 
