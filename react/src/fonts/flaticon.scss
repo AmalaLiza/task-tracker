@@ -1,10 +1,10 @@
 @font-face {
 	font-family: "Flaticon";
-	src: url("../fonts/flaticon/flaticon.eot");
-	src: url("../fonts/flaticon/flaticon.eot#iefix") format("embedded-opentype"),
-	url("../fonts/flaticon/flaticon.woff") format("woff"),
-	url("../fonts/flaticon/flaticon.ttf") format("truetype"),
-	url("../fonts/flaticon/flaticon.svg") format("svg");
+	src: url("flaticon/flaticon.eot");
+	src: url("flaticon/flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon/flaticon.woff") format("woff"),
+	url("flaticon/flaticon.ttf") format("truetype"),
+	url("flaticon/flaticon.svg") format("svg");
 	font-weight: normal;
 	font-style: normal;
 }
@@ -14,21 +14,30 @@
         font-size: 20px;
 font-style: normal;
 margin-left: 20px;
-}.flaticon-delete96:before {
+}.flaticon-check19:before {
 	content: "\e000";
 }
-.flaticon-pause52:before {
+.flaticon-delete85:before {
 	content: "\e001";
 }
-.flaticon-play128:before {
+.flaticon-delete96:before {
 	content: "\e002";
 }
-.flaticon-show8:before {
+.flaticon-edit45:before {
 	content: "\e003";
 }
-.flaticon-star178:before {
+.flaticon-pause52:before {
 	content: "\e004";
 }
-.flaticon-tool1068:before {
+.flaticon-play128:before {
 	content: "\e005";
+}
+.flaticon-show8:before {
+	content: "\e006";
+}
+.flaticon-star178:before {
+	content: "\e007";
+}
+.flaticon-tool1068:before {
+	content: "\e008";
 }

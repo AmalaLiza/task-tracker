@@ -10,82 +10,116 @@ interface DescProps{
     progress:number;
 }
 
-let  Description = (props: DescProps) =>
-    (<div className="right-fixed-panel" style={props.display ? {display:"block"} : {display:"none"}}>
-                <div className="right-panel__actions fright">
-                    <a href="javascript:void(0)" className="flaticon-edit45">
-                    </a>
-                    <a href="javascript:void(0)" className="flaticon-check19">
-                    </a>
-                    <a href="javascript:void(0)"
-                       className="flaticon-delete96"
-                       onClick={() => {props.onDeleteTask(props.task.get('index'), props.task.get('boardIndex'));}}
-                        >
-                    </a>
-                </div>
+export default class Description extends React.Component<DescProps, any> {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            editMode: false
+        }
+    }
+
+    render() {
+        return <div className="right-fixed-panel" style={this.props.display ? {} : {display:"none"}}>
             <div className="right-panel__actions fright">
+                <a href="javascript:void(0)"
+                   className="flaticon-edit45"
+                   style={this.state.editMode ? {display:"none"} : {}}
+                   onClick={() => this.setState({editMode: true})}
+                >
+                </a>
+                <a href="javascript:void(0)"
+                   className="flaticon-check19"
+                   style={this.state.editMode ? {} : {display:"none"}}
+                >
+                </a>
+                <a href="javascript:void(0)"
+                   className="flaticon-delete85"
+                   style={this.state.editMode ? {} : {display:"none"}}
+                   onClick={() => this.setState({editMode: false})}
+                >
+                </a>
+                <a href="javascript:void(0)"
+                   className="flaticon-delete96"
+                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'));}}
+                >
+                </a>
             </div>
-                <h1 className="right-panel__heading">{props.task.get('title')}</h1>
-                <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header" style={{display:"none"}}/>
-                <div className="right-panel__content">
-                    <div className="right-panel-sub-section">
-                        <div className="accordion-head">
-                            <h3 className="right-panel-sub-section__heading">Progress</h3>
-                        </div>
-                        <div className="accordion-cont">
-                            <ProgressBar
-                                progress={props.progress}
-                            />
-                        </div>
-
-                        <div className="accordion-cont">
-                            <table className="right-panel__desc-table width-100per">
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <span className="right-panel__desc-table__key bold-text">Due date:</span>
-                                            <span className="right-panel__desc-table__value">
-                                                {props.task.get('due_date')}
-                                            </span>
-                                            <input type="text"
-                                                   className="right-panel__desc-table__input"
-                                                   placeholder="Enter due date"
-                                                   style={{display:"none"}}/>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span className="right-panel__desc-table__key bold-text">Estimate:</span>
-                                            <span className="right-panel__desc-table__value">
-                                                {props.task.get('estimatedTime')}
-                                            </span>
-                                            <input type="text" className="right-panel__desc-table__input"
-                                                   placeholder="Enter Estimate" style={{display:"none"}}/>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+            <div className="right-panel__actions fright"></div>
+            <h1 className="right-panel__heading"
+                style={this.state.editMode ? {display:"none"} : {}}
+            >
+                {this.props.task.get('title')}
+            </h1>
+            <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header"
+                   style={this.state.editMode ? {} : {display:"none"}}/>
+            <div className="right-panel__content">
+                <div className="right-panel-sub-section">
+                    <div className="accordion-head">
+                        <h3 className="right-panel-sub-section__heading">Progress</h3>
                     </div>
-                    <div className="right-panel-sub-section">
-                        <div className="right-panel__tabs-wrapper">
-                            <div className="right-panel__tabs-header">
-                                <a className="right-panel__tabs-header__item active" href="javascript:void(0)">
-                                    Description
-                                </a>
-                                <a className="right-panel__tabs-header__item" href="javascript:void(0)">Activity</a>
-                            </div>
-                            <div className="right-panel__tabs-content">
-                                <div className="right-panel__tabs-content__item">
-                                    <div className="right-panel__tabs-content__desc">
-                                        {props.task.get('description')}
+                    <div className="accordion-cont">
+                        <ProgressBar
+                            progress={this.props.progress}
+                        />
+                    </div>
+
+                    <div className="accordion-cont">
+                        <table className="right-panel__desc-table width-100per">
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span className="right-panel__desc-table__key bold-text">Due date:</span>
+                                        <span className="right-panel__desc-table__value"
+                                              style={this.state.editMode ? {display:"none"} : {}}
+                                        >
+                                            {this.props.task.get('due_date')}
+                                        </span>
+                                        <input type="text"
+                                               className="right-panel__desc-table__input"
+                                               placeholder="Enter due date"
+                                               style={this.state.editMode ? {} : {display:"none"}}/>
                                     </div>
-                                    <textarea className="right-panel__tabs-content__input" style={{display:"none"}}></textarea>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span className="right-panel__desc-table__key bold-text">Estimate:</span>
+                                        <span className="right-panel__desc-table__value"
+                                              style={this.state.editMode ? {display:"none"} : {}}
+                                        >
+                                            {this.props.task.get('estimatedTime')}
+                                        </span>
+                                        <input type="text" className="right-panel__desc-table__input"
+                                               placeholder="Enter Estimate"
+                                               style={this.state.editMode ? {} : {display:"none"}}/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div className="right-panel-sub-section">
+                    <div className="right-panel__tabs-wrapper">
+                        <div className="right-panel__tabs-header">
+                            <a className="right-panel__tabs-header__item active" href="javascript:void(0)">
+                                Description
+                            </a>
+                            <a className="right-panel__tabs-header__item" href="javascript:void(0)">Activity</a>
+                        </div>
+                        <div className="right-panel__tabs-content">
+                            <div className="right-panel__tabs-content__item">
+                                <div className="right-panel__tabs-content__desc"
+                                     style={this.state.editMode ? {display:"none"} : {}}
+                                >
+                                    {this.props.task.get('description')}
                                 </div>
+                                <textarea className="right-panel__tabs-content__input"
+                                          style={this.state.editMode ? {} : {display:"none"}}>
+                                </textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>)
-
-export default Description;
+            </div>
+        </div>
+    }
+}
