@@ -17,7 +17,7 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
     render() {
         let isPlaying = this.props.activeTask.get('isPlaying');
         return <div className="progress-track"
-                    style={isPlaying ? {display:"block"} : {display:"none"}}>
+                    style={this.props.activeTask.size ? {display:"block"} : {display:"none"}}>
             <div className="width-container clearfix">
                 <a href="javascript:void(0)"
                    className={isPlaying ? "play-ico flaticon-pause52 fleft" : 'play-ico flaticon-play128 fleft'}>

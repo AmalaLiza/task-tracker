@@ -8,7 +8,6 @@ import './description.scss';
 
 interface DescProps{
     task: TaskType;
-    display: Immutable.Map<string, string>;
     onDeleteTask:Function;
     progress:number;
     hideDesc:Function;
@@ -23,12 +22,10 @@ class Description extends React.Component<DescProps, any> {
     }
 
     handleClickOutside(){
-        console.log("clicked outside desc");
         this.props.hideDesc();
     }
 
     render() {
-        console.log(this.props)
         return <div className="right-fixed-panel" style={this.props.task.size ? {} : {display:"none"}}>
             <div className="right-panel__actions fright">
                 <a href="javascript:void(0)"
