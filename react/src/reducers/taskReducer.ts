@@ -68,6 +68,16 @@ export default function taskReducer(state, action) {
                 taskList => taskList.splice(action.taskIndex, 1));
             return state;
 
+        case "SAVE_TASK":
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskIndex, 'title'],
+                title => action.updatedTask.title);
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskIndex, 'due_date'],
+                due_date => action.updatedTask.due_date);
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskIndex, 'estimatedTime'],
+                estimatedTime => action.updatedTask.estimatedTime);
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskIndex, 'description'],
+                description => action.updatedTask.description);
+            return state;
         default:
             return state
     }

@@ -15,8 +15,8 @@ export default function boardReducer(state, action) {
             return state;
 
         case "RENAME_BOARD":
-            state = state.updateIn(['boardList', action.boardIndex], board =>
-                board.update('title', title => action.newTitle));
+            state = state.updateIn(['boardList', action.boardIndex, 'title'],
+                title => action.newTitle);
             return state;
 
         case "DELETE_BOARD":
