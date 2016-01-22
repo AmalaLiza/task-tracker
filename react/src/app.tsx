@@ -154,6 +154,7 @@ export class App extends React.Component<any, AppState> {
             <Description
                 task={expandedTask}
                 onDeleteTask={this.deleteTask}
+                onSaveTask={actions.saveTask}
                 progress={this.state.progressDisplayed}
                 hideDesc={this.hideTask}
             />

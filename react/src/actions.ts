@@ -85,6 +85,13 @@ export default {
         };
     },
 
+    saveTask(updatedInfo) {
+        return {
+            type: "SAVE_TASK",
+            updatedInfo
+        };
+    },
+
     searchTask(searchText:string) {
         return {
             type: "SEARCH_TASK",

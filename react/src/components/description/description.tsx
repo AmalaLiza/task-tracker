@@ -7,13 +7,15 @@ import TaskType from "../../models/TaskType.ts";
 import './description.scss';
 
 interface DescProps{
-    task: TaskType;
+    task:TaskType;
     onDeleteTask:Function;
+    onSaveTask:Function;
     progress:number;
     hideDesc:Function;
 }
 
 class Description extends React.Component<DescProps, any> {
+
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -37,6 +39,11 @@ class Description extends React.Component<DescProps, any> {
                 <a href="javascript:void(0)"
                    className="flaticon-check19"
                    style={this.state.editMode ? {} : {display:"none"}}
+                   onClick={() => {
+                        this.props.onSaveTask({title: this.refs.title.value, due_date: this.refs.due_date.value, estimatedTime: this.refs.estimatedTime.value, description: this.refs.description.value});
+                        this.setState({editMode: false})
+                        }
+                   }
                 >
                 </a>
                 <a href="javascript:void(0)"
@@ -47,7 +54,7 @@ class Description extends React.Component<DescProps, any> {
                 </a>
                 <a href="javascript:void(0)"
                    className="flaticon-delete96"
-                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'));}}
+                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'))}}
                 >
                 </a>
             </div>
@@ -61,6 +68,7 @@ class Description extends React.Component<DescProps, any> {
                    placeholder="Enter Task Header"
                    style={this.state.editMode ? {} : {display:"none"}}
                    defaultValue={this.props.task.get('title')}
+                   ref="title"
             />
             <div className="right-panel__content">
                 <div className="right-panel-sub-section">
@@ -89,6 +97,7 @@ class Description extends React.Component<DescProps, any> {
                                                placeholder="Enter due date"
                                                style={this.state.editMode ? {} : {display:"none"}}
                                                defaultValue={this.props.task.get('due_date')}
+                                               ref="due_date"
                                         />
                                     </div>
                                 </td>
@@ -105,6 +114,7 @@ class Description extends React.Component<DescProps, any> {
                                                placeholder="Enter Estimate"
                                                style={this.state.editMode ? {} : {display:"none"}}
                                                defaultValue={this.props.task.get('estimatedTime')}
+                                               ref="estimatedTime"
                                         />
                                     </div>
                                 </td>
@@ -128,7 +138,10 @@ class Description extends React.Component<DescProps, any> {
                                     {this.props.task.get('description')}
                                 </div>
                                 <textarea className="right-panel__tabs-content__input"
-                                          style={this.state.editMode ? {} : {display:"none"}}>
+                                          style={this.state.editMode ? {} : {display:"none"}}
+                                          ref="description"
+                                          defaultValue={this.props.task.get('description')}
+                                >
                                 </textarea>
                             </div>
                         </div>
