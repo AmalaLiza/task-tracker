@@ -26,24 +26,24 @@
 
 .right-panel__heading{
   border-bottom: 1px solid $primary-border-color;
-  margin-top: 41px;
+  margin-top: 48px;
   padding-bottom: 8px;
   margin-right: 25px;
 }
 
 .right-panel__heading-input{
-  height: 43px;
+  height: 38px;
   width: calc(100% - 18px);
   margin: 14px 0 0 0;
   box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.17);
   border: 1px solid #E4E4E4;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0px 10px;
 }
 
 .right-panel__content{
-  height: calc(100% - 84px);
-  overflow: auto;
+  //height: calc(100% - 93px);
+  //overflow: auto;
   padding-right: 25px;
 }
 .right-panel-sub-section {
@@ -156,4 +156,91 @@
   a{
     color:inherit;
   }
+}
+
+
+.timeline__date-time {
+  padding-right: 35px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.timeline-time {
+  text-align: right;
+}
+
+.timeline__date-time:after {
+  position: absolute;
+  display: block;
+  height: calc(100% - 26px);
+  width: 4px;
+  background: $primary-color;
+  content: '';
+  right: -1px;
+  top: 24px;
+  border-radius: 100px;
+}
+.right-panel__tabs-content__activity{
+  margin:20px 0;
+}
+.right-panel__tabs-content__activity li:last-child .timeline__date-time:after{
+  display:none;
+}
+
+.timeline__activity-name {
+  padding-left: 30px;
+  position: relative;
+}
+
+.timeline__activity-name:before {
+  content: '';
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  border: 2px solid $primary-color;
+  border-radius: 50%;
+  position: absolute;
+  left: -12px;
+  background: #fff;
+}
+
+.timeline__activity-name:after {
+  content: '';
+  height: 12px;
+  width: 12px;
+  background: $primary-color;
+  display: block;
+  border-radius: 50%;
+  left: -7px;
+  position: absolute;
+  top: 5px;
+}
+
+.timeline__activity-name .highlight-text{
+  color:$primary-color;
+  quotes:"'" "'";
+
+  &:before{
+    content: open-quote;
+  }
+  &:after{
+    content: close-quote;
+  }
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: #374444;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.timeline-time {
+  font-size: 13px;
+  color:#b8B8B8;
+}
+
+.right-panel__tabs-content {
+  overflow: auto;
+  height: calc(100vh - 478px);
 }
