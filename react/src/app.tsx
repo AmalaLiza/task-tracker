@@ -49,25 +49,23 @@ export class App extends React.Component<any, AppState> {
 
     hideTask() {
         let {actions} = this.props;
-        actions.hideTask()
+        actions.hideTask();
     }
 
     deleteTask(taskIndex, boardIndex) {
-        let {actions} = this.props
+        let {actions} = this.props;
         this.hideTask();
-        actions.deleteTask(taskIndex, boardIndex)
+        actions.deleteTask(taskIndex, boardIndex);
     }
 
     startTaskTracker(boardId, taskId, isPlaying) {
-        let {data, actions} = this.props
+        let {data, actions} = this.props;
         this.setState({
             progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress']),
             estimatedTime: data.getIn(['boardList', boardId, 'taskList', taskId, 'estimatedTime'])
         })
 
         let myTimer = () => {
-            if(!data.get('activeTask').size)
-                clearInterval(this.timer);
             let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
             let progressDisplayed = progress
             if(progress > 100) {
@@ -87,7 +85,7 @@ export class App extends React.Component<any, AppState> {
             if (data.getIn(["activeTask", "isPlaying"]))
                 actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "index"]), this.state.progress);
             clearInterval(this.timer)
-            actions.playTask(boardId, taskId, this.state.progress)
+            actions.playTask(boardId, taskId, this.state.progress);
             this.timer = setInterval(myTimer, 1000)
         }
     }
