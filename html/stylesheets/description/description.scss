@@ -9,7 +9,7 @@
   right: 0px;
   top: 64px;
   z-index: 9999;
-  bottom:76px;
+  bottom:0px;
   padding: 0 0 0 25px;
   box-shadow: -3px 1px 10px rgba(0, 0, 0, 0.28);
   color:$secondary-text-color;
@@ -112,12 +112,12 @@
 
   &:after{
     content:'';
-    height:2px;
+    height:3px;
     width:40%;
     bottom:0;
     position:absolute;
     background-color:$primary-color;
-    left:0;
+    left:-3px;
     transition: 0.3s width ease-in-out;
   }
 }

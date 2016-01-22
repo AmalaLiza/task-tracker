@@ -6,6 +6,7 @@
   background:$footer-background;
   color:#fff;
   animation: progressTrackEntry 0.35s ease-out;
+  z-index:999999999;
 }
 
 .daytime-track{
