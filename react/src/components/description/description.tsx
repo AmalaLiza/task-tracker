@@ -57,8 +57,11 @@ class Description extends React.Component<DescProps, any> {
             >
                 {this.props.task.get('title')}
             </h1>
-            <input type="text" className="right-panel__heading-input" placeholder="Enter Task Header"
-                   style={this.state.editMode ? {} : {display:"none"}}/>
+            <input type="text" className="right-panel__heading-input"
+                   placeholder="Enter Task Header"
+                   style={this.state.editMode ? {} : {display:"none"}}
+                   defaultValue={this.props.task.get('title')}
+            />
             <div className="right-panel__content">
                 <div className="right-panel-sub-section">
                     <div className="accordion-head">
@@ -84,7 +87,9 @@ class Description extends React.Component<DescProps, any> {
                                         <input type="text"
                                                className="right-panel__desc-table__input"
                                                placeholder="Enter due date"
-                                               style={this.state.editMode ? {} : {display:"none"}}/>
+                                               style={this.state.editMode ? {} : {display:"none"}}
+                                               defaultValue={this.props.task.get('due_date')}
+                                        />
                                     </div>
                                 </td>
                                 <td>
@@ -95,9 +100,12 @@ class Description extends React.Component<DescProps, any> {
                                         >
                                             {this.props.task.get('estimatedTime')}
                                         </span>
-                                        <input type="text" className="right-panel__desc-table__input"
+                                        <input type="text"
+                                               className="right-panel__desc-table__input"
                                                placeholder="Enter Estimate"
-                                               style={this.state.editMode ? {} : {display:"none"}}/>
+                                               style={this.state.editMode ? {} : {display:"none"}}
+                                               defaultValue={this.props.task.get('estimatedTime')}
+                                        />
                                     </div>
                                 </td>
                             </tr>

@@ -38,10 +38,9 @@ export default class Board extends React.Component<BoardProps, any> {
     }
 
     renameBoard(event, boardIndex:number) {
-        console.log("input onchange");
         if (event.keyCode === 13) {
             this.props.renameBoard(event.target.value, boardIndex);
-            event.target.value = '';
+            event.target.defaultValue = event.target.value;
             this.setState({showRenameInput: false});
         }
     }
