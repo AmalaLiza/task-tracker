@@ -24,7 +24,6 @@ import './fonts/flaticon.scss';
 
 interface AppState {
     progress:number;
-    displayTaskDescription:Boolean;
     estimatedTime:number;
 }
 
@@ -34,7 +33,6 @@ export class App extends React.Component<any, AppState> {
         this.state = {
             progress: 0,
             progressDisplayed: 0,
-            displayTaskDescription: false,
             estimatedTime: 0
         };
         this.startTaskTracker = this.startTaskTracker.bind(this)
@@ -44,19 +42,13 @@ export class App extends React.Component<any, AppState> {
     }
 
     expandTask(boardIndex, taskIndex) {
-        let {actions, data} = this.props
-        this.setState({
-            displayTaskDescription : true
-        })
+        let {actions, data} = this.props;
         data = data.setIn(['expandedTask', 'taskIndex'], taskIndex)
         actions.expandTask(boardIndex, taskIndex)
     }
 
     hideTask() {
-        let {actions} = this.props
-        this.setState({
-            displayTaskDescription : false
-        })
+        let {actions} = this.props;
         actions.hideTask()
     }
 
@@ -74,6 +66,8 @@ export class App extends React.Component<any, AppState> {
         })
 
         let myTimer = () => {
+            if(!data.get('activeTask').size)
+                clearInterval(this.timer);
             let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
             let progressDisplayed = progress
             if(progress > 100) {
@@ -88,7 +82,7 @@ export class App extends React.Component<any, AppState> {
         }
         if (isPlaying) {
             actions.pauseTask(boardId, taskId, this.state.progress)
-            clearInterval(this.timer)
+            clearInterval(this.timer);
         } else {
             if (data.getIn(["activeTask", "isPlaying"]))
                 actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "index"]), this.state.progress);
@@ -159,7 +153,6 @@ export class App extends React.Component<any, AppState> {
             </div>
             <Description
                 task={expandedTask}
-                display={this.state.displayTaskDescription}
                 onDeleteTask={this.deleteTask}
                 onSaveTask={actions.saveTask}
                 progress={this.state.progressDisplayed}

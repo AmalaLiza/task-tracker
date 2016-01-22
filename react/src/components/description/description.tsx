@@ -8,7 +8,6 @@ import './description.scss';
 
 interface DescProps{
     task:TaskType;
-    display:Immutable.Map<string, string>;
     onDeleteTask:Function;
     onSaveTask:Function;
     progress:number;
@@ -25,12 +24,10 @@ class Description extends React.Component<DescProps, any> {
     }
 
     handleClickOutside(){
-        console.log("clicked outside desc");
         this.props.hideDesc();
     }
 
     render() {
-        console.log(this.props)
         return <div className="right-fixed-panel" style={this.props.task.size ? {} : {display:"none"}}>
             <div className="right-panel__actions fright">
                 <a href="javascript:void(0)"
@@ -68,10 +65,10 @@ class Description extends React.Component<DescProps, any> {
             >
                 {this.props.task.get('title')}
             </h1>
-            <input type="text"
-                   className="right-panel__heading-input"
+            <input type="text" className="right-panel__heading-input"
                    placeholder="Enter Task Header"
                    style={this.state.editMode ? {} : {display:"none"}}
+                   defaultValue={this.props.task.get('title')}
                    ref="title"
             />
             <div className="right-panel__content">
@@ -100,6 +97,7 @@ class Description extends React.Component<DescProps, any> {
                                                className="right-panel__desc-table__input"
                                                placeholder="Enter due date"
                                                style={this.state.editMode ? {} : {display:"none"}}
+                                               defaultValue={this.props.task.get('due_date')}
                                                ref="due_date"
                                         />
                                     </div>
@@ -112,9 +110,11 @@ class Description extends React.Component<DescProps, any> {
                                         >
                                             {this.props.task.get('estimatedTime')}
                                         </span>
-                                        <input type="text" className="right-panel__desc-table__input"
+                                        <input type="text"
+                                               className="right-panel__desc-table__input"
                                                placeholder="Enter Estimate"
                                                style={this.state.editMode ? {} : {display:"none"}}
+                                               defaultValue={this.props.task.get('estimatedTime')}
                                                ref="estimatedTime"
                                         />
                                     </div>
@@ -141,6 +141,7 @@ class Description extends React.Component<DescProps, any> {
                                 <textarea className="right-panel__tabs-content__input"
                                           style={this.state.editMode ? {} : {display:"none"}}
                                           ref="description"
+                                          defaultValue={this.props.task.get('description')}
                                 >
                                 </textarea>
                             </div>
