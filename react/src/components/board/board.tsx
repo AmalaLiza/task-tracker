@@ -56,6 +56,7 @@ export default class Board extends React.Component<BoardProps, any> {
             <Task
                 key={index}
                 index={index}
+                taskId={task.get('id')}
                 boardIndex={this.props.index}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
@@ -69,6 +70,7 @@ export default class Board extends React.Component<BoardProps, any> {
             <Task
                 key={index}
                 index={index}
+                taskId={task.get('id')}
                 boardIndex={this.props.index}
                 task={task}
                 onTaskComplete={this.props.onTaskCompletion}
