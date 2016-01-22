@@ -14,7 +14,7 @@ export default class Header extends React.Component<HeaderProps, any> {
     }
 
     handleSearch(e) {
-        const searchText = e.target.value.trim();
+        const searchText = e.target.value;
         this.props.onSearch(searchText);
     }
 

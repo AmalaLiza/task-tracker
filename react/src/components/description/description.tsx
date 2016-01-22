@@ -27,18 +27,16 @@ class Description extends React.Component<DescProps, any> {
         this.props.hideDesc();
     }
 
-    onEditDescription(event){
+    onEditButtonClick(){
         this.props.onSaveTask({title: this.refs.title.value, due_date: this.refs.due_date.value, estimatedTime: this.refs.estimatedTime.value, description: this.refs.description.value});
         this.refs.title.value = '';
         this.refs.due_date.value = '';
         this.refs.estimatedTime.value = '';
         this.refs.description.value = '';
-        this.setState({editMode: false})
-
+        this.setState({editMode: false});
     }
 
     render() {
-        console.log("Amala", this.props.task.toJS());
         return <div className="right-fixed-panel" style={this.props.task.size ? {} : {display:"none"}}>
             <div className="right-panel__actions fright">
                 <a href="javascript:void(0)"
@@ -50,7 +48,7 @@ class Description extends React.Component<DescProps, any> {
                 <a href="javascript:void(0)"
                    className="flaticon-check19"
                    style={this.state.editMode ? {} : {display:"none"}}
-                   onClick={(event) => {this.onEditDescription(event)}}
+                   onClick={(event) => {this.onEditButtonClick()}}
                 >
                 </a>
                 <a href="javascript:void(0)"
@@ -67,13 +65,12 @@ class Description extends React.Component<DescProps, any> {
             </div>
             <div className="right-panel__actions fright"></div>
             <h1 className="right-panel__heading"
-                style={this.state.editMode ? {display:"none"} : {}}
-            >
+                style={this.state.editMode ? {display:"none"} : {}}>
                 {this.props.task.get('title')}
             </h1>
             <input type="text"
                    className="right-panel__heading-input"
-                   style={this.state.editMode ? {} : {display:"none"}}
+                   style={this.state.editMode ? {display:"block"} : {display:"none"}}
                    ref="title"
                    defaultValue={this.props.task.get('title')}/>
             {this.props.task.get('title')}
