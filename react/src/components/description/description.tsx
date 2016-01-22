@@ -44,6 +44,7 @@ class Description extends React.Component<DescProps, any> {
                    style={this.state.editMode ? {} : {display:"none"}}
                    onClick={() => {
                         this.props.onSaveTask({title: this.refs.title.value, due_date: this.refs.due_date.value, estimatedTime: this.refs.estimatedTime.value, description: this.refs.description.value});
+                        this.refs.title.value = ''; this.refs.due_date.value = ''; this.refs.estimatedTime.value = ''; this.refs.description.value = '';
                         this.setState({editMode: false})
                         }
                    }
