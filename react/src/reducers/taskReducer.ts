@@ -51,6 +51,8 @@ export default function taskReducer(state, action) {
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
                 isPlaying => false);
             state = state.updateIn(['activeTask', 'progress'], progress => action.progress);
+            if(state.getIn(['expandedTask', 'id']) == state.getIn(['activeTask', 'id']))
+                state = state.updateIn(['expandedTask', 'progress'], progress => action.progress);
             state = state.updateIn(['activeTask', 'isPlaying'], progress => false);
             return state;
 
