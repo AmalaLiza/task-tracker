@@ -66,7 +66,7 @@ export class App extends React.Component<any, AppState> {
         })
 
         let myTimer = () => {
-            let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
+            let progress:number = this.state.progress + 100 / (60)
             let progressDisplayed = progress
             if(progress > 100) {
                 let mod = progress / 100 | 0
@@ -83,7 +83,7 @@ export class App extends React.Component<any, AppState> {
             clearInterval(this.timer);
         } else {
             if (data.getIn(["activeTask", "isPlaying"]))
-                actions.pauseTask(data.getIn(["activeTask", "boardId"]), data.getIn(["activeTask", "index"]), this.state.progress);
+                actions.pauseTask(data.getIn(["activeTask", "boardIndex"]), data.getIn(["activeTask", "index"]), this.state.progress);
             clearInterval(this.timer)
             actions.playTask(boardId, taskId, this.state.progress);
             this.timer = setInterval(myTimer, 1000)
@@ -146,6 +146,7 @@ export class App extends React.Component<any, AppState> {
             <div className="footer">
                 {activeTask.get('isPlaying')? <TaskTracker
                     activeTask={activeTask}
+                    onPlayOrPauseTask={this.startTaskTracker}
                     progress={this.state.progressDisplayed}
                 /> : null}
             </div>
