@@ -74,7 +74,9 @@ export default function taskReducer(state, action) {
             return state;
 
         case "SAVE_TASK":
-            state = state.updateIn(['boardList', state.getIn(['expandedTask', 'boardIndex']), 'taskList', state.getIn(['expandedTask', 'index'])],
+            let boardIndex = state.getIn(['expandedTask', 'boardIndex']);
+            let taskIndex = state.getIn(['expandedTask', 'index']);
+            state = state.updateIn(['boardList', boardIndex, 'taskList', taskIndex],
                 task => {
                     task = task.update('title', title => action.updatedInfo.title);
                     task = task.update('due_date', due_date => action.updatedInfo.due_date);
@@ -82,7 +84,9 @@ export default function taskReducer(state, action) {
                     task = task.update('description', description => action.updatedInfo.description);
                     return task
                 });
-            state = state.update('expandedTask', task => state.getIn(['boardList', state.getIn(['expandedTask', 'boardIndex']), 'taskList', state.getIn(['expandedTask', 'index'])]));
+            state = state.update('expandedTask', task => state.getIn(['boardList', boardIndex, 'taskList', taskIndex]));
+            state = state.setIn(['expandedTask', 'boardIndex'], boardIndex);
+            state = state.setIn(['expandedTask', 'index'], taskIndex);
             return state;
         default:
             return state
