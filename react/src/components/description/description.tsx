@@ -20,7 +20,8 @@ class Description extends React.Component<DescProps, any> {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            editMode: false
+            editMode: false,
+            active: true
         }
     }
 
@@ -93,7 +94,7 @@ class Description extends React.Component<DescProps, any> {
                     </div>
                     <div className="accordion-cont">
                         <ProgressBar
-                            progress={this.props.task.progress}
+                            progress={this.props.progress}
                         />
                     </div>
 
@@ -138,16 +139,21 @@ class Description extends React.Component<DescProps, any> {
                 <div className="right-panel-sub-section">
                     <div className="right-panel__tabs-wrapper">
                         <div className="right-panel__tabs-header">
-                            <a className="right-panel__tabs-header__item active" href="javascript:void(0)">
+                            <a className={`right-panel__tabs-header__item ${this.state.active? 'active':''}`}
+                               href="javascript:void(0)"
+                               onClick={() => {this.setState({active : !this.state.active})}}
+                            >
                                 Description
                             </a>
-                            <a className="right-panel__tabs-header__item" href="javascript:void(0)">Activity</a>
+                            <a className={`right-panel__tabs-header__item ${!this.state.active? 'active':''}`}
+                               href="javascript:void(0)"
+                               onClick={() => {this.setState({active : !this.state.active})}}
+                            >Activity</a>
                         </div>
-                        <div className="right-panel__tabs-content">
+                        <div className="right-panel__tabs-content" style={this.state.active? {display : 'block'}:{display : 'none'}}>
                             <div className="right-panel__tabs-content__item">
                                 <div className="right-panel__tabs-content__desc"
-                                     style={this.state.editMode ? {display:"none"} : {}}
-                                >
+                                     style={this.state.editMode ? {display:"none"} : {}}>
                                     {this.props.task.get('description')}
                                 </div>
                                 <textarea className="right-panel__tabs-content__input"
@@ -156,6 +162,19 @@ class Description extends React.Component<DescProps, any> {
                                 >
                                 </textarea>
                             </div>
+                        </div>
+                        <div className="right-panel__tabs-content" style={this.state.active? {display : 'none'}:{display : 'block'}}>
+                            <ul className="right-panel__tabs-content__activity">
+                                <li className="clearfix">
+                                    <div className="timeline__date-time fleft">
+                                        <div className="timeline-date">12-Dec-2015</div>
+                                        <div className="timeline-time">2:45PM</div>
+                                    </div>
+                                    <div className="timeline__activity-name fleft">
+                                        <span>Created the Task <span className="highlight-text">Created design for insights screen</span></span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
