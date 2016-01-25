@@ -20,7 +20,6 @@ export default function boardReducer(state, action) {
             return state;
 
         case "DELETE_BOARD":
-            console.log("sate", state.toJS())
             state = state.updateIn(['boardList'], boardList => boardList.splice(action.boardIndex, 1));
             if(state.getIn(['expandedTask', 'boardIndex']) == action.boardIndex){
                 state = state.updateIn(['expandedTask'], () => Immutable.Map({}));

@@ -37,7 +37,6 @@ export function rootReducer(state:StateType = initialState, action) {
             state = state.update('searchText', searchText => action.searchText);
             return state;
 
-
         default:
             return state;
     }

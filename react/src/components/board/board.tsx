@@ -19,7 +19,13 @@ interface BoardProps {
     onDeleteBoard:Function;
 }
 
-export default class Board extends React.Component<BoardProps, any> {
+interface BoardState {
+    showCompletedList?: boolean;
+    showMoreOptions?: boolean;
+    showRenameInput?: boolean;
+}
+
+export default class Board extends React.Component<BoardProps, BoardState> {
 
     constructor() {
         super();
