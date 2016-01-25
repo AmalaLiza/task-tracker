@@ -28,7 +28,20 @@ class Description extends React.Component<DescProps, any> {
     }
 
     onEditButtonClick(){
-        this.props.onSaveTask({title: this.refs.title.value, due_date: this.refs.due_date.value, estimatedTime: this.refs.estimatedTime.value, description: this.refs.description.value});
+        this.refs.title.value = this.props.task.get('title');
+        this.refs.due_date.value = this.props.task.get('due_date');
+        this.refs.estimatedTime.value = this.props.task.get('estimatedTime');
+        this.refs.description.value = this.props.task.get('description');
+        this.setState({editMode: true});
+    }
+
+    onSaveButtonClick(){
+        this.props.onSaveTask({
+            title: this.refs.title.value,
+            due_date: this.refs.due_date.value,
+            estimatedTime: this.refs.estimatedTime.value,
+            description: this.refs.description.value
+        });
         this.refs.title.value = '';
         this.refs.due_date.value = '';
         this.refs.estimatedTime.value = '';
@@ -42,13 +55,13 @@ class Description extends React.Component<DescProps, any> {
                 <a href="javascript:void(0)"
                    className="flaticon-edit45"
                    style={this.state.editMode ? {display:"none"} : {}}
-                   onClick={() => this.setState({editMode: true})}
+                   onClick={() => this.onEditButtonClick()}
                 >
                 </a>
                 <a href="javascript:void(0)"
                    className="flaticon-check19"
                    style={this.state.editMode ? {} : {display:"none"}}
-                   onClick={(event) => {this.onEditButtonClick()}}
+                   onClick={() => this.onSaveButtonClick()}
                 >
                 </a>
                 <a href="javascript:void(0)"
@@ -72,7 +85,7 @@ class Description extends React.Component<DescProps, any> {
                    className="right-panel__heading-input"
                    style={this.state.editMode ? {display:"block"} : {display:"none"}}
                    ref="title"
-                   defaultValue={this.props.task.get('title')}/>
+            />
             {this.props.task.get('title')}
             <div className="right-panel__content">
                 <div className="right-panel-sub-section">
@@ -99,7 +112,6 @@ class Description extends React.Component<DescProps, any> {
                                                className="right-panel__desc-table__input"
                                                placeholder="Enter due date"
                                                style={this.state.editMode ? {} : {display:"none"}}
-                                               defaultValue={this.props.task.get('due_date')}
                                                ref="due_date"
                                         />
                                     </div>
@@ -116,7 +128,6 @@ class Description extends React.Component<DescProps, any> {
                                                className="right-panel__desc-table__input"
                                                placeholder="Enter Estimate"
                                                style={this.state.editMode ? {} : {display:"none"}}
-                                               defaultValue={this.props.task.get('estimatedTime')}
                                                ref="estimatedTime"
                                         />
                                     </div>
@@ -143,7 +154,6 @@ class Description extends React.Component<DescProps, any> {
                                 <textarea className="right-panel__tabs-content__input"
                                           style={this.state.editMode ? {} : {display:"none"}}
                                           ref="description"
-                                          defaultValue={this.props.task.get('description')}
                                 >
                                 </textarea>
                             </div>
