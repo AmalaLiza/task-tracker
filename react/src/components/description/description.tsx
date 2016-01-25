@@ -72,8 +72,7 @@ class Description extends React.Component<DescProps, any> {
                 </a>
                 <a href="javascript:void(0)"
                    className="flaticon-delete96"
-                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'))}}
-                >
+                   onClick={() => {this.props.onDeleteTask(this.props.task.get('index'), this.props.task.get('boardIndex'))}}>
                 </a>
             </div>
             <div className="right-panel__actions fright"></div>
