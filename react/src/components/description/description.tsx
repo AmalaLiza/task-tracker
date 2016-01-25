@@ -6,6 +6,7 @@ import store from "../../store.ts";
 import TaskType from "../../models/TaskType.ts";
 import './description.scss';
 
+
 interface DescProps{
     task:TaskType;
     onDeleteTask:Function;

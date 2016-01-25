@@ -46,12 +46,13 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PAUSE_TASK":
+            console.log(action);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'progress'],
                 progress => action.progress);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
                 isPlaying => false);
             state = state.updateIn(['activeTask', 'progress'], progress => action.progress);
-            state = state.updateIn(['activeTask', 'isPlaying'], progress => false);
+            state = state.updateIn(['activeTask', 'isPlaying'], isPlaying => false);
             return state;
 
         case "EXPAND_TASK":
