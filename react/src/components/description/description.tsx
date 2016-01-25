@@ -94,7 +94,7 @@ class Description extends React.Component<DescProps, any> {
                     </div>
                     <div className="accordion-cont">
                         <ProgressBar
-                            progress={this.props.progress}
+                            progress={this.props.task.get('progress')}
                         />
                     </div>
 

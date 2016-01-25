@@ -66,7 +66,8 @@ export class App extends React.Component<any, AppState> {
         })
 
         let myTimer = () => {
-            let progress:number = this.state.progress + 100 / (60)
+            let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
+            //let progress:number = this.state.progress + 100 / (60)
             let progressDisplayed = progress
             if(progress > 100) {
                 let mod = progress / 100 | 0
