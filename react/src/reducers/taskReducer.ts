@@ -46,6 +46,7 @@ export default function taskReducer(state, action) {
             return state;
 
         case "PAUSE_TASK":
+            console.log(action);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'progress'],
                 progress => action.progress);
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],

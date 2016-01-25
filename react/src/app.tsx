@@ -144,7 +144,7 @@ export class App extends React.Component<any, AppState> {
                 </div>
             </div>
             <div className="footer">
-                {activeTask.get('isPlaying')? <TaskTracker
+                {activeTask.size? <TaskTracker
                     activeTask={activeTask}
                     onPlayOrPauseTask={this.startTaskTracker}
                     progress={this.state.progressDisplayed}

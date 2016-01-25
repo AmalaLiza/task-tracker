@@ -25,7 +25,7 @@ export default function boardReducer(state, action) {
             if(state.getIn(['expandedTask', 'boardIndex']) == action.boardIndex){
                 state = state.updateIn(['expandedTask'], () => Immutable.Map({}));
             }
-            if(state.getIn(['activeTask', 'boardId']) == action.boardIndex){
+            if(state.getIn(['activeTask', 'boardIndex']) == action.boardIndex){
                 state = state.updateIn(['activeTask'], () => Immutable.Map({}));
             }
             return state;
