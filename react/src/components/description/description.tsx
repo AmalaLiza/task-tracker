@@ -86,7 +86,6 @@ class Description extends React.Component<DescProps, any> {
                    style={this.state.editMode ? {display:"block"} : {display:"none"}}
                    ref="title"
             />
-            {this.props.task.get('title')}
             <div className="right-panel__content">
                 <div className="right-panel-sub-section">
                     <div className="accordion-head">
