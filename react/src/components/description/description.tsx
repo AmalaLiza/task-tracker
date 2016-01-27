@@ -29,6 +29,14 @@ class Description extends React.Component<DescProps, any> {
         this.props.hideDesc();
     }
 
+    refs: {
+        [key: string]: (Element);
+        title: (HTMLInputElement);
+        due_date:(HTMLInputElement);
+        estimatedTime:(HTMLInputElement);
+        description:(HTMLInputElement);
+    };
+
     onEditButtonClick(){
         this.refs.title.value = this.props.task.get('title');
         this.refs.due_date.value = this.props.task.get('due_date');

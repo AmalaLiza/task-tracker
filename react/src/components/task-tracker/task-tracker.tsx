@@ -7,6 +7,7 @@ interface TaskTrackerProps {
     activeTask:TaskType;
     onPlayOrPauseTask: Function;
     progress:number;
+    progressDisplayed:number;
 }
 
 export default class TaskTracker extends React.Component<TaskTrackerProps, any> {
@@ -31,6 +32,7 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
                         <span>{this.props.activeTask.get('title')}</span>
                     </div>
                     <ProgressBar
+                        progressDisplayed={this.props.progressDisplayed}
                         progress={this.props.progress}
                     />
                 </div>

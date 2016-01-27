@@ -66,8 +66,8 @@ export class App extends React.Component<any, AppState> {
         })
 
         let myTimer = () => {
-            let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
-            //let progress:number = this.state.progress + 100 / (60)
+            //let progress:number = this.state.progress + 100 / (this.state.estimatedTime * 60 * 60)
+            let progress:number = this.state.progress + 100 / (60)
             let progressDisplayed = progress
             if(progress > 100) {
                 let mod = progress / 100 | 0
@@ -145,10 +145,11 @@ export class App extends React.Component<any, AppState> {
                 </div>
             </div>
             <div className="footer">
-                {activeTask.size? <TaskTracker
+                {activeTask.size ? <TaskTracker
                     activeTask={activeTask}
                     onPlayOrPauseTask={this.startTaskTracker}
-                    progress={this.state.progressDisplayed}
+                    progressDisplayed={this.state.progressDisplayed}
+                    progress={this.state.progress}
                 /> : null}
             </div>
             <Description
