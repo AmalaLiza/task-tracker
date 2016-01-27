@@ -19,8 +19,8 @@ export default function taskReducer(state, action) {
                 activity: "",
                 createdAt: new Date(),
                 taskList: Immutable.List(),
-                isPlaying:false,
-                isExpanded:false,
+                isPlaying: false,
+                isExpanded: false,
                 completed: false
             });
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
@@ -28,13 +28,8 @@ export default function taskReducer(state, action) {
             return state;
 
         case "TASK_COMPLETED":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
-                taskList => taskList.map((task) => {
-                    if(task.get('id') === action.taskId){
-                        return task.update('completed', completed => !completed);
-                    }
-                    return task;
-                }));
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
+                completed => !completed);
             return state;
 
         case "PLAY_TASK":

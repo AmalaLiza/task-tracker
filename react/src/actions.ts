@@ -37,12 +37,11 @@ export default {
         };
     },
 
-    playTask(boardId:number, taskId:number, progress:number) {
+    playTask(boardId:number, taskId:number) {
         return {
             type: "PLAY_TASK",
             boardId,
-            taskId,
-            progress
+            taskId
         };
     },
 

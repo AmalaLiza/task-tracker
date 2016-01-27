@@ -86,7 +86,7 @@ export class App extends React.Component<any, AppState> {
             if (data.getIn(["activeTask", "isPlaying"]))
                 actions.pauseTask(data.getIn(["activeTask", "boardIndex"]), data.getIn(["activeTask", "index"]), this.state.progress);
             clearInterval(this.timer)
-            actions.playTask(boardId, taskId, this.state.progress);
+            actions.playTask(boardId, taskId);
             this.timer = setInterval(myTimer, 1000)
         }
     }
