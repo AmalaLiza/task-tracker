@@ -152,12 +152,12 @@ export class App extends React.Component<any, AppState> {
                     progress={this.state.progress}
                 /> : null}
             </div>
-            <Description
+            {expandedTask.size ? <Description
                 task={expandedTask}
                 onDeleteTask={this.deleteTask}
                 onSaveTask={actions.saveTask}
                 hideDesc={this.hideTask}
-            />
+            /> : null}
         </div>
     }
 }

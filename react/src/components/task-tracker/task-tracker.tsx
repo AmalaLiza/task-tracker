@@ -34,6 +34,8 @@ export default class TaskTracker extends React.Component<TaskTrackerProps, any> 
                     <ProgressBar
                         progressDisplayed={this.props.progressDisplayed}
                         progress={this.props.progress}
+                        createdAt={this.props.activeTask.get('createdAt')}
+                        estimatedTime={this.props.activeTask.get('estimatedTime')}
                     />
                 </div>
             </div>
