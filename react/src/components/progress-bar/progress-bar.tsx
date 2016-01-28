@@ -10,7 +10,7 @@ interface ProgressBarProps {
     estimatedTime:number;
 }
 
-let ProgressBar = (props: ProgressBarProps)  => {
+var ProgressBar =  (props: ProgressBarProps)  => {
     let progressDisplayed = props.progressDisplayed + '%';
     let progress = props.progress;
     let createdAt = props.createdAt.getHours() + ":" + props.createdAt.getMinutes() + ":" + props.createdAt.getSeconds();

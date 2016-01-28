@@ -3,16 +3,19 @@ import * as Immutable from "immutable";
 
 const TaskRecord = Immutable.Record({
     text: "",
-    estimatedTime: "",
-    completed: false
+    estimatedTime: 0,
+    elapsedTime: 0,
+    completed: false,
+    playing: false
 });
 
 export default class Task extends TaskRecord {
     text: string;
     completed:boolean;
-    estimatedTime: string;
+    elapsedTime:number;
+    estimatedTime: number;
 
-    constructor(text:string, estimatedTime:string = "00:00", completed:boolean = false) {
-        super({text: text, estimatedTime: estimatedTime, completed: completed});
+    constructor(text, estimatedTime = 160000, elapsedTime = 0, completed = false) {
+        super({text: text, estimatedTime: estimatedTime, elapsedTime: elapsedTime, completed: completed});
     }
 }

@@ -24,11 +24,14 @@ import {ViewEncapsulation} from 'angular2/core';
 
         <a *ngIf="!task.completed"
             href="javascript:void(0)"
-            class="play-ico flaticon-play128 fright">
+            class="play-ico fright"
+            [ngClass]="{'flaticon-play128': taskService.startedTask.taskIndex != index,
+               'flaticon-pause52': taskService.startedTask.taskIndex === index && taskService.startedTask.boardIndex === boardIndex}"
+            (click)="startResumePauseTask()">
         </a>
 
         <span class="task-time-left fright">
-            1:15:00
+            {{taskService.parseMillisecondsIntoReadableTime(task.elapsedTime, true)}}
         </span>`
 })
 
@@ -43,6 +46,10 @@ export class TaskComponent {
 
     toggleTask() {
         this.taskService.toggleTask(this.boardIndex, this.index);
+    }
+
+    startResumePauseTask(){
+        this.taskService.startResumePauseTask(this.boardIndex, this.index);
     }
 
     onTaskClick(){
