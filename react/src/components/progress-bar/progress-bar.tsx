@@ -6,7 +6,7 @@ interface ProgressBarProps {
     progressDisplayed:number;
 }
 
-let ProgressBar = (props: ProgressBarProps)  => {
+var ProgressBar =  (props: ProgressBarProps)  => {
     let progressDisplayed = props.progressDisplayed + '%';
     let progress = props.progress;
     return <div className="progress-bar-wrapper clearfix width-100per">

@@ -103,9 +103,8 @@ class Description extends React.Component<DescProps, any> {
                     <div className="accordion-cont">
                         <ProgressBar
                             progress={this.props.task.get('progress')}
-                        />
+                        />;
                     </div>
-
                     <div className="accordion-cont">
                         <table className="right-panel__desc-table width-100per">
                             <tr>
