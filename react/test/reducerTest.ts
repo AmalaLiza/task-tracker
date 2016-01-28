@@ -55,7 +55,7 @@ describe("Reducer", () => {
             taskId: 0
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'completed']), !initialState.getIn(["boardList", 0, "taskList", 0, 'completed']))
-    })
+    });
 
     it('should play task', () => {
         let newState = rootReducer(initialState, {
@@ -64,7 +64,7 @@ describe("Reducer", () => {
             taskId: 0
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), !initialState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']))
-    })
+    });
 
     it('should play task', () => {
         let newState = rootReducer(initialState, {
@@ -73,7 +73,7 @@ describe("Reducer", () => {
             taskId: 0
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), true)
-    })
+    });
 
     it('should pause task', () => {
         let newState = rootReducer(initialState, {
@@ -84,5 +84,5 @@ describe("Reducer", () => {
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), false);
         chai.assert.isAbove(newState.getIn(["boardList", 0, "taskList", 0, 'progress']), initialState.getIn(["boardList", 0, "taskList", 0, 'progress']))
-    })
+    });
 });

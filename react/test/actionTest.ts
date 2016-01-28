@@ -5,9 +5,6 @@ import * as Immutable from 'immutable';
 import Actions from "../src/actions";
 import chai = require('chai');
 
-const initialState = Immutable.fromJS({
-
-})
 describe('Actions', () => {
     it('should do add board action', () => {
         chai.assert.equal(Actions.addBoard().type, "ADD_BOARD")
