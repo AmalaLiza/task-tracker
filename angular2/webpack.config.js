@@ -24,6 +24,7 @@ module.exports = {
         extensions: ['', '.ts', '.js']
     },
     module: {
+        noParse: [ /zone\.js\/dist\/.+/, /angular2\/bundles\/.+/ ],
         loaders: [
             {
                 test: /\.scss$/,
@@ -32,7 +33,7 @@ module.exports = {
             {
                 test: /\.ts/,
                 exclude: /node_modules/,
-                loader: 'ts-loader',
+                loader: 'ts-loader'
             }
         ],
         include: path.join(__dirname, 'src')

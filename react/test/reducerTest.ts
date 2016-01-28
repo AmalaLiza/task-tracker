@@ -1,64 +1,88 @@
 /// <reference path="../typings/chai/chai.d.ts" />
 ///<reference path='../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
-import {rootReducer} from "../src/reducers";
+import {rootReducer} from "../src/reducers/rootReducer";
 import chai = require('chai');
 
-const initialState:BoardListType = Immutable.fromJS({
+const initialState = Immutable.fromJS({
     boardList: [{
-        id: 0,
-        title: "Design1",
+        id: (String(+(new Date()) + Math.random())),
+        title: "New Board",
         taskList: [{
-            id: 0,
-            title: "Add task",
-            estimatedTime: "2 hrs",
+            id: (String(+(new Date()) + Math.random())),
+            title: "New Task",
+            description: "",
+            estimatedTime: 1,
+            priority: 0,
+            progress: 0,
+            due_date: "",
+            dependencies: "",
+            notes: "",
+            activity: "",
+            createdAt: new Date(),
+            taskList: Immutable.List(),
+            isPlaying: false,
+            isExpanded: false,
             completed: false
         }]
-    }, {
-        id: 1,
-        title: "Design2",
-        taskList: [{
-            id: 0,
-            title: "Create designs for insight screen",
-            estimatedTime: "2 hrs",
-            completed: true
-        }, {
-            id: 1,
-            title: "Create designs for KAT",
-            estimatedTime: "3 hrs",
-            completed: false
-        }, {
-            id: 2,
-            title: "Create designs for Blazent",
-            estimatedTime: "4 hrs",
-            completed: true
-        }]
-    }]
+    }],
+    searchText: "",
+    activeTask: {},
+    expandedTask: {}
 });
 
 describe("Reducer", () => {
     it('should add board', () => {
         let newState = rootReducer(initialState, {
             type: "ADD_BOARD"
-        })
+        });
         chai.assert.equal(initialState.get('boardList').size + 1, newState.get('boardList').size)
-    })
+    });
 
     it('should add task', () => {
         let newState = rootReducer(initialState, {
             type: "ADD_TASK",
             title: "new task",
             boardIndex: 0
-        })
-        chai.assert.equal(initialState.getIn(["boardList", 0, "taskList"]).size + 1, newState.get("boardList", 0, "taskList").size)
-    })
+        });
+        chai.assert.equal(initialState.getIn(["boardList", 0, "taskList"]).size + 1, newState.getIn(["boardList", 0, "taskList"]).size)
+    });
 
     it('should complete task', () => {
         let newState = rootReducer(initialState, {
             type: "TASK_COMPLETED",
             boardIndex: 0,
-            taskId: 1
-        })
-        chai.assert.equal(initialState.getIn(["boardList", 0, "taskList", 0]).get('completed'), true)
+            taskId: 0
+        });
+        chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'completed']), !initialState.getIn(["boardList", 0, "taskList", 0, 'completed']))
     })
-})
+
+    it('should play task', () => {
+        let newState = rootReducer(initialState, {
+            type: "PLAY_TASK",
+            boardId: 0,
+            taskId: 0
+        });
+        chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), !initialState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']))
+    })
+
+    it('should play task', () => {
+        let newState = rootReducer(initialState, {
+            type: "PLAY_TASK",
+            boardId: 0,
+            taskId: 0
+        });
+        chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), true)
+    })
+
+    it('should pause task', () => {
+        let newState = rootReducer(initialState, {
+            type: "PAUSE_TASK",
+            boardId: 0,
+            taskId: 0,
+            progress: 10
+        });
+        chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isPlaying']), false);
+        chai.assert.isAbove(newState.getIn(["boardList", 0, "taskList", 0, 'progress']), initialState.getIn(["boardList", 0, "taskList", 0, 'progress']))
+    })
+});

@@ -17,10 +17,10 @@ export default function taskReducer(state, action) {
                 dependencies: "",
                 notes: "",
                 activity: "",
-                createdAt: "",
+                createdAt: new Date(),
                 taskList: Immutable.List(),
-                isPlaying:false,
-                isExpanded:false,
+                isPlaying: false,
+                isExpanded: false,
                 completed: false
             });
             state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
@@ -28,18 +28,17 @@ export default function taskReducer(state, action) {
             return state;
 
         case "TASK_COMPLETED":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
-                taskList => taskList.map((task) => {
-                    if(task.get('id') === action.taskId){
-                        return task.update('completed', completed => !completed);
-                    }
-                    return task;
-                }));
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
+                completed => !completed);
             return state;
 
         case "PLAY_TASK":
             state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'isPlaying'],
                 isPlaying => true);
+            if(state.get(['boardList', action.boardId, 'taskList', action.taskId, 'progress']) == 0) {
+                state = state.updateIn(['boardList', action.boardId, 'taskList', action.taskId, 'createdAt'],
+                    createdAt => new Date());
+            }
             state = state.set('activeTask', state.getIn(['boardList', action.boardId, 'taskList', action.taskId]));
             state = state.setIn(['activeTask', 'boardIndex'], action.boardId);
             state = state.setIn(['activeTask', 'index'], action.taskId);

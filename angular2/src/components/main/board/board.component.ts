@@ -22,10 +22,10 @@ import TaskCompletedPipe from '../../../pipes/task-completed.pipe';
 
             <ul class="task-body-list">
                 <li class="task-body-list__item clearfix"
-                    *ngFor="#task of tasks| taskCompletedPipe : false, #i = index">
+                    *ngFor="#task of tasks| taskCompletedPipe : false">
                     <task [task]="task"
                           [boardIndex]="index"
-                          [index]="i">
+                          [index]="tasks.indexOf(task)">
                     </task>
                 </li>
             </ul>
@@ -41,10 +41,10 @@ import TaskCompletedPipe from '../../../pipes/task-completed.pipe';
 
            <ul *ngIf = "showCompletedTasks" class="task-body-list">
                 <li class="task-body-list__item clearfix"
-                    *ngFor="#task of tasks| taskCompletedPipe : true, #i = index">
+                    *ngFor="#task of tasks| taskCompletedPipe : true">
                     <task [task]="task"
                           [boardIndex]="index"
-                          [index]="i">
+                          [index]="tasks.indexOf(task)">
                      </task>
                 </li>
             </ul>
