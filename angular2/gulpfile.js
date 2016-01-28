@@ -4,7 +4,8 @@ var gulp = require('gulp'),
 
 var paths = [
     "./src/global.scss",
-    "./src/**/*.scss"
+    "./src/**/*.scss",
+    "./src/**/**/*.scss"
 ];
 
 var cssPaths = [
