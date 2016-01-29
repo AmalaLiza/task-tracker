@@ -26,9 +26,9 @@ const styles = {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
         borderColor: 'transparent',
-        zIndex: 1,
-        display: 'flex',
-        flexDirection: 'row'
+        zIndex: 1
+        //display: 'flex',
+        //flexDirection: 'row'
     },
     elements: {
         position: 'absolute',
