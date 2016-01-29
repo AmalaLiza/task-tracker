@@ -1,10 +1,11 @@
 /// <reference path="../typings/redux/redux.d.ts" />
 /// <reference path="../typings/redux-thunk/redux-thunk.d.ts"/>
 
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {rootReducer} from '../src/reducers/rootReducer.ts';
 import createLogger from 'redux-logger';
 import * as Immutable from "immutable";
+import DevTools from "./container/DevTools.tsx";
 import thunkMiddleware from 'redux-thunk';
 import Actions from './actions.ts';
 
@@ -24,7 +25,7 @@ const logger = createLogger({
     }
 });
 
-const createStoreWithMiddleware = applyMiddleware(logger, thunkMiddleware)(createStore);
+const createStoreWithMiddleware = compose(applyMiddleware(logger, thunkMiddleware), DevTools.instrument())(createStore);
 
 export function configureStore() {
     const store = createStoreWithMiddleware(rootReducer);
