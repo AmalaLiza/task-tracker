@@ -207,7 +207,7 @@ export default class LogMonitor extends Component {
         }
 
         return (
-            <Popout>
+
                 <div style={{...styles.container, backgroundColor: theme.base00}}>
                     <div style={{...styles.buttonBar, borderColor: theme.base02}}>
                         <div>
@@ -259,7 +259,7 @@ export default class LogMonitor extends Component {
                     </div>
                 </div>
 
-            </Popout>
+
         );
     }
 }
