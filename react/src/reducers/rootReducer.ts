@@ -7,6 +7,7 @@ import * as Immutable from 'immutable';
 import taskReducer from "./taskReducer.ts";
 import boardReducer from "./boardReducer.ts";
 
+
 const initialState:StateType = Immutable.fromJS({
     boardList: [],
     searchText: "",

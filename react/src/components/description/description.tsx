@@ -12,6 +12,7 @@ interface DescProps{
     onDeleteTask:Function;
     onSaveTask:Function;
     progress:number;
+    progressDisplayed:number;
     hideDesc:Function;
 }
 
@@ -103,7 +104,10 @@ class Description extends React.Component<DescProps, any> {
                     <div className="accordion-cont">
                         <ProgressBar
                             progress={this.props.task.get('progress')}
-                        />;
+                            progressDisplayed={this.props.progressDisplayed}
+                            createdAt={this.props.task.get('createdAt')}
+                            estimatedTime={this.props.task.get('estimatedTime')}
+                        />
                     </div>
                     <div className="accordion-cont">
                         <table className="right-panel__desc-table width-100per">

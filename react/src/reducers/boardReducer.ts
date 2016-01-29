@@ -2,7 +2,7 @@
 ///<reference path='../../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 
-export default function boardReducer(state, action) {
+export function boardReducer(state, action) {
     switch (action.type) {
 
         case "ADD_BOARD":

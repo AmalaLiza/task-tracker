@@ -155,6 +155,7 @@ export class App extends React.Component<any, AppState> {
             </div>
             {expandedTask.size ? <Description
                 task={expandedTask}
+                progressDisplayed={expandedTask.get('id') == activeTask.get('id') ? this.state.progressDisplayed : expandedTask.get('progress')}
                 onDeleteTask={this.deleteTask}
                 onSaveTask={actions.saveTask}
                 hideDesc={this.hideTask}
