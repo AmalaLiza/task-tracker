@@ -8,7 +8,7 @@ import store from "../store.ts";
         }
     }
 
-    let copy = (actions) => {
+    let copy = () => {
         return localStorage.history;
     }
 
