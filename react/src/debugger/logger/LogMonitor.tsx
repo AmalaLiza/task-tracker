@@ -7,6 +7,7 @@ import * as themes from 'redux-devtools-themes';
 import { ActionCreators } from 'redux-devtools';
 import { updateScrollTop } from './actions.ts';
 import reducer from './reducers.ts';
+import Popout from "react-popout";
 
 const { reset, rollback, commit, sweep, toggleAction } = ActionCreators;
 
@@ -206,56 +207,59 @@ export default class LogMonitor extends Component {
         }
 
         return (
-            <div style={{...styles.container, backgroundColor: theme.base00}}>
-                <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                    <div>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleReset}
-                            enabled>
-                            Reset
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleRollback}
-                            enabled={computedStates.length > 1}>
-                            Revert
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleSweep}
-                            enabled={skippedActionIds.length > 0}>
-                            Sweep
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleCommit}
-                            enabled={computedStates.length > 1}>
-                            Commit
-                        </LogMonitorButton>
-                    </div>
-                    <div>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.copyTrace}
-                            enabled>
-                            CopyTrace
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.applyTrace}
-                            enabled>
-                            ApplyTrace
-                        </LogMonitorButton>
-                        <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                            <textarea ref="textAreaValue"></textarea>
+            <Popout>
+                <div style={{...styles.container, backgroundColor: theme.base00}}>
+                    <div style={{...styles.buttonBar, borderColor: theme.base02}}>
+                        <div>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.handleReset}
+                                enabled>
+                                Reset
+                            </LogMonitorButton>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.handleRollback}
+                                enabled={computedStates.length > 1}>
+                                Revert
+                            </LogMonitorButton>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.handleSweep}
+                                enabled={skippedActionIds.length > 0}>
+                                Sweep
+                            </LogMonitorButton>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.handleCommit}
+                                enabled={computedStates.length > 1}>
+                                Commit
+                            </LogMonitorButton>
+                        </div>
+                        <div>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.copyTrace}
+                                enabled>
+                                CopyTrace
+                            </LogMonitorButton>
+                            <LogMonitorButton
+                                theme={theme}
+                                onClick={this.applyTrace}
+                                enabled>
+                                ApplyTrace
+                            </LogMonitorButton>
+                            <div style={{...styles.buttonBar, borderColor: theme.base02}}>
+                                <textarea ref="textAreaValue"></textarea>
+                            </div>
                         </div>
                     </div>
+                    <div style={styles.elements} ref='container'>
+                        {elements}
+                    </div>
                 </div>
-                <div style={styles.elements} ref='container'>
-                    {elements}
-                </div>
-            </div>
+
+            </Popout>
         );
     }
 }
