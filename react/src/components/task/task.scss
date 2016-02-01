@@ -23,6 +23,8 @@
   text-indent: -5px;
   width: calc(100% - 63px);
   padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .task-body-list__item__label__text{

@@ -22,22 +22,30 @@ const styles = {
         direction: 'ltr'
     },
     buttonBar: {
+        padding: '15px 0',
         textAlign: 'center',
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
         borderColor: 'transparent',
-        zIndex: 1,
-        display: 'flex',
-        flexDirection: 'row'
+        zIndex: 1
+        //display: 'flex',
+        //flexDirection: 'row'
     },
     elements: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 138,
-        bottom: 0,
         overflowX: 'hidden',
         overflowY: 'auto'
+    },
+
+    textAreaDebug:{
+        padding:'10px',
+        resize:'none',
+        background: '#BABEC1',
+        border: '1px solid #313131',
+        boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.53)',
+        minHeight: '90px',
+        minWidth: '80%',
+        marginTop: '10px',
+        marginBottom: '10px'
     }
 };
 
@@ -249,7 +257,7 @@ export default class LogMonitor extends Component {
                                 ApplyTrace
                             </LogMonitorButton>
                             <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                                <textarea ref="textAreaValue"></textarea>
+                                <textarea ref="textAreaValue" style={{...styles.textAreaDebug}}></textarea>
                             </div>
                         </div>
                     </div>

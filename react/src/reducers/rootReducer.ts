@@ -4,8 +4,8 @@
 import BoardType from "../models/BoardType.ts";
 import StateType from "../models/StateType.ts";
 import * as Immutable from 'immutable';
-import taskReducer from "./taskReducer.ts";
-import boardReducer from "./boardReducer.ts";
+import {taskReducer} from "./taskReducer.ts";
+import {boardReducer} from "./boardReducer.ts";
 
 
 const initialState:StateType = Immutable.fromJS({
