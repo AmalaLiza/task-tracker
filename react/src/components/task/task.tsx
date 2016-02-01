@@ -48,7 +48,8 @@ export default class Task extends React.Component<TaskProps, any> {
         >
             <input type="checkbox"
                    checked={this.props.task.get('completed')}
-                   onClick={(e) => {this.onTaskComplete(); e.stopPropagation()}}
+                   onChange={this.onTaskComplete}
+                   onClick={(e) => {e.stopPropagation()}}
                    className="fleft task-body-list__item__checkbox"
             />
             <label className="task-body-list__item__label fleft">

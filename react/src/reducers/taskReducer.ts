@@ -28,8 +28,13 @@ export function taskReducer(state, action) {
             return state;
 
         case "TASK_COMPLETED":
-            state = state.updateIn(['boardList', action.boardIndex, 'taskList', action.taskId, 'completed'],
-                completed => !completed);
+            state = state.updateIn(['boardList', action.boardIndex, 'taskList'],
+                taskList => taskList.map(task => {
+                    if (task.get('id') == action.taskId)
+                        task = task.update('completed', completed => !completed);
+                    return task;
+                })
+            );
             return state;
 
         case "PLAY_TASK":
