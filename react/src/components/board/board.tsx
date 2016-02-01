@@ -144,4 +144,3 @@ export default class Board extends React.Component<BoardProps, BoardState> {
     }
 }
 
-export default connect(completedTaskSelector)(Board);
