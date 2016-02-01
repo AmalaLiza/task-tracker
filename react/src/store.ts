@@ -20,7 +20,6 @@ const logger = createLogger({
     stateTransformer: (state) => {
         history.stateHistory.push(JSON.stringify(state.toJS()));
         localStorage.history = JSON.stringify(history);
-        console.log(localStorage.history);
         return state.toJS();
     }
 });

@@ -52,7 +52,7 @@ export default class Board extends React.Component<BoardProps, BoardState> {
     }
 
     render() {
-
+        console.log("taskList", this.props);
         let taskList:Immutable.List<any> = this.props.data.get("taskList");
         let taskListElements = taskList
             .filter((task, index) => (task.get('completed') == false &&
@@ -144,3 +144,4 @@ export default class Board extends React.Component<BoardProps, BoardState> {
     }
 }
 
+export default connect(completedTaskSelector)(Board);
