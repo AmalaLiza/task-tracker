@@ -1,4 +1,5 @@
 import React, { PropTypes, Component} from 'react';
+import Immutable from "immutable";
 import ReactDOM from 'react-dom';
 import LogMonitorEntry from './LogMonitorEntry.tsx';
 import LogMonitorButton from './LogMonitorButton.tsx';
@@ -9,7 +10,7 @@ import { updateScrollTop } from './actions.ts';
 import reducer from './reducers.ts';
 import Popout from "react-popout";
 
-const { reset, rollback, commit, sweep, toggleAction } = ActionCreators;
+const { reset, rollback, commit, sweep, toggleAction, importState } = ActionCreators;
 
 const styles = {
     container: {
@@ -32,13 +33,14 @@ const styles = {
         //flexDirection: 'row'
     },
     elements: {
+        maxHeight: 'calc(100% - 253px)',
         overflowX: 'hidden',
         overflowY: 'auto'
     },
 
-    textAreaDebug:{
-        padding:'10px',
-        resize:'none',
+    textAreaDebug: {
+        padding: '10px',
+        resize: 'none',
         background: '#BABEC1',
         border: '1px solid #313131',
         boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.53)',
@@ -95,24 +97,29 @@ export default class LogMonitor extends Component {
         }
     }
 
-    copyTrace() {
+    copyTrace(currentState, actionId) {
         const { actionsById, stagedActionIds } = this.props;
-        let trace = [];
-        for (let i = 0; i < stagedActionIds.length; i++) {
+        let trace = {
+            actionHistory: [],
+            state: {}
+        }
+        actionId = actionId ? actionId : 0;
+        for (let i = actionId; i < stagedActionIds.length; i++) {
             const actionId = stagedActionIds[i];
             const action = actionsById[actionId].action;
-            //const { state, error } = computedStates[i];
-            trace.push({action});
+            trace.actionHistory.push({action});
         }
+        trace.state = currentState;
         ReactDOM.findDOMNode(this.refs.textAreaValue).value = JSON.stringify(trace);
     }
 
 
     applyTrace() {
         let trace = JSON.parse(ReactDOM.findDOMNode(this.refs.textAreaValue).value);
-        console.log("trace", trace[2], ActionCreators)
-        for (let i = 0; i < trace.length; i++) {
-            this.props.dispatch(ActionCreators.performAction(trace[i].action));
+        this.props.dispatch(commit(Immutable.fromJS(trace.state)));
+        //importState(Immutable.fromJS(trace.state));
+        for (let i = 0; i < trace.actionHistory.length; i++) {
+            this.props.dispatch(ActionCreators.performAction(trace.actionHistory[i].action));
         }
     }
 
@@ -208,6 +215,7 @@ export default class LogMonitor extends Component {
                                  previousState={previousState}
                                  collapsed={skippedActionIds.indexOf(actionId) > -1}
                                  error={error}
+                                 copyTrace={this.copyTrace}
                                  expandActionRoot={this.props.expandActionRoot}
                                  expandStateRoot={this.props.expandStateRoot}
                                  onActionClick={this.handleToggleAction}/>
@@ -215,56 +223,56 @@ export default class LogMonitor extends Component {
         }
 
         return (
-                <div style={{...styles.container, backgroundColor: theme.base00}}>
-                    <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                        <div>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.handleReset}
-                                enabled>
-                                Reset
-                            </LogMonitorButton>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.handleRollback}
-                                enabled={computedStates.length > 1}>
-                                Revert
-                            </LogMonitorButton>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.handleSweep}
-                                enabled={skippedActionIds.length > 0}>
-                                Sweep
-                            </LogMonitorButton>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.handleCommit}
-                                enabled={computedStates.length > 1}>
-                                Commit
-                            </LogMonitorButton>
-                        </div>
-                        <div>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.copyTrace}
-                                enabled>
-                                CopyTrace
-                            </LogMonitorButton>
-                            <LogMonitorButton
-                                theme={theme}
-                                onClick={this.applyTrace}
-                                enabled>
-                                ApplyTrace
-                            </LogMonitorButton>
-                            <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                                <textarea ref="textAreaValue" style={{...styles.textAreaDebug}}></textarea>
-                            </div>
-                        </div>
+            <div style={{...styles.container, backgroundColor: theme.base00}}>
+                <div style={{...styles.buttonBar, borderColor: theme.base02}}>
+                    <div>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.handleReset}
+                            enabled>
+                            Reset
+                        </LogMonitorButton>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.handleRollback}
+                            enabled={computedStates.length > 1}>
+                            Revert
+                        </LogMonitorButton>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.handleSweep}
+                            enabled={skippedActionIds.length > 0}>
+                            Sweep
+                        </LogMonitorButton>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.handleCommit}
+                            enabled={computedStates.length > 1}>
+                            Commit
+                        </LogMonitorButton>
                     </div>
-                    <div style={styles.elements} ref='container'>
-                        {elements}
+                    <div>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.copyTrace}
+                            enabled>
+                            CopyTrace
+                        </LogMonitorButton>
+                        <LogMonitorButton
+                            theme={theme}
+                            onClick={this.applyTrace}
+                            enabled>
+                            ApplyTrace
+                        </LogMonitorButton>
+                        <div style={{...styles.buttonBar, borderColor: theme.base02}}>
+                            <textarea ref="textAreaValue" style={{...styles.textAreaDebug}}></textarea>
+                        </div>
                     </div>
                 </div>
+                <div style={styles.elements} ref='container'>
+                    {elements}
+                </div>
+            </div>
         );
     }
 }

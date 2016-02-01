@@ -85,12 +85,15 @@ export default class LogMonitorEntry extends Component {
       }}>
         <LogMonitorEntryAction
           theme={this.props.theme}
+          actionId={actionId}
           collapsed={collapsed}
+          copyTrace={this.props.copyTrace}
           action={action}
+          previousState={this.props.previousState}
           expandActionRoot={this.props.expandActionRoot}
           onClick={this.handleActionClick}
           style={{...styles.entry, ...styleEntry}}/>
-        {!collapsed &&
+            {!collapsed &&
           <div>
             {this.printState(state, error)}
           </div>
