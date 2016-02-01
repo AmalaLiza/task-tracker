@@ -10,6 +10,23 @@ const styles = {
     payload: {
         margin: 0,
         overflow: 'auto'
+    },
+    buttonStyle: {
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        borderRadius: 3,
+        padding: '6px 15px',
+        flexGrow: 1,
+        display: 'inline-block',
+        fontSize: '0.8em',
+        color: 'white',
+        textDecoration: 'none',
+        position:'absolute',
+        right:'0',
+        margin: '0 5px',
+        backgroundColor: 'rgba(29, 31, 33, 0.74)',
+        border: 'none',
+        marginTop: '-5px'
     }
 };
 
@@ -35,6 +52,7 @@ export default class LogMonitorAction extends Component {
     }
 
     render() {
+
         const { type, ...payload } = this.props.action;
         return (
             <div style={{
@@ -44,7 +62,7 @@ export default class LogMonitorAction extends Component {
                 <div style={styles.actionBar}
                     onClick={this.props.onClick}>
                     {type}
-                    <button onClick={(event) => {this.copyStateToLast(event, this.props.previousState, this.props.actionId)}}>Copy</button>
+                    <button style={styles.buttonStyle} onClick={(event) => {this.copyStateToLast(event, this.props.previousState, this.props.actionId)}}>Copy</button>
                 </div>
                 {!this.props.collapsed ? this.renderPayload(payload) : ''}
             </div>
