@@ -46,7 +46,7 @@ describe("Task Reducer", () => {
         let newState = rootReducer(initialState, {
             type: "TASK_COMPLETED",
             boardIndex: 0,
-            taskId: 0
+            taskId: initialState.getIn(["boardList", 0, "taskList", 0, "id"])
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'completed']), !initialState.getIn(["boardList", 0, "taskList", 0, 'completed']))
     });
@@ -89,8 +89,8 @@ describe("Task Reducer", () => {
             taskIndex: 0
         });
         chai.assert.equal(newState.getIn(["boardList", 0, "taskList", 0, 'isExpanded']), true);
-        chai.assert.equal(newState.getIn(["expandedTask", 'isExpanded']), true)
-        chai.assert.equal(newState.getIn(["expandedTask", 'boardIndex']), 0)
+        chai.assert.equal(newState.getIn(["expandedTask", 'isExpanded']), true);
+        chai.assert.equal(newState.getIn(["expandedTask", 'boardIndex']), 0);
         chai.assert.equal(newState.getIn(["expandedTask", 'index']), 0)
     });
 
@@ -133,7 +133,7 @@ describe("Task Reducer", () => {
             boardIndex: 0,
             taskIndex: 0
         });
-        console.log(newState.toJS().expandedTask.boardIndex)
+        console.log(newState.toJS().expandedTask.boardIndex);
         newState = rootReducer(newState, {
             type: "SAVE_TASK",
             updatedInfo: {

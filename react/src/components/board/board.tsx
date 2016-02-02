@@ -10,6 +10,8 @@ interface BoardProps {
     index:number;
     data:BoardType;
     filterBy:string;
+    searchTextInBoard:string;
+    onSearchInBoard:Function;
     onTaskCompletion:Function;
     renameBoard:Function;
     onEditTaskTitle:Function;
@@ -23,6 +25,9 @@ interface BoardState {
     showCompletedList?: boolean;
     showMoreOptions?: boolean;
     showRenameInput?: boolean;
+    showSearchInput?: boolean;
+    searchBoardIndex: number;
+    searchTextInBoard: string;
 }
 
 export default class Board extends React.Component<BoardProps, BoardState> {
@@ -32,8 +37,12 @@ export default class Board extends React.Component<BoardProps, BoardState> {
         this.state = {
             showCompletedList: false,
             showMoreOptions: false,
-            showRenameInput: false
+            showSearchInput: false,
+            showRenameInput: false,
+            searchBoardIndex: -1,
+            searchTextInBoard: ""
         };
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     onAddTask(event, boardIndex:number) {
@@ -51,12 +60,21 @@ export default class Board extends React.Component<BoardProps, BoardState> {
         }
     }
 
+    handleSearch(e) {
+        const searchText = e.target.value;
+        this.setState({
+            searchBoardIndex: this.props.index,
+            searchTextInBoard: searchText
+        });
+    }
+
     render() {
-        console.log("taskList", this.props);
         let taskList:Immutable.List<any> = this.props.data.get("taskList");
         let taskListElements = taskList
             .filter((task, index) => (task.get('completed') == false &&
             task.get('title').toLowerCase().indexOf(this.props.filterBy.toLowerCase()) > -1));
+        if(this.state.searchTextInBoard.length && this.props.index == this.state.searchBoardIndex)
+            taskListElements = taskListElements.filter(task => task.get('title').toLowerCase().indexOf(this.state.searchTextInBoard.toLowerCase()) > -1);
         taskListElements = taskListElements.map((task, index) => (
             <Task
                 key={index}
@@ -86,14 +104,14 @@ export default class Board extends React.Component<BoardProps, BoardState> {
         return <div className="task-list__item fleft">
             <div className="task-header-wrapper">
                 <h2 className="task-header align-center"
-                    style={this.state.showRenameInput?{display: "none"}:{display: "block"}}
+                    style={this.state.showRenameInput?{display: "none"}:{}}
                 >{this.props.data.get('title')}
                     <span className="task-no">({taskListElements.size})</span>
                 </h2>
                 <input type="text"
                        className="task-header-input"
                        placeholder="Enter Board Name"
-                       style={this.state.showRenameInput?{display: "block"}:{display: "none"}}
+                       style={this.state.showRenameInput?{}:{display: "none"}}
                        onKeyDown={(event) => {this.renameBoard(event, this.props.index)}}
                        defaultValue={this.props.data.get('title')}/>
                 <a href="javascript:void(0)"
@@ -101,8 +119,11 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                    onClick={ () => {this.setState({showMoreOptions: !this.state.showMoreOptions})}}>
                 </a>
                 <ul className="more-options"
-                    style={this.state.showMoreOptions?{display: "block"}:{display: "none"}}>
-                    <li>Search & Filter</li>
+                    style={this.state.showMoreOptions?{}:{display: "none"}}>
+                    <li onClick={() => {
+                        this.setState({showMoreOptions: !this.state.showMoreOptions});
+                        this.setState({showSearchInput: true});
+                    }}>Search & Filter</li>
                     <li onClick={() => {
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                         this.setState({showRenameInput: true});
@@ -112,9 +133,17 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                     }}>Delete Board</li>
                 </ul>
-                <div className="search-wrapper" style={{display:'none'}}>
-                    <input type="text" className="search-input" placeholder="Search..."/>
-                    <a href="javascript:void(0)" className="filter-ico flaticon-filter18"></a>
+                <div className="search-wrapper"
+                     style={this.state.showSearchInput?{}:{display: "none"}}>
+                    <input type="text"
+                           className="search-input"
+                           placeholder="Search..."
+                           defaultValue={this.props.searchTextInBoard}
+                           onChange={this.handleSearch}
+                    />
+                    <a href="javascript:void(0)" className="filter-ico flaticon-filter18">
+
+                    </a>
                 </div>
             </div>
             <div className="task-body">
