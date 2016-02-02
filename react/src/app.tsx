@@ -1,3 +1,4 @@
+import {addBoard} from "./actions";
 "use strict";
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
@@ -9,11 +10,12 @@ import tracker from "./debugger/tracker.ts";
 import * as Immutable from "immutable";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {saveBoardService} from "../service/saveBoardService.ts"
 import Header from "../src/components/header/header.tsx";
 import Board from "../src/components/board/board.tsx";
 import AddBoard from "../src/components/add-board/add-board.tsx"
 import TaskTracker from "../src/components/task-tracker/task-tracker.tsx";
-import Actions from "./actions.ts";
+import * as Actions from "./actions.ts";
 import Description from "./components/description/description.tsx"
 import StateType from "./models/StateType.ts";
 import TaskType from "./models/TaskType.ts";
@@ -45,18 +47,18 @@ export class App extends React.Component<any, AppState> {
     expandTask(boardIndex, taskIndex) {
         let {actions, data} = this.props;
         data = data.setIn(['expandedTask', 'taskIndex'], taskIndex)
-        actions.expandTask(boardIndex, taskIndex)
+        this.props.dispatch(Actions.expandTask(boardIndex, taskIndex))
     }
 
     hideTask() {
         let {actions} = this.props;
-        actions.hideTask();
+        this.props.dispatch(Actions.hideTask());
     }
 
     deleteTask(taskIndex, boardIndex) {
         let {actions} = this.props;
         this.hideTask();
-        actions.deleteTask(taskIndex, boardIndex);
+        this.props.dispatch(Actions.deleteTask(taskIndex, boardIndex));
     }
 
     startTaskTracker(boardId, taskId, isPlaying) {
@@ -81,13 +83,13 @@ export class App extends React.Component<any, AppState> {
             console.log('progress', this.state.progress)
         }
         if (isPlaying) {
-            actions.pauseTask(boardId, taskId, this.state.progress)
+            this.props.dispatch(Actions.pauseTask(boardId, taskId, this.state.progress));
             clearInterval(this.timer);
         } else {
             if (data.getIn(["activeTask", "isPlaying"]))
-                actions.pauseTask(data.getIn(["activeTask", "boardIndex"]), data.getIn(["activeTask", "index"]), this.state.progress);
+                this.props.dispatch(Actions.pauseTask(data.getIn(["activeTask", "boardIndex"]), data.getIn(["activeTask", "index"]), this.state.progress));
             clearInterval(this.timer)
-            actions.playTask(boardId, taskId);
+            this.props.dispatch(Actions.playTask(boardId, taskId));
             this.timer = setInterval(myTimer, 1000)
         }
     }
@@ -100,7 +102,7 @@ export class App extends React.Component<any, AppState> {
     }
 
     render() {
-        let {data, actions} = this.props
+        let {data, dispatch} = this.props
         let boardList:Immutable.List<BoardType> = data.get("boardList")
         let activeTask:TaskType = data.get("activeTask")
         let expandedTask:TaskType = data.get("expandedTask")
@@ -120,19 +122,13 @@ export class App extends React.Component<any, AppState> {
                     index={index}
                     data={board}
                     filterBy={searchText}
-                    onTaskCompletion={actions.taskCompleted}
                     onPlayOrPauseTask={this.startTaskTracker}
-                    renameBoard={actions.renameBoard}
-                    onEditTaskTitle={actions.editTaskTitle}
-                    onAddTask={actions.addTask}
-                    onDeleteBoard={actions.deleteBoard}
                     setDescriptiveTask={this.expandTask}
                 />
             ))
 
         return <div className="tr-wrapper">
             <Header
-                onSearch={actions.searchTask}
                 searchText={searchText}
             />
             <div className="main-body">
@@ -140,7 +136,7 @@ export class App extends React.Component<any, AppState> {
                     <div className="task-list clearfix">
                         {boardListElements}
                         <AddBoard
-                            handleClick={actions.addBoard}
+                            handleClick={() => {dispatch(addBoard())}}
                         />
                     </div>
                 </div>
@@ -157,7 +153,6 @@ export class App extends React.Component<any, AppState> {
                 task={expandedTask}
                 progressDisplayed={expandedTask.get('id') == activeTask.get('id') ? this.state.progressDisplayed : expandedTask.get('progress')}
                 onDeleteTask={this.deleteTask}
-                onSaveTask={actions.saveTask}
                 hideDesc={this.hideTask}
             /> : null}
         </div>
@@ -165,15 +160,11 @@ export class App extends React.Component<any, AppState> {
 }
 
 function mapStateToProps(state) {
-    return {
-        data: state
-    }
+    return { data: state }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(Actions, dispatch)
-    }
+    return { dispatch:  dispatch  }
 }
 
 export default connect(

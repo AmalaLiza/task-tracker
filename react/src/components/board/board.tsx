@@ -2,21 +2,19 @@ import * as React from "react";
 import * as Immutable from "immutable";
 import Task from '../task/task.tsx';
 import BoardType from "../../models/BoardType.ts";
-import './board.scss';
 import TaskType from "../../models/TaskType.ts";
+import {saveBoardService} from "../../../service/saveBoardService.ts"
+import {connect} from "react-redux";
+import * as Actions from "../../actions.ts";
+import './board.scss';
 
 interface BoardProps {
     key:number;
     index:number;
     data:BoardType;
     filterBy:string;
-    onTaskCompletion:Function;
-    renameBoard:Function;
-    onEditTaskTitle:Function;
-    onAddTask:Function;
     setDescriptiveTask:Function;
     onPlayOrPauseTask:Function;
-    onDeleteBoard:Function;
 }
 
 interface BoardState {
@@ -38,21 +36,21 @@ export default class Board extends React.Component<BoardProps, BoardState> {
 
     onAddTask(event, boardIndex:number) {
         if (event.keyCode === 13) {
-            this.props.onAddTask(event.target.value, boardIndex);
+            this.props.dispatch(Actions.addTask(event.target.value, boardIndex));
             event.target.value = '';
         }
     }
 
     renameBoard(event, boardIndex:number) {
         if (event.keyCode === 13) {
-            this.props.renameBoard(event.target.value, boardIndex);
+            this.props.dispatch(Actions.renameBoard(event.target.value, boardIndex));
             event.target.defaultValue = event.target.value;
             this.setState({showRenameInput: false});
         }
     }
 
     render() {
-        console.log("taskList", this.props);
+        let {dispatch} = this.props;
         let taskList:Immutable.List<any> = this.props.data.get("taskList");
         let taskListElements = taskList
             .filter((task, index) => (task.get('completed') == false &&
@@ -108,7 +106,7 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                         this.setState({showRenameInput: true});
                     }}>Rename</li>
                     <li onClick={() => {
-                        this.props.onDeleteBoard(this.props.index);
+                        this.props.dispatch(Actions.deleteBoard(this.props.index));
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                     }}>Delete Board</li>
                 </ul>
@@ -139,6 +137,7 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                 <div className="task-footer__add-task clearfix">
                     <input placeholder="Add Task" className="task-footer__add-task__input"
                            onKeyDown={(event) => {this.onAddTask(event, this.props.index)}}/>
+                    <button onClick={() => {dispatch(saveBoardService(this.props.data.toJS()))}}>Save Board</button>
                 </div>
                 <a href="javascript:void(0)" className="primary-link add-task-link" style={{display:"none"}}>
                     + Add Task
@@ -148,3 +147,10 @@ export default class Board extends React.Component<BoardProps, BoardState> {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return { dispatch:  dispatch  }
+}
+
+export default connect(
+    mapDispatchToProps
+)(Board)

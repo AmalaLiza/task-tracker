@@ -29,6 +29,9 @@ export function boardReducer(state, action) {
             }
             return state;
 
+        case "SAVE_BOARD" :
+            return state;
+
         default:
             return state
     }

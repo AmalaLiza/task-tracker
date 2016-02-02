@@ -1,9 +1,10 @@
 import * as React from "react";
+import {connect} from "react-redux";
+import * as Actions from "../../actions.ts";
 import './header.scss';
 
 interface HeaderProps {
     searchText:string;
-    onSearch:Function;
 }
 
 export default class Header extends React.Component<HeaderProps, any> {
@@ -15,7 +16,7 @@ export default class Header extends React.Component<HeaderProps, any> {
 
     handleSearch(e) {
         const searchText = e.target.value;
-        this.props.onSearch(searchText);
+        this.props.dispatch(Actions.searchTask(searchText));
     }
 
     render() {
@@ -49,6 +50,12 @@ export default class Header extends React.Component<HeaderProps, any> {
             </div>
         </div>
     }
-
 }
 
+function mapDispatchToProps(dispatch) {
+    return { dispatch:  dispatch  }
+}
+
+export default connect(
+    mapDispatchToProps
+)(Header)

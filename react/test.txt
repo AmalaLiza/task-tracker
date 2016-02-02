@@ -1,1 +1,1 @@
-"{\"id\":\"1454416088391.1548\",\"title\":\"New Board\",\"taskList\":[]}"
+"{\"id\":\"1454421707748.184\",\"title\":\"New Board\",\"taskList\":[{\"notes\":\"\",\"isExpanded\":false,\"taskList\":[],\"priority\":0,\"isPlaying\":false,\"estimatedTime\":1,\"dependencies\":\"\",\"completed\":false,\"progress\":0,\"activity\":\"\",\"title\":\"d\",\"due_date\":\"\",\"id\":\"1454421708684.5896\",\"createdAt\":\"2016-02-02T14:01:48.684Z\",\"description\":\"\"}]}"

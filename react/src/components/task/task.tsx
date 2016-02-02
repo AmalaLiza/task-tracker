@@ -1,6 +1,8 @@
 import * as React  from "react";
 import TaskType from "../../models/TaskType.ts";
 import Description from "../description/description.tsx";
+import * as Actions from "../../actions.ts"
+import {connect} from "react-redux";
 import './task.scss';
 
 interface TaskProps {
@@ -27,7 +29,7 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     onTaskComplete() {
-        this.props.onTaskComplete(this.props.boardIndex, this.props.taskId);
+        this.props.dispatch(Actions.taskCompleted(this.props.boardIndex, this.props.taskId));
     }
 
     playAndPauseTask(boardId, taskId){
@@ -35,9 +37,7 @@ export default class Task extends React.Component<TaskProps, any> {
     }
 
     setDescriptiveTask(boardIndex, taskIndex){
-        this.setState({
-            isExpanded: !this.state.isExpanded
-        });
+        this.setState({ isExpanded: !this.state.isExpanded});
         this.props.setDescriptiveTask(boardIndex, taskIndex, this.state.isExpanded);
     }
 
@@ -67,4 +67,10 @@ export default class Task extends React.Component<TaskProps, any> {
 }
 
 
+function mapDispatchToProps(dispatch) {
+    return { dispatch:  dispatch  }
+}
 
+export default connect(
+    mapDispatchToProps
+)(Task)

@@ -30,7 +30,7 @@ app.get('/addBoard', function(request, response) {
 });
 
 app.post('/write', function(request, response) {
-    console.log('hii', request.body)
+    console.log('hii', request.body);
     fs.writeFile("./test.txt", JSON.stringify(request.body.data), function(err) {
         if(err) {
             return console.log(err);

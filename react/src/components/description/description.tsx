@@ -1,9 +1,10 @@
 import * as React from "react";
 import listensToClickOutside from 'react-onclickoutside/decorator';
 import ProgressBar from "../progress-bar/progress-bar.tsx";
-import Actions from  "../../actions.ts";
 import store from "../../store.ts";
 import TaskType from "../../models/TaskType.ts";
+import * as Actions from "../../actions.ts";
+import {connect} from "react-redux";
 import './description.scss';
 
 
@@ -47,12 +48,12 @@ class Description extends React.Component<DescProps, any> {
     }
 
     onSaveButtonClick(){
-        this.props.onSaveTask({
+        this.props.dispatch(Actions.saveTask({
             title: this.refs.title.value,
             due_date: this.refs.due_date.value,
             estimatedTime: this.refs.estimatedTime.value,
             description: this.refs.description.value
-        });
+        }));
         this.refs.title.value = '';
         this.refs.due_date.value = '';
         this.refs.estimatedTime.value = '';
@@ -194,3 +195,11 @@ class Description extends React.Component<DescProps, any> {
     }
 }
  export default listensToClickOutside(Description);
+
+function mapDispatchToProps(dispatch) {
+    return { dispatch:  dispatch  }
+}
+
+export default connect(
+    mapDispatchToProps
+)(Description)
