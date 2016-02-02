@@ -102,7 +102,7 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                 </a>
                 <ul className="more-options"
                     style={this.state.showMoreOptions?{display: "block"}:{display: "none"}}>
-                    <li>Search</li>
+                    <li>Search & Filter</li>
                     <li onClick={() => {
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                         this.setState({showRenameInput: true});
@@ -112,6 +112,10 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                         this.setState({showMoreOptions: !this.state.showMoreOptions});
                     }}>Delete Board</li>
                 </ul>
+                <div className="search-wrapper" style={{display:'none'}}>
+                    <input type="text" className="search-input" placeholder="Search..."/>
+                    <a href="javascript:void(0)" className="filter-ico flaticon-filter18"></a>
+                </div>
             </div>
             <div className="task-body">
                 <ul className="task-body-list">

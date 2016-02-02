@@ -23,7 +23,7 @@
 }
 
 .task-header-wrapper{
-  height:25px;
+  min-height:25px;
   .more-ico{
     position: absolute;
     right: 10px;
@@ -34,7 +34,10 @@
 .task-header {
   width: calc(100% - 66px);
   margin: 0 auto;
+  overflow: hidden;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 input.task-header-input {
@@ -47,9 +50,45 @@ input.task-header-input {
   font-size: 18px;
 }
 
+.search-wrapper{
+
+  margin-top:3px;
+  text-align: center;
+
+  .filter-ico {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-left: 4px;
+    color: inherit;
+
+    &:before{
+      margin-left: 0;
+      position: relative;
+      top: 3px;
+      opacity:0.5;
+    }
+  }
+}
+
+.search-input{
+  width: calc(100% - 58px);
+  margin: 10px auto 0;
+  display: inline-block;
+  padding: 6px 8px;
+  border: none;
+  box-shadow: inset 1px 0px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 2px;
+}
+
 .task-no{
   font-size: 18px;
-  font-weight: 300;
+  margin-left:10px;
+
+  >span{
+    font-weight: 300;
+  }
 }
 
 .task-body{
