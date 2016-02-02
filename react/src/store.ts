@@ -24,7 +24,7 @@ const logger = createLogger({
     }
 });
 
-const createStoreWithMiddleware = compose(applyMiddleware(logger, thunkMiddleware), DevTools.instrument())(createStore);
+const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, logger), DevTools.instrument())(createStore);
 
 export function configureStore() {
     const store = createStoreWithMiddleware(rootReducer);

@@ -60,7 +60,7 @@ declare module "react-dom" {
     export = DOM;
 }
 
-declare module "react-dom/server" {
+declare module "react-dom/service" {
     import DOMServer = __React.__DOMServer;
     export = DOMServer;
 }

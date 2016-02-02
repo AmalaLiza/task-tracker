@@ -6,6 +6,18 @@ export default {
         };
     },
 
+    saveBoard() {
+        return {
+            type: "SAVE_BOARD"
+        };
+    },
+
+    getBoard() {
+        return {
+            type: "GET_BOARD"
+        };
+    },
+
     renameBoard(newTitle, boardIndex:number) {
         return {
             type: "RENAME_BOARD",

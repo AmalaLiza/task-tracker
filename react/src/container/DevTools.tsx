@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDevTools } from 'redux-devtools';
-import LogMonitor from '../debugger/logger/LogMonitor.tsx';
+import LogMonitor from '../debugger/LogMonitor.tsx';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
 const DevTools = createDevTools(
