@@ -35,7 +35,8 @@ const styles = {
     elements: {
         maxHeight: 'calc(100% - 253px)',
         overflowX: 'hidden',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        position:'relative'
     },
 
     textAreaDebug: {
