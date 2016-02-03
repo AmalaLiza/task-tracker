@@ -106,19 +106,19 @@ export default class LogMonitor extends Component {
         const { actionsById, stagedActionIds, computedStates , currentStateIndex} = this.props;
         let from = this.refs.from.value;
         let to = this.refs.to.value;
-        console.log(computedStates[from-1].state.toJS());
         let trace = {
             actionHistory: [],
             state: {}
         }
-        to = to ? to : 0;
-        from = from ? from : actionsById.length;
+        to = to ? to : computedStates.length-1;
+        from = from ? from : 0;
         for (let i = from; i <= to; i++) {
             const actionId = stagedActionIds[i];
             const action = actionsById[actionId].action;
             trace.actionHistory.push({action});
         }
-        trace.state = computedStates[from-1].state;
+        if(from) trace.state = computedStates[from-1].state;
+        else trace.state = computedStates[from].state;
         ReactDOM.findDOMNode(this.refs.textAreaValue).value = JSON.stringify(trace);
     }
 
