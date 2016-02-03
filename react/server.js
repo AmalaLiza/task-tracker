@@ -9,15 +9,12 @@ var proxy = require('proxy-middleware');
 var url = require('url');
 var app = express();
 
-app.use('/assets', proxy(url.parse('http://localhost:8080/assets')));
+app.use('/assets', proxy(url.parse('http://localhost:3000/assets')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/getBoard', function(request, response) {
-    console.log("getBoard");
-    var boardList = [];
-
     response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     fs.readFile("./test.txt", "utf8", function(err, data) {
         if (err) throw err;
@@ -52,7 +49,7 @@ new WebpackDevServer(webpack(config), {
     console.log('Listening at localhost:8000');
 });
 
-app.listen(8080, 'localhost',function (err) {
+app.listen(3000, 'localhost',function (err) {
     if (err) console.log(err);
-    console.log('Listening at localhost:8080');
+    console.log('Listening at localhost:3000');
 });

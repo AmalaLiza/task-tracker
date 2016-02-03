@@ -4,7 +4,7 @@ import {saveBoard} from "../src/actions";
 export function saveBoardService(data) {
     return dispatch => {
 
-        return fetch('http://localhost:8080/write',{
+        return fetch('http://localhost:3000/write',{
             method: 'post',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
