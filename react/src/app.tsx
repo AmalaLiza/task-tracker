@@ -1,4 +1,3 @@
-import {addBoard} from "./actions";
 "use strict";
 /// <reference path="../typings/react/react.d.ts" />
 /// <reference path="../typings/react/react-dom.d.ts" />
@@ -153,7 +152,7 @@ export class App extends React.Component<any, AppState> {
                     <div className="task-list clearfix">
                         {boardListElements}
                         <AddBoard
-                            handleClick={() => {dispatch(addBoard())}}
+                            handleClick={() => {dispatch(Actions.addBoard())}}
                         />
                     </div>
                 </div>

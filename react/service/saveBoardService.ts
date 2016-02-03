@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {saveBoard} from "../src/actions";
+import {saveBoard} from "../src/actions.ts";
 
 export function saveBoardService(data) {
     return dispatch => {

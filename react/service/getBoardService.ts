@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {getBoard} from "../src/actions";
+import {getBoard} from "../src/actions.ts";
 
 export function getBoardService() {
 
