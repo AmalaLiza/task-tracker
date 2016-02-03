@@ -9,6 +9,7 @@ import { ActionCreators } from 'redux-devtools';
 import { updateScrollTop } from './actions.ts';
 import reducer from './reducers.ts';
 import Popout from "react-popout";
+import './debugger.scss';
 
 const { reset, rollback, commit, sweep, toggleAction, importState } = ActionCreators;
 
@@ -20,7 +21,9 @@ const styles = {
         width: '100%',
         height: '100%',
         minWidth: 300,
-        direction: 'ltr'
+        direction: 'ltr',
+        display:'flex',
+        flexDirection:'column'
     },
     buttonBar: {
         padding: '15px 0',
@@ -33,7 +36,6 @@ const styles = {
         //flexDirection: 'row'
     },
     elements: {
-        maxHeight: 'calc(100% - 253px)',
         overflowX: 'hidden',
         overflowY: 'auto',
         position:'relative'
@@ -227,46 +229,66 @@ export default class LogMonitor extends Component {
             <div style={{...styles.container, backgroundColor: theme.base00}}>
                 <div style={{...styles.buttonBar, borderColor: theme.base02}}>
                     <div>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleReset}
-                            enabled>
-                            Reset
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleRollback}
-                            enabled={computedStates.length > 1}>
-                            Revert
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleSweep}
-                            enabled={skippedActionIds.length > 0}>
-                            Sweep
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.handleCommit}
-                            enabled={computedStates.length > 1}>
-                            Commit
-                        </LogMonitorButton>
-                    </div>
-                    <div>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.copyTrace}
-                            enabled>
-                            CopyTrace
-                        </LogMonitorButton>
-                        <LogMonitorButton
-                            theme={theme}
-                            onClick={this.applyTrace}
-                            enabled>
-                            ApplyTrace
-                        </LogMonitorButton>
-                        <div style={{...styles.buttonBar, borderColor: theme.base02}}>
-                            <textarea ref="textAreaValue" style={{...styles.textAreaDebug}}></textarea>
+                        <div className="debugger-tabs-wrapper">
+                            <ul className="debugger-tabs" style={styles.debuggerTabs}>
+                                <li className="debugger-tabs-item active" style={styles.debuggerTabsItem}>Operations</li>
+                                <li className="debugger-tabs-item" style={styles.debuggerTabsItem}>Trace</li>
+                            </ul>
+
+                            <div className="debugger-tabs-content">
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.handleReset}
+                                    enabled>
+                                    Reset
+                                </LogMonitorButton>
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.handleRollback}
+                                    enabled={computedStates.length > 1}>
+                                    Revert
+                                </LogMonitorButton>
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.handleSweep}
+                                    enabled={skippedActionIds.length > 0}>
+                                    Sweep
+                                </LogMonitorButton>
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.handleCommit}
+                                    enabled={computedStates.length > 1}>
+                                    Commit
+                                </LogMonitorButton>
+                            </div>
+                            <div className="debugger-tabs-content">
+                                <div className="form-wrapper">
+                                    <div className="half-width">
+                                        <label className="debugger-tabs-content-label">From:</label>
+                                        <input type="text" className="debugger-tabs-content-input"/>
+                                    </div>
+                                    <div className="half-width">
+                                        <label className="debugger-tabs-content-label">To:</label>
+                                        <input type="text" className="debugger-tabs-content-input"/>
+                                    </div>
+                                </div>
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.copyTrace}
+                                    enabled>
+                                    CopyTrace
+                                </LogMonitorButton>
+                                <LogMonitorButton
+                                    theme={theme}
+                                    onClick={this.applyTrace}
+                                    enabled>
+                                    ApplyTrace
+                                </LogMonitorButton>
+
+                                <div style={{...styles.buttonBar, borderColor: theme.base02, padding:'8px 0 15px'}}>
+                                    <textarea ref="textAreaValue" style={{...styles.textAreaDebug}}></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
