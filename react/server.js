@@ -12,38 +12,32 @@ var app = express();
 app.use('/assets', proxy(url.parse('http://localhost:8080/assets')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/addBoard', function(request, response) {
-
-    var newBoard = {
-        id: (String(+(new Date()) + Math.random())),
-        title: "New Board",
-        taskList: Immutable.List()
-    };
+app.get('/getBoard', function(request, response) {
+    console.log("getBoard");
+    var boardList = [];
 
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
-    response.send({
-        status : 200,
-        data : newBoard
-    })
+    fs.readFile("./test.txt", "utf8", function(err, data) {
+        if (err) throw err;
+        response.send({
+            status : 200,
+            data : data
+        })
+    });
 });
 
 app.post('/write', function(request, response) {
-    console.log('hii', request.body);
-    fs.writeFile("./test.txt", JSON.stringify(request.body.data), function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
-    });
-
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    response.send({
-        status : 200
-    })
+    fs.writeFile("./test.txt", JSON.stringify(request.body.data), function(err) {
+        if(err) return console.log(err);
+        response.send({
+            status : 200
+        })
+    });
 });
 
 

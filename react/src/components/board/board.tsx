@@ -3,7 +3,6 @@ import * as Immutable from "immutable";
 import Task from '../task/task.tsx';
 import BoardType from "../../models/BoardType.ts";
 import TaskType from "../../models/TaskType.ts";
-import {saveBoardService} from "../../../service/saveBoardService.ts"
 import {connect} from "react-redux";
 import * as Actions from "../../actions.ts";
 import './board.scss';
@@ -165,7 +164,6 @@ export default class Board extends React.Component<BoardProps, BoardState> {
                 <div className="task-footer__add-task clearfix">
                     <input placeholder="Add Task" className="task-footer__add-task__input"
                            onKeyDown={(event) => {this.onAddTask(event, this.props.index)}}/>
-                    <button onClick={() => {dispatch(saveBoardService(this.props.data.toJS()))}}>Save Board</button>
                 </div>
                 <a href="javascript:void(0)" className="primary-link add-task-link" style={{display:"none"}}>
                     + Add Task

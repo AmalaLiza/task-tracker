@@ -10,9 +10,10 @@
         };
     }
 
-    export function getBoard() {
+    export function getBoard(boardList) {
         return {
-            type: "GET_BOARD"
+            type: "GET_BOARD",
+            boardList
         };
     }
 

@@ -30,6 +30,11 @@ export function boardReducer(state, action) {
             return state;
 
         case "SAVE_BOARD" :
+            state = state.update('show', show => true);
+            return state;
+
+        case "GET_BOARD":
+            state = state.update('boardList', boardList => Immutable.fromJS(action.boardList));
             return state;
 
         default:

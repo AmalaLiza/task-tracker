@@ -10,7 +10,8 @@ import tracker from "./debugger/tracker.ts";
 import * as Immutable from "immutable";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {saveBoardService} from "../service/saveBoardService.ts"
+import {saveBoardService} from "../service/saveBoardService.ts";
+import {getBoardService} from "../service/getBoardService.ts";
 import Header from "../src/components/header/header.tsx";
 import Board from "../src/components/board/board.tsx";
 import AddBoard from "../src/components/add-board/add-board.tsx"
@@ -80,7 +81,6 @@ export class App extends React.Component<any, AppState> {
                 progress: progress,
                 progressDisplayed: progressDisplayed
             })
-            console.log('progress', this.state.progress)
         }
         if (isPlaying) {
             this.props.dispatch(Actions.pauseTask(boardId, taskId, this.state.progress));
@@ -125,13 +125,30 @@ export class App extends React.Component<any, AppState> {
                     onPlayOrPauseTask={this.startTaskTracker}
                     setDescriptiveTask={this.expandTask}
                 />
-            ))
+            ));
+
+        let style = {
+            cursor: "pointer",
+            fontWeight: "bold",
+            borderRadius: "3px",
+            padding: "8px 15px",
+            margin: "5px",
+            flexGrow: 1,
+            display: "inline-block",
+            fontSize: "0.8em",
+            color: "white",
+            textDecoration: "none",
+            backgroundColor: "#ED5353"
+        }
+
 
         return <div className="tr-wrapper">
             <Header
-                searchText={searchText}
-            />
+                searchText={searchText}/>
             <div className="main-body">
+                <button style={style} onClick={() => {dispatch(saveBoardService(boardList.toJS()))}}>Save BoardList</button>
+                <button style={style} onClick={() => {dispatch(getBoardService())}}>Get BoardList</button>
+                <h2 style={data.get("show")?{display : "block"}: {display : "none"}}>Boards Saved...</h2>
                 <div className="width-container">
                     <div className="task-list clearfix">
                         {boardListElements}

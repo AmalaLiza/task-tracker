@@ -12,7 +12,8 @@ const initialState:StateType = Immutable.fromJS({
     boardList: [],
     searchText: "",
     activeTask: {},
-    expandedTask: {}
+    expandedTask: {},
+    show : false
 });
 
 export function rootReducer(state:StateType = initialState, action) {
@@ -22,6 +23,8 @@ export function rootReducer(state:StateType = initialState, action) {
         case "ADD_BOARD":
         case "RENAME_BOARD":
         case "DELETE_BOARD":
+        case "SAVE_BOARD":
+        case "GET_BOARD":
             return boardReducer(state, action);
 
         case "ADD_TASK":
