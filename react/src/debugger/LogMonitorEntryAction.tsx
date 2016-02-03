@@ -62,7 +62,7 @@ export default class LogMonitorAction extends Component {
                 <div style={styles.actionBar}
                     onClick={this.props.onClick}>
                     {type}
-                    <button style={styles.buttonStyle} onClick={(event) => {this.copyStateToLast(event, this.props.previousState, this.props.actionId)}}>Copy</button>
+                     :::::: {this.props.actionId}
                 </div>
                 {!this.props.collapsed ? this.renderPayload(payload) : ''}
             </div>

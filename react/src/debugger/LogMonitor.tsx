@@ -69,6 +69,8 @@ export default class LogMonitor extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {};
+        this.state.active = false;
         this.handleToggleAction = this.handleToggleAction.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleRollback = this.handleRollback.bind(this);
@@ -100,22 +102,25 @@ export default class LogMonitor extends Component {
         }
     }
 
-    copyTrace(currentState, actionId) {
-        const { actionsById, stagedActionIds } = this.props;
+    copyTrace() {
+        const { actionsById, stagedActionIds, computedStates , currentStateIndex} = this.props;
+        let from = this.refs.from.value;
+        let to = this.refs.to.value;
+        console.log(computedStates[from-1].state.toJS());
         let trace = {
             actionHistory: [],
             state: {}
         }
-        actionId = actionId ? actionId : 0;
-        for (let i = actionId; i < stagedActionIds.length; i++) {
+        to = to ? to : 0;
+        from = from ? from : actionsById.length;
+        for (let i = from; i <= to; i++) {
             const actionId = stagedActionIds[i];
             const action = actionsById[actionId].action;
             trace.actionHistory.push({action});
         }
-        trace.state = currentState;
+        trace.state = computedStates[from-1].state;
         ReactDOM.findDOMNode(this.refs.textAreaValue).value = JSON.stringify(trace);
     }
-
 
     applyTrace() {
         let trace = JSON.parse(ReactDOM.findDOMNode(this.refs.textAreaValue).value);
@@ -231,11 +236,17 @@ export default class LogMonitor extends Component {
                     <div>
                         <div className="debugger-tabs-wrapper">
                             <ul className="debugger-tabs" style={styles.debuggerTabs}>
-                                <li className="debugger-tabs-item active" style={styles.debuggerTabsItem}>Operations</li>
-                                <li className="debugger-tabs-item" style={styles.debuggerTabsItem}>Trace</li>
+                                <li className={`debugger-tabs-item ${this.state.active? 'active':''}`}
+                                    style={styles.debuggerTabsItem}
+                                    onClick={() => {this.setState({active : !this.state.active})}}
+                                >Operations</li>
+                                <li className={`debugger-tabs-item ${!this.state.active? 'active':''}`}
+                                    style={styles.debuggerTabsItem}
+                                    onClick={() => {this.setState({active : !this.state.active})}}
+                                    >Trace</li>
                             </ul>
 
-                            <div className="debugger-tabs-content">
+                            <div className="debugger-tabs-content" style={!this.state.active?{display: 'none'}:{display:'block'}}>
                                 <LogMonitorButton
                                     theme={theme}
                                     onClick={this.handleReset}
@@ -261,15 +272,21 @@ export default class LogMonitor extends Component {
                                     Commit
                                 </LogMonitorButton>
                             </div>
-                            <div className="debugger-tabs-content">
+                            <div className="debugger-tabs-content" style={this.state.active?{display: 'none'}:{display:'block'}}>
                                 <div className="form-wrapper">
                                     <div className="half-width">
                                         <label className="debugger-tabs-content-label">From:</label>
-                                        <input type="text" className="debugger-tabs-content-input"/>
+                                        <input type="text"
+                                               className="debugger-tabs-content-input"
+                                               ref="from"
+                                        />
                                     </div>
                                     <div className="half-width">
                                         <label className="debugger-tabs-content-label">To:</label>
-                                        <input type="text" className="debugger-tabs-content-input"/>
+                                        <input type="text"
+                                               className="debugger-tabs-content-input"
+                                               ref="to"
+                                        />
                                     </div>
                                 </div>
                                 <LogMonitorButton

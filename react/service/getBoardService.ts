@@ -14,5 +14,4 @@ export function getBoardService() {
                 console.log('Fetch Error', err);
             });
     };
-
 }
