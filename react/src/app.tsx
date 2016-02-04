@@ -45,24 +45,22 @@ export class App extends React.Component<any, AppState> {
     }
 
     expandTask(boardIndex, taskIndex) {
-        let {actions, data} = this.props;
+        let {data} = this.props;
         data = data.setIn(['expandedTask', 'taskIndex'], taskIndex)
         this.props.dispatch(Actions.expandTask(boardIndex, taskIndex))
     }
 
     hideTask() {
-        let {actions} = this.props;
         this.props.dispatch(Actions.hideTask());
     }
 
     deleteTask(taskIndex, boardIndex) {
-        let {actions} = this.props;
         this.hideTask();
         this.props.dispatch(Actions.deleteTask(taskIndex, boardIndex));
     }
 
     startTaskTracker(boardId, taskId, isPlaying) {
-        let {data, actions} = this.props;
+        let {data} = this.props;
         this.setState({
             progress: data.getIn(['boardList', boardId, 'taskList', taskId, 'progress']),
             estimatedTime: data.getIn(['boardList', boardId, 'taskList', taskId, 'estimatedTime'])
