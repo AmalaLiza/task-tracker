@@ -1,6 +1,6 @@
 import React from 'react';
-import { createDevTools } from 'redux-devtools';
-import LogMonitor from '../debugger/LogMonitor.tsx';
+import { createDevTools } from 'redux-trazor/lib';
+import { LogMonitor } from 'redux-trazor/lib';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
 const DevTools = createDevTools(
