@@ -5,7 +5,6 @@
 /// <reference path="../typings/immutable/immutable.d.ts" />
 
 import * as React from "react";
-import tracker from "./debugger/tracker.ts";
 import * as Immutable from "immutable";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
