@@ -27,7 +27,7 @@ class Description extends React.Component<DescProps, any> {
         }
     }
 
-    handleClickOutside(){
+    handleClickOutside() {
         this.props.hideDesc();
     }
 
@@ -194,12 +194,15 @@ class Description extends React.Component<DescProps, any> {
         </div>
     }
 }
- export default listensToClickOutside(Description);
 
 function mapDispatchToProps(dispatch) {
-    return { dispatch:  dispatch  }
+    return {
+        dispatch: dispatch
+    }
 }
 
 export default connect(
     mapDispatchToProps
-)(Description)
+)(Description);
+
+export default listensToClickOutside(Description);

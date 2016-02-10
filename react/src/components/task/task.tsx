@@ -1,6 +1,5 @@
 import * as React  from "react";
 import TaskType from "../../models/TaskType.ts";
-import Description from "../description/description.tsx";
 import * as Actions from "../../actions.ts"
 import {connect} from "react-redux";
 import './task.scss';
@@ -66,9 +65,10 @@ export default class Task extends React.Component<TaskProps, any> {
 
 }
 
-
 function mapDispatchToProps(dispatch) {
-    return { dispatch:  dispatch  }
+    return {
+        dispatch: dispatch
+    }
 }
 
 export default connect(
