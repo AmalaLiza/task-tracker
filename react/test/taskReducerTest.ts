@@ -2,7 +2,7 @@
 ///<reference path='../typings/immutable/immutable.d.ts'/>
 import * as Immutable from 'immutable';
 import {rootReducer} from "../src/reducers/rootReducer";
-import chai = require('chai');
+let chai = require('chai');
 
 const initialState = Immutable.fromJS({
     boardList: [{
