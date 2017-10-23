@@ -15,7 +15,7 @@ interface TaskProps {
     onPlayOrPauseTask?:Function;
 }
 
-export default class Task extends React.Component<TaskProps, any> {
+class Task extends React.Component<TaskProps, any> {
 
     constructor(props, context) {
         super(props, context);

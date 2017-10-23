@@ -201,7 +201,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(
+connect(
     mapDispatchToProps
 )(Description);
 

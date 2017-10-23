@@ -7,7 +7,7 @@ interface HeaderProps {
     searchText:string;
 }
 
-export default class Header extends React.Component<HeaderProps, any> {
+class Header extends React.Component<HeaderProps, any> {
 
     constructor(props, context) {
         super(props, context);

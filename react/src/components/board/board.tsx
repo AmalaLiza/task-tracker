@@ -25,7 +25,7 @@ interface BoardState {
     searchTextInBoard: string;
 }
 
-export default class Board extends React.Component<BoardProps, BoardState> {
+class Board extends React.Component<BoardProps, BoardState> {
 
     constructor() {
         super();
